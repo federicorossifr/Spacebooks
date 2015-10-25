@@ -1,0 +1,482 @@
+html,body {
+  margin:0;
+  width:100%;
+  font-size:13px;     
+  background-color:#7986CB;
+  font-family: 'Open Sans', sans-serif;}
+
+h1,h2,h3,h4,h5,h6 {
+  font-weight:lighter;
+}
+
+body > header {
+  display:block;
+  background-color: #3F51B5;
+  color:white;
+  height:65px;
+  line-height:65px;
+ }
+
+body > header > h1 {
+  margin:0;
+  width:50%;
+  display: block;
+  margin-left:auto;
+  margin-right:auto;
+  text-align: center;
+}
+
+
+
+/* Stile CSS per la barra di navigazione */
+
+nav {
+  position: relative;
+  background-color: #3F51B5;
+  overflow-y:auto;
+  width:100%;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.24);
+}
+
+nav > ul {
+  padding:0;
+  margin:0;
+  list-style:none;
+}
+
+nav > ul > li {
+  display:block;
+  width:100%;
+  text-align:center;
+}
+
+nav > ul > li > a {
+  color:rgba(0,0,0,0.50);
+  display: block;
+  text-decoration: none;
+  padding:0.5em 0.5em;
+  line-height: 2em;
+
+  transition: color 0.2s ease-in-out;
+}
+
+nav > ul > li.active > a, nav > ul > li > a:hover {
+  color:white;
+}
+
+nav > ul > li > a > img {
+  height: 2em;
+  width:2em;
+  border-radius: 100%;
+  border: 1px solid white;
+  box-sizing:border-box;
+}
+
+/*----------------*/
+
+
+/*****************************Stile CSS per l'aside *****************************/
+
+aside {
+  z-index:10;
+  background-color:#C5CAE9;
+  height: 100%;
+  width:100%;
+  padding:2%;
+  position:absolute;
+  top:0;
+  bottom:0;
+  box-sizing:border-box;
+  text-align: center;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+
+/***** Stile CSS per l'aside a comparsa del profilo ******/
+
+aside#profile {
+  top:-200%;
+  transition: top 0.5s ease-in-out;
+}
+
+aside#profile:target {
+  top:0;
+}
+
+#bigPicture {
+  border-radius:100%;
+  border: 2px solid #3F51B5;
+  box-sizing:border-box;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition:all 0.3s;
+}
+
+#bigPicture:hover {
+  transform:rotate(360deg);
+}
+
+#sideButtons {
+  list-style-type:none;
+  padding:0;
+  display:block;
+  width:100%;
+}
+
+
+#sideButtons  .prettyButton {
+  width:100%;
+  box-sizing:border-box;
+}
+
+/*********************************************************/
+
+aside > header {
+  color:#3F51B5;
+}
+
+
+/**********************************************************************************/
+
+
+/* Stile per la sezione "main" della pagina ****/
+main {
+  background-color:#7986CB;
+  width:100%;
+  padding:1%;
+  padding-top:10px;
+  box-sizing:border-box;
+  overflow-y:auto;
+}
+
+
+main > header {
+  background-color:white;
+  margin-bottom:10px;
+  width:30%;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+  padding:0.5em;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+main > header > h2 {
+  margin:0;
+  color:#3F51B5;
+}
+
+main article {
+  background-color:#3F51B5;
+  padding:1em;
+  color:white;
+  display:block;
+  width:90%;
+  margin-left:auto;
+  margin-right:auto;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+main  article > header {
+  text-align:center;
+  background-color:white;
+  color:#3F51B5;
+  padding:3px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+}
+
+main  article > header > h3 {
+  margin:0;
+}
+
+
+/***********************************/
+
+
+
+
+article#pPicture > img {
+  display:block;
+  border-radius:100%;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+
+
+article#pInfo > dl > dt {
+  font-weight:bold;
+}
+
+article#pInfo > dl > dd {
+  margin:0;
+}
+
+
+.preview {
+  display:block;
+  height:150px;
+  width:150px;
+  position:relative;
+  overflow:hidden;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.preview > img {
+  position:absolute;
+  height:100%;
+  z-index:0;
+}
+
+.preview > span {
+  position:absolute;
+  display:block;
+  background-color:white;
+  width:100%;
+  z-index:1;
+  line-height:3em;
+  color:white;
+  text-align:center;
+  top:calc(100% - 3em);
+  background-color:rgba(0,0,0,.60);
+  transition: top 0.2s ease-in-out;
+}
+
+
+
+/**** Stili per la pagina di login/registrazione ****/
+
+#loginSection {
+  width:100%;
+  text-align:center;
+  transition: opacity 0.5s ease-in-out;
+  padding-bottom:1%;
+  padding-top:1%;
+}
+
+
+#registerSection {
+  width:100%;
+  padding-bottom:5%;
+  padding-top:1%;
+  text-align: center;
+}
+
+#loginForm, #registerForm {
+  width:90%;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+form input {
+  background-color:#3F51B5;
+  border: 1px solid transparent;
+  color:white;
+  padding:2%;
+  padding-top:5px;
+  padding-bottom:5px;
+  font-size:14px;
+  height:40px;
+  text-align:center;
+  font-family: 'Open Sans', sans-serif;
+  display:inline-block;
+  margin-bottom:20px;
+  box-sizing:border-box;
+  width:100%;
+  text-align:left;
+  text-align:center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  
+  transition: background-color 0.2s ease-in-out;
+}
+
+form input:focus{
+   outline:none;
+   background-color:white;
+   color:#3F51B5;
+}
+
+form button {
+  display:block;
+  border: 1px solid transparent;
+  background-color:white;
+  color:#3F51B5;
+  padding-top:15px;
+  padding-bottom:15px;
+  width:100%;
+  font-size:13px;
+  clear:both;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  cursor:pointer;
+  
+}
+
+form button:hover {
+  background-color:#3F51B5;
+  color:white;
+}
+
+form button:disabled {
+  background-color:rgba(0,0,0,0.20);
+  color:white;
+  cursor:not-allowed;
+}
+
+form label {
+  color:white;
+  display:inline-block;
+  margin-bottom:5px;
+}
+
+#loginSection > header, #registerSection > header {
+  text-align:center;
+  color:white;
+}
+
+#registerSection > .prettyButton {
+  width:90%;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+
+
+
+
+
+#index > header {
+    position:relative;/*Per l'ombra*/
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+/***********************************************************/
+
+/**** Stili per la pagina di presentazione del servizio ****/
+
+
+#about > header {
+  margin-top:10px;
+  margin-bottom:10px;
+  width:90%;
+  background-color:white;
+  position:relative;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+#about > .prettyButton {
+  width:90%;
+  margin-left:auto;
+  margin-right:auto;
+  margin-bottom:10px;
+}
+
+#about > article {
+  margin-top:10px;
+  margin-bottom:10px;
+  margin-left:auto;
+  margin-right:auto;
+  width:90%;
+  text-align:center;
+}
+
+/*********************/
+
+
+.prettyButton {
+  display:block;
+  color:#3F51B5;
+  background-color:white;
+  padding:1em;
+  margin-top:1em;
+  text-align:center;
+  text-decoration:none;
+  font-weight:bolder;
+  box-sizing:border-box;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+  transition: background-color 0.3s ease-in-out;
+}
+
+.prettyButton:hover {
+  background-color:#3F51B5;
+  color:white;
+}
+
+.flash {
+  color:white;
+  display:block;
+  margin-top:5px;
+}
+
+#pictureContainer {
+  position:relative;
+}
+
+#pictureContainer > span.change {
+  position:absolute;
+  background-color:#333;
+  color:white;
+  display:block;
+  top:calc(50% - 10px) ;
+  left:calc(50% - 50px);
+  width:100px;
+  line-height:20px;
+  opacity:0;
+  border-radius:5px 5px;
+  cursor: pointer;
+}
+
+#pictureContainer:hover > span.change {
+  opacity:0.8;
+}
+
+#pictureContainer > #upPicture {
+  position:absolute;
+  top:-100%;
+  left:-100%;               
+}
+
+label.success::after {
+  margin-left:10px;
+  content:"\2713" ;
+  color:green;
+}
+
+label.error::after {
+  margin-left:10px;
+  content: "\2717";
+  color:red;
+}
+
+label.errormsg::after {
+  margin-left:10px;
+  content: attr(data-message);
+  color:red;
+}
+
+
+#close {
+  position:absolute;
+  top:2%;
+  left:90%;
+  color:#3F51B5;
+  text-decoration:none;
+  transition: all 0.3s ease-in-out;
+}
+
+#close:hover {
+  transform:rotate(360deg);
+}
+
+#close::after {
+  content:"\2716";
+}
+
+
+
+#navToggle a {
+color:white;
+font-weight: bolder;
+cursor: pointer;
+}

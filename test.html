@@ -1,0 +1,40 @@
+<p id="editor" contenteditable="true"></p>
+
+
+<br>
+<button id="get">Get</button>
+
+<script type="text/javascript">
+	var btn = document.getElementById("get");
+	console.log(btn);
+	var editor = document.getElementById("editor");
+	var output = []; 
+
+	function parse(dm,out) {
+		if(!dm) return;
+		if(!dm.tagName) {
+			out.push(dm);
+			return;
+		}
+		var startTag = "<" + dm.tagName + ">";
+		var endTag = String("</" + String(dm.tagName) +">");
+		out.push(dm.startTag);
+		var chdrn = dm.childNodes;
+		for(var i = 0; i < chdrn.length; ++i) {
+			parse(chdrn[i],out);
+		}
+		out.push(endTag);
+
+	}
+	console.log();
+	btn.onclick = function() {
+		output = "";
+		parse(editor,output);
+		console.log(output);
+	}
+
+
+	
+
+
+</script>
