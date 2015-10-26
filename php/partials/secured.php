@@ -1,5 +1,5 @@
 <?php
-	require "./php/lib/core.php";
+	require ".\php\lib\core.php";
 	session_start();
 	$user = $_SESSION['user'];
 

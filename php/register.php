@@ -11,7 +11,6 @@
 		$fieldExists = "Username";
 	}
 
-	echo $fieldExists;
 
 	if($fieldExists) {
 		$_SESSION['rerror'] = $fieldExists .  " is already registered";

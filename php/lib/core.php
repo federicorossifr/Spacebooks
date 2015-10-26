@@ -154,6 +154,7 @@
 			$stmnt = $db->prepare("INSERT INTO document(title,author,description,price) VALUES(?,?,?,?)");
 			$stmnt->bind_param("sisd",$this->title,$this->author,$this->description,$this->price);
 			$stmnt->execute();
+			$this->id = $db->insert_id;
 			return $db->insert_id; //return new row's id
 		}
 
