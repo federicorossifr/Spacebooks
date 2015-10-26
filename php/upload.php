@@ -9,8 +9,8 @@
 
 	$files = $_FILES['file'];
 	$arranged = DbFS::organize($files);
-
+	$uploadsId;
 
 	foreach($arranged as $file) {
-		echo $fs->saveFile($file);
+		$id = $fs->saveFile($file);
 	}

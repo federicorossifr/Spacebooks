@@ -119,7 +119,7 @@
 		private $score;
 		private $votings;
 		private $available;
-
+		private $cover;
 
 		function __construct($fields = array()) {
 			if($fields) {
@@ -127,6 +127,7 @@
 				$this->author = $fields['author'];
 				$this->description = $fields['description'];
 				$this->price = $fields['price'];
+				$this->cover = isset($fields['cover']) ? $fields['cover'] : null;
 			}
 		}
 
@@ -157,10 +158,19 @@
 		}
 
 		function update() {
-
+			global $db;
+			$stmnt = $db->prepare("UPDATE document SET title=?,created=?,author=?,description=?,price=?,votings=?,score=?,available=?,cover=? WHERE id=?");
+			$stmnt->bind_param("ssisdidisi",$this->title,$this->created,
+											$this->author,$this->description,$this->price,
+											$this->votings,$this->score,$this->available,$this->cover,$this->id);
+			$stmnt->execute();
 		}
 
 		function delete() {
+			global $db;
+			$stmnt = $db->prepare("DELETE FROM document WHERE id=?");
+			$stmnt->bind_param("i",$this->id);
+			$stmnt->execute();
 
 		}
 
@@ -185,9 +195,5 @@
 			$stmnt->bind_param("ii",$fileId,$this->id);
 			$stmnt->execute();
 			return $db->insert_id;
-		}
-		
+		}	
 	}
-
-
-
