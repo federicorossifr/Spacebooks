@@ -33,6 +33,7 @@
 			$stmnt->execute();
 			$result = $stmnt->get_result();
 			$user = $result->fetch_object('User');
+
 			return $user;
 		}
 
@@ -54,10 +55,6 @@
 			return $this->$field;
 		}
 
-
-		function getRole() {
-			return $this->role;
-		}
 
 		function create() {
 			global $db;
@@ -107,8 +104,6 @@
 			$stmnt->execute();
 			$num = $stmnt->get_result()->num_rows;
 			return $num;
-
-
 		}
 
 	}
@@ -193,5 +188,6 @@
 		}
 		
 	}
+
 
 
