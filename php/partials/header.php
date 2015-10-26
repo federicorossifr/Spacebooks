@@ -7,7 +7,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>StormNotes</title>
+	<title>Bookd</title>
 
 
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>

@@ -10,7 +10,7 @@
 
 	<body id="index">
 		<header>
-			<h1>Stormnotes</h1>
+			<h1>Bookd</h1>
 		</header>
 
 		<section id="loginSection">
@@ -83,7 +83,7 @@
 
 				</form>
 
-			<a class="prettyButton" href="about.html">Cos&apos;&egrave; Stormnotes?</a>
+			<a class="prettyButton" href="about.html">Cos&apos;&egrave; Bookd?</a>
 
 
 		</section>
