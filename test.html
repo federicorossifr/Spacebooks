@@ -1,4 +1,4 @@
-<form method="POST" action="php/upload.php" enctype="multipart/form-data">
+<!--<form method="POST" action="php/upload.php" enctype="multipart/form-data">
 	<input type="text" name="title">
 	<input type="text" name="description">
 	<input type="price" name="price">
@@ -6,43 +6,91 @@
 	<input type="file" name="file[]">
 	<input type="file" name="file[]">
 	<button type="submit"></button>
-</form>
+</form> -->
+<h1> Text editor </h1>
+<button onclick="execCommand('bold')">Bold</button>
+<button onclick="execCommand('italic')">Italic</button>
+<button onclick="execCommand('underline')">Underline</button>
+<button onclick="execCommand('indent')">Indent</button>
+<button onclick="execCommand('outdent')">Unindent</button>
+<button onclick="askLink()">Link</button>
+<button onclick="execCommand('undo')">Undo</button>
+<button onclick="execCommand('redo')">Redo</button>
 
 
-<p id="editor" contenteditable="true"></p>
-
+<p class="edited" id="editor" contenteditable="true"></p>
+<button id="get">Send</button>
 
 <br>
-<button id="get">Get</button>
+
+<div id="out">
+	
+</div>
+
+<style>
+
+</style>
 
 <script type="text/javascript">
-	var btn = document.getElementById("get");
-	console.log(btn);
-	var editor = document.getElementById("editor");
-	var output = []; 
+	var ss ="22:32:0";
+	function refDate() {
+		var date = new Date();
+		var prettyDate = date.getHours() + ":" + date.getMinutes() + ":";
+		prettyDate+= (date.getSeconds() < 10) ? "0" + date.getSeconds(): date.getSeconds();
+		document.open();
+		document.write("<h1>" + prettyDate + "</h1>");
+		document.close();
+	}
 
-	function parse(dm,out) {
+	//window.setInterval(function(),1000);
+
+	var btn = document.getElementById("get");
+	var editor = document.getElementById("editor");
+	var cout = "";
+	var out = document.getElementById("out");
+
+	function askLink() {
+		var link = prompt("Href?","http://");
+		document.execCommand("createLink",false,link);
+	}
+
+	function parse(dm) {
 		if(!dm) return;
-		if(!dm.tagName) {
-			out.push(dm);
-			return;
+
+		if(dm.tagName) {
+			var startTag = "<" + dm.tagName + " ";
+
+			for(var i = 0; i < dm.attributes.length; ++i) {
+				if(dm.attributes[i].nodeName == "contenteditable") continue;
+				startTag+= dm.attributes[i].nodeName + "='" + dm.attributes[i].nodeValue + "' ";
+			}
+
+			startTag+=">";
+			
+			var endTag = String("</" + String(dm.tagName) +">");
+			cout+=startTag;
+		} else {
+			cout+=dm.textContent;
+
 		}
-		var startTag = "<" + dm.tagName + ">";
-		var endTag = String("</" + String(dm.tagName) +">");
-		out.push(dm.startTag);
+
 		var chdrn = dm.childNodes;
 		for(var i = 0; i < chdrn.length; ++i) {
-			parse(chdrn[i],out);
+			parse(chdrn[i]);
 		}
-		out.push(endTag);
+
+
+		if(dm.tagName) {
+			cout+=endTag;
+		}
 
 	}
-	console.log();
 	btn.onclick = function() {
-		output = "";
-		parse(editor,output);
-		console.log(output);
+		cout = "";
+		parse(editor);
+		document.write(cout);
 	}
+
 
 
 	
