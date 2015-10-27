@@ -1,7 +1,7 @@
 <?php
-	require __DIR__ . "\lib\core.php";
+	require __DIR__ . "/lib/core.php";
 	session_start();
-  	require __DIR__ . "\lib\dbFS.php";
+  	require __DIR__ . "/lib/dbFS.php";
   	$pic = $_FILES['pic'];
   	if(!$pic["error"]) {
 	  	$fs = new DbFS('./uploads/profilePictures/');

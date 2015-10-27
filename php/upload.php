@@ -1,7 +1,7 @@
 <?php
 
-    require __DIR__ . "\lib\dbFS.php";
-    require __DIR__ . "\lib\core.php";
+    require __DIR__ . "/lib/dbFS.php";
+    require __DIR__ . "/lib/core.php";
 
   	if(!$_SESSION['logged']) {
 		header("Location: /");
