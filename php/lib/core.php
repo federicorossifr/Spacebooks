@@ -197,4 +197,12 @@
 			$stmnt->execute();
 			return $db->insert_id;
 		}	
+
+		function rate($vote,$comment,$user) {
+			global $db;
+			$stmnt = $db->prepare("INSERT INTO rating(document,user,score,opinion) VALUES(?,?,?,?)");
+			$stmnt->bind_param("iiis",$this->id,$user,$vote,$comment);
+			$stmnt->execute();
+			return $db->insert_id;
+		}
 	}
