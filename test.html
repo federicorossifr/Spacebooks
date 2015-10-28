@@ -8,6 +8,7 @@
 	<button type="submit"></button>
 </form> -->
 <h1> Text editor </h1>
+<h2 id="ora"></h2>
 <button onclick="execCommand('bold')">Bold</button>
 <button onclick="execCommand('italic')">Italic</button>
 <button onclick="execCommand('underline')">Underline</button>
@@ -18,7 +19,12 @@
 <button onclick="execCommand('redo')">Redo</button>
 
 
+<form hidden id="sendContent" action="./php/manage.php" method="POST">
+	<input type="text" name="content">
+</form>
+
 <p class="edited" id="editor" contenteditable="true"></p>
+<br>
 <button id="get">Send</button>
 
 <br>
@@ -32,27 +38,28 @@
 </style>
 
 <script type="text/javascript">
-	var ss ="22:32:0";
 	function refDate() {
 		var date = new Date();
 		var prettyDate = date.getHours() + ":" + date.getMinutes() + ":";
 		prettyDate+= (date.getSeconds() < 10) ? "0" + date.getSeconds(): date.getSeconds();
-		document.open();
-		document.write("<h1>" + prettyDate + "</h1>");
-		document.close();
+		ora.textContent = prettyDate;
 	}
 
-	//window.setInterval(function(),1000);
 
 	var btn = document.getElementById("get");
 	var editor = document.getElementById("editor");
 	var cout = "";
 	var out = document.getElementById("out");
+	var ora = document.getElementById("ora");
+	var frm = document.getElementById("sendContent");
+	var frmText = frm.getElementsByTagName("input")[0];
 
 	function askLink() {
 		var link = prompt("Href?","http://");
 		document.execCommand("createLink",false,link);
 	}
+
+	window.setInterval(refDate,1000);
 
 	function parse(dm) {
 		if(!dm) return;
@@ -85,10 +92,13 @@
 		}
 
 	}
+
 	btn.onclick = function() {
 		cout = "";
 		parse(editor);
-		document.write(cout);
+		alert(cout);
+		frmText.value = cout;
+		frm.submit();
 	}
 
 
