@@ -57,9 +57,7 @@
 		tab.rows[rand+1].cells[1].textContent++;
 	}
 
-	var btn = document.getElementById("get");
-	var editor = document.getElementById("editor");
-	var cout = "";
+	
 	var out = document.getElementById("out");
 	var ora = document.getElementById("ora");
 	var frm = document.getElementById("sendContent");
@@ -71,9 +69,29 @@
 		document.execCommand("createLink",false,link);
 	}
 
-	window.setInterval(refDate,50);
+	window.setInterval(refDate,1000);
 
-	function parse(dm) {
+
+
+	for(var i = 0; i < 11; ++i) {
+		var row = tab.insertRow(i+1);
+		var cellNum = row.insertCell(0);
+		var cellVal = row.insertCell(1);
+
+		cellNum.textContent = i;
+		cellVal.textContent = 0;
+	}
+
+	refDate();
+</script>
+
+
+<script type="text/javascript">
+		var btn = document.getElementById("get");
+		var editor = document.getElementById("editor");
+		var cout = "";
+		
+		function parse(dm) {
 		if(!dm) return;
 
 		if(dm.tagName) {
@@ -110,24 +128,5 @@
 		parse(editor);
 		alert(cout);
 		frmText.value = cout;
-		frm.submit();
 	}
-
-
-	var async = new AsyncReq("rrr",function() {});
-
-	var pp = [{"id":"pp","value":"vaa"},{"id":"ppppp","value":"dddd"}];
-
-	async.POST(pp,"ff");	
-
-	for(var i = 0; i < 11; ++i) {
-		var row = tab.insertRow(i+1);
-		var cellNum = row.insertCell(0);
-		var cellVal = row.insertCell(1);
-
-		cellNum.textContent = i;
-		cellVal.textContent = 0;
-	}
-
-	refDate();
 </script>

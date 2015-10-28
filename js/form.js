@@ -53,11 +53,13 @@ Form.prototype.addConstraint = function(inputName,constraint) {
 
 			this.controlsCount++;
 			var curr = this; // aliasing "this" to prevent shadowing in next instruction
-
+			this.parseControl(inputControl);
 
 			inputControl.addEventListener("input",function() {
 				curr.parseControl(this);
 			});
+
+
 		}
 }
 
