@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <?php
 	require "./php/partials/secured.php";
-
 ?>
 <html lang="en">
 <?php

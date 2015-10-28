@@ -22,3 +22,20 @@ AsyncReq.prototype.GET = function(params) {
 	this.client.open("GET",query,true);
 	this.client.send();
 }
+
+AsyncReq.prototype.POST = function(params,type) {
+	var data = "";
+	this.client.open("POST",true);
+	this.client.setRequestHeader("Content-type",type);
+	for(var i in params) {
+		data +=params[i].id + "=" + params[i].value;
+
+		if(i != params.length - 1) {
+			data+="&";
+		}
+
+	}
+
+
+	console.log(data);
+}
