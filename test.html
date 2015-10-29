@@ -1,33 +1,11 @@
-<!--<form method="POST" action="php/upload.php" enctype="multipart/form-data">
-	<input type="text" name="title">
-	<input type="text" name="description">
-	<input type="price" name="price">
-
-	<input type="file" name="file[]">
-	<input type="file" name="file[]">
-	<button type="submit"></button>
-</form> -->
 <h1> Text editor </h1>
 <h2 id="ora"></h2>
-<button onclick="execCommand('bold')">Bold</button>
-<button onclick="execCommand('italic')">Italic</button>
-<button onclick="execCommand('underline')">Underline</button>
-<button onclick="execCommand('indent')">Indent</button>
-<button onclick="execCommand('outdent')">Unindent</button>
-<button onclick="askLink()">Link</button>
-<button onclick="execCommand('undo')">Undo</button>
-<button onclick="execCommand('redo')">Redo</button>
-
-
-<form hidden id="sendContent" action="./php/manage.php" method="POST">
-	<input type="text" name="content">
-</form>
-
-<p class="edited" id="editor" contenteditable="true"></p>
 <br>
-<button id="get">Send</button>
 
-<br>
+<div id="progressBar">
+	<progress id="bar" max="100" value="0"></progress>
+	<span id="lab">0%</span>
+</div>
 
 <div id="out">
 	<table id="tab">
@@ -43,6 +21,8 @@
 	.edited {
 		border:1px solid black;
 	}
+
+
 </style>
 <script type="text/javascript" src="./js/async.js"></script>
 <script type="text/javascript">
@@ -53,23 +33,26 @@
 		prettyDate+= (date.getSeconds() < 10) ? "0" + date.getSeconds(): date.getSeconds();
 		prettyDate+= " -- Random# " + rand;
 		ora.textContent = prettyDate;
-
+		bar.value++;
+		lab.textContent = bar.value + "%";
+		if(bar.value == 100)
+			window.clearInterval(interval);
 		tab.rows[rand+1].cells[1].textContent++;
 	}
 
 	
 	var out = document.getElementById("out");
 	var ora = document.getElementById("ora");
-	var frm = document.getElementById("sendContent");
-	var frmText = frm.getElementsByTagName("input")[0];
 	var tab = document.getElementById("tab");
+	var bar = document.getElementById("bar");
+	var lab = document.getElementById("lab");
 
 	function askLink() {
 		var link = prompt("Href?","http://");
 		document.execCommand("createLink",false,link);
 	}
 
-	window.setInterval(refDate,1000);
+	var interval = window.setInterval(refDate,100);
 
 
 
@@ -85,48 +68,3 @@
 	refDate();
 </script>
 
-
-<script type="text/javascript">
-		var btn = document.getElementById("get");
-		var editor = document.getElementById("editor");
-		var cout = "";
-		
-		function parse(dm) {
-		if(!dm) return;
-
-		if(dm.tagName) {
-			var startTag = "<" + dm.tagName + " ";
-
-			for(var i = 0; i < dm.attributes.length; ++i) {
-				if(dm.attributes[i].nodeName == "contenteditable") continue;
-				startTag+= dm.attributes[i].nodeName + "='" + dm.attributes[i].nodeValue + "' ";
-			}
-
-			startTag+=">";
-			
-			var endTag = String("</" + String(dm.tagName) +">");
-			cout+=startTag;
-		} else {
-			cout+=dm.textContent;
-
-		}
-
-		var chdrn = dm.childNodes;
-		for(var i = 0; i < chdrn.length; ++i) {
-			parse(chdrn[i]);
-		}
-
-
-		if(dm.tagName) {
-			cout+=endTag;
-		}
-
-	}
-
-	btn.onclick = function() {
-		cout = "";
-		parse(editor);
-		alert(cout);
-		frmText.value = cout;
-	}
-</script>
