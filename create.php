@@ -14,8 +14,11 @@
 		<form id="createForm" method="POST" action="php/upload.php" enctype="multipart/form-data">
 			<article class="left">
 				<header><h3>Copertina</h3></header>
-					<div class="fileInput">
-						<input type="file" name="cover">
+					<div id="uploader" class="fileInput">
+						Clicca per aggiungere una copertina
+						<img src="" alt="">
+						<input type="file" name="file" id="file">
+						<progress max="100" value="0"></progress>
 					</div>
 			</article>
 
@@ -24,14 +27,14 @@
 					<label for="title">Titolo</label><br>
 					<input type="text" name="title" id="title">
 					<label for="price">Prezzo</label><br>
-					<input type="text" name="price" id="price">
+					<input type="number" name="price" id="price">
 					<label for="tags">Tags</label><br>
 					<input type="text" name="tags" id="tags">
 					<input type="hidden" name="description">
 					<button type="submit">Create</button>
 			</article>
 
-			<article class="left">
+			<article class="wide">
 				<header><h3>Descrizione</h3></header>
 				<p contenteditable="true" id="description"></p>
 			</article>
@@ -48,6 +51,7 @@
 
 <script type="text/javascript">
 	var createForm = document.getElementById("createForm");
+	var myUploader = new PicUploader("uploader");
 	var formH = new Form("createForm");
 	formH.addConstraint("title",/^([A-Z]{1}[a-z ]{1,45})$/);
 	formH.addConstraint("price",/^\d{1,2}$/)
