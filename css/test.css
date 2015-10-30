@@ -1,0 +1,38 @@
+.fragmentContainer {
+  width:90%;
+  height: 400px;
+  padding: 10px;
+}
+
+.controllerBar {
+  text-align: center;
+  width: 100%;;
+  display: flex;
+}
+
+*[data-fragment] {
+  width: 100%;
+  border:1px solid black;
+  border-top:1px solid transparent;
+  padding:20px;
+  box-sizing: border-box;
+}
+
+.controller {
+  background-color:white;
+  width:100%;
+  height: 30px;
+  border:1px solid black;
+  border-right:0px;
+}
+
+.controller:last-child {
+  border-right:1px solid black;
+}
+
+.controller.active {
+  border-bottom:1px solid transparent;
+  font-weight: bold;
+}
+
+
