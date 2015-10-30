@@ -198,6 +198,8 @@ article.left {
 
 article.right {
   float:right;
+  width:calc(70%);
+  box-sizing:border-box;
 }
 
 article.wide {
@@ -546,14 +548,16 @@ label.errormsg::after {
   display: none;
 }
 
-.fileInput {
-  width:300px;
-  height: 300px;
+div.fileInput {
   position: relative;
   background-color: white;
   color:black;
-  line-height:300px;
   text-align:center;
+}
+
+div.fileInput.pictureInput {
+  width:300px;
+  height: 300px;
 }
 
 .fileInput > input[type="file"] {

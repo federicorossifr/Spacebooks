@@ -1,9 +1,15 @@
-function PicUploader(wrapper) {
+function PicUploader(wrapper,type) {
 	this.iWrapper = document.getElementById(wrapper);
 	this.iFile = this.iWrapper.querySelector("input[type=file]");
 	this.iProgress = this.iWrapper.querySelector("progress");
 	this.iPreview = this.iWrapper.querySelector("img");
 	this.ifReader = new FileReader();
+
+	switch(type) {
+		case "image":
+			console.log("Pic");
+		
+	}
 
 	with(this) {
 		iProgress.style.display = "none";

@@ -13,17 +13,13 @@
 
 		<form id="createForm" method="POST" action="php/upload.php" enctype="multipart/form-data">
 			<article class="left">
-				<header><h3>Copertina</h3></header>
-					<div id="uploader" class="fileInput">
-						Clicca per aggiungere una copertina
+				<header><h3>Informazioni principali</h3></header>
+					<div id="uploader" class="fileInput pictureInput">
 						<img src="" alt="">
 						<input type="file" name="file" id="file">
 						<progress max="100" value="0"></progress>
 					</div>
-			</article>
-
-			<article class="left">
-				<header><h3>Informazioni Principali</header>
+					<br>
 					<label for="title">Titolo</label><br>
 					<input type="text" name="title" id="title">
 					<label for="price">Prezzo</label><br>
@@ -34,14 +30,16 @@
 					<button type="submit">Create</button>
 			</article>
 
-			<article class="wide">
+			<article class="right">
 				<header><h3>Descrizione</h3></header>
 				<p contenteditable="true" id="description"></p>
 			</article>
 
-			<article class="wide">
+			<article class="right">
 				<header><h3>Aggiunta file</h3></header>
-					<input type="file" name="file[]" id="file">
+					<div class="fileInput">
+						<input type="file" name="file[]" id="file">
+					</div>
 
 			</article>
 		</form>
