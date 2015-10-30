@@ -1,70 +1,105 @@
-<h1> Text editor </h1>
-<h2 id="ora"></h2>
-<br>
+<h1>Fragments</h1>
 
-<div id="progressBar">
-	<progress id="bar" max="100" value="0"></progress>
-	<span id="lab">0%</span>
+<div class="fragmentContainer" id="myFragmentContainer">
+
+	<form data-fragment data-name="Form">
+		<label>Form input </label><br>
+		<input type="text"><br>
+		<label>Form file</label><br>
+		<input type="file"><br>
+	</form>
+
+	<div data-fragment data-name="Div">
+		<h3>My fragment is a div</h3>
+		<p>My fragment is a div and it has a p</p>
+	</div>
+
+	<img data-fragment data-name="Img" src="img/default.jpg">
+
+
+
 </div>
 
-<div id="out">
-	<table id="tab">
-		<thead>
-			<th>Number</th>
-			<th>Times</th>
-		</thead>
-	</table>	
-	
-</div>
-
-<style>
-	.edited {
-		border:1px solid black;
-	}
-
-
-</style>
-<script type="text/javascript" src="./js/async.js"></script>
 <script type="text/javascript">
-	function refDate() {
-		var date = new Date();
-		var rand = Math.floor(Math.random() * 11);
-		var prettyDate = date.toLocaleDateString() + " - " + date.getHours() + ":" + date.getMinutes() + ":";
-		prettyDate+= (date.getSeconds() < 10) ? "0" + date.getSeconds(): date.getSeconds();
-		prettyDate+= " -- Random# " + rand;
-		ora.textContent = prettyDate;
-		bar.value++;
-		lab.textContent = bar.value + "%";
-		if(bar.value == 100)
-			window.clearInterval(interval);
-		tab.rows[rand+1].cells[1].textContent++;
+
+	function Fragment(container,callback) {
+		this.container = document.getElementById(container);
+		this.fragments = this.container.querySelectorAll("*[data-fragment]");
+		this.queueSize = this.fragments.length;
+		this.pointer = 2;
+
+		this.onFragmentChange = callback;
+
+		with(this) {
+			for(var index in fragments) {
+				if(!isNaN(index) && index != pointer) {
+					fragments[index].style.display = "none";
+				}
+			}
+		}
+
 	}
 
-	
-	var out = document.getElementById("out");
-	var ora = document.getElementById("ora");
-	var tab = document.getElementById("tab");
-	var bar = document.getElementById("bar");
-	var lab = document.getElementById("lab");
-
-	function askLink() {
-		var link = prompt("Href?","http://");
-		document.execCommand("createLink",false,link);
+	Fragment.prototype.makeSelectors = function(nodeType) {
+		with(this) {
+			for(var index = 0; index < fragments.length && !isNaN(index); ++index) {
+				var frgBtn = document.createElement(nodeType);
+				frgBtn.setAttribute("data-toggle",index);
+				var btnLabel = document.createTextNode(fragments[index].getAttribute("data-name"));
+				frgBtn.appendChild(btnLabel);
+				frgBtn.onclick = function() {that(this.getAttribute("data-toggle"));}
+				container.appendChild(frgBtn);
+			}
+		}
 	}
 
-	var interval = window.setInterval(refDate,100);
+	Fragment.prototype.makeShifters = function(nodeType,textNext,textPrev) {
+		with(this) {
+			var nextButton = document.createElement(nodeType);
+			var prevButton = document.createElement(nodeType);
+			var nextLabel = document.createTextNode(textNext);
+			var prevLabel = document.createTextNode(textPrev);
 
+			nextButton.appendChild(nextLabel);
+			prevButton.appendChild(prevLabel)
 
+			nextButton.onclick = function() {next()};
+			prevButton.onclick = function() {prev()};
 
-	for(var i = 0; i < 11; ++i) {
-		var row = tab.insertRow(i+1);
-		var cellNum = row.insertCell(0);
-		var cellVal = row.insertCell(1);
+			container.appendChild(prevButton);
+			container.appendChild(nextButton);
 
-		cellNum.textContent = i;
-		cellVal.textContent = 0;
+		}
 	}
 
-	refDate();
+	Fragment.prototype.next = function() {
+		with(this) {
+			fragments[pointer].style.display = "none";
+			pointer = (pointer+1) % queueSize;
+			fragments[pointer].style.display = "block";
+		}
+	}
+
+	Fragment.prototype.prev = function() {
+		with(this) {
+			fragments[pointer].style.display = "none";
+			pointer = (pointer == 0) ? queueSize -1 : pointer - 1;
+			fragments[pointer].style.display = "block";
+		}
+	}
+
+	Fragment.prototype.that = function(index) {
+		with(this) {
+			fragments[pointer].style.display = "none";
+			pointer = (index < queueSize) ? index : 0;
+			fragments[pointer].style.display = "block";
+			onFragmentChange(index);
+		}
+	}
+
+	var ff = new Fragment("myFragmentContainer",function(p){console.log(p);});
+	ff.makeSelectors("button");
+	ff.makeShifters("button",">","<");
+
+
 </script>
-
