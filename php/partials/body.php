@@ -85,7 +85,9 @@
 
 
 	window.onresize = function() {
-		nav.style.display = "block";
+		var width = window.innerWidth;
+		if(width >= 720)
+			nav.style.display = "block";
 	}
 
 </script>

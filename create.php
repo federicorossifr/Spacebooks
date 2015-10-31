@@ -22,7 +22,6 @@
 							<input type="file" name="cover" id="file">
 							<progress max="100" value="0"></progress>
 						</div><br>
-						<button type="submit">Create</button>
 
 					</div>
 					
@@ -34,6 +33,7 @@
 						<label for="tags">Tags</label><br>
 						<input type="text" name="tags" id="tags">
 						<input type="hidden" name="description">
+						<button type="submit">Create</button>
 					</div>
 			</article>
 
