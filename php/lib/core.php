@@ -151,8 +151,8 @@
 
 		function create() {
 			global $db;
-			$stmnt = $db->prepare("INSERT INTO document(title,author,description,price) VALUES(?,?,?,?)");
-			$stmnt->bind_param("sisd",$this->title,$this->author,$this->description,$this->price);
+			$stmnt = $db->prepare("INSERT INTO document(title,author,description,price,cover) VALUES(?,?,?,?,?)");
+			$stmnt->bind_param("sisdi",$this->title,$this->author,$this->description,$this->price,$this->cover);
 			$stmnt->execute();
 			$this->id = $db->insert_id;
 			return $db->insert_id; //return new row's id
@@ -161,7 +161,7 @@
 		function update() {
 			global $db;
 			$stmnt = $db->prepare("UPDATE document SET title=?,created=?,author=?,description=?,price=?,votings=?,score=?,available=?,cover=? WHERE id=?");
-			$stmnt->bind_param("ssisdidisi",$this->title,$this->created,
+			$stmnt->bind_param("ssisdidiii",$this->title,$this->created,
 											$this->author,$this->description,$this->price,
 											$this->votings,$this->score,$this->available,$this->cover,$this->id);
 			$stmnt->execute();

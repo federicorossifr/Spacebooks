@@ -170,7 +170,7 @@ main article {
   padding:1em;
   margin:1em;
   color:white;
-  
+  overflow-y:auto;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
@@ -190,15 +190,15 @@ main  article > header > h3 {
 
 /***********************************/
 
-article.left {
+.left {
   box-sizing:border-box;
   float:left;
+  margin-left:10px;
 }
 
 
-article.right {
+.right {
   float:right;
-  width:calc(70%);
   box-sizing:border-box;
 }
 
@@ -510,13 +510,13 @@ form textarea:focus, p[contenteditable]:focus {
 
 label.success::after {
   margin-left:10px;
-  content:"\2713" ;
+  content:"OK" ;
   color:green;
 }
 
 label.error::after {
   margin-left:10px;
-  content: "\2717";
+  content: "NO";
   color:red;
 }
 
@@ -555,6 +555,11 @@ div.fileInput {
   text-align:center;
 }
 
+div.fileInput.fileUploader {
+  height:100px;
+  width:100px;
+}
+
 div.fileInput.pictureInput {
   width:300px;
   height: 300px;
@@ -584,4 +589,39 @@ div.fileInput.pictureInput {
   height: 100%;
   cursor: pointer;
   z-index:0;
+}
+
+*.fragmentContainer {
+ width:100%;
+
+}
+
+.fragmentContainer > .controllerBar {
+  background-color:white;
+  text-align:center;
+  display:flex;
+  line-height:30px;
+  margin-top:10px;
+}
+
+.controllerBar > .controller {
+  display:block;
+  width:100%;
+  cursor:pointer;
+}
+
+.controllerBar > .controller.active {
+  background-color: #3F51B5;
+  color:white;
+  font-weight:bolder;
+}
+
+.fragmentContainer > *[data-fragment] {
+  margin:0;
+  width:100%;
+  float:none;
+}
+
+.fragmentContainer > article[data-fragment] > header {
+  display:none;
 }

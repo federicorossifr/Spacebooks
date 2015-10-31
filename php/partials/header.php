@@ -18,6 +18,9 @@
 	<script type="text/javascript" src="./js/async.js"></script>
 	<script type="text/javascript" src="./js/form.js"></script>
 	<script type="text/javascript" src="./js/picUploader.js"></script>
+	<script type="text/javascript" src="./js/Fragment.js"></script>
+
 </head>
+
 
 

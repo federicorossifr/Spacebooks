@@ -36,7 +36,7 @@
 			
 			</div>
 
-			<a onclick="profile()" href="#" id="close"></a>
+			<a onclick="profile()" href="#" id="close">&times;</a>
 
 			<header>
 				<h2><?= $user->name . ' ' . $user->surname?></h2>
