@@ -15,10 +15,13 @@
 	<link rel="stylesheet" media="screen and (max-width: 719px)" type="text/css" href="css/responsive.css">
 	<link rel="stylesheet" media="screen and (min-width: 720px)" type="text/css" href="css/style.css">
 
+	<!-- Javascript Libraries -->
 	<script type="text/javascript" src="./js/async.js"></script>
 	<script type="text/javascript" src="./js/form.js"></script>
 	<script type="text/javascript" src="./js/picUploader.js"></script>
 	<script type="text/javascript" src="./js/Fragment.js"></script>
+	<script type="text/javascript" src="./js/parser.js"></script>
+	<!-- End of Javascript Libraries -->
 
 </head>
 

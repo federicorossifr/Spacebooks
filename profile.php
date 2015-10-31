@@ -72,7 +72,6 @@
 			<header><h2>Nessun utente trovato</h2></header>
 	<?php } ?>
 
-
 	</body>
 </html>
 

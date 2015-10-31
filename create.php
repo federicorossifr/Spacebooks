@@ -66,45 +66,13 @@
 
 
 	var editor = document.getElementById("description");
-	var cout = "";
-	
-	function parse(dm) {
-		if(!dm) return;
-
-		if(dm.tagName) {
-			var startTag = "<" + dm.tagName + " ";
-
-			for(var i = 0; i < dm.attributes.length; ++i) {
-				if(dm.attributes[i].nodeName == "contenteditable") continue;
-				startTag+= dm.attributes[i].nodeName + "='" + dm.attributes[i].nodeValue + "' ";
-			}
-
-			startTag+=">";
-			
-			var endTag = String("</" + String(dm.tagName) +">");
-			cout+=startTag;
-		} else {
-			cout+=dm.textContent;
-
-		}
-
-		var chdrn = dm.childNodes;
-		for(var i = 0; i < chdrn.length; ++i) {
-			parse(chdrn[i]);
-		}
-
-
-		if(dm.tagName) {
-			cout+=endTag;
-		}
-
-	}
+	var editorOut = new Array();
 
 	createForm.onsubmit = function(e) {
 		e.preventDefault();
-		cout = "";
-		parse(editor)
-		this.description.value = cout;
+		parse(editor,editorOut);
+		var strOut = editorOut.join("");
+		this.description.value = strOut;
 		var editorRawText = editor.textContent.replace(/\s+/g, '');
 		if(editorRawText == "" || editorRawText.length < 100) alert("La descrizione è obbligatoria e deve essere di almeno 100 caratteri");
 		else this.submit();
