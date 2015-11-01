@@ -1,38 +1,58 @@
-.fragmentContainer {
-  width:90%;
-  height: 400px;
-  padding: 10px;
+body {
+  color:white;
+  background-color:black;
+}
+div.fileInput {
+  position: relative;
+  background-color: white;
+  color:black;
+  text-align:center;
 }
 
-.controllerBar {
-  text-align: center;
-  width: 100%;;
-  display: flex;
+div.fileInput.fileUploader {
+  float:left;
+  padding:1%;
+  margin-left:1px;
+  height:100px;
+  width:100px;
 }
 
-*[data-fragment] {
-  width: 100%;
-  border:1px solid black;
-  border-top:1px solid transparent;
-  padding:20px;
-  box-sizing: border-box;
-}
-
-.controller {
-  background-color:white;
+div.fileInput.fileUploader > span {
+  position:absolute;
+  display:block;
   width:100%;
-  height: 30px;
-  border:1px solid black;
-  border-right:0px;
+  height:100%;
+  left:0;
+  font-size:10px;
+  top:calc(50% - 1em);
 }
 
-.controller:last-child {
-  border-right:1px solid black;
+div.fileInput.pictureInput {
+  width:300px;
+  height: 300px;
 }
 
-.controller.active {
-  border-bottom:1px solid transparent;
-  font-weight: bold;
+.fileInput > input[type="file"] {
+  position: absolute;
+  left:-2000%;
+  top:-2000%;
+  z-index:0;
 }
 
+.fileInput > progress {
+  position: absolute;
+  height: 20px;
+  width:90%;
+  left:5%;
+  top:calc(50% - 10px);
+  display: none;
+  z-index:0;
+}
 
+.fileInput > img {
+  position: absolute;
+  width:100%;
+  height: 100%;
+  cursor: pointer;
+  z-index:0;
+}

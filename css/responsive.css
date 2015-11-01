@@ -170,6 +170,7 @@ main article {
   background-color:#3F51B5;
   padding:1em;
   color:white;
+  overflow-y:auto;
   display:block;
   box-sizing: border-box;
   width:90%;
@@ -506,6 +507,44 @@ div.fileInput {
 }
 
 div.fileInput.fileUploader {
+  padding:1%;
+  margin-bottom:1%;;
+  height:200px;
+  width:200px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+div.fileInput.fileUploader > span {
+  position:absolute;
+  display:block;
+  width:100%;
+  font-weight:bolder;
+  left:0;
+  font-size:13px;
+  top:calc(50% - 1em);
+  z-index:0;
+}
+
+div.fileInput.fileUploader > .mask {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  opacity:0;
+  z-index:1;
+}
+
+div.fileInput.pictureInput {
+  width:300px;
+  height: 300px;
+}
+
+.fileInput > input[type="file"] {
+  width:0;
+  height:0;
+  visibility:hidden;
 }
 
 div.fileInput.pictureInput {

@@ -21,6 +21,7 @@
 	<script type="text/javascript" src="./js/picUploader.js"></script>
 	<script type="text/javascript" src="./js/Fragment.js"></script>
 	<script type="text/javascript" src="./js/parser.js"></script>
+	<script type="text/javascript" src="./js/MultiUploader.js"></script>
 	<!-- End of Javascript Libraries -->
 
 </head>

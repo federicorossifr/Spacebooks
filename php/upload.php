@@ -11,7 +11,7 @@
 
 	$files = $_FILES['file'];
 	$cover = $_FILES['cover'];
-
+	print_r($files);
 	print_r($cover);
 
 	$arranged = DbFS::organize($files);
@@ -35,6 +35,7 @@
 		if(!$file['error']) {
 			$id = $fs->saveFile($file,1);
 			$doc->addFile($id);
+			echo $id . "<br>";
 		} else {
 			$doc->delete();
 			header("Location: ../home.php");
@@ -42,5 +43,6 @@
 		}
 	}
 
-	header("Location: ../document.php?id=" . $dId);
+	header("Location: ../document.php?id=$dId");
+	
 

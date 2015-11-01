@@ -1,33 +1,53 @@
-<h1>Fragments</h1>
+<h1>Inputs</h1>
 <link rel="stylesheet" type="text/css" href="css/test.css">
-<div class="fragmentContainer" id="myFragmentContainer">
 
-	<form data-fragment data-name="Form">
-		<label>Form input </label><br>
-		<input type="text"><br>
-		<label>Form file</label><br>
-		<input type="file"><br>
-	</form>
-
-	<div data-fragment data-name="Div">
-		<h3>My fragment is a div</h3>
-		<p>My fragment is a div and it has a p</p>
-	</div>
-
-	<div data-fragment data-name="Cosino">
-		<h3>Cosino era simpatico si</h3>
-	</div>
-
-
-
+<div id="initial" class="fileInput fileUploader">
+	<input type="file" name="file[]">
+	<span>Nessun file</span>
 </div>
+<button onclick="multiUp.addUploader(this)">Add another file</button>
 
-<script type="text/javascript" src="js/Fragment.js"></script>
+
 <script type="text/javascript">
+	function multiUploader(firstUploader) {
+		this.entryPoint = document.getElementById(firstUploader);
+		this.entryLabel = this.entryPoint.querySelector("span");
+		this.parentElement = this.entryPoint.parentElement;
 
-	var ff = new Fragment("myFragmentContainer",function(p){console.log(p);});
-	var s = ff.makeSelectors("button");
-	ff.makeShifters("button","Next","Prev",s);
+		with(this) {
+			var input = entryPoint.querySelector("input[type='file']");
+			input.onchange = function(e) {
+				entryLabel.textContent = e.target.files[0].name + " Size(kb):" + e.target.files[0].size / 1000;
+			}
+			entryPoint.onclick = function() {
+				input.click();
+			}
+		}
+	}
 
+	multiUploader.prototype.addUploader = function(caller) {
+		with(this) {
+			var newUploader = document.createElement("div");
+			newUploader.className = "fileInput fileUploader";
+			var label = document.createElement("span");
+			label.textContent = "Nessun file";
+			var fileInput = document.createElement("input");
+			fileInput.type ="file";
+			fileInput.name ="file[]";
+			newUploader.appendChild(fileInput);
+			newUploader.appendChild(label);
+			parentElement.insertBefore(newUploader,caller);
 
+			newUploader.onclick = function() {
+				fileInput.click();
+			}
+
+			fileInput.onchange = function(e) {
+				label.textContent = e.target.files[0].name + " Size(kb):" + e.target.files[0].size / 1000;
+			}
+		}
+
+	}
+
+	var multiUp = new multiUploader("initial");
 </script>

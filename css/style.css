@@ -551,13 +551,26 @@ label.errormsg::after {
 div.fileInput {
   position: relative;
   background-color: white;
-  color:black;
+  color:#3F51B5;
   text-align:center;
 }
 
 div.fileInput.fileUploader {
+  float:left;
+  padding:1%;
+  margin-left:1px;
   height:100px;
   width:100px;
+}
+
+div.fileInput.fileUploader > span {
+  position:absolute;
+  display:block;
+  width:100%;
+  font-weight:bolder;
+  left:0;
+  font-size:13px;
+  top:calc(50% - 1em);
 }
 
 div.fileInput.pictureInput {
@@ -566,11 +579,9 @@ div.fileInput.pictureInput {
 }
 
 .fileInput > input[type="file"] {
-  position: absolute;
-  left:-200%;
-  top:-200%;
-  cursor:crosshair;
-  z-index:0;
+  width:0;
+  height:0;
+  visibility:hidden;
 }
 
 .fileInput > progress {
@@ -624,4 +635,8 @@ div.fileInput.pictureInput {
 
 .fragmentContainer > article[data-fragment] > header {
   display:none;
+}
+
+.fileAdd {
+  
 }

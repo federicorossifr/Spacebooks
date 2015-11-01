@@ -5,7 +5,7 @@ function Fragment(container,callback) {
 	this.controllerBar = document.createElement("div");
 	this.controllerBar.className = "controllerBar";
 	this.queueSize = this.fragments.length;
-	this.pointer = 2;
+	this.pointer = 0;
 	this.onFragmentChange = callback;
 	with(this) {
 		for(var index in fragments) {
@@ -22,6 +22,7 @@ Fragment.prototype.makeSelectors = function(nodeType) {
 		for(var index = 0; index < fragments.length && !isNaN(index); ++index) {
 			var frgBtn = document.createElement(nodeType);
 			frgBtn.className = "controller";
+			if(index == pointer) frgBtn.className += " active";
 			frgBtn.setAttribute("data-toggle",index);
 			var btnLabel = document.createTextNode(fragments[index].getAttribute("data-name"));
 			frgBtn.appendChild(btnLabel);

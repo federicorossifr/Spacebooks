@@ -44,39 +44,18 @@
 
 			<article data-fragment data-name="Files" class="right">
 				<header><h3>Aggiunta file</h3></header>
-					<div class="fileInput fileUploader">
-						<input type="file" name="file[]" id="file">
+				<p>
+					Fai click col tasto sinistro su "Aggiungi File" ( oppure toccalo sullo schermo) per aggiungere un nuovo file al tuo documento.
+					Fai click col tasto destro su un file (o tieni premuto su di esso) per rimuoverlo.
+				</p>
+					<div id="initial" class="fileInput fileUploader" onclick="myUp.addUploader(this,true)">
+						<span>Aggiungi file</span>
 					</div>
+
 			</article>
 		</form>
 
 	</main>
 
 
-<script type="text/javascript">
-	var createForm = document.getElementById("createForm");
-	var myUploader = new PicUploader("uploader");
-	var formH = new Form("createForm");
-	formH.addConstraint("title",/^([A-Z]{1}[a-z ]{1,45})$/);
-	formH.addConstraint("price",/^\d{1,2}$/)
-	formH.addConstraint("tags",/^(\w+;)+$/);
-
-	var fragments = new Fragment("createForm");
-	fragments.makeSelectors("a");
-
-
-	var editor = document.getElementById("description");
-	var editorOut = new Array();
-
-	createForm.onsubmit = function(e) {
-		e.preventDefault();
-		parse(editor,editorOut);
-		var strOut = editorOut.join("");
-		this.description.value = strOut;
-		var editorRawText = editor.textContent.replace(/\s+/g, '');
-		if(editorRawText == "" || editorRawText.length < 100) alert("La descrizione è obbligatoria e deve essere di almeno 100 caratteri");
-		else this.submit();
-	}
-
-
-</script>
+<script type="text/javascript" src="./js/components/create.js"></script>
