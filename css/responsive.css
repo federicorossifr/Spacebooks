@@ -216,54 +216,38 @@ form article p[contenteditable] {
   margin-top:0;
 }
 
-article#pPicture > img {
-  display:block;
-  border-radius:100%;
-  margin-left:auto;
-  margin-right:auto;
-}
-
-
-
-article#pInfo > dl > dt {
-  font-weight:bold;
-}
-
-article#pInfo > dl > dd {
+dl {
   margin:0;
-}
-
-
-.preview {
+  margin-top:10px;
+  color:black;
   display:block;
-  height:150px;
-  width:150px;
-  position:relative;
-  overflow:hidden;
-  margin-left:auto;
-  margin-right:auto;
-}
-
-.preview > img {
-  position:absolute;
-  height:100%;
-  z-index:0;
-}
-
-.preview > span {
-  position:absolute;
-  display:block;
-  background-color:white;
   width:100%;
-  z-index:1;
-  line-height:3em;
-  color:white;
-  text-align:center;
-  top:calc(100% - 3em);
-  background-color:rgba(0,0,0,.60);
-  transition: top 0.2s ease-in-out;
+  color:#3F51B5;
+  box-sizing:border-box;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
 }
 
+dt {
+  display:block;
+  text-align:center;
+  padding:3%;
+  background-color:white;
+  font-size:15px;
+  font-weight:bolder;
+  position:relative;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+dd {
+  margin:0;
+  padding:3%;
+  box-sizing:border-box;
+  text-align:center;
+  background-color:#7986CB;
+  width:100%;
+  color:white;
+}
 
 
 /**** Stili per la pagina di login/registrazione ****/
@@ -473,20 +457,19 @@ label.errormsg::after {
 
 
 #close {
+  font-size:15px;
   position:absolute;
-  top:2%;
-  left:90%;
+  top:20px;
+  left:calc(100% - 20px);
   color:#3F51B5;
   text-decoration:none;
   transition: all 0.3s ease-in-out;
 }
 
 #close:hover {
-  transform:rotate(360deg);
 }
 
 #close::after {
-  content:"\2716";
 }
 
 
@@ -612,4 +595,9 @@ div.fileInput.pictureInput {
 
 .fragmentContainer > article[data-fragment] > header {
   display:none;
+}
+
+*.shadow {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
 }

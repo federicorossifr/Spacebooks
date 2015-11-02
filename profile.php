@@ -18,17 +18,16 @@
 		include "./php/partials/body.php";
 	?>
 
-	<main>
-		<?php if($profile) { ?>
+	<main id="mainFragment">
 		<header><h2>Profilo di <?= $profile->username ?></h2></header>
-		<article class="left" id="pPicture">
-				<img src=" <?= $profile->picture ?> " alt="no">
-		</article>
-			
 
-		<article class="left" id="pInfo">
+		<article data-fragment data-name="Informazioni">
 			<header><h3>Profile info</h3></header>
-			<p>
+			<div class="left">
+				<img class="shadow" src=" <?= $profile->picture ?> " alt="no">
+				<a class="prettyButton">Follow</a>
+			</div>
+			
 				<dl>
 					<dt>Name</dt>
 					<dd><?= $profile->name ?></dd>
@@ -46,13 +45,12 @@
 					<dd><?= $profile->email ?></dd>
 
 				</dl>
-			</p>
 
 		</article>
 
 
 
-		<article class="right">
+		<article data-fragment data-name="Documenti" class="right">
 			<header><h3>Documenti di <?= $profile->username  ?></h3></header>
 			<p>	
 				<ul class="documentList">
@@ -67,11 +65,10 @@
 		</article>
 
 	</main>
-
-	<?php } else {?>
-			<header><h2>Nessun utente trovato</h2></header>
-	<?php } ?>
-
 	</body>
+	<script type="text/javascript">
+		var frgMnts = new Fragment("mainFragment");
+		frgMnts.makeSelectors();
+	</script>
 </html>
 
