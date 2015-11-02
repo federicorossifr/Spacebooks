@@ -6,10 +6,10 @@ var closeProfile = document.getElementById("close");
 var profileState = false;
 var menuState = true;
 function go() {
-	fileInput.click();
-	var ok = confirm("Aggiornare l'immagine di profilo?");
-	if(ok && fileInput.value)
+	fileInput.click();	
+	fileInput.onchange = function() {
 		form.submit();
+	}
 }
 
 function menu() {

@@ -236,7 +236,7 @@ dl {
   float:left;
   color:black;
   display:block;
-  width:calc(100% - 120px);
+  width:calc(100% - 220px);
   color:#3F51B5;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 
@@ -503,16 +503,22 @@ label.errormsg::after {
 
 
 #close {
+  display:block;
   position:absolute;
-  top:2%;
-  font-size:15px;
-  left:90%;
+  top:10px;
+  left:calc(100% - 30px);
+  width:20px;
+  height:20px;
+  background-image: url("../img/close.png");
+  background-size:cover;
   color:#3F51B5;
   text-decoration:none;
   transition: all 0.3s ease-in-out;
+  opacity:0.66;
 }
 
 #close:hover {
+  transform:rotate(360deg);
 }
 
 #close::after {

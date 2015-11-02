@@ -24,7 +24,7 @@
 		<article data-fragment data-name="Informazioni">
 			<header><h3>Profile info</h3></header>
 			<div class="left">
-				<img class="shadow" src=" <?= $profile->picture ?> " alt="no">
+				<img class="shadow" src=" <?= $profile->picture ?> " width="200" alt="no">
 				<a class="prettyButton">Follow</a>
 			</div>
 			
