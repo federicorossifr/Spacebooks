@@ -1,0 +1,33 @@
+PRIMARY
+
+1. Adding Role implementation in web-app: {HTML,CSS,JS}
+	a. Make an user->admin and user->moderator;
+	b. In body.php generate links for admin page or moderation page;
+	c. Post moderation: visible by both moderators and admins;
+	d. User moderation: visible by both moderators and admins;
+	e. Moderator and Admin management: visible only by Admins;
+
+2. Add support for document edit ( maybe with document.php?id=xx&editmode=1);  {PHP,HTML,CSS,JS}
+
+3. Add deep-accout info and  profile-settings for users (maybe all in account.php 
+														or extension of user.php when logged); {PHP,HTML,CSS,JS}
+
+4. Make business rules to show appropriate content on home page; {MY/SQL}
+
+5. home.php ??????''
+
+SECONDARY
+
+1. Split core.php onto three files: {PHP}
+	a. User.php file
+	b. Document.php file
+	c. Core.php file that requires the two files above.
+
+2. In body.js make use of picUploader.js instead of actual implementation for pic uploading. {JS}
+
+3. Implementing simple Modals for operation confirms ( maybe maintain actual built-in confirm function). {JS}
+
+4. Implementing simple Pophovers for alert or something that. {JS}
+
+5. CSS and Javascript General Cleaning {CSS,JS}
+
