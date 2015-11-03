@@ -61,16 +61,25 @@ nav > ul > li > a {
 }
 
 nav > ul > li.active > a, nav > ul > li > a:hover {
-  color:white;
+  background-color:white;
+  color:black;
 }
 
 nav > ul > li > a > img {
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
   height: 2em;
   width:2em;
   border-radius: 100%;
-  border: 1px solid white;
+  border: 1px solid transparent;
   box-sizing:border-box;
 }
+
+nav > ul > li.active > a > img  {
+  background-color:white;
+}
+
 
 /*----------------*/
 
@@ -99,9 +108,6 @@ aside#profile {
   transition: top 0.5s ease-in-out;
 }
 
-aside#profile:target {
-  top:0;
-}
 
 #bigPicture {
   border-radius:100%;
@@ -480,7 +486,6 @@ label.errormsg::after {
 
 
 #navToggle a {
-color:white;
 font-weight: bolder;
 cursor: pointer;
 }

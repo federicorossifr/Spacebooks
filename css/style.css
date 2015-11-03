@@ -56,12 +56,12 @@ nav > ul > li > a {
   text-decoration: none;
   padding:0.5em 0.5em;
   line-height: 2em;
-  
   transition: color 0.2s ease-in-out;
 }
 
 nav > ul > li.active > a, nav > ul > li > a:hover {
   color:white;
+  border-bottom:1px solid white;
 }
 
 nav > ul > li > a > img {
@@ -69,8 +69,12 @@ nav > ul > li > a > img {
   height: 2em;
   width:2em;
   border-radius: 100%;
-  border: 1px solid white;
+  border: 1px solid transparent;
   box-sizing:border-box;
+}
+
+nav > ul > li.active > a > img  {
+  background-color:white;
 }
 
 /*----------------*/
@@ -100,9 +104,6 @@ aside#profile {
   z-index:10;
 }
 
-aside#profile:target {
-  left:0;
-}
 
 #bigPicture {
   border-radius:100%;
@@ -143,7 +144,7 @@ aside > header {
 main {
   background-color:#7986CB;
   width:100%;
-  height:calc( 100% - 3em - 65px );
+  height:calc( 100% - 3em - 66px );
   padding:1%;
   box-sizing:border-box;
   overflow-y:auto;

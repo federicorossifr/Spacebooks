@@ -2,6 +2,8 @@
 	$menuVoices = array();
 	$menuVoices['home'] = "/home.php";
 	$menuVoices['create'] = "/create.php";
+	$menuVoices['admin'] = "/authority.php";
+	$menuVoices['moderate'] = "/authority.php";
 	$thisUrl =  $_SERVER['REQUEST_URI'];
 ?>
 
