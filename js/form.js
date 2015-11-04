@@ -1,11 +1,11 @@
-function Form(formId) {
+function Form(formId,callBackError) {
 	this.form = document.getElementById(formId);
 	this.formControls = this.form.querySelectorAll("input, textarea, select");
 	this.controlsCount = 0; //number of formControls that have to be validated
 	this.submitButton = this.form.querySelector("button[type='submit']");
 	this.inputs = [];
 	this.controlsValid = 0; //number of formControls already validated
-
+	this.callBackError = callBackError;
 	for(var i = 0; i < this.formControls.length; ++i) {
 		var name = this.formControls[i].getAttribute("name");
 		this.inputs[name] = this.formControls[i];
@@ -13,15 +13,11 @@ function Form(formId) {
 }
 
 Form.prototype.parseControl = function(obj) {
-		//console.log("fired");
 		var regResult = obj.constraint.test(obj.value);
-		//console.log(obj.name);
-		//console.log(regResult);
 
 		if(regResult && !obj.success) {
 			this.controlsValid++;
 			obj.success = 1;
-
 			if(obj.watcher) {
 				obj.watcher.className = "success";
 			}
@@ -36,9 +32,14 @@ Form.prototype.parseControl = function(obj) {
 					obj.watcher.className ="errormsg";
 				else
 					obj.watcher.className = "error";
+
 			}
+			
 		}
 		
+		if(!regResult && this.callBackError)
+			this.callBackError(obj);
+			
 		this.submitButton.disabled = !(this.controlsValid == this.controlsCount);
 }
 
@@ -89,25 +90,18 @@ Form.prototype.addMutualConstraint =  function(inputA,inputB) {
 					b.watcher.className = "error";
 
 				}
-
 				curr.submitButton.disabled = !(curr.controlsValid == curr.controlsCount);
-				console.log(curr.controlsValid);
 			}
-
 			a.oninput = b.oninput;
-
-
 		}
 }
 
 Form.prototype.addConstraintExtension = function(url,paramName,inputName,trueValue,message) {
 	if(this.inputs[inputName]) {
 		var inputControl = this.inputs[inputName];
-		inputControl.watcher = this.form.querySelector("label[for='" + inputControl.id  + "']");
-
 		var curr = this; // aliasing "this" to prevent shadowing in next instruction
 
-		inputControl.onblur = function() {
+		inputControl.oninput = function() {
 			var obj = this;
 			var params = [{"id":paramName,"value": obj.value }];
 			var asyncCheck = new AsyncReq(url,function(data) {
@@ -122,10 +116,7 @@ Form.prototype.addConstraintExtension = function(url,paramName,inputName,trueVal
 				}
 				curr.submitButton.disabled = !(curr.controlsValid == curr.controlsCount);
 			});
-
 			asyncCheck.GET(params);
-
-
 		}
 	}
 }

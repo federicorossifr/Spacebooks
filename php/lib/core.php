@@ -47,6 +47,19 @@
 			return $user;
 		}
 
+		public static function fetchAll() {
+			global $db;
+			$stmnt = $db->prepare("SELECT * FROM user");
+			$stmnt->execute();
+
+			$users = array();
+
+			while($userObj = $users->fetch_object("User"))
+				array_push($users, $userObj);
+
+			print_r($users);
+		}
+
 		public function __set($field,$value) {
 			$this->$field = $value;
 		}

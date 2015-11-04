@@ -27,6 +27,7 @@ function Body() {
 			nav.style.display = "none";
 	}
 }
+var BodyInstance = new Body();
 
 
 Body.prototype.changePic = function() {

@@ -1,4 +1,4 @@
-<body onload="window.BodyInstance = new Body()">
+<body onload>
 	<header>
 		<h1>Bookd </h1>
 	</header>

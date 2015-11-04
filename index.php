@@ -8,7 +8,7 @@
 ?>
 
 
-	<body id="index">
+	<body onload="Index()" id="index">
 		<header>
 			<h1>Bookd</h1>
 		</header>

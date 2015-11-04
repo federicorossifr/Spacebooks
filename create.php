@@ -48,7 +48,7 @@
 					Fai click col tasto sinistro su "Aggiungi File" ( oppure toccalo sullo schermo) per aggiungere un nuovo file al tuo documento.
 					Fai click col tasto destro su un file (o tieni premuto su di esso) per rimuoverlo.
 				</p>
-					<div id="initial" class="fileInput fileUploader" onclick="myUp.addUploader(this,true)">
+					<div id="initial" class="fileInput fileUploader" onclick="CreatorInstance.myUp.addUploader(this,true)">
 						<span>Aggiungi file</span>
 					</div>
 
