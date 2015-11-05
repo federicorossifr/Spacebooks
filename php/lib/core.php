@@ -51,13 +51,13 @@
 			global $db;
 			$stmnt = $db->prepare("SELECT * FROM user");
 			$stmnt->execute();
-
+			$result = $stmnt->get_result();
 			$users = array();
 
-			while($userObj = $users->fetch_object("User"))
+			while($userObj = $result->fetch_object("User"))
 				array_push($users, $userObj);
 
-			print_r($users);
+			return $users;
 		}
 
 		public function __set($field,$value) {
@@ -219,3 +219,4 @@
 			return $db->insert_id;
 		}
 	}
+
