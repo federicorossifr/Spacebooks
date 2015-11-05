@@ -190,7 +190,7 @@
 
 		function getFileLinks() {
 			global $db;
-			$stmnt = $db->prepare("SELECT F.Path FROM file F INNER JOIN attachments A ON F.Id = A.File INNER JOIN document D ON D.Id = A.Document wHERE D.Id=?");
+			$stmnt = $db->prepare("SELECT F.id,F.name,F.path,F.size,F.created FROM file F INNER JOIN attachments A ON F.Id = A.File INNER JOIN document D ON D.Id = A.Document wHERE D.Id=?");
 			$stmnt->bind_param("i",$this->id);
 			$stmnt->execute();
 			$result = $stmnt->get_result();
@@ -198,9 +198,19 @@
 			$links = array();
 
 			while($row = $result->fetch_assoc())
-				array_push($links,$row['Path']);
+				array_push($links, $row);
 
 			return $links;
+		}
+
+		function getCover() {
+			global $db;
+			$stmnt = $db->prepare("SELECT path FROM file WHERE id=?");
+			$stmnt->bind_param("i",$this->cover);
+			$stmnt->execute();
+			$result = $stmnt->get_result();
+			$row = $result->fetch_assoc();
+			return $row['path'];
 		}
 
 		function addFile($fileId) {

@@ -29,8 +29,6 @@
 	$doc = new Document($_POST);
 	$dId = $doc->create();
 
-
-
 	foreach($arranged as $file) {
 		if(!$file['error']) {
 			$id = $fs->saveFile($file,1);
@@ -44,5 +42,3 @@
 	}
 
 	header("Location: ../document.php?id=$dId");
-	
-

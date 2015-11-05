@@ -596,6 +596,11 @@ div.fileInput.pictureInput {
   margin-top:10px;
 }
 
+.controllerBar {
+   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+}
+
 .controllerBar > .controller {
   display:block;
   width:100%;

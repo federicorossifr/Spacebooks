@@ -3,7 +3,8 @@
 	require "./php/partials/secured.php";
 	$docId = $_GET['id'];
 	$doc = Document::read($docId);
-
+	$cover = $doc->getCover();
+	$files = $doc->getFileLinks();
 ?>
 <html lang="en">
 <?php
@@ -12,14 +13,49 @@
 ?>
 
 	<main>
-		<?php if($doc){ ?>
 			<header><h2><?= $doc->title ?></h2></header>
+		<div id="documentFragment">
+			<article data-fragment data-name="Presentazione">
+				<header><h3>Info documento</h3></header>
 
-			<article class="left">
-				<?= $doc->description ?>
+				<div class="left">
+					<img class="shadow" src=" <?= $cover ?> " width="200" alt="no">
+					<a class="prettyButton">Compra <?= $doc->price ?> crediti</a>
+				</div>
+
+				<div class="left">
+					<?= $doc->description ?>
+				</div>
+
+
 			</article>
 
-		<?php } else { ?>
-			<header><h2>Documento non trovato</h2></header>
-		<?php } ?>
+			<article data-fragment data-name="Files">
+				<table class="userTable">
+					<thead>
+						<th>Nome</th>
+						<th>Dimensione</th>
+						<th>Data</th>
+						<th>Download</th>
+					</thead>
+
+					<tbody>	
+						<?php
+							foreach($files as $file) {
+								$fileName = $file['name'];
+								$fileSize = $file['size'];
+								$fileId = $file['id'];
+								$fileDate = $file['created'];
+								echo "<tr><td>$fileName<td>$fileSize<td>$fileDate<td>$fileId</tr>";
+							}
+						?>
+					</tbody>
+				</table>
+			</article>
+		</div>
 	</main>
+
+	<script type="text/javascript">
+		var docFragm = new Fragment("documentFragment");
+		docFragm.makeSelectors('a');
+	</script>

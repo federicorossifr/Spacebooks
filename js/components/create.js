@@ -15,15 +15,20 @@ function Create() {
 	this.editor = document.getElementById("description");
 	this.editorOut = new Array();
 
-	this.createForm.onsubmit = function(e) {
-		e.preventDefault();
-		parse(this.editor,this.editorOut);
-		var strOut = editorOut.join("");
-		this.description.value = strOut;
-		var editorRawText = editor.textContent.replace(/\s+/g, '');
-		if(editorRawText == "" || editorRawText.length < 100) {alert("La descrizione è obbligatoria e deve essere di almeno 100 caratteri"); return;}
-		if(!myUp.lastUsed) {alert("Un uploader non è stato utilizzato"); return;}
-		this.submit();
+
+	with(this) {
+		this.createForm.onsubmit = function(e) {
+			editorOut = new Array();
+			e.preventDefault();
+			parse(editor,editorOut);
+			var strOut = editorOut.join("");
+			this.description.value = strOut;
+			var editorRawText = editor.textContent.replace(/\s+/g, '');
+			console.log(strOut);
+			if(editorRawText == "" || editorRawText.length < 100) {alert("La descrizione è obbligatoria e deve essere di almeno 100 caratteri"); return;}
+			if(!myUp.lastUsed) {alert("Un uploader non è stato utilizzato"); return;}
+			this.submit();
+		}
 	}
 
 }

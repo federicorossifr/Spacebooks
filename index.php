@@ -2,6 +2,9 @@
 <html lang="en">
 <?php
 	session_start();
+	if(!isset($_COOKIE['firstTime'])) {
+		header("Location: ./about.php");
+	}
 	$cookies=false; 
 	if($cookies) header("Location: ./home.php");
 	include "./php/partials/header.php";

@@ -11,7 +11,6 @@
 		$fieldExists = "Username";
 	}
 
-
 	if($fieldExists) {
 		$_SESSION['rerror'] = $fieldExists .  " is already registered";
 		header("Location: ../index.php");
@@ -19,7 +18,6 @@
 	}
 
 	if($_POST["password1"] == $_POST["password2"]) {
-
 		$_POST["password" ] = md5($_POST["password1"]);
 		unset($_POST["password1"]);
 		unset($_POST["password2"]);
