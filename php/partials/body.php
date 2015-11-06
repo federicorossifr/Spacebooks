@@ -9,7 +9,7 @@
 		</ul>
 
 		<ul id="nav">
-			<li <?php if($thisUrl == "/profile.php") echo "class='active' " ?> id="picture"><a onclick="BodyInstance.profile()" href="#profile"><img src="<?= $user->picture ?>" alt="no"></a></li>
+			<li <?php if($thisUrl == "/profile.php") echo "class='active' " ?> id="picture"><a onclick="BodyInstance.profile()" href="#"><img src="<?= $user->picture ?>" alt="no"></a></li>
 
 			<?php
 				foreach ($menuVoices as $name => $address) {

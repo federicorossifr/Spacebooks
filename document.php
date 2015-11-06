@@ -20,12 +20,11 @@
 
 				<div class="left">
 					<img class="shadow" src=" <?= $cover ?> " width="200" alt="no">
-					<a class="prettyButton">Compra <?= $doc->price ?> crediti</a>
+					<span class="prettyButton"><?= $doc->price ?>BC</span>
+					<a href="./php/buy.php?id=<?= $doc->id ?>" class="prettyButton">Acquista</a>
 				</div>
 
-				<div class="left">
 					<?= $doc->description ?>
-				</div>
 
 
 			</article>

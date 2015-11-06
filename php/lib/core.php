@@ -1,6 +1,5 @@
 <?php
 	$db = require __DIR__ . "/db.php";
-
 	class User {
 		private $id;
 		private $username;

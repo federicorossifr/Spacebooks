@@ -15,10 +15,12 @@ function Body() {
 			if(windowWidth >= 720) {
 				nav.style.display = "block";
 				profileSide.style.top = "0";
+				profileState = true;
 			}
 			else {
 				nav.style.display = "none";
 				profileSide.style.left = "0";
+				profileState = true;
 			}
 			profileSide.style.display = "block";
 		}
