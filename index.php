@@ -86,7 +86,7 @@
 
 				</form>
 
-			<a class="prettyButton" href="about.html">Cos&apos;&egrave; Bookd?</a>
+			<a class="prettyButton" href="about.php">Cos&apos;&egrave; Bookd?</a>
 
 
 		</section>

@@ -4,7 +4,7 @@
 	$docId = $_GET['id'];
 	$doc = Document::read($docId);
 	$cover = $doc->getCover();
-	$files = $doc->getFileLinks();
+	$files = $doc->getFiles();
 ?>
 <html lang="en">
 <?php
@@ -13,7 +13,7 @@
 ?>
 
 	<main>
-			<header><h2><?= $doc->title ?></h2></header>
+		<header><h2><?= $doc->title ?></h2></header>
 		<div id="documentFragment">
 			<article data-fragment data-name="Presentazione">
 				<header><h3>Info documento</h3></header>

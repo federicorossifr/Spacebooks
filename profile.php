@@ -48,20 +48,33 @@
 
 		</article>
 
-
-
 		<article data-fragment data-name="Documenti" class="right">
 			<header><h3>Documenti di <?= $profile->username  ?></h3></header>
-			<p>	
-				<ul class="documentList">
-					<?php
-						foreach($documents as $doc) {
-							echo "<li><a href='document.php?id=" . $doc->id . "'>" . $doc->title . "</a></li>";
-						}
+			
+			<table class="userTable">
+				<thead>
+					<th>Visualizza</th>
+					<th>Titolo</th>
+					<th>Prezzo</th>
+					<th>Data pubblicazione</th>
+					<th>Valutazione</th>
+				</thead>
 
+				<tbody>
+					<?php
+						foreach($documents as $document) {
+							echo "<tr>
+									<td><a href='./document.php?id=$document->id' class='view'>
+										<img src='./img/compass.png' alt='no '/></a>
+									<td>$document->title
+									<td>$document->price
+									<td>$document->created
+									<td>$document->score";
+						}	
 					?>
-				</ul>
-			</p>
+				</tbody>
+
+			</table>
 		</article>
 
 	</main>

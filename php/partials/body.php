@@ -1,6 +1,6 @@
-<body onload>
+<body>
 	<header>
-		<h1>Bookd </h1>
+		<h1>Bookd</h1>
 	</header>
 
 	<nav>

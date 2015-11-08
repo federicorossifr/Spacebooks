@@ -7,9 +7,6 @@ html,body {  /* Full width, height body and html */
   font-family: 'Open Sans', sans-serif;
 }
 
-img {
-  background-color:white;
-}
 
 h1,h2,h3,h4,h5,h6 {
   font-weight:lighter;
@@ -30,6 +27,9 @@ body > header > h1 {
   margin-left:auto;
   margin-right:auto;
   text-align:center;
+  font-family: "Pacifico","sans-serif";
+  font-size: 30px;
+  text-shadow: 0 2px 3px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.24);
 }
 
 
@@ -285,6 +285,14 @@ dd {
   width:70%;
   float:right;
   text-align:center;
+}
+
+section > header > h2 {
+  font-family: "Pacifico";
+  font-size:20px;
+  text-shadow: 0 2px 3px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.24);
+
+
 }
 
 #loginForm, #registerForm {
@@ -670,5 +678,77 @@ table.userTable th {
   padding:1%;
   width:calc(100% - 220px);
   float:left;
+  word-break:break-all;
   box-sizing:border-box;
+}
+
+#description[contenteditable] {
+  width:100%;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.view > img {
+  display:block;
+  height:30px;
+  margin-left:auto;
+  margin-right:auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.view > img:hover {
+  transform: rotate(45deg);
+}
+
+.about {
+  position:relative;
+  text-align:center;
+  font-size:20px;
+  height:400px;
+  padding:0;
+}
+
+.about > p {
+  width:100%;
+  top:100px;
+  position:absolute;
+  z-index:1;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.50), 0 1px 2px rgba(0,0,0,0.50);
+}
+
+.about .prettyButton {
+  position:absolute;
+  width:10%;
+  left:45%;
+  font-size:15px;
+  opacity:0.66;
+}
+
+
+.darken {
+  top:0;
+  left:0;
+  position:absolute;
+  width:100%;
+  height:100%;
+  background-color:black;
+  z-index:0;
+  opacity:0.6;
+}
+
+.about[data-name="Condivisione"] {
+  background-image: url("../img/walls/condivisione.jpg");
+  background-size:cover;
+  background-repear:no-repeat;
+}
+
+.about[data-name="Social"] {
+  background-image: url("../img/walls/social.jpg");
+  background-size:cover;
+
+}
+
+.about[data-name="Guadagno"] {
+  background-image: url("../img/walls/guadagno.jpg");
+  background-size:cover;
 }

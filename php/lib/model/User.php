@@ -105,17 +105,22 @@ class User {
 
 	function getDocuments() {
 		global $db;
-		$stmnt = $db->prepare("SELECT * FROM document WHERE author=? AND available = 1");
+		$stmnt = $db->prepare("SELECT * FROM document WHERE author=? AND available = 0");
 		$stmnt->bind_param("i",$this->id);
 		$stmnt->execute();
 		$result = $stmnt->get_result();
 		$documents = array();
-		
 		while($row = $result->fetch_object('Document')) {
 			array_push($documents,$row);
 		}
 		return $documents;
 	}
 
+	function purchase($docId) {
+		global $db;
+		
+	}
+
 
 }
+
