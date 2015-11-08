@@ -460,7 +460,7 @@ label.error::after {
 
 label.errormsg::after {
   margin-left:10px;
-  content: attr(data-message);
+  content: attr(data-message string);
   color:red;
 }
 
@@ -655,7 +655,7 @@ div.fileInput.pictureInput {
 .about[data-name="Condivisione"] {
   background-image: url("../img/walls/condivisione.jpg");
   background-size:cover;
-  background-repear:no-repeat;
+  background-repeat:no-repeat;
 }
 
 .about[data-name="Social"] {

@@ -13,6 +13,7 @@
 
 	<main id="coso">
 		<article data-fragment data-name="Utenti">
+			<header><h2>Utenti</h2></header>
 			<table class="userTable">
 				<thead>
 					<th>Nome</th>
@@ -47,10 +48,14 @@
 		</article>
 
 		<article data-fragment data-name="Documenti">
+			<header><h2>Documenti</h2></header>
+
 			
 		</article>
 		
 		<article data-fragment data-name="Moderatori">
+			<header><h2>Moderatori</h2></header>
+
 			
 		</article>
 
@@ -58,5 +63,5 @@
 
 <script type="text/javascript">
 	var coso = new Fragment("coso");
-	coso.makeSelectors();
+	coso.makeSelectors("a");
 </script>

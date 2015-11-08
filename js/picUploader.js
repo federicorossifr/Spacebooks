@@ -1,16 +1,14 @@
-function PicUploader(wrapper,type) {
+
+var DEFAULT_PIC = "./img/file-esplora.png";
+
+function PicUploader(wrapper) {
 	this.iWrapper = document.getElementById(wrapper);
 	this.iFile = this.iWrapper.querySelector("input[type=file]");
 	this.iFile.value = "";
 	this.iProgress = this.iWrapper.querySelector("progress");
 	this.iPreview = this.iWrapper.querySelector("img");
+	this.iPreview.src = DEFAULT_PIC;
 	this.ifReader = new FileReader();
-
-	switch(type) {
-		case "image":
-			console.log("Pic");
-		
-	}
 
 	with(this) {
 		iProgress.style.display = "none";

@@ -9,7 +9,7 @@
 		</ul>
 
 		<ul id="nav">
-			<li <?php if($thisUrl == "/profile.php") echo "class='active' " ?> id="picture"><a onclick="BodyInstance.profile()" href="#"><img src="<?= $user->picture ?>" alt="no"></a></li>
+			<li <?php if($thisUrl == "/profile.php") echo "class='active' " ?> id="picture"><a onclick="BodyInstance.profile()" href="#"><img src="<?= $user->picture ?>" alt="Profile"></a></li>
 
 			<?php
 				foreach ($menuVoices as $name => $address) {
@@ -28,7 +28,7 @@
 	<aside id="profile">
 
 			<div id="pictureContainer">
-				<img id="bigPicture" src="<?= $user->picture ?>" width="100" height="100" alt="noImg">
+				<img id="bigPicture" src="<?= $user->picture ?>" width="100" height="100" alt="Profile">
 				<span onclick="BodyInstance.changePic()" class="change">Change</span>
 
 				<form method="POST" id="upPicture" action="php/newpic.php" enctype="multipart/form-data">

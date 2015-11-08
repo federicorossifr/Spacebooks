@@ -3,7 +3,7 @@
 	session_start();
 	$fieldExists = null;
 
-	if(User::exists($_POST['email'])) {
+	/*if(User::exists($_POST['email'])) {
 		$fieldExists = "Email";
 	}
 
@@ -15,7 +15,7 @@
 		$_SESSION['rerror'] = $fieldExists .  " is already registered";
 		header("Location: ../index.php");
 		die;
-	}
+	}*/
 
 	if($_POST["password1"] == $_POST["password2"]) {
 		$_POST["password" ] = md5($_POST["password1"]);

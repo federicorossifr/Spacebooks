@@ -18,7 +18,7 @@
 					<div class="left">
 						<label>Copertina (clicca per cambiare)</label>
 						<div id="uploader" class="fileInput pictureInput">
-							<img src="" alt="">
+							<img src="" alt="cover picture">
 							<input type="file" name="cover" id="file">
 							<progress max="100" value="0"></progress>
 						</div><br>

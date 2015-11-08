@@ -739,7 +739,7 @@ table.userTable th {
 .about[data-name="Condivisione"] {
   background-image: url("../img/walls/condivisione.jpg");
   background-size:cover;
-  background-repear:no-repeat;
+  background-repeat:no-repeat;
 }
 
 .about[data-name="Social"] {

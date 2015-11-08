@@ -2,8 +2,9 @@
 <?php
 	require "./php/partials/secured.php";
 	$profile = null;
-	if(!isset($_GET['id'])) {
+	if(!isset($_GET['id']) || $_GET['id'] == $user->id) {
 		$profile = $user;
+		$self = true;
 	} else {
 		$id = $_GET['id'];
 		$profile = User::read($id);
@@ -11,6 +12,7 @@
 
 	if($profile)
 		$documents = $profile->getDocuments();
+
 ?>
 <html lang="en">
 	<?php
@@ -21,11 +23,14 @@
 	<main id="mainFragment">
 		<header><h2>Profilo di <?= $profile->username ?></h2></header>
 
-		<article data-fragment data-name="Informazioni">
+		<article data-fragment data-name="Profilo Pubblico">
 			<header><h3>Profile info</h3></header>
 			<div class="left">
-				<img class="shadow" src=" <?= $profile->picture ?> " width="200" alt="no">
-				<a class="prettyButton">Follow</a>
+				<img class="shadow" src="<?= $profile->picture ?>" width="200" alt="no">
+				
+				<?php if(!$self) { ?>	
+					<a class="prettyButton">Follow</a>
+				<?php }?>
 			</div>
 			
 				<dl>
@@ -76,6 +81,9 @@
 
 			</table>
 		</article>
+
+
+		<article data-fragment data-name="Profilo Privato"></article>
 
 	</main>
 	</body>

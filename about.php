@@ -68,6 +68,6 @@
 	<script type="text/javascript">
 	var frgm = new Fragment("aboutFragments");
 	frgm.makeSelectors('a');
-	//window.setInterval(function() {frgm.next();},3000);
+	window.setInterval(function() {frgm.next();},3000);
 	</script>
 </html>

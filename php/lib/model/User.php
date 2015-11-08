@@ -1,4 +1,5 @@
 <?php
+
 class User {
 	private $id;
 	private $username;
@@ -118,9 +119,18 @@ class User {
 
 	function purchase($docId) {
 		global $db;
-		
+		$stmnt = $db->prepare("INSERT INTO purchase(document,purchaser) VALUES(?,?)");
+		$stmnt->bind_param("ii",$docId,$this->id);
+		$stmnt->execute();
+		return $db->insert_id;
+	}
+
+	function refresh() {
+		$usr = User::read($this->id);
+		foreach($usr as $key => $value) {
+			$this->$key = $value;
+		}
 	}
 
 
 }
-
