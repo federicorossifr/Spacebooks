@@ -6,6 +6,11 @@ function DataLoad(url,params,callback) {
 function generateSelector(tableHead) {
 	var headItems = tableHead.cells;
 	var select = document.createElement("select");
+	var helpOpt = document.createElement("option");
+	var helpOptLabel = document.createTextNode("Filtra il campo");
+	helpOpt.appendChild(helpOptLabel);
+	helpOpt.value ="-1";
+	select.appendChild(helpOpt);
 	for(var index = 0; index < headItems.length; ++index) {
 		var opt = document.createElement("option");
 		var optLabel = document.createTextNode(headItems[index].firstChild.nodeValue);

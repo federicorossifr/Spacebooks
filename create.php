@@ -27,11 +27,11 @@
 					
 					<div class="left">
 						<label for="title">Titolo</label><br>
-						<input type="text" name="title" id="title">
+						<input class="light" type="text" name="title" id="title">
 						<label for="price">Prezzo</label><br>
-						<input type="number" name="price" id="price">
+						<input class="light" type="number" name="price" id="price">
 						<label for="tags">Tags</label><br>
-						<input type="text" name="tags" id="tags">
+						<input class="light" type="text" name="tags" id="tags">
 						<input type="hidden" name="description">
 						<button type="submit">Create</button>
 					</div>

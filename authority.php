@@ -14,8 +14,8 @@
 	<main id="coso">
 		<article data-fragment data-name="Utenti">
 			<form class="combo">
-				<input type="search" id="filter" oninput="applyFilter()">
-				<select id="selector"></select>
+				<input class="light" type="search" id="filter" oninput="applyFilter()">
+				<select class="light" id="selector"></select>
 			</form>
 			<header><h2>Utenti</h2></header>
 			<table class="userTable">
@@ -79,11 +79,13 @@
 	}
 
 	filter.oninput = function(event) {
-		applyFilter(table,this,selectors);
+		if(selectors.value != "-1")
+			applyFilter(table,this,selectors);
 	}
 
 	selectors.onchange = function(event) {
-		applyFilter(table,filter,this);	
+		if(event.target.value != "-1")
+			applyFilter(table,filter,this);	
 	}
 	
 </script>
