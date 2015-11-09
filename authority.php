@@ -65,12 +65,26 @@
 
 <script type="text/javascript">
 	var coso = new Fragment("coso");
-	var table = document.getElementById("userTable");
-	var filter = document.getElementById("filter");
-	var selector = document.getElementById("selector");
-	coso.makeSelectors("a");
-	var selectors = generateSelector(table.parentElement.rows[0]);
-	selector.parentElement.replaceChild(selectors,selector);
+
+	function initUserData() {
+		var table = document.getElementById("userTable");
+		var filter = document.getElementById("filter");
+		var selector = document.getElementById("selector");
+		coso.makeSelectors("a");
+		var selectors = generateSelector(table.parentElement.rows[0]);
+		selector.parentElement.replaceChild(selectors,selector);
+
+		filter.oninput = function(event) {
+			if(selectors.value != "-1")
+			applyFilter(table,this,selectors);
+		}
+
+		selectors.onchange = function(event) {
+			if(event.target.value != "-1")
+			applyFilter(table,filter,this);	
+		}
+		
+	}
 
 	function applyFilter(targetTable,textInputField,selectorField) {
 		var text =textInputField.value;
@@ -78,14 +92,8 @@
 		filterTable(targetTable,num,text);
 	}
 
-	filter.oninput = function(event) {
-		if(selectors.value != "-1")
-			applyFilter(table,this,selectors);
-	}
+	initUserData();
 
-	selectors.onchange = function(event) {
-		if(event.target.value != "-1")
-			applyFilter(table,filter,this);	
-	}
+
 	
 </script>
