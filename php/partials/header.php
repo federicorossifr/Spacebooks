@@ -26,6 +26,7 @@
 	<script type="text/javascript" src="./js/Parser.js"></script>
 	<script type="text/javascript" src="./js/MultiUploader.js"></script>
 	<script type="text/javascript" src="./js/Reviewer.js"></script>
+	<script type="text/javascript" src="./js/DataUtilities.js"></script>
 	<!-- End of Javascript Libraries -->
 
 </head>

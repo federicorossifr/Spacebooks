@@ -1,5 +1,6 @@
 <?php
 	$db = require "./lib/db.php";
+	require "./lib/model/User.php";
 
 	function toArray($result) {
 		$rows = array();
@@ -11,7 +12,7 @@
 
 	function incremental($size,$start) {
 		global $db;
-		$stmnt = $db->prepare("SELECT * FROM test WHERE id > ? LIMIT ?");
+		$stmnt = $db->prepare("SELECT id,username,name,surname FROM user WHERE id > ? LIMIT ?");
 		$stmnt->bind_param("ii",$start,$size);
 		$stmnt->execute();
 

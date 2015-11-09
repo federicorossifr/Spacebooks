@@ -13,6 +13,11 @@
 
 	<main id="coso">
 		<article data-fragment data-name="Utenti">
+			<form class="combo">
+				<input type="search" id="filter" oninput="applyFilter()">
+				Filter by:
+				<select id="selector"></select>
+			</form>
 			<header><h2>Utenti</h2></header>
 			<table class="userTable">
 				<thead>
@@ -24,7 +29,7 @@
 					<th>Data di nascita</th>
 					<th>Nazionalità</th>
 				</thead>
-				<tbody>
+				<tbody id="userTable">
 					<?php
 						foreach ($users as $tmp) {
 							echo "
@@ -37,8 +42,6 @@
 									<td>$tmp->birthdate</td>
 									<td>$tmp->country</td>
 								</tr>
-
-
 							";
 						}
 				?>	
@@ -63,5 +66,25 @@
 
 <script type="text/javascript">
 	var coso = new Fragment("coso");
+	var table = document.getElementById("userTable");
+	var filter = document.getElementById("filter");
+	var selector = document.getElementById("selector");
 	coso.makeSelectors("a");
+	var selectors = generateSelector(table.parentElement.rows[0]);
+	selector.parentElement.replaceChild(selectors,selector);
+
+	function applyFilter(targetTable,textInputField,selectorField) {
+		var text =textInputField.value;
+		var num = selectorField.value;
+		filterTable(targetTable,num,text);
+	}
+
+	filter.oninput = function(event) {
+		applyFilter(table,this,selectors);
+	}
+
+	selectors.onchange = function(event) {
+		applyFilter(table,filter,this);	
+	}
+	
 </script>

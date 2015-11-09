@@ -58,6 +58,7 @@ class User {
 
 		return $users;
 	}
+
 	
 	public static function exists($userChoice) {
 		global $db;

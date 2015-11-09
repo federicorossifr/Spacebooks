@@ -1,5 +1,3 @@
-
-
 <body onload="init()">
 	<button id="get" >Get</button><img id="loader" src="./img/ajax-loader.gif" style="display:none">
 	Content:
@@ -7,16 +5,16 @@
 	Field:
 	<select id="field">
 		<option value="0">Id</option>
-		<option value="1">Name</option>
-		<option value="2">Times</option>
-		<option value="3">Last</option>
+		<option value="1">Username</option>
+		<option value="2">Name</option>
+		<option value="3">Surname</option>
 	</select>
 	<table>
 		<thead>
 			<th>Id</th>
+			<th>Username</th>
 			<th>Name</th>
-			<th>Times</th>
-			<th>Last</th>
+			<th>Surname</th>
 		</thead>
 
 		<tbody id="out">
@@ -46,23 +44,23 @@
 			var jsonData = JSON.parse(data);
 			console.log(data);
 			matrixToTable(jsonData,dataTable);
-			START+= jsonData.length;
+			if(jsonData.length > 0)
+				START = jsonData[jsonData.length-1].id;
 			loader.style.display = "none";
-
 			if(!applyFilters() && jsonData.length != 0) getAndDisplay();
 		}
 
 
 		function getAndDisplay() {
 			loader.style.display = "inline";
-			var params = [{'id':'fw','value':START},{'id':'hw','value':SIZE}];
+			var params = [{'id':'fw','value':START},{'id':'hw','value':SIZE},{'id':'tabname','value':'user'}];
 			DataLoad("./php/test.php",params,callback);
 		}
 
 		function applyFilters() {
 			var fieldNumber = Number(field.value);
 			var text = filter.value;
-			return filterTable(dataTable,fieldNumber,text);
+			return filterTable(dataTable,fieldNumber,text).length;
 		}
 
 		filter.oninput = function(event) {

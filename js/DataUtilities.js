@@ -3,6 +3,19 @@ function DataLoad(url,params,callback) {
 	client.GET(params);
 }
 
+function generateSelector(tableHead) {
+	var headItems = tableHead.cells;
+	var select = document.createElement("select");
+	for(var index = 0; index < headItems.length; ++index) {
+		var opt = document.createElement("option");
+		var optLabel = document.createTextNode(headItems[index].firstChild.nodeValue);
+		opt.value = index;
+		opt.appendChild(optLabel);
+		select.appendChild(opt);
+	}
+	return select;
+}
+
 function matrixToTable(matrix,table) {
 	var rows = table.rows;
 
@@ -20,7 +33,7 @@ function matrixToTable(matrix,table) {
 function filterTable(table,field,text) {
 	var rows = table.rows;
 	var reg = new RegExp(text);
-	var rowCount = 0;
+	var rowMatch = new Array();
 	for(var rowIndex in rows) {
 		var cells = rows[rowIndex].cells;
 
@@ -28,11 +41,11 @@ function filterTable(table,field,text) {
 		var tmpCell = cells[field];
 		if(reg.test(tmpCell.textContent)) {
 			rows[rowIndex].style.display = "table-row";
-			rowCount++;
+			rowMatch.push(rowIndex);
 		}
 			else rows[rowIndex].style.display = "none";
 	}
 
-	return rowCount;
-
+	return rowMatch;
 }
+
