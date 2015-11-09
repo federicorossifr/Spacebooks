@@ -1,3 +1,8 @@
+function DataLoad(url,params,callback) {
+	var client = new AsyncReq(url,callback);
+	client.GET(params);
+}
+
 function matrixToTable(matrix,table) {
 	var rows = table.rows;
 
@@ -15,11 +20,19 @@ function matrixToTable(matrix,table) {
 function filterTable(table,field,text) {
 	var rows = table.rows;
 	var reg = new RegExp(text);
+	var rowCount = 0;
 	for(var rowIndex in rows) {
 		var cells = rows[rowIndex].cells;
 
+		if(!cells) continue;
 		var tmpCell = cells[field];
-		if(reg.test(tmpCell.textContent)) rows[rowIndex].style.display = "table-row";
-			else rows[rowIndex].style.display = "none";
+		if(reg.test(tmpCell.textContent)) {
+			rows[rowIndex].style.display = "table-row";
+			rowCount++;
 		}
+			else rows[rowIndex].style.display = "none";
+	}
+
+	return rowCount;
+
 }

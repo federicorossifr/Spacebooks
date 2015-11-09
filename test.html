@@ -22,43 +22,17 @@
 		<tbody id="out">
 			
 		</tbody>
+
 	</table>
 </body>
 
 <script type="text/javascript" src="./js/Async.js"></script>
-
+<script type="text/javascript" src="./js/DataUtilities.js"></script>
 <script type="text/javascript">
-
-	function matrixToTable(matrix,table) {
-		var rows = table.rows;
-
-		for(var index in matrix) {
-			var matrixRow = matrix[index];
-			var tmpRow = table.insertRow(rows.length);
-			
-			for(var prop in matrixRow ) {
-				var tmpCell = tmpRow.insertCell(tmpRow.cells.length);
-				tmpCell.textContent = matrixRow[prop];
-			}
-		}
-	}
-
-	function filterTable(table,field,text) {
-		var rows = table.rows;
-		var reg = new RegExp(text);
-		for(var rowIndex in rows) {
-			var cells = rows[rowIndex].cells;
-
-			var tmpCell = cells[field];
-			if(reg.test(tmpCell.textContent)) rows[rowIndex].style.display = "table-row";
-				else rows[rowIndex].style.display = "none";
-			}
-	}
 
 
 
 	function init() {
-		var getter = new AsyncReq("./php/test.php",callback);
 		var START = 0;
 		var SIZE = 5;
 		var loader = document.getElementById("loader");
@@ -74,24 +48,31 @@
 			matrixToTable(jsonData,dataTable);
 			START+= jsonData.length;
 			loader.style.display = "none";
+
+			if(!applyFilters() && jsonData.length != 0) getAndDisplay();
 		}
+
 
 		function getAndDisplay() {
 			loader.style.display = "inline";
 			var params = [{'id':'fw','value':START},{'id':'hw','value':SIZE}];
-			getter.GET(params);
+			DataLoad("./php/test.php",params,callback);
+		}
+
+		function applyFilters() {
+			var fieldNumber = Number(field.value);
+			var text = filter.value;
+			return filterTable(dataTable,fieldNumber,text);
 		}
 
 		filter.oninput = function(event) {
-			var text = event.target.value;
-			var fieldNumber = field.value;
-			filterTable(dataTable,fieldNumber,text);
+			var count = applyFilters();
+			if(!count) getAndDisplay();
 		}
 
 		field.onchange = function(event) {
-			var fieldNumber = event.target.value;
-			var text = filter.value;
-			filterTable(dataTable,fieldNumber,text);
+			 var count = applyFilters();
+			 if(!count) getAndDisplay();
 		}
 	}
 
