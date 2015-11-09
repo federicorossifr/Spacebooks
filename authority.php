@@ -15,7 +15,6 @@
 		<article data-fragment data-name="Utenti">
 			<form class="combo">
 				<input type="search" id="filter" oninput="applyFilter()">
-				Filter by:
 				<select id="selector"></select>
 			</form>
 			<header><h2>Utenti</h2></header>
