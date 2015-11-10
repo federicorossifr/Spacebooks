@@ -17,6 +17,7 @@ function Fragment(container,callback) {
 
 }
 
+
 Fragment.prototype.makeSelectors = function(nodeType) {
 	with(this) {
 		for(var index = 0; index < fragments.length && !isNaN(index); ++index) {

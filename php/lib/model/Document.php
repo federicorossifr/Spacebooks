@@ -1,5 +1,6 @@
 <?php
 class Document {
+	private $db;
 	private $id;
 	private $title;
 	private $created;
@@ -39,6 +40,21 @@ class Document {
 		$document = $result->fetch_object('Document');
 		return $document;
 	}
+
+	public static function fetchAll() {
+		global $db;
+		$stmnt = $db->prepare("SELECT * FROM document");
+		$stmnt->execute();
+		$result = $stmnt->get_result();
+		$documents = array();
+
+		while($row = $result->fetch_object("Document")) {
+			array_push($documents, $row);
+		}
+
+		return $documents;
+	}
+
 
 	function create() {
 		global $db;
