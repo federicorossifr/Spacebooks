@@ -13,6 +13,7 @@
 ?>
 
 	<main id="coso">
+		<?php if($user->role == "admin") { ?>
 		<article data-fragment data-name="Utenti">
 			<form class="combo">
 				<input class="light" type="search" id="userFilter">
@@ -28,6 +29,8 @@
 					<th>Password</th>
 					<th>Data di nascita</th>
 					<th>Nazionalità</th>
+					<th>Ruolo</th>
+					<th>Azione</th>
 				</thead>
 				<tbody id="userTable">
 					<?php
@@ -41,6 +44,20 @@
 									<td>$tmp->password</td>
 									<td>$tmp->birthdate</td>
 									<td>$tmp->country</td>
+									<td>$tmp->role</td>
+									<td>
+										<select onchange='action(this)' data-id='$tmp->id' data-model='user'>
+											<option value='-1'>Scegli azione</option>";
+									if($tmp->role == "user")
+										echo "<option value='0'>Promuovi a moderatore</option>";
+									if($tmp->role == "moderator")
+										echo "<option value='1'>Revoca promozione</option>";
+							echo "
+
+											<option value='3'>Sospendi</option>
+											<option value='2'>Rimuovi</option>
+										</select>
+									</td>
 								</tr>
 							";
 						}
@@ -49,6 +66,7 @@
 			</table>
 
 		</article>
+		<?php } ?>
 
 		<article data-fragment data-name="Documenti">
 			<header><h2>Documenti</h2></header>
@@ -97,13 +115,6 @@
 			</table>
 			
 		</article>
-		
-		<article data-fragment data-name="Moderatori">
-			<header><h2>Moderatori</h2></header>
-
-			
-		</article>
-
 	</main>
 
 <script type="text/javascript">
@@ -141,6 +152,7 @@
 
 		if(obj.value == "2")
 			rowAffected.parentElement.removeChild(rowAffected);	
+		alert("Done");
 	}
 
 
@@ -151,7 +163,7 @@
 		var requestClient = null;
 		switch(dbModel) {
 			case "document": requestClient = new AsyncReq('./php/authority/documentModeration.php',function() {actionPerformed(obj);}); break;
-			case "user" : requstClient = new AsyncReq('',cccc);
+			case "user" : requestClient = new AsyncReq('./php/authority/userModeration.php',function() {actionPerformed(obj);}); break;
 		}
 
 		var params = [{'id':'id','value':dbModelId},{'id':'action','value':dbModelAction}];
