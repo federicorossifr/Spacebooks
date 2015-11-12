@@ -1,16 +1,16 @@
 PRIMARY
 
-1. Adding Role implementation in web-app: {HTML,CSS,JS}
-	a. Make an user->admin and user->moderator;
-	b. In body.php generate links for admin page or moderation page;
-	c. Post moderation: visible by both moderators and admins;
-	d. User moderation: visible by both moderators and admins;
-	e. Moderator and Admin management: visible only by Admins;
+1. Adding Role implementation in web-app: {HTML,CSS,JS} OK
+	a. Make an user->admin and user->moderator; OK
+	b. In body.php generate links for admin page or moderation page; OK
+	c. Post moderation: visible by both moderators and admins; OK
+	d. User moderation: visible by both moderators and admins; OK
+	e. Moderator and Admin management: visible only by Admins; DEPRECATED
 
 2. Add support for document edit ( maybe with document.php?id=xx&editmode=1);  {PHP,HTML,CSS,JS}
 
 3. Add deep-accout info and  profile-settings for users (maybe all in account.php 
-														or extension of user.php when logged); {PHP,HTML,CSS,JS}
+	or extension of user.php when logged); {PHP,HTML,CSS,JS}
 
 4. Make business rules to show appropriate content on home page; {MY/SQL}
 
@@ -18,10 +18,10 @@ PRIMARY
 
 SECONDARY
 
-1. Split core.php onto three files: {PHP}
-	a. User.php file
-	b. Document.php file
-	c. Core.php file that requires the two files above.
+1. Split core.php onto three files: {PHP} OK
+	a. User.php file OK
+	b. Document.php file OK
+	c. Core.php file that requires the two files above. OK
 
 2. In body.js make use of picUploader.js instead of actual implementation for pic uploading. {JS}
 
@@ -29,5 +29,7 @@ SECONDARY
 
 4. Implementing simple Pophovers for alert or something that. {JS}
 
-5. CSS and Javascript General Cleaning {CSS,JS}
+5. CSS and Javascript General Cleaning {CSS,JS} 
+	a. Less use of global variables; {JS} OK
+	b. ...
 
