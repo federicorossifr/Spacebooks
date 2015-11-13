@@ -6,6 +6,7 @@ function Form(formId,callBackError) {
 	this.inputs = [];
 	this.controlsValid = 0; //number of formControls already validated
 	this.callBackError = callBackError;
+	
 	for(var i = 0; i < this.formControls.length; ++i) {
 		var name = this.formControls[i].getAttribute("name");
 		this.inputs[name] = this.formControls[i];
