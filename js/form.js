@@ -1,12 +1,11 @@
-function Form(formId,callBackError) {
+function Form(formId) {
 	this.form = document.getElementById(formId);
 	this.formControls = this.form.querySelectorAll("input, textarea, select");
 	this.controlsCount = 0; //number of formControls that have to be validated
 	this.submitButton = this.form.querySelector("button[type='submit']");
 	this.inputs = [];
 	this.controlsValid = 0; //number of formControls already validated
-	this.callBackError = callBackError;
-	
+	this.form.reset();
 	for(var i = 0; i < this.formControls.length; ++i) {
 		var name = this.formControls[i].getAttribute("name");
 		this.inputs[name] = this.formControls[i];
@@ -33,13 +32,8 @@ Form.prototype.parseControl = function(obj) {
 					obj.watcher.className ="errormsg";
 				else
 					obj.watcher.className = "error";
-
 			}
-			
 		}
-		
-		if(!regResult && this.callBackError)
-			this.callBackError(obj);
 			
 		this.submitButton.disabled = !(this.controlsValid == this.controlsCount);
 }
@@ -70,8 +64,8 @@ Form.prototype.addMutualConstraint =  function(inputA,inputB) {
 		if(this.inputs[inputA] && this.inputs[inputB]) {
 			this.controlsCount++;
 			var a = this.inputs[inputA];
-			a.match = 0;
 			var b = this.inputs[inputB];
+			a.match = 0;
 			b.match = 0;
 			b.watcher = this.form.querySelector("label[for='" + b.id + "']");
 			b.watcher.className = "error";
@@ -105,8 +99,9 @@ Form.prototype.addConstraintExtension = function(url,paramName,inputName,trueVal
 		inputControl.oninput = function() {
 			var obj = this;
 			var params = [{"id":paramName,"value": obj.value }];
-			var asyncCheck = new AsyncReq(url,function(data) {
 
+
+			var asyncCheck = new AsyncReq(url,function(data) {
 				if(data != trueValue && obj.success) {
 					curr.controlsValid--;
 					obj.success = 0;
@@ -117,6 +112,8 @@ Form.prototype.addConstraintExtension = function(url,paramName,inputName,trueVal
 				}
 				curr.submitButton.disabled = !(curr.controlsValid == curr.controlsCount);
 			});
+
+			
 			asyncCheck.GET(params);
 		}
 	}
