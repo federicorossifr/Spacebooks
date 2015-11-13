@@ -46,8 +46,7 @@
 
 			<ul id="sideButtons">
 				<li><a class="prettyButton" href="profile.php">Profile</a></li>
-				<li><a class="prettyButton" href="#">Links</a></li>
-				<li><a class="prettyButton" href="/">Logout</a></li>
+				<li><a class="prettyButton" href="./php/logout.php">Logout</a></li>
 			</ul>
 		</aside>
 
