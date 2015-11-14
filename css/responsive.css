@@ -697,7 +697,7 @@ table.userTable {
 
 }
 
-table.userTable > tbody tr:nth-child(odd) {
+table.userTable > tbody tr {
   background-color:#7986CB;
 }
 
@@ -707,9 +707,23 @@ table.userTable td, table.userTable th {
   padding:1%;
 }
 
+table.userTable tr {
+  border-bottom:10px solid white;
+}
+
 table.userTable th {
+  display:none;
+}
+
+table.userTable td:before {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   background-color:white;
   color:black;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  position:relative;
+  display:block;
+  width:100%;
+  content:attr(data-heading);
+  padding:1%;
+  box-sizing:border-box;
+  text-align:center;
+  margin-bottom:1%;
 }

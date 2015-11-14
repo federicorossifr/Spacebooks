@@ -5,6 +5,8 @@ function initData(table,filter,selector) {
 	var selectors = generateSelector(table.parentElement.rows[0]);
 	selector.parentElement.replaceChild(selectors,selector);
 
+	makeResponsive(table);
+
 	filter.oninput = function(event) {
 		if(selectors.value != "-1")
 		applyFilter(table,this,selectors);

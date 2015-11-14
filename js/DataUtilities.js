@@ -54,3 +54,18 @@ function filterTable(table,field,text) {
 	return rowMatch;
 }
 
+
+function makeResponsive(tableBody) {
+	var tableHeadItems = tableBody.parentElement.rows[0].cells;
+	var bodyRows = tableBody.rows;
+
+	for(var i = 0; i < tableHeadItems.length; ++i) {
+
+		var label = tableHeadItems[i].firstChild.nodeValue;
+
+		for(var j = 0; j < bodyRows.length; ++j) {
+			var row =  bodyRows[j];
+			row.cells[i].setAttribute("data-heading",label);
+		}
+	}
+}
