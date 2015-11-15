@@ -30,10 +30,10 @@
 						<input class="light" type="text" name="title" id="title">
 						<label for="price">Prezzo</label><br>
 						<input class="light" type="number" name="price" id="price">
-						<label for="tags">Tags</label><br>
+						<label for="tags">Tags (separa i tag con ;)</label><br>
 						<input class="light" type="text" name="tags" id="tags">
 						<input type="hidden" name="description">
-						<button type="submit">Create</button>
+						<button id="submitForm" type="submit">Create</button>
 					</div>
 			</article>
 
@@ -48,7 +48,7 @@
 					Fai click col tasto sinistro su "Aggiungi File" ( oppure toccalo sullo schermo) per aggiungere un nuovo file al tuo documento.
 					Fai click col tasto destro su un file (o tieni premuto su di esso) per rimuoverlo.
 				</p>
-					<div id="initial" class="fileInput fileUploader" onclick="CreatorInstance.myUp.addUploader(this,true)">
+					<div id="initial" class="fileInput fileUploader" >
 						<span>Aggiungi file</span>
 					</div>
 
@@ -59,3 +59,4 @@
 
 
 <script type="text/javascript" src="./js/components/create.js"></script>
+<script type="text/javascript">Create();</script>

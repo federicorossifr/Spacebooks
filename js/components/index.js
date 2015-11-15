@@ -1,3 +1,4 @@
+
 function Index() {
 	var registerForm = new Form("registerForm");
 	registerForm.addConstraint("name",/^[A-Z]{1}[a-z]+$/);

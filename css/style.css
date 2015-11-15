@@ -509,21 +509,37 @@ form textarea:focus, p[contenteditable]:focus {
 }
 
 label.success::after {
+  background-color:green;
   margin-left:10px;
+  padding:1px;
+    padding:1px 5px 1px 5px;
+
   content:"OK" ;
-  color:green;
+  color:white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
 }
 
 label.error::after {
+  background-color:red;
+  padding:1px 5px 1px 5px;
   margin-left:10px;
   content: "NO";
-  color:red;
+  color:white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
 }
 
 label.errormsg::after {
+  background-color:yellow;
+    padding:1px 5px 1px 5px;
+
+  padding:1px;
   margin-left:10px;
   content: attr(data-message);
-  color:red;
+  color:black;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
 }
 
 
@@ -756,4 +772,15 @@ table.userTable th {
 .about[data-name="Guadagno"] {
   background-image: url("../img/walls/guadagno.jpg");
   background-size:cover;
+}
+
+.popper {
+  background-color:#3F51B5;
+  color:white;
+  padding:1%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.popper > h3 {
+  margin:0;
 }

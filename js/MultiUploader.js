@@ -4,7 +4,11 @@ function multiUploader() {
 
 multiUploader.prototype.addUploader = function(caller,isRemovable) {
 	with(this) {
-		if(!lastUsed) return;
+		if(!lastUsed) {
+			var pop = new Pophover(caller,"Attenzione","L'ultimo uploader non è stato utilizzato");
+			pop.show(1000);
+			return;
+		}
 		lastUsed = false;
 		var newUploader = document.createElement("div");
 		newUploader.className = "fileInput fileUploader";
@@ -21,6 +25,7 @@ multiUploader.prototype.addUploader = function(caller,isRemovable) {
 		newUploader.used = false;
 		caller.parentElement.insertBefore(newUploader,caller);
 		lastAdded = newUploader;
+
 		newUploader.onclick = function() {
 			fileInput.click();
 

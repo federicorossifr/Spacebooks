@@ -1,4 +1,4 @@
-function Form(formId) {
+function Form(formId,callback) {
 	this.form = document.getElementById(formId);
 	this.formControls = this.form.querySelectorAll("input, textarea, select");
 	this.controlsCount = 0; //number of formControls that have to be validated
@@ -9,7 +9,9 @@ function Form(formId) {
 	for(var i = 0; i < this.formControls.length; ++i) {
 		var name = this.formControls[i].getAttribute("name");
 		this.inputs[name] = this.formControls[i];
-	}	
+	}
+
+	this.callback = callback;
 }
 
 Form.prototype.parseControl = function(obj) {
@@ -28,13 +30,11 @@ Form.prototype.parseControl = function(obj) {
 			obj.success = 0;
 
 			if(obj.watcher) {
-				if(obj.watcher.hasAttribute("data-message"))
-					obj.watcher.className ="errormsg";
-				else
 					obj.watcher.className = "error";
 			}
 		}
-			
+
+		if(!regResult && this.callback) this.callback(obj.watcher);
 		this.submitButton.disabled = !(this.controlsValid == this.controlsCount);
 }
 

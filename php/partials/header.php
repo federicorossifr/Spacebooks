@@ -27,6 +27,7 @@
 	<script type="text/javascript" src="./js/MultiUploader.js"></script>
 	<script type="text/javascript" src="./js/Reviewer.js"></script>
 	<script type="text/javascript" src="./js/DataUtilities.js"></script>
+	<script type="text/javascript" src="./js/Pophover.js"></script>
 	<!-- End of Javascript Libraries -->
 
 </head>
