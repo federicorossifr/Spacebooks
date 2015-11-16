@@ -28,6 +28,8 @@
 	<script type="text/javascript" src="./js/Reviewer.js"></script>
 	<script type="text/javascript" src="./js/DataUtilities.js"></script>
 	<script type="text/javascript" src="./js/Pophover.js"></script>
+	<script type="text/javascript" src="./js/Tag.js"></script>
+
 	<!-- End of Javascript Libraries -->
 
 </head>

@@ -11,8 +11,6 @@
 
 	$files = $_FILES['file'];
 	$cover = $_FILES['cover'];
-	print_r($files);
-	print_r($cover);
 
 	$arranged = DbFS::organize($files);
 	$author = $_SESSION['user']->id;
@@ -20,10 +18,12 @@
 
 	$coverFs = new DbFS('./uploads/documentPictures/');
 
+	$tags = json_decode($_POST['tags']);
+
+
 	if(!$cover['error']) {
 		$coverId = $coverFs->saveFile($cover,1);
 		$_POST['cover'] = $coverId;
-		echo $coverId;
 	}
 
 	$doc = new Document($_POST);
@@ -33,12 +33,16 @@
 		if(!$file['error']) {
 			$id = $fs->saveFile($file,1);
 			$doc->addFile($id);
-			echo $id . "<br>";
 		} else {
 			$doc->delete();
+			$_SESSION['cerror'] = "Errore nella creazione del documento";
 			header("Location: ../home.php");
 			die;
 		}
+	}
+
+	foreach($tags as $tag) {
+		$doc->tag($tag);
 	}
 
 	header("Location: ../document.php?id=$dId");

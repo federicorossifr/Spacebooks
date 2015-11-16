@@ -15,6 +15,8 @@ function Create() {
 	this.fragments = new Fragment("createForm");
 	this.fragments.makeSelectors("a");
 
+	this.tagHandler = new Tag('tags');
+
 	var curr = this;
 	this.initialFileUploader.onclick = function() {
 		curr.myUp.addUploader(this,true);
@@ -33,6 +35,8 @@ function Create() {
 			this.description.value = strOut;
 			var editorRawText = editor.textContent.replace(/\s+/g, '');
 			
+			this.tags.value = tagHandler.emit();
+
 			if(editorRawText == "" || editorRawText.length < 100) {
 				var pop = new Pophover(this.submitForm,"Attenzione",
 										"La descrizione è obbligatoria e deve essere di almeno 100 caratteri",

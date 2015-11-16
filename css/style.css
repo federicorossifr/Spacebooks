@@ -784,3 +784,9 @@ table.userTable th {
 .popper > h3 {
   margin:0;
 }
+
+.comboButton {
+  display:flex;
+  margin-bottom:5px;
+}
+

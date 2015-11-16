@@ -1,0 +1,37 @@
+<form action="./php/test2.php" method="POST">
+<input name="data" type="text" id="data">
+<button>Emit</button>
+<script type="text/javascript">
+
+	function Tag(tagInput) {
+		this.tagInput = document.getElementById(tagInput);
+		this.tags = Array();
+		with(this) {
+			tagInput.oninput = function(event) {
+				tags = event.target.value.split(";");
+				console.log(tags[tags.length-1]);
+			}
+		}
+	}
+
+	Tag.prototype.emit = function() {
+		var filtered = Array();
+		for(var i = 0; i < this.tags.length; ++i) {
+			if(this.tags[i] != "")
+				filtered.push(this.tags[i]);
+		}
+
+		var jsonData = JSON.stringify(filtered);
+		return jsonData;
+	}
+
+
+
+	var tt = new Tag("data");
+
+	document.forms[0].onsubmit = function() {
+		this.data.value = tt.emit();
+		this.submit();
+	}
+
+</script>

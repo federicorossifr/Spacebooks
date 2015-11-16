@@ -39,6 +39,11 @@
 
 			<article data-fragment data-name="Descrizione" class="right">
 				<header><h3>Descrizione</h3></header>
+				<div class="comboButton">
+					<button class="prettyButton" onclick="command(event)" id="bold">Grassetto</button>
+					<button class="prettyButton" onclick="command(event)" id="underline">Sottolineato</button>
+					<button class="prettyButton" onclick="command(event)" id="italic">Corsivo</button>
+				</div>
 				<p contenteditable="true" id="description"></p>
 			</article>
 
@@ -59,4 +64,13 @@
 
 
 <script type="text/javascript" src="./js/components/create.js"></script>
-<script type="text/javascript">Create();</script>
+<script type="text/javascript">Create();
+
+	var bold = document.getElementById("bold");
+	function command(event) {
+		event.preventDefault();
+		var command = event.target.id;
+		document.execCommand(command);
+	}
+
+</script>

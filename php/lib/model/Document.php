@@ -1,4 +1,6 @@
 <?php
+
+
 class Document {
 	private $db;
 	private $id;
@@ -122,4 +124,28 @@ class Document {
 		$stmnt->execute();
 		return $db->insert_id;
 	}
+
+	function tag($tag) {
+		global $db;
+		$readTag = $db->prepare("SELECT * FROM tag WHERE name = ? ");
+		$readTag->bind_param("s",$tag);
+		$readTag->execute();
+		$result = $readTag->get_result();
+		$tagId = null;
+		if( $result->num_rows ) {
+			$existingTag = $result->fetch_assoc();
+			print_r($existingTag);
+			$tagId = $existingTag['id'];
+		} else {
+			$newTag = $db->prepare("INSERT INTO tag(name) VALUES(?)");
+			$newTag->bind_param("s",$tag);
+			$newTag->execute();
+			$tagId = $db->insert_id;
+		}
+
+		$writeTag = $db->prepare("INSERT INTO tagship(document,tag) VALUES(?,?)");
+		$writeTag->bind_param("ii",$this->id,$tagId);
+		$writeTag->execute();
+	}
 }
+
