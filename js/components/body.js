@@ -1,12 +1,22 @@
 function Body() {
-	this.profileSide = document.getElementById("profile");
-	this.nav = document.getElementById("nav");
-	this.closeProfile = document.getElementById("close");
+	this.profileSide = document.getElementById("profile"); // Barra laterale "aside" a comparsa
+	this.nav = document.getElementById("nav"); // Elemento "nav" per la navigazione
+	this.closeProfile = document.getElementById("close"); // Pulsante di chiusura della barra "aside"
+	this.navToggle = document.getElementById("navToggle"); // Pulsante di toggle per il nav responsive
+	this.profileToggle = document.getElementById("toggleProfile"); // Pulsante di apertura della barra "aside"
+	this.changePicButton = document.getElementById("changePicButton"); // Pulsante per il cambio dell'immagine di profilo
+	this.profilePictureForm = document.getElementById("upPicture"); // Form contente l'input file della nuova immagine di profilo
+	this.profilePictureFileInput = document.getElementById("fileInput"); // File input dell form.
+
 	this.profileState = false;
 	this.menuState = false;
 	this.windowWidth = window.innerWidth;
-	this.profilePictureForm = document.getElementById("upPicture");
-	this.profilePictureFileInput = document.getElementById("fileInput");
+
+	var curr = this; // Aliasing dell'oggetto this per le istruzioni successive.
+	this.closeProfile.onclick = function() {curr.profile();}
+	this.profileToggle.onclick = function() {curr.profile();}
+	this.navToggle.onclick = function() {curr.menu();}
+	this.changePicButton.onclick = function() {curr.changePic();}
 
 	with(this) {
 		window.onresize = function() {
@@ -15,21 +25,24 @@ function Body() {
 			if(windowWidth >= 720) {
 				nav.style.display = "block";
 				profileSide.style.top = "0";
-				profileState = true;
+				profileSide.style.left = "-300px";
+				profileState = false;
 			}
 			else {
 				nav.style.display = "none";
 				profileSide.style.left = "0";
-				profileState = true;
+				profileSide.style.top = "-150%";
+				profileState = false;
 			}
-			profileSide.style.display = "block";
+
+				profileSide.style.display = "block";
+				
 		}
 
 		if(windowWidth < 720)
 			nav.style.display = "none";
 	}
 }
-var BodyInstance = new Body();
 
 
 Body.prototype.changePic = function() {
@@ -64,6 +77,11 @@ Body.prototype.profile = function() {
 		}
 		profileState = !profileState;
 	}
+}
+
+
+function bodyMain() {
+	new Body();
 }
 
 

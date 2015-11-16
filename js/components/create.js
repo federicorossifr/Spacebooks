@@ -32,6 +32,7 @@ function Create() {
 			var strOut = editorOut.join("");
 			this.description.value = strOut;
 			var editorRawText = editor.textContent.replace(/\s+/g, '');
+			
 			if(editorRawText == "" || editorRawText.length < 100) {
 				var pop = new Pophover(this.submitForm,"Attenzione",
 										"La descrizione è obbligatoria e deve essere di almeno 100 caratteri",
@@ -39,7 +40,15 @@ function Create() {
 				pop.show();
 				return;
 			}
-			if(!myUp.lastUsed) {alert("Un uploader non è stato utilizzato"); return;}
+
+			if(!myUp.lastUsed) {
+				var pop = new Pophover(this.submitForm,"Attenzione","Non sono stati usati tutti gli uploader.Elimina l'uploader o utilizzalo.",
+														function() {fragments.that("2")});
+				pop.show();
+				return;
+
+
+			}
 			this.submit();
 		}
 	}
