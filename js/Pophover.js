@@ -2,10 +2,10 @@ function Pophover(item,title,text,onok) {
 	this.launcher = item
 
 	this.pop = document.createElement("div");
-
+	this.closeButton = this.makeClose(onok);
 	this.pop.appendChild(this.makeTitle(title));
 	this.pop.appendChild(this.makeText(text));
-	this.pop.appendChild(this.makeClose(onok));
+	this.pop.appendChild(this.closeButton);
 	this.pop.className = "popper";
 	this.pop.style.position = "absolute";
 
