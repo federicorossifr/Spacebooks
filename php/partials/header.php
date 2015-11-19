@@ -20,7 +20,7 @@
 
 	<!-- Javascript Libraries -->
 	<script type="text/javascript" src="./js/Async.js"></script>
-	<script type="text/javascript" src="./js/Form.js"></script>
+	<script type="text/javascript" src="./js/FormControl.js"></script>
 	<script type="text/javascript" src="./js/PicUploader.js"></script>
 	<script type="text/javascript" src="./js/Fragment.js"></script>
 	<script type="text/javascript" src="./js/Parser.js"></script>
@@ -29,7 +29,7 @@
 	<script type="text/javascript" src="./js/DataUtilities.js"></script>
 	<script type="text/javascript" src="./js/Pophover.js"></script>
 	<script type="text/javascript" src="./js/Tag.js"></script>
-
+	<script type="text/javascript" src="./js/Modal.js"></script>
 	<!-- End of Javascript Libraries -->
 
 </head>

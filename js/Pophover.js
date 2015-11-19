@@ -13,6 +13,7 @@ function Pophover(item,title,text,onok) {
 	this.pop.style.left = this.launcher.offsetLeft +  20 + 'px';
 
 	document.body.appendChild(this.pop);
+
 	this.hide();
 }
 

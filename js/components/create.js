@@ -7,7 +7,7 @@ function Create() {
 	this.myUp = new multiUploader();
 	this.myUp.addUploader(this.initialFileUploader,false);
 	
-	this.formH = new Form("createForm");
+	this.formH = new FormControl("createForm");
 	this.formH.addConstraint("title",/^([A-Z]{1}[a-z ]{1,45})$/);
 	this.formH.addConstraint("price",/^\d{1,2}$/)
 	this.formH.addConstraint("tags",/^(\w+;)+$/);
@@ -35,24 +35,24 @@ function Create() {
 			this.description.value = strOut;
 			var editorRawText = editor.textContent.replace(/\s+/g, '');
 			
-			this.tags.value = tagHandler.emit();
 
 			if(editorRawText == "" || editorRawText.length < 100) {
-				var pop = new Pophover(this.submitForm,"Attenzione",
+				var pop = new Modal("Attenzione",
 										"La descrizione è obbligatoria e deve essere di almeno 100 caratteri",
 										function() {fragments.that("1");});
-				pop.show();
+				//pop.show();
 				return;
 			}
 
 			if(!myUp.lastUsed) {
-				var pop = new Pophover(this.submitForm,"Attenzione","Non sono stati usati tutti gli uploader.Elimina l'uploader o utilizzalo.",
+				var pop = new Modal("Attenzione","Non sono stati usati tutti gli uploader.Elimina l'uploader o utilizzalo.",
 														function() {fragments.that("2")});
-				pop.show();
+				//pop.show();
 				return;
 
 
 			}
+			this.tags.value = tagHandler.emit();
 			this.submit();
 		}
 	}

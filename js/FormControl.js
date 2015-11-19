@@ -1,4 +1,4 @@
-function Form(formId,callback) {
+function FormControl(formId,callback) {
 	this.form = document.getElementById(formId);
 	this.formControls = this.form.querySelectorAll("input, textarea, select");
 	this.controlsCount = 0; //number of formControls that have to be validated
@@ -14,7 +14,7 @@ function Form(formId,callback) {
 	this.callback = callback;
 }
 
-Form.prototype.parseControl = function(obj) {
+FormControl.prototype.parseControl = function(obj) {
 		var regResult = obj.constraint.test(obj.value);
 
 		if(regResult && !obj.success) {
@@ -38,7 +38,7 @@ Form.prototype.parseControl = function(obj) {
 		this.submitButton.disabled = !(this.controlsValid == this.controlsCount);
 }
 
-Form.prototype.addConstraint = function(inputName,constraint) {
+FormControl.prototype.addConstraint = function(inputName,constraint) {
 		this.submitButton.disabled = 1;
 		if(this.inputs[inputName]) {
 			var inputControl = this.inputs[inputName];
@@ -59,7 +59,7 @@ Form.prototype.addConstraint = function(inputName,constraint) {
 		}
 }
 
-Form.prototype.addMutualConstraint =  function(inputA,inputB) {
+FormControl.prototype.addMutualConstraint =  function(inputA,inputB) {
 		this.submitButton.disabled = 1;
 		if(this.inputs[inputA] && this.inputs[inputB]) {
 			this.controlsCount++;
@@ -91,7 +91,7 @@ Form.prototype.addMutualConstraint =  function(inputA,inputB) {
 		}
 }
 
-Form.prototype.addConstraintExtension = function(url,paramName,inputName,trueValue,message) {
+FormControl.prototype.addConstraintExtension = function(url,paramName,inputName,trueValue,message) {
 	if(this.inputs[inputName]) {
 		var inputControl = this.inputs[inputName];
 		var curr = this; // aliasing "this" to prevent shadowing in next instruction

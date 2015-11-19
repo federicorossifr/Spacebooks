@@ -44,7 +44,7 @@
 						<th>Download</th>
 					</thead>
 
-					<tbody>	
+					<tbody id="filesTable">	
 						<?php
 							foreach($files as $file) {
 								$fileName = $file['name'];
@@ -63,4 +63,6 @@
 	<script type="text/javascript">
 		var docFragm = new Fragment("documentFragment");
 		docFragm.makeSelectors('a');
+		var filesTable = document.getElementById("filesTable");
+		makeResponsive(filesTable);
 	</script>

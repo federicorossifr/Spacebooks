@@ -1,6 +1,6 @@
 
 function Index() {
-	var registerForm = new Form("registerForm");
+	var registerForm = new FormControl("registerForm");
 	registerForm.addConstraint("name",/^[A-Z]{1}[a-z]+$/);
 	registerForm.addConstraint("surname",/[A-Z]{1}[a-z]+/);
 	registerForm.addConstraint("country",/[A-Z]{1}[a-z]+/);

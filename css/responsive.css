@@ -756,3 +756,13 @@ table.userTable td:before {
   border-bottom:0px;
 }
 
+
+#description {
+  display:block;
+  width:100%;
+  background-color:white;
+  color:black;
+  padding:5%;
+  word-break:break-all;
+  box-sizing:border-box;
+}

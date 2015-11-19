@@ -65,7 +65,7 @@
 					<th>Valutazione</th>
 				</thead>
 
-				<tbody>
+				<tbody id="documentsTable">
 					<?php
 						foreach($documents as $document) {
 							echo "<tr>
@@ -90,6 +90,8 @@
 	<script type="text/javascript">
 		var frgMnts = new Fragment("mainFragment");
 		frgMnts.makeSelectors();
+		var documentsTable = document.getElementById("documentsTable");
+		makeResponsive(documentsTable);
 	</script>
 </html>
 
