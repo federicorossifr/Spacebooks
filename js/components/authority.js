@@ -31,7 +31,7 @@ function actionPerformed(obj) {
 
 	if(obj.value == "2")
 		rowAffected.parentElement.removeChild(rowAffected);	
-	alert("Done");
+	Modal("Moderazione","Operazione completata");
 }
 
 
@@ -39,6 +39,7 @@ function action(obj) {
 	var dbModel = obj.getAttribute("data-model");
 	var dbModelId = obj.getAttribute("data-id");
 	var dbModelAction = obj.value;
+	if(dbModelAction == "-1") return false;
 	var requestClient = null;
 	switch(dbModel) {
 		case "document": requestClient = new AsyncReq('./php/authority/documentModeration.php',function() {actionPerformed(obj);}); break;

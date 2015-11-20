@@ -44,7 +44,7 @@
 					<button class="prettyButton" onclick="command(event)" id="underline">Sottolineato</button>
 					<button class="prettyButton" onclick="command(event)" id="italic">Corsivo</button>
 				</div>
-				<p contenteditable="true" id="description"></p>
+				<div contenteditable="true" id="description"></div>
 			</article>
 
 			<article data-fragment data-name="Files" class="right">

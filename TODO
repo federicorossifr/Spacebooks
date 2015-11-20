@@ -1,25 +1,22 @@
 PRIMARY
 
+1. Add support for document edit ( maybe with document.php?id=xx&editmode=1);  {PHP,HTML,CSS,JS}
 
-2. Add support for document edit ( maybe with document.php?id=xx&editmode=1);  {PHP,HTML,CSS,JS}
-
-3. Add deep-accout info and  profile-settings for users (maybe all in account.php 
+2. Add deep-accout info and  profile-settings for users (maybe all in account.php 
 	or extension of user.php when logged); {PHP,HTML,CSS,JS}
 
-4. Make business rules to show appropriate content on home page; {MY/SQL}
+3. Make business rules to show appropriate content on home page; {MY/SQL}
 
-5. home.php ??????''
+4. home.php
+	a) Last purchases;
+	b) Suggestion;
 
 SECONDARY
 
 
-2. In body.js make use of picUploader.js instead of actual implementation for pic uploading. {JS}
+1. In body.js make use of picUploader.js instead of actual implementation for pic uploading. {JS}
 
-3. Implementing simple Modals for operation confirms ( maybe maintain actual built-in confirm function). {JS}
-
-4. Implementing simple Pophovers for alert or something that. {JS}
-
-5. CSS and Javascript General Cleaning {CSS,JS} 
+2. CSS and Javascript General Cleaning {CSS,JS} 
 	a. Less use of global variables; {JS} OK
 	b. ...
 

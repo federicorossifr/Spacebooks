@@ -15,6 +15,10 @@ class Document {
 	private $available;
 	private $cover;
 
+	private $tags;
+	private $picturePath;
+	private $files;
+
 	function __construct($fields = array()) {
 		if($fields) {
 			$this->title = $fields['title'];
@@ -91,12 +95,11 @@ class Document {
 		$stmnt->execute();
 		$result = $stmnt->get_result();
 
-		$files = array();
+		/*$files = array();
 
 		while($row = $result->fetch_assoc())
-			array_push($files, $row);
-
-		return $files;
+			array_push($files, $row);*/
+		return toArray($result);
 	}
 
 	function getCover() {
@@ -146,6 +149,22 @@ class Document {
 		$writeTag = $db->prepare("INSERT INTO tagship(document,tag) VALUES(?,?)");
 		$writeTag->bind_param("ii",$this->id,$tagId);
 		$writeTag->execute();
+	}
+
+	function getTags() {
+		global $db;
+		$query = "SELECT name,id FROM tagship INNER JOIN tag ON tag=id WHERE document = ?";
+		$stmnt = $db->prepare($query);
+		$stmnt->bind_param("i",$this->id);
+		$stmnt->execute();
+		$result = $stmnt->get_result();
+		return toArray($result);
+	}
+
+	function populate() {
+		$this->tags = $this->getTags();
+		$this->files = $this->getFiles();
+		$this->picturePath = $this->getCover();
 	}
 }
 

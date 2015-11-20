@@ -11,10 +11,33 @@
 	
 
 		<main>
-			<header><h2>Acquisti</h2></header>
+			<header><h2>Home</h2></header>
 
-			<article id="myDoc">
-			</article>
+			<div id="homeFragmentContainer">
+					<article data-fragment data-name="Ultimi acquisti">
+						
+					</article>
+
+					<article data-fragment data-name="Consigliati">
+							<table class="userTable">
+								<thead>
+									<th>1</th>
+									<th>2</th>
+									<th>3</th>
+									<th>4</th>
+								</thead>
+								<tbody id="body">
+
+								</tbody>
+							</table>
+
+							<a class="prettyButton">Carica altro</a>
+
+					</article>
+
+
+
+			</div>
 
 
 		</main>
@@ -22,4 +45,9 @@
 
 
 	</body>
+
+	<script type="text/javascript">
+		var homeFragment = new Fragment("homeFragmentContainer");
+		homeFragment.makeSelectors();
+	</script>
 </html>

@@ -3,8 +3,7 @@
 	require "./php/partials/secured.php";
 	$docId = $_GET['id'];
 	$doc = Document::read($docId);
-	$cover = $doc->getCover();
-	$files = $doc->getFiles();
+	$doc->populate();
 ?>
 <html lang="en">
 <?php
@@ -15,11 +14,18 @@
 	<main>
 		<header><h2><?= $doc->title ?></h2></header>
 		<div id="documentFragment">
-			<article data-fragment data-name="Descrizione e informazioni">
+			<article data-fragment data-name="Presentazione">
 				<header><h3>Info documento</h3></header>
 
 				<div class="left">
-					<img class="shadow" src=" <?= $cover ?> " width="200" alt="no">
+					<div class="stars shadow">
+						<img class="star " src="img/star_on.png" width="30">
+						<img class="star " src="img/star_on.png" width="30">
+						<img class="star " src="img/star_on.png" width="30">
+						<img class="star " src="img/star_off.png" width="30">
+						<img class="star" src="img/star_off.png" width="30">
+					</div>
+					<img class="shadow" src=" <?= $doc->picturePath ?> " width="200" alt="no">
 					<span class="prettyButton"><?= $doc->price ?>BC</span>
 
 					<?php
@@ -30,6 +36,19 @@
 				</div>
 
 					<?= $doc->description ?>
+
+
+			</article>
+
+			<article data-fragment data-name="Informazioni e autore">
+				
+				<div class="left">
+					<!-- Author info -->
+				</div>
+
+				<div class="left">
+					<!-- Tag info -->
+				</div>
 
 
 			</article>
@@ -46,7 +65,7 @@
 
 					<tbody id="filesTable">	
 						<?php
-							foreach($files as $file) {
+							foreach($doc->files as $file) {
 								$fileName = $file['name'];
 								$fileSize = $file['size'];
 								$fileId = $file['id'];
