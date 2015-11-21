@@ -17,7 +17,7 @@ function Modal(title,text,onok,canIgnore) {
 	darken.style.backgroundColor = "black";
 	darken.style.opacity = "0.66";
 	document.body.appendChild(darken);
-
+	document.body.style.overflowY = "hidden";
 	var modalPophover = new Pophover(darken,title,text,onok);
 	modalPophover.show();
 	center(modalPophover.pop);
@@ -31,10 +31,12 @@ function Modal(title,text,onok,canIgnore) {
 	darken.onclick = function() {
 		if(!canIgnore) return false;
 		document.body.removeChild(this);
+		document.body.style.overflowY = "auto";
 		modalPophover.hide();
 	}
 
 	modalPophover.closeButton.onclick = function() { 
+		document.body.style.overflowY = "auto";
 		document.body.removeChild(darken); 
 		modalPophover.hide(); 
 		if(onok) onok();

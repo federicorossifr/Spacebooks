@@ -100,6 +100,7 @@
 			var img = new Image();
 			img.src = obj.src;
 			img.alt = obj.alt;
+			img.width = "200";
 			var link = obj.parentElement.href;
 			PictureModal("Premi OK per andare al documento",img,function() {location.href=link});
 		}

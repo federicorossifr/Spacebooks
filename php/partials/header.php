@@ -11,6 +11,8 @@
 	<meta charset="utf-8">
 	<title>Bookd</title>
 
+	<meta name="theme-color" content="#3F51B5">
+
 
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>

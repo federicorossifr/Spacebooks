@@ -711,14 +711,13 @@ div.fileInput.pictureInput {
 table.userTable {
   border-collapse:collapse;
   width:100%;
-
 }
 
 table.userTable > tbody tr {
   background-color:#7986CB;
 }
 
-table.userTable td, table.userTable th {
+table.userTable td {
   display:block;
   text-align:center;
   padding:1%;
@@ -726,8 +725,8 @@ table.userTable td, table.userTable th {
 
 table.userTable tr {
   display:block;
+  margin-bottom:1em;
   position:relative;
-  margin-bottom:20px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
@@ -753,6 +752,7 @@ table.userTable td:before {
   color:white;
   padding:1%;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  text-align:center;
 }
 
 .popper > h3 {
