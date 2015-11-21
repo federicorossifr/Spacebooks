@@ -58,7 +58,7 @@
 			
 			<table class="userTable">
 				<thead>
-					<th>Visualizza</th>
+					<th>Copertina( clicca per aprire il documento )</th>
 					<th>Titolo</th>
 					<th>Prezzo</th>
 					<th>Data pubblicazione</th>
@@ -67,15 +67,16 @@
 
 				<tbody id="documentsTable">
 					<?php
-						foreach($documents as $document) {
-							echo "<tr>
-									<td><a href='./document.php?id=$document->id' class='view'>
-										<img class='shadow' onclick='handle(event,this)' src='{$document->picturePath}' width=\"200\" alt='no '/></a>
-									<td>$document->title
-									<td>$document->price
-									<td>$document->created
-									<td>$document->score";
-						}	
+						if($documents)
+							foreach($documents as $document) {
+								echo "<tr>
+										<td><a href='./document.php?id=$document->id' class='view'>
+											<img class='shadow' onclick='handle(event,this)' src='{$document->picturePath}' width=\"200\" alt='no '/></a>
+										<td>$document->title
+										<td>$document->price
+										<td>$document->created
+										<td>$document->score";
+							}	
 					?>
 				</tbody>
 

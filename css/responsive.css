@@ -711,7 +711,6 @@ div.fileInput.pictureInput {
 table.userTable {
   border-collapse:collapse;
   width:100%;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 
 }
 
@@ -726,8 +725,9 @@ table.userTable td, table.userTable th {
 }
 
 table.userTable tr {
+  display:block;
   position:relative;
-  border-bottom:10px solid white;
+  margin-bottom:20px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
