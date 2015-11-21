@@ -61,6 +61,8 @@ nav > ul > li > a {
   padding:0.5em 0.5em;
   line-height: 2em;
   transition: color 0.2s ease-in-out;
+  border-bottom:1px solid transparent;
+
 }
 
 nav > ul > li.active > a, nav > ul > li > a:hover {
@@ -714,14 +716,13 @@ table.userTable th {
 .view > img {
   display:block;
   height:30px;
+  width:30px;
   margin-left:auto;
   margin-right:auto;
   transition: transform 0.3s ease-in-out;
 }
 
-.view > img:hover {
-  transform: rotate(45deg);
-}
+
 
 .about {
   position:relative;

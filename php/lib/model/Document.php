@@ -18,6 +18,7 @@ class Document {
 	private $tags;
 	private $picturePath;
 	private $files;
+	private $avg;
 
 	function __construct($fields = array()) {
 		if($fields) {
@@ -165,6 +166,7 @@ class Document {
 		$this->tags = $this->getTags();
 		$this->files = $this->getFiles();
 		$this->picturePath = $this->getCover();
+		$this->avg = ($this->votings > 0) ? $this->score / $this->votings : 0;
 	}
 }
 

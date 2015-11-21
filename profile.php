@@ -70,7 +70,7 @@
 						foreach($documents as $document) {
 							echo "<tr>
 									<td><a href='./document.php?id=$document->id' class='view'>
-										<img src='./img/compass.png' alt='no '/></a>
+										<img class='shadow' onclick='handle(event,this)' src='{$document->picturePath}' width=\"200\" alt='no '/></a>
 									<td>$document->title
 									<td>$document->price
 									<td>$document->created
@@ -92,6 +92,16 @@
 		frgMnts.makeSelectors();
 		var documentsTable = document.getElementById("documentsTable");
 		makeResponsive(documentsTable);
+
+		function handle(event,obj) {
+			event.stopPropagation();
+			event.preventDefault();
+			var img = new Image();
+			img.src = obj.src;
+			img.alt = obj.alt;
+			var link = obj.parentElement.href;
+			PictureModal("Premi OK per andare al documento",img,function() {location.href=link});
+		}
 	</script>
 </html>
 

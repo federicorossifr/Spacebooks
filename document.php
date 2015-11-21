@@ -19,12 +19,17 @@
 
 				<div class="left">
 					<div class="stars shadow">
-						<img class="star " src="img/star_on.png" width="30">
-						<img class="star " src="img/star_on.png" width="30">
-						<img class="star " src="img/star_on.png" width="30">
-						<img class="star " src="img/star_off.png" width="30">
-						<img class="star" src="img/star_off.png" width="30">
+						<?php
+							for($i = 0; $i < 5; ++$i) {
+									if($i < floor($doc->avg))
+										echo "<img class=\"star \" src=\"img/star_on.png\" width=\"30\">";
+									else 
+										echo "<img class=\"star \" src=\"img/star_off.png\" width=\"30\">";
+							}
+						?><br>
+						<strong><?php echo $doc->avg . " ($doc->votings)" ?></strong>
 					</div>
+					<hr>
 					<img class="shadow" src=" <?= $doc->picturePath ?> " width="200" alt="no">
 					<span class="prettyButton"><?= $doc->price ?>BC</span>
 
@@ -42,11 +47,18 @@
 
 			<article data-fragment data-name="Informazioni e autore">
 				
-				<div class="left">
-					<!-- Author info -->
+				<div class="left shadow">
+					<?php
+						foreach($doc->tags as $tag) {
+							echo "{$tag['name']}<br>";
+						}
+
+
+
+					?>
 				</div>
 
-				<div class="left">
+				<div class="left shadow">
 					<!-- Tag info -->
 				</div>
 

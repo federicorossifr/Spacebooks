@@ -112,6 +112,7 @@ class User {
 		$result = $stmnt->get_result();
 		$documents = array();
 		while($row = $result->fetch_object('Document')) {
+			$row->populate();
 			array_push($documents,$row);
 		}
 		return $documents;

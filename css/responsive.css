@@ -24,8 +24,10 @@ body > header > h1 {
   margin-left:auto;
   margin-right:auto;
   text-align: center;
+  font-family: "Pacifico","sans-serif";
+  font-size: 30px;
+  text-shadow: 0 2px 3px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.24);
 }
-
 
 
 /* Stile CSS per la barra di navigazione */
@@ -51,13 +53,11 @@ nav > ul > li {
 }
 
 nav > ul > li > a {
-  color:rgba(0,0,0,0.50);
+  color:white;
   display: block;
   text-decoration: none;
   padding:0.5em 0.5em;
   line-height: 2em;
-
-  transition: color 0.2s ease-in-out;
 }
 
 nav > ul > li.active > a, nav > ul > li > a:hover {
@@ -511,8 +511,25 @@ label.errormsg::after {
 
 
 #navToggle a {
+ color:white;
 font-weight: bolder;
 cursor: pointer;
+text-align:left;
+text-indent:40px;
+transition: all 0.3s ease-in-out;
+}
+
+#navToggle a:hover {
+  text-align:center;
+  text-indent: 0;
+  color:blacK;
+}
+
+#navToggle {
+  background-image: url("../img/menu.png");
+  background-position: 10px center;
+  background-size:30px;
+  background-repeat:no-repeat;
 }
 
 div.fileInput {
@@ -709,7 +726,9 @@ table.userTable td, table.userTable th {
 }
 
 table.userTable tr {
+  position:relative;
   border-bottom:10px solid white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 table.userTable th {
@@ -765,4 +784,5 @@ table.userTable td:before {
   padding:5%;
   word-break:break-all;
   box-sizing:border-box;
+  margin-top:1em;
 }
