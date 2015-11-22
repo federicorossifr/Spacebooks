@@ -797,3 +797,21 @@ table.userTable th {
   width:200px;
   text-align:center;
 }
+
+dl.left {
+  width:calc(50% - 2px);
+  margin:0;
+}
+
+dl.right {
+  width:calc(50% - 2px);
+  margin-left:4px;
+}
+
+dd > .prettyButton {
+  display:none;
+}
+
+dd:hover > .prettyButton {
+  display:inline-block;
+}

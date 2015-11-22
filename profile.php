@@ -21,7 +21,7 @@
 	?>
 
 	<main id="mainFragment">
-		<header><h2>Profilo di <?= $profile->username ?></h2></header>
+		<header><h2>Profilo di <?= $profile->name ?></h2></header>
 
 		<article data-fragment data-name="Profilo Pubblico">
 			<header><h3>Profile info</h3></header>
@@ -84,7 +84,29 @@
 		</article>
 
 
-		<article data-fragment data-name="Profilo Privato"></article>
+		<article id="private" data-fragment data-name="Profilo Privato">
+
+			<dl class="left">
+
+					<dt>Crediti</dt>
+					<dd><?= $profile->credits ?>
+					</dd>
+
+					<dt>Username</dt>
+					<dd><?= $profile->username ?></dd>
+
+					<dt>Email</dt>
+					<dd><?= $profile->email ?>
+					</dd>
+
+					<dt>Password</dt>
+					<dd>**********
+					</dd>
+
+			</dl>
+
+
+		</article>
 
 	</main>
 	</body>
@@ -104,6 +126,8 @@
 			var link = obj.parentElement.href;
 			PictureModal("Premi OK per andare al documento",img,function() {location.href=link});
 		}
+
+
 	</script>
 </html>
 

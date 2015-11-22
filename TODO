@@ -16,7 +16,3 @@ SECONDARY
 
 1. In body.js make use of picUploader.js instead of actual implementation for pic uploading. {JS}
 
-2. CSS and Javascript General Cleaning {CSS,JS} 
-	a. Less use of global variables; {JS} OK
-	b. ...
-

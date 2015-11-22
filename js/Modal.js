@@ -21,12 +21,6 @@ function Modal(title,text,onok,canIgnore) {
 	var modalPophover = new Pophover(darken,title,text,onok);
 	modalPophover.show();
 	center(modalPophover.pop);
-	/*var renderedHeight = modalPophover.pop.offsetHeight;
-	var renderedWidth = modalPophover.pop.offsetWidth;
-	var windowWidth = parseInt(window.innerWidth);
-	var windowHeight = parseInt(window.innerHeight);
-	modalPophover.pop.style.top = (windowHeight/2) - (renderedHeight) / 2  + document.body.scrollTop +  'px';
-	modalPophover.pop.style.left = (windowWidth - renderedWidth) / 2 + 'px';*/
 
 	darken.onclick = function() {
 		if(!canIgnore) return false;
