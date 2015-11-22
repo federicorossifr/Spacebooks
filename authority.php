@@ -41,7 +41,7 @@
 										<td>$tmp->surname</td>
 										<td>$tmp->username</td>
 										<td>$tmp->email</td>
-										<td>$tmp->password</td>
+										<td>*******</td>
 										<td>$tmp->birthdate</td>
 										<td>$tmp->country</td>
 										<td>$tmp->role</td>

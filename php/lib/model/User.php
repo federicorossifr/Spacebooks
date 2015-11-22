@@ -37,12 +37,17 @@ class User {
 
 	public static function auth($username,$password) {
 		global $db;
-		$stmnt = $db->prepare("SELECT * FROM user WHERE username=? AND password=?");
-		$stmnt->bind_param("ss",$username,$password);
+		$stmnt = $db->prepare("SELECT * FROM user WHERE username=?");
+		$stmnt->bind_param("s",$username);
 		$stmnt->execute();
 		$result = $stmnt->get_result();
 		$user = $result->fetch_object('User');
-		return $user;
+		$userHashedPassword = $user->password;
+		$authStrategy = new Crypto($password,$userHashedPassword);
+		if($authStrategy->doMatch())
+			return $user;
+		else
+			return null;
 	}
 
 	public static function fetchAll() {
@@ -106,7 +111,7 @@ class User {
 
 	function getDocuments() {
 		global $db;
-		$stmnt = $db->prepare("SELECT * FROM document WHERE author=? AND available = 0");
+		$stmnt = $db->prepare("SELECT * FROM document WHERE author=?");
 		$stmnt->bind_param("i",$this->id);
 		$stmnt->execute();
 		$result = $stmnt->get_result();

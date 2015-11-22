@@ -3,6 +3,7 @@
 	session_start();
 	$fieldExists = null;
 
+
 	/*if(User::exists($_POST['email'])) {
 		$fieldExists = "Email";
 	}
@@ -18,9 +19,12 @@
 	}*/
 
 	if($_POST["password1"] == $_POST["password2"]) {
-		$_POST["password" ] = md5($_POST["password1"]);
+		$password = $_POST["password" ];
 		unset($_POST["password1"]);
 		unset($_POST["password2"]);
+		$regStrategy = new Crypto($password,"");
+		$password = $regStrategy->doCrypt();
+		$_POST['password'] = $password;
 
 		$_POST["birthdate"] = str_replace('/','-',$_POST['birthdate']);
 		$_POST["birthdate"] = date("Y-m-d", strtotime($_POST['birthdate']));

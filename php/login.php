@@ -4,7 +4,7 @@
 
 
 	$username = $_POST['username'];
-	$password = md5($_POST['password']);
+	$password = $_POST['password'];
 	$user = User::auth($username,$password);
 
 	if($user) {
