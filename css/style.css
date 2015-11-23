@@ -5,6 +5,7 @@ html,body {  /* Full width, height body and html */
   font-size:13px;
   background-color:#7986CB;
   font-family: 'Open Sans', sans-serif;
+  overflow-x:hidden;
 }
 
 
@@ -71,10 +72,9 @@ nav > ul > li.active > a, nav > ul > li > a:hover {
 }
 
 nav > ul > li > a > img {
-  display:block;
+  float:left;
   background-color:transparent;
-  height: 2em;
-  width:2em;
+  height:2em;
   border-radius: 100%;
   border: 1px solid transparent;
   box-sizing:border-box;
@@ -109,6 +109,17 @@ aside#profile {
   left:-300px;
   transition: left 0.5s ease-in-out;
   z-index:10;
+}
+
+aside#search {
+  left:-300px;
+  transition: left 0.25s ease-in-out;
+
+  z-index:10;
+}
+
+aside#search:target {
+  left:calc(100% - 300px);
 }
 
 

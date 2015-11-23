@@ -3,7 +3,9 @@ html,body {
   width:100%;
   font-size:15px;     
   background-color:#7986CB;
-  font-family: 'Open Sans', sans-serif;}
+  font-family: 'Open Sans', sans-serif;
+  overflow-x:hidden;
+}
 
 h1,h2,h3,h4,h5,h6 {
   font-weight:lighter;
@@ -108,6 +110,14 @@ aside#profile {
   transition: top 0.5s ease-in-out;
 }
 
+
+aside#search {
+  left:100%;
+}
+
+aside#searche:target {
+  left:calc(100% - 300px);
+}
 
 #bigPicture {
   border-radius:100%;

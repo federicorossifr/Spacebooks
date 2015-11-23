@@ -1,4 +1,6 @@
 function Body() {
+
+
 	this.profileSide = document.getElementById("profile"); // Barra laterale "aside" a comparsa
 	this.nav = document.getElementById("nav"); // Elemento "nav" per la navigazione
 	this.closeProfile = document.getElementById("close"); // Pulsante di chiusura della barra "aside"

@@ -10,7 +10,7 @@
 		</ul>
 
 		<ul id="nav">
-			<li <?php if($thisUrl == "/profile.php") echo "class='active' " ?> id="picture"><a id="toggleProfile"  href="#"><img src="<?= $user->picture ?>" alt="Profile"></a></li>
+			<li <?php if($thisUrl == "/profile.php") echo "class='active' " ?> id="picture"><a id="toggleProfile"  href="#"><img src="<?= $user->picture ?>" alt="Profile"><?= " " . $user->username ?></a></li>
 
 			<?php
 				foreach ($menuVoices as $name => $address) {
@@ -22,6 +22,8 @@
 					echo "><a href='.$address' >$name</a></li>"; 
 				}
 			?>
+
+			<li class="right" id="searchButton"><a id="toggleSearch" href="#search"><img src="./img/search.png" >Cerca</a></li>
 		</ul>
 	</nav>
 
@@ -49,4 +51,24 @@
 				<li><a class="prettyButton" href="profile.php">Profile</a></li>
 				<li><a class="prettyButton" href="./php/logout.php">Logout</a></li>
 			</ul>
+		</aside>
+
+
+		<aside id="search">
+				<header>
+					<h2>Ricerca</h2>
+				</header>
+			<form>
+
+
+
+				<label for="titolo">Cosa vuoi cercare?</label>
+				<input class="light" name="ricerca" type="text">
+				
+				<button type="submit" class="prettyButton">Cerca</button>
+
+
+			</form>
+
+
 		</aside>
