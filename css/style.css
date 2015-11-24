@@ -826,3 +826,18 @@ dd > .prettyButton {
 dd:hover > .prettyButton {
   display:inline-block;
 }
+
+
+#resultList {
+  padding:0;
+  margin:0;
+  list-style:none;
+  margin-top:-15px;
+}
+
+
+#resultList li {
+  background-color:#3F51B5;
+ line-height:40px;
+ color:white;
+}
