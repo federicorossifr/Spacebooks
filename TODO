@@ -2,8 +2,6 @@ PRIMARY
 
 1. Add support for document edit ( maybe with document.php?id=xx&editmode=1);  {PHP,HTML,CSS,JS}
 
-2. Add deep-accout info and  profile-settings for users (maybe all in account.php 
-	or extension of user.php when logged); {PHP,HTML,CSS,JS}
 
 3. Make business rules to show appropriate content on home page; {MY/SQL}
 

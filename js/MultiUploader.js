@@ -9,6 +9,7 @@ multiUploader.prototype.addUploader = function(caller,isRemovable) {
 			pop.show(1000);
 			return;
 		}
+		
 		lastUsed = false;
 		var newUploader = document.createElement("div");
 		newUploader.className = "fileInput fileUploader";
