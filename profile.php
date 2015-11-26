@@ -149,7 +149,7 @@
 
 			editForm.form.onsubmit = function(event) {
 				if(this.password.value != this.password2.value) {
-					console.log("ehia");
+					new Modal("Attenzione","Le password devono coincidere",function() {editForm.form.password2.focus()},false);
 					event.preventDefault();
 				}
 			}
