@@ -48,7 +48,6 @@
 				<form id="registerForm" method="POST" action="php/register.php">
 					<div id="cA">
 						<label id="nameW" for="name">Name</label><br>
-						
 						<input type="text" id="name"  name="name" placeholder="Example: Federico" required />
 						<label id="surnameW" for="surname">Surname</label><br>
 						<input type="text" id="surname" name="surname" placeholder="Example: Rossi" required />
@@ -68,7 +67,6 @@
 						<input type="password" id="password2" placeholder="Passwords must match" name="password2" required />
 					</div>
 					<button type="submit">REGISTER</button>
-
 					<span class="flash">
 						<i>
 						<?php
@@ -79,14 +77,9 @@
 						?>
 						</i>
 					</span>
-
-
-
 				</form>
 
 			<a class="prettyButton" href="about.php">Cos&apos;&egrave; Bookd?</a>
-
-
 		</section>
 		<script type="text/javascript" src="js/components/index.js"></script>
 	</body>

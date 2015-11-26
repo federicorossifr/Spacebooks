@@ -41,7 +41,7 @@
 			
 			</div>
 
-			<div id="close"></div>
+			<div class="closeButton" id="close"></div>
 
 			<header>
 				<h2><?= $user->name . ' ' . $user->surname?></h2>
@@ -58,70 +58,13 @@
 				<header>
 					<h2>Ricerca</h2>
 				</header>
+
+							<div id="closeSearch" class="closeButton"></div>
+
 			<form id="searchForm" method="POST" action="./test.php">
-
-
-
 				<label for="data">Cosa vuoi cercare?</label>
 				<input class="light" name="data" type="text" autocomplete="off">
-				
 				<ul class="shadow" id="resultList">
-
-
 				</ul>
-
-
-
 			</form>
-
-
-			<script type="text/javascript">
-				var searchForm = document.getElementById("searchForm");
-				var dataInput = searchForm.data;
-				var resultList = document.getElementById("resultList");
-
-				function empty() {
-					while(resultList.firstChild)
-						resultList.removeChild(resultList.firstChild);
-				}
-
-				searchForm.onsubmit = function(event) {
-					event.preventDefault();
-					return false;
-				}
-
-
-				function displaySuggestion(data) {
-					empty();
-					var datas = data.split("]");
-					var usrData = datas[1] + "]";
-					var docData = datas[0] + "]";
-					var decodedUsrData = JSON.parse(usrData);
-					var decodedDocData = JSON.parse(docData);
-					for(var i = 0; i < decodedDocData.length; ++i) {
-						console.log(i + ": " + decodedDocData[i].title);
-						var tmp = document.createElement("li");
-						tmp.textContent=decodedDocData[i].title;
-						resultList.appendChild(tmp);
-					}
-
-					for(var i = 0; i < decodedUsrData.length; ++i) {
-						console.log(i + ": " + decodedUsrData[i].username);
-						var tmp = document.createElement("li");
-						tmp.textContent=decodedUsrData[i].username;
-						resultList.appendChild(tmp);
-					}
-				}
-
-				var postClient = new AsyncReq("./test.php",displaySuggestion);
-
-				dataInput.oninput = function() {
-					var searchData = dataInput.value.replace(/^[ ]+$/,"");
-					if(searchData.length == 0) {empty(); return false;}
-					var params = [{'id':'data','value':dataInput.value}];
-					postClient.POST(params,"application/x-www-form-urlencoded");
-				}
-			</script>
-
-
 		</aside>

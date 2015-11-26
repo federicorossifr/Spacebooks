@@ -118,9 +118,6 @@ aside#search {
   z-index:10;
 }
 
-aside#search:target {
-  left:calc(100% - 300px);
-}
 
 
 #bigPicture {
@@ -556,7 +553,7 @@ label.errormsg::after {
 }
 
 
-#close {
+.closeButton {
   display:block;
   position:absolute;
   top:10px;
@@ -841,3 +838,24 @@ dd:hover > .prettyButton {
  line-height:40px;
  color:white;
 }
+
+
+#resultList li a {
+  color:white;
+  text-decoration:none;
+  
+}
+
+#private > div {
+  width:calc(50% - 10px);
+  text-align:center;
+  margin:0;
+}
+
+#private > div > form {
+  width:80%;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+

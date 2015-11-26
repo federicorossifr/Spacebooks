@@ -115,10 +115,6 @@ aside#search {
   left:100%;
 }
 
-aside#searche:target {
-  left:calc(100% - 300px);
-}
-
 #bigPicture {
   border-radius:100%;
   border: 2px solid #3F51B5;
@@ -795,4 +791,25 @@ table.userTable td:before {
   word-break:break-all;
   box-sizing:border-box;
   margin-top:1em;
+}
+
+#resultList {
+  padding:0;
+  margin:0;
+  list-style:none;
+  margin-top:-15px;
+}
+
+
+#resultList li {
+  background-color:#3F51B5;
+ line-height:40px;
+ color:white;
+}
+
+
+#resultList li a {
+  color:white;
+  text-decoration:none;
+  
 }

@@ -2,6 +2,7 @@
 <?php
 	require "./php/partials/secured.php";
 	$profile = null;
+	$self = false;
 	if(!isset($_GET['id']) || $_GET['id'] == $user->id) {
 		$profile = $user;
 		$self = true;
@@ -83,30 +84,44 @@
 			</table>
 		</article>
 
-
+		<?php if($self) { ?>
 		<article id="private" data-fragment data-name="Profilo Privato">
 
-			<dl class="left">
 
-					<dt>Crediti</dt>
+
+			<dl class="left">
+					<dt>I tuoi crediti</dt>
 					<dd><?= $profile->credits ?>
 					</dd>
 
-					<dt>Username</dt>
+					<dt>Il tuo nome utente per l'accesso</dt>
 					<dd><?= $profile->username ?></dd>
 
-					<dt>Email</dt>
+					<dt>La tua email</dt>
 					<dd><?= $profile->email ?>
-					</dd>
-
-					<dt>Password</dt>
-					<dd>**********
 					</dd>
 
 			</dl>
 
+			<div class="right shadow">
+				<h3>Modifica dati accesso</h3>
+				<form id="editForm">
+						<label for="oldPassword">Vecchia password</label>
+						<input class="light" type="password" id="oldPassword" name="oldPassword" required>
+						<label for="username">Nuovo nome utente</label>
+						<input class="light" type="text" id="username" name="username">
+						<label for="password">Nuova password (lascia vuoto per non cambiare)</label>
+						<input pattern=".{6,10}" class="light" type="password" id="password" name="password">
+						<label for="password2">Ripeti password</label>
+						<input class="light" type="password" id="password2" name="password2">
+						<button type="submit" class="prettyButton">Fatto</button><br>
+				</form>
+			</div>
+
+
 
 		</article>
+		<?php } ?>
 
 	</main>
 	</body>
@@ -126,6 +141,22 @@
 			var link = obj.parentElement.href;
 			PictureModal("Premi OK per andare al documento",img,function() {location.href=link});
 		}
+
+		function editFormCheck() {
+			var editForm = new FormControl("editForm");
+			editForm.addConstraint("username",/.?/);
+			editForm.addConstraintExtension("./php/async/exists.php","label","username","0","Already exists");
+
+			editForm.form.onsubmit = function(event) {
+				if(this.password.value != this.password2.value) {
+					console.log("ehia");
+					event.preventDefault();
+				}
+			}
+
+		}
+
+		editFormCheck();
 
 
 	</script>
