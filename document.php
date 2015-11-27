@@ -88,6 +88,26 @@
 					</tbody>
 				</table>
 			</article>
+
+
+			<article id="reviews" data-fragment data-name="Recensioni">
+				<div class="left shadow">
+					<h3>Dai una recensione</h3>
+					<div id="stars"></div>
+					<form method="POST" action="#">
+						<label for="text"></label>
+						<textarea class="light" id="text" name="text">Inserisci qua il testo della valutazione...</textarea>
+						<button type="submit" class="prettyButton">Invia</button>
+						<br>
+					</form>
+				</div>
+
+				<div class="shadow left">
+					<h3>Recensioni degli utenti</h3>
+
+				</div>
+
+			</article>
 		</div>
 	</main>
 
@@ -95,5 +115,6 @@
 		var docFragm = new Fragment("documentFragment");
 		docFragm.makeSelectors('a');
 		var filesTable = document.getElementById("filesTable");
+		var rev = new Reviewer("stars",5,0,null);
 		makeResponsive(filesTable);
 	</script>

@@ -15,6 +15,7 @@ Reviewer.prototype.init = function(max,selected) {
 		for(var i = 0; i < max; ++i) {
 			var star = document.createElement("img");
 			star.src = STAR_OFF;
+			star.width = "30";
 
 			star.id = i;
 			star.alt = "nostar";
@@ -23,20 +24,25 @@ Reviewer.prototype.init = function(max,selected) {
 			container.appendChild(star);
 			stars.push(star);
 		}
-		highlight(stars[selected-1]);
-		select(stars[selected-1]);
+
+		if(selected) {
+			highlight(this.stars[selected-1]);
+			select(this.stars[selected-1]);
+		}
 		
 		container.onmouseleave = function() { blur(); }
 	}
 }
 
+
 Reviewer.prototype.highlight = function(star) {
 	with(this) {
-		for(var i = 0; i <= Number(star.id); ++i) {
+		threshold = Number(star.getAttribute("id"));
+		for(var i = 0; i <= threshold; ++i) {
 			stars[i].src = STAR_ON;
 		}
 
-		for(var i = Number(star.id)+1; i < stars.length; ++i) {
+		for(var i =threshold+1; i < stars.length; ++i) {
 			stars[i].src = STAR_OFF;
 		}
 	}
@@ -63,6 +69,8 @@ Reviewer.prototype.select = function(star) {
 		}
 
 		selectedValue = Number(star.id);
-		callback(star); // o selectedValue boh
+
+		if(callback)
+			callback(star); 
 	}
 }

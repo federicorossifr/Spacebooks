@@ -403,6 +403,11 @@ form input.light {
   color:black;
 }
 
+form textarea.light {
+  background-color:white;
+  color:black;
+}
+
 
 
 form textarea:focus, div[contenteditable]:focus {
@@ -859,4 +864,26 @@ dd:hover > .prettyButton {
   margin-right:auto;
 }
 
+#reviews > div {
+  width:48%;
+}
 
+#reviews form {
+  width:90%;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+#reviews textarea {
+  width:100%;
+  height:200px;
+}
+
+#reviews  h3 {
+  text-align:center;
+}
+
+
+#stars {
+  text-align:center;
+}
