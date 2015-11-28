@@ -123,8 +123,20 @@ class Document {
 
 	function rate($vote,$comment,$user) {
 		global $db;
-		$stmnt = $db->prepare("INSERT INTO rating(document,user,score,opinion) VALUES(?,?,?,?)");
-		$stmnt->bind_param("iiis",$this->id,$user,$vote,$comment);
+		$smnt = null;
+
+		$existsReview = $db->prepare("SELECT * FROM rating WHERE document=? AND user=?");
+		$existsReview->bind_param("ii",$this->id,$user);
+		$existsReview->execute();
+		$result = $existsReview->get_result();
+		if($result->num_rows) {
+			$stmnt = $db->prepare("UPDATE rating WHERE document=? AND user=? SET opinion =?, vote = ?");
+			$stmnt->bind_param("iisi",$this->id,$user,$comment,$this->vote);
+		} else {
+			$stmnt = $db->prepare("INSERT INTO rating(document,user,score,opinion) VALUES(?,?,?,?)");
+			$stmnt->bind_param("iiis",$this->id,$user,$vote,$comment);
+		}
+		
 		$stmnt->execute();
 		return $db->insert_id;
 	}

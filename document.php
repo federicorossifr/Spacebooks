@@ -94,9 +94,11 @@
 				<div class="left shadow">
 					<h3>Dai una recensione</h3>
 					<div id="stars"></div>
-					<form method="POST" action="#">
-						<label for="text"></label>
-						<textarea class="light" id="text" name="text">Inserisci qua il testo della valutazione...</textarea>
+					<form id="reviewForm" method="POST" action="./php/review.php">
+						<label for="text">Testo valutazione</label>
+						<textarea class="light" id="text" name="text"></textarea>
+						<input type="hidden" name="score">
+						<input type="hidden" name="document" value="<?= $doc->id ?>">
 						<button type="submit" class="prettyButton">Invia</button>
 						<br>
 					</form>
