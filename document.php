@@ -98,7 +98,7 @@
 						<label for="text">Testo valutazione</label>
 						<textarea class="light" id="text" name="text"></textarea>
 						<input type="hidden" name="score">
-						<input type="hidden" name="document" value="<?= $doc->id ?>">
+						<input type="hidden" name="document" value="<?= $doc->id ?>">
 						<button type="submit" class="prettyButton">Invia</button>
 						<br>
 					</form>
@@ -116,7 +116,10 @@
 	<script type="text/javascript">
 		var docFragm = new Fragment("documentFragment");
 		docFragm.makeSelectors('a');
+		var reviewForm = new FormControl("reviewForm");
 		var filesTable = document.getElementById("filesTable");
-		var rev = new Reviewer("stars",5,0,null);
+		var rev = new Reviewer("stars",5,0,function(selectedValue) {
+			reviewForm.form.score.value = selectedValue + 1;
+		});
 		makeResponsive(filesTable);
 	</script>

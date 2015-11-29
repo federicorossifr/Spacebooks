@@ -71,6 +71,6 @@ Reviewer.prototype.select = function(star) {
 		selectedValue = Number(star.id);
 
 		if(callback)
-			callback(star); 
+			callback(selectedValue); 
 	}
 }

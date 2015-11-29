@@ -1,6 +1,5 @@
 <?php
 
-
 class Document {
 	private $db;
 	private $id;
@@ -130,8 +129,8 @@ class Document {
 		$existsReview->execute();
 		$result = $existsReview->get_result();
 		if($result->num_rows) {
-			$stmnt = $db->prepare("UPDATE rating WHERE document=? AND user=? SET opinion =?, vote = ?");
-			$stmnt->bind_param("iisi",$this->id,$user,$comment,$this->vote);
+			$stmnt = $db->prepare("UPDATE rating SET opinion =?, score = ? WHERE document=? AND user=?");
+			$stmnt->bind_param("siii",$comment,$vote,$this->id,$user);
 		} else {
 			$stmnt = $db->prepare("INSERT INTO rating(document,user,score,opinion) VALUES(?,?,?,?)");
 			$stmnt->bind_param("iiis",$this->id,$user,$vote,$comment);
