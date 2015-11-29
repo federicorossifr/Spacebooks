@@ -6,7 +6,7 @@ function Fragment(container,callback) {
 	this.controllerBar.className = "controllerBar";
 	this.queueSize = this.fragments.length;
 	this.pointer = 0;
-	this.onFragmentChange = callback;
+	this.callback = callback;
 	with(this) {
 		for(var index in fragments) {
 			if(!isNaN(index) && index != pointer) {
@@ -14,6 +14,7 @@ function Fragment(container,callback) {
 			}
 		}
 	}
+
 
 }
 
@@ -68,6 +69,8 @@ Fragment.prototype.next = function() {
 		fragments[pointer].style.display = "none";
 		pointer = (pointer+1) % queueSize;
 		fragments[pointer].style.display = "block";
+		if(onFragmentChange) onFragmentChange(pointer);
+
 
 		btns[pointer].className = "controller active";
 	}
@@ -81,6 +84,8 @@ Fragment.prototype.prev = function() {
 		fragments[pointer].style.display = "none";
 		pointer = (pointer == 0) ? queueSize -1 : pointer - 1;
 		fragments[pointer].style.display = "block";
+		if(onFragmentChange) onFragmentChange(pointer);
+
 
 		btns[pointer].className = "controller active";
 
@@ -100,4 +105,15 @@ Fragment.prototype.that = function(index) {
 		btns[pointer].className = "controller active";
 
 	}
+}
+
+Fragment.prototype.loadState = function() {
+	var last = localStorage.getItem(location.href);
+	if(last) this.that(last);
+}
+
+Fragment.prototype.onFragmentChange = function(index) {
+	if(this.callback)
+		this.callback(index);
+	localStorage.setItem(location.href,index);
 }

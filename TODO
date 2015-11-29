@@ -1,6 +1,5 @@
 PRIMARY
 
-1. Add support for document edit ( maybe with document.php?id=xx&editmode=1);  {PHP,HTML,CSS,JS}
 
 
 3. Make business rules to show appropriate content on home page; {MY/SQL}

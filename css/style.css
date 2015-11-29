@@ -831,7 +831,7 @@ dd:hover > .prettyButton {
 }
 
 
-#resultList {
+.resultList {
   padding:0;
   margin:0;
   list-style:none;
@@ -839,14 +839,14 @@ dd:hover > .prettyButton {
 }
 
 
-#resultList li {
+.resultList li {
   background-color:#3F51B5;
  line-height:40px;
  color:white;
 }
 
 
-#resultList li a {
+.resultList li a {
   color:white;
   text-decoration:none;
   
@@ -886,4 +886,57 @@ dd:hover > .prettyButton {
 
 #stars {
   text-align:center;
+}
+
+.reviewList {
+  list-style:none;
+  padding:0;
+  margin:0; 
+}
+
+.reviewList li {
+  background-color:white;
+  display:block;
+  width:90%;
+  padding:1%;
+  margin-bottom:5px;
+  margin-left:auto;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  margin-right:auto;
+}
+
+.reviewList div {
+  display:inline-block;
+  float:right;
+  margin:0;
+  padding:0;
+  border-bottom:1px solid rgba(0,0,0,0.50);
+  height:50px;
+}
+
+.reviewList div > img {
+  margin-top:10px;
+}
+
+.reviewList li > img {
+  float:left;
+  display:block;
+  width:50px;
+  border-bottom:1px solid rgba(0,0,0,0.50);
+}
+
+.reviewList span {
+  color:black;
+  display:block;
+  float:left;
+  line-height:50px;
+  border-bottom:1px solid rgba(0,0,0,0.50);
+  width: calc(100% - 200px);
+}
+
+.reviewList p {
+  color:black;
+  clear:left;
+  margin-left:50px;
+  padding:20px;
 }

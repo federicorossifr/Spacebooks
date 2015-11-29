@@ -4,6 +4,17 @@
 	$docId = $_GET['id'];
 	$doc = Document::read($docId);
 	$doc->populate();
+	$reviews = $doc->getRatings();
+	$userReview = $doc->getUserRate($_SESSION['user']->id);
+
+	function drawStars($score,$max) {
+		for($i = 0; $i < $max; ++$i) {
+			if($i < $score)
+				echo "<img class=\"star \" src=\"img/star_on.png\" width=\"30\">";
+			else 
+				echo "<img class=\"star \" src=\"img/star_off.png\" width=\"30\">";
+		}
+	}
 ?>
 <html lang="en">
 <?php
@@ -20,12 +31,7 @@
 				<div class="left">
 					<div class="stars shadow">
 						<?php
-							for($i = 0; $i < 5; ++$i) {
-									if($i < floor($doc->avg))
-										echo "<img class=\"star \" src=\"img/star_on.png\" width=\"30\">";
-									else 
-										echo "<img class=\"star \" src=\"img/star_off.png\" width=\"30\">";
-							}
+							drawStars(floor($doc->avg),5);
 						?><br>
 						<strong><?php echo $doc->avg . " ($doc->votings)" ?></strong>
 					</div>
@@ -96,9 +102,9 @@
 					<div id="stars"></div>
 					<form id="reviewForm" method="POST" action="./php/review.php">
 						<label for="text">Testo valutazione</label>
-						<textarea class="light" id="text" name="text"></textarea>
-						<input type="hidden" name="score">
-						<input type="hidden" name="document" value="<?= $doc->id ?>">
+						<textarea class="light" id="text" name="text"><?= ($userReview != null)? $userReview['opinion']:'' ?></textarea>
+						<input type="hidden" name="score" value="<?= ($userReview != null)? $userReview['score']:0 ?>">
+						<input type="hidden" name="document" value="<?= $doc->id ?>">
 						<button type="submit" class="prettyButton">Invia</button>
 						<br>
 					</form>
@@ -106,6 +112,22 @@
 
 				<div class="shadow left">
 					<h3>Recensioni degli utenti</h3>
+
+					<ul class="reviewList">
+						<?php
+							foreach($reviews as $rev) {
+								echo "<li>";
+								echo "<img src='" . $rev['user']->picture . "'/>";
+								echo "<div>";
+									drawStars($rev['score'],5);
+								echo "</div>";
+								echo "<span>" . $rev['user']->username . "</span>";
+								echo "<p>" . $rev['opinion'] . "</p>";
+								echo "</li>";
+							}
+
+						?>
+					</ul>
 
 				</div>
 
@@ -116,10 +138,13 @@
 	<script type="text/javascript">
 		var docFragm = new Fragment("documentFragment");
 		docFragm.makeSelectors('a');
+		docFragm.loadState();
 		var reviewForm = new FormControl("reviewForm");
+		var initialSelect = reviewForm.form.score.value;
 		var filesTable = document.getElementById("filesTable");
-		var rev = new Reviewer("stars",5,0,function(selectedValue) {
+		var rev = new Reviewer("stars",5,initialSelect,function(selectedValue) {
 			reviewForm.form.score.value = selectedValue + 1;
 		});
+
 		makeResponsive(filesTable);
 	</script>

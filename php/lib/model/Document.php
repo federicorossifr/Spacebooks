@@ -120,15 +120,36 @@ class Document {
 		return $db->insert_id;
 	}	
 
-	function rate($vote,$comment,$user) {
+	function getRatings() {
 		global $db;
-		$smnt = null;
+		$stmnt = $db->prepare("SELECT * FROM rating WHERE document=?");
+		$stmnt->bind_param("i",$this->id);
 
+		$stmnt->execute();
+		$result = $stmnt->get_result();
+
+		$resultVector = toArray($result);
+
+		foreach($resultVector as &$res) {
+			$res['user'] = User::read($res['user']);
+		}
+
+		return $resultVector;
+	}
+
+	function getUserRate($user) {
+		global $db;
 		$existsReview = $db->prepare("SELECT * FROM rating WHERE document=? AND user=?");
 		$existsReview->bind_param("ii",$this->id,$user);
 		$existsReview->execute();
 		$result = $existsReview->get_result();
-		if($result->num_rows) {
+		return $result->fetch_assoc();
+	}
+
+	function rate($vote,$comment,$user) {
+		global $db;
+		$stmnt = null;
+		if($this->getUserRate($user)) {
 			$stmnt = $db->prepare("UPDATE rating SET opinion =?, score = ? WHERE document=? AND user=?");
 			$stmnt->bind_param("siii",$comment,$vote,$this->id,$user);
 		} else {

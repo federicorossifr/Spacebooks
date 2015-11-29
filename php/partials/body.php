@@ -64,7 +64,8 @@
 			<form id="searchForm" method="POST" action="./test.php">
 				<label for="data">Cosa vuoi cercare?</label>
 				<input class="light" name="data" type="text" autocomplete="off">
-				<ul class="shadow" id="resultList">
+				<ul class="shadow resultList" id="resultList">
+					
 				</ul>
 			</form>
 		</aside>

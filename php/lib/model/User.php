@@ -138,5 +138,12 @@ class User {
 		}
 	}
 
-
+	function getPurchases() {
+		global $db;
+		$stmnt = $db->prepare("SELECT * FROM purchase WHERE purchaser=?");
+		$stmnt->bind_param("i",$this->id);
+		$stmnt->execute();
+		$result = $stmnt->get_result();
+		return toArray($result);
+	}
 }
