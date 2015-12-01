@@ -7,14 +7,7 @@
 	$reviews = $doc->getRatings();
 	$userReview = $doc->getUserRate($_SESSION['user']->id);
 
-	function drawStars($score,$max) {
-		for($i = 0; $i < $max; ++$i) {
-			if($i < $score)
-				echo "<img class=\"star \" src=\"img/star_on.png\" width=\"30\">";
-			else 
-				echo "<img class=\"star \" src=\"img/star_off.png\" width=\"30\">";
-		}
-	}
+
 ?>
 <html lang="en">
 <?php
@@ -58,9 +51,6 @@
 						foreach($doc->tags as $tag) {
 							echo "{$tag['name']}<br>";
 						}
-
-
-
 					?>
 				</div>
 

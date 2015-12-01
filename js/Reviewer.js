@@ -25,10 +25,10 @@ Reviewer.prototype.init = function(max,selected) {
 			stars.push(star);
 		}
 
-		if(selected) {
+		if(selected != 0) {
 			highlight(this.stars[selected-1]);
 			select(this.stars[selected-1]);
-		}
+		} 
 		
 		container.onmouseleave = function() { blur(); }
 	}

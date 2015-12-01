@@ -940,3 +940,88 @@ dd:hover > .prettyButton {
   margin-left:50px;
   padding:20px;
 }
+
+.documentList {
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+
+.documentList > li {
+  position:relative;
+  height:200px;
+  width:200px;
+  display:inline-block;
+  margin-left:10px;
+  overflow-y:hidden;
+}
+
+.documentList {
+  color:white;
+}
+
+.documentList a {
+  color:white;
+}
+
+
+/*.documentList a:before {
+  position:absolute;
+  z-index:1;
+  content:"Nuovo";
+  color:whitesmoke;
+  background-color:red;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  border-bottom-right-radius: 5px;
+  padding:5%;
+}*/
+
+.documentList a:hover:before {
+  opacity:0.2;
+}
+
+
+
+
+
+.documentList > li  img {
+  position:absolute;
+  width:100%;
+  height:100%;
+}
+
+.documentList > li  span {
+  position:absolute;
+  background-color:#3F51B5;
+  left:0;
+  width:100%;
+  text-align:center;
+  height:20%;
+  line-height:100%;
+  top:100%;
+  transition: top 0.1s ease-in-out;
+}
+
+.documentList > li:hover span {
+  top:80%;
+}
+
+.documentList > li:hover .stars {
+  top:0;
+}
+
+.documentList .star {
+  position:relative;
+  width:20px;
+  height:20px;
+  top:calc(50% - 10px);
+}
+
+.documentList .stars {
+  position:absolute;
+  width:100%;
+  height:20%;
+  top:-20%;
+  background-color:white;
+  transition:top 0.1s ease-in-out;
+}

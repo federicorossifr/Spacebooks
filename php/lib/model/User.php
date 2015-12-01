@@ -144,6 +144,13 @@ class User {
 		$stmnt->bind_param("i",$this->id);
 		$stmnt->execute();
 		$result = $stmnt->get_result();
-		return toArray($result);
+		$vect =  toArray($result);
+
+		foreach($vect as &$row) {
+			$row['document'] = Document::read($row['document']);
+			$row['document']->populate();
+		}
+
+		return $vect;
 	}
 }
