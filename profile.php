@@ -128,7 +128,7 @@
 	</body>
 	<script type="text/javascript">
 		var frgMnts = new Fragment("mainFragment");
-		frgMnts.makeSelectors();
+		frgMnts.makeSelectors("a");
 		var documentsTable = document.getElementById("documentsTable");
 		makeResponsive(documentsTable);
 

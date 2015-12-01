@@ -990,7 +990,7 @@ dd:hover > .prettyButton {
   height:100%;
 }
 
-.documentList > li  span {
+.documentList > li  div.title {
   position:absolute;
   background-color:#3F51B5;
   left:0;
@@ -1002,7 +1002,7 @@ dd:hover > .prettyButton {
   transition: top 0.1s ease-in-out;
 }
 
-.documentList > li:hover span {
+.documentList > li:hover div.title {
   top:80%;
 }
 

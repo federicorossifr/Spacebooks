@@ -6,7 +6,12 @@
 	$doc->populate();
 	$reviews = $doc->getRatings();
 	$userReview = $doc->getUserRate($_SESSION['user']->id);
-
+	$userPurchases = $user->getPurchases();
+	$isPurchased = false;
+	foreach($userPurchases as $purch) {
+		if($purch['document']->id == $docId)
+			$isPurchased = true;
+	}
 
 ?>
 <html lang="en">
@@ -33,7 +38,7 @@
 					<span class="prettyButton"><?= $doc->price ?>BC</span>
 
 					<?php
-						if($doc->price <= $user->credits)	
+						if($doc->price <= $user->credits || $isPurchased)	
 							echo "<a href=\"./php/buy.php?id=$doc->id\" class=\"prettyButton\">Acquista</a>";
 					?>
 
@@ -45,7 +50,7 @@
 			</article>
 
 			<article data-fragment data-name="Informazioni e autore">
-				
+				<header><h3>Informazioni e autore</h3></header>
 				<div class="left shadow">
 					<?php
 						foreach($doc->tags as $tag) {
@@ -61,6 +66,8 @@
 
 			</article>
 
+
+			<?php if($isPurchased) { ?>
 			<article data-fragment data-name="Files">
 				<header><h2>File del documento</h2></header>
 				<table class="userTable">
@@ -84,6 +91,7 @@
 					</tbody>
 				</table>
 			</article>
+			<?php } ?>
 
 
 			<article id="reviews" data-fragment data-name="Recensioni">
@@ -135,6 +143,5 @@
 		var rev = new Reviewer("stars",5,initialSelect,function(selectedValue) {
 			reviewForm.form.score.value = selectedValue + 1;
 		});
-
 		makeResponsive(filesTable);
 	</script>

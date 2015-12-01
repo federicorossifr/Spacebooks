@@ -899,7 +899,7 @@ table.userTable td:before {
   left:0;
 }
 
-.documentList > li  span {
+.documentList > li  div.title {
   position:absolute;
   background-color:#3F51B5;
   left:0;
@@ -911,7 +911,7 @@ table.userTable td:before {
   transition: top 0.1s ease-in-out;
 }
 
-.documentList > li:hover span {
+.documentList > li:hover div.title {
   top:80%;
 }
 

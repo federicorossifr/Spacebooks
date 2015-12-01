@@ -16,13 +16,14 @@
 
 			<div id="homeFragmentContainer">
 					<article data-fragment data-name="Ultimi acquisti">
+						<header><h3>Ultimi acquisti</h3></header>
 						<ul id="purchaseList" class="documentList">
 							<?php 
 								foreach($userPurchases as $purch) {
 									echo "<li class='shadow'>";
 										echo "<a href='./document.php?id={$purch['document']->id}'>";
-											echo "<img src={$purch['document']->picturePath}>";
-											echo "<span class='shadow'><p>{$purch['document']->title}</p></span>";
+											echo "<img alt='cover' src={$purch['document']->picturePath}>";
+											echo "<div class='title shadow'><p>{$purch['document']->title}</p></div>";
 											echo "<div class='stars shadow'>";
 											drawStars(floor($purch['document']->avg),5);
 											echo "</div>";
@@ -35,6 +36,7 @@
 					</article>
 
 					<article data-fragment data-name="Consigliati">
+							<header><h3>Consigliati</h3></header>
 							<table class="userTable">
 								<thead>
 									<th>1</th>
@@ -64,7 +66,7 @@
 
 	<script type="text/javascript">
 		var homeFragment = new Fragment("homeFragmentContainer");
-		homeFragment.makeSelectors();
+		homeFragment.makeSelectors("a");
 
 	</script>
 </html>

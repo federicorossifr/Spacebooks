@@ -14,8 +14,13 @@ function parse(parent,vector) {
 		var endTag = String("</" + String(parent.tagName) +">");
 		vector.push(startTag);
 	} else {
-		vector.push(parent.textContent);
-
+		var txt = parent.textContent;
+		txt =  txt.replace(/&/g, "&amp;")
+         .replace(/</g, "")
+         .replace(/>/g, "")
+         .replace(/"/g, "")
+         .replace(/'/g, "&#039;");
+		vector.push(txt);
 	}
 
 	var chdrn = parent.childNodes;

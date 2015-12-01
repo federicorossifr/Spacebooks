@@ -23,7 +23,7 @@
 				}
 			?>
 
-			<li class="right" id="searchButton"><a id="toggleSearch" href="#search"><img src="./img/search.png" >Cerca</a></li>
+			<li class="right" id="searchButton"><a id="toggleSearch" href="#search"><img alt="search" src="./img/search.png" >Cerca</a></li>
 		</ul>
 	</nav>
 
@@ -63,7 +63,7 @@
 
 			<form id="searchForm" method="POST" action="./test.php">
 				<label for="data">Cosa vuoi cercare?</label>
-				<input class="light" name="data" type="text" autocomplete="off">
+				<input class="light" id="data" name="data" type="text" autocomplete="off">
 				<ul class="shadow resultList" id="resultList">
 					
 				</ul>
