@@ -72,7 +72,7 @@
 							foreach($documents as $document) {
 								echo "<tr>
 										<td><a href='./document.php?id=$document->id' class='view'>
-											<img class='shadow' onclick='handle(event,this)' src='{$document->picturePath}' width=\"200\" alt='no '/></a>
+											<img class='shadow' onclick='bigDocumentPicture(event,this)' src='{$document->picturePath}' width=\"200\" alt='no '/></a>
 										<td>$document->title
 										<td>$document->price
 										<td>$document->created
@@ -132,7 +132,7 @@
 		var documentsTable = document.getElementById("documentsTable");
 		makeResponsive(documentsTable);
 
-		function handle(event,obj) {
+		function bigDocumentPicture(event,obj) {
 			event.stopPropagation();
 			event.preventDefault();
 			var img = new Image();

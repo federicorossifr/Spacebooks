@@ -4,7 +4,10 @@
 	$menuVoices['create'] = "/create.php";
 	$menuVoices['admin'] = "/authority.php";
 	$menuVoices['moderate'] = "/authority.php";
-	$thisUrl =  $_SERVER['REQUEST_URI'];
+	$thisUri = $_SERVER['REQUEST_URI'];
+	$explodedUri = explode("/", $thisUri);
+	$index = count($explodedUri) - 1;
+	$thisUrl = "/" . $explodedUri[$index];
 ?>
 
 <head>
