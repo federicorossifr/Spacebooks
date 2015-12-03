@@ -8,4 +8,5 @@
 
 	$doc = Document::read($docId);
 	$doc->rate($score,$comment,$userId);
+	$db->close();
 	header("Location: ../document.php?id=$docId");

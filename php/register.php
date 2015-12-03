@@ -4,20 +4,6 @@
 	$fieldExists = null;
 
 
-	/*if(User::exists($_POST['email'])) {
-		$fieldExists = "Email";
-	}
-
-	if(User::exists($_POST['username'])) {
-		$fieldExists = "Username";
-	}
-
-	if($fieldExists) {
-		$_SESSION['rerror'] = $fieldExists .  " is already registered";
-		header("Location: ../index.php");
-		die;
-	}*/
-
 	if($_POST["password1"] == $_POST["password2"]) {
 		$password = $_POST["password" ];
 		unset($_POST["password1"]);
@@ -33,11 +19,14 @@
 		$user = User::read($newUserId);
 		$_SESSION['user'] = $user;
 		$_SESSION['logged'] = true;
+		$db->close();
 		header("Location: ../profile.php");
 		die;
 	} else {
 		$_SESSION['rerror'] = "Passwords does not match";
 		header("Location: ../index.php");
 	}
+
+
 
 

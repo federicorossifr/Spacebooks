@@ -12,7 +12,6 @@
 		if($purch['document']->id == $docId)
 			$isPurchased = true;
 	}
-
 ?>
 <html lang="en">
 <?php
@@ -38,8 +37,11 @@
 					<span class="prettyButton"><?= $doc->price ?>BC</span>
 
 					<?php
-						if($doc->price <= $user->credits || $isPurchased)	
+						if($doc->price <= $user->credits && !$isPurchased)	
 							echo "<a href=\"./php/buy.php?id=$doc->id\" class=\"prettyButton\">Acquista</a>";
+						if($isPurchased)
+							echo "<a href='#' onclick='docFragm.that(2)' class=\"prettyButton\">Apri</a>";
+
 					?>
 
 				</div>
@@ -85,7 +87,12 @@
 								$fileSize = $file['size'];
 								$fileId = $file['id'];
 								$fileDate = $file['created'];
-								echo "<tr><td>$fileName<td>$fileSize<td>$fileDate<td>$fileId</tr>";
+								echo "<tr>
+										<td>$fileName
+										<td>$fileSize
+										<td>$fileDate
+										<td><a href='./php/download.php?did=$docId&fid=$fileId'>Download</a>
+									</tr>";
 							}
 						?>
 					</tbody>

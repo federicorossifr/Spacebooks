@@ -6,6 +6,7 @@
 	$username = $_POST['username'];
 	$password = $_POST['password'];
 	$user = User::auth($username,$password);
+	$db->close();
 
 	if($user) {
 		$_SESSION['user'] = $user;
@@ -17,4 +18,5 @@
 		$_SESSION['lerror'] = "Login error";
 		header("Location: ../index.php");
 	}
+
 ?>

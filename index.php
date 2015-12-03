@@ -5,6 +5,10 @@
 	if(!isset($_COOKIE['firstTime'])) {
 		header("Location: ./about.php");
 	}
+
+	if(isset($_SESSION['user']) && $_SESSION['user']) {
+		header("Location: ./home.php");
+	}
 	include "./php/partials/header.php";
 ?>
 

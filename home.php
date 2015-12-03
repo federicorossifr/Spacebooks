@@ -50,7 +50,6 @@
 							</table>
 
 							<a class="prettyButton">Carica altro</a>
-
 					</article>
 
 

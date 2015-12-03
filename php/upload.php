@@ -35,6 +35,7 @@
 			$doc->addFile($id);
 		} else {
 			$doc->delete();
+			$db->close();
 			$_SESSION['cerror'] = "Errore nella creazione del documento";
 			header("Location: ../home.php");
 			die;
@@ -44,5 +45,7 @@
 	foreach($tags as $tag) {
 		$doc->tag($tag);
 	}
+
+	$db->close();
 
 	header("Location: ../document.php?id=$dId");

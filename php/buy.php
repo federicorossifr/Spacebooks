@@ -5,7 +5,6 @@
     if($user && $docId = $_GET['id']) {
     	$result = $user->purchase($docId);
     	if($result) {
-            $user->refresh();
     		header("Location: ../document.php?id=$docId");
         }
     	else

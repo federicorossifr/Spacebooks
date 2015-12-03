@@ -17,7 +17,14 @@
 				echo "<img alt='star$i' class=\"star \" src=\"img/star_off.png\" width=\"30\">";
 		}
 	}
-	
+
+	function serveFile($filePath) {
+		header('Content-type: application/pdf');
+		header('Content-Disposition: attachment; filename="bookdFile.pdf"');
+		readfile($filePath);
+	}
+
+
 	require __DIR__ . "/model/User.php";
 	require __DIR__ . "/model/Document.php";
 

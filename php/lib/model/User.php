@@ -24,6 +24,10 @@ class User {
 		}
 	}
 
+	public function __wakeup() {
+		$this->refresh();
+	}
+
 	public static function read($id) {
 		global $db;
 		$stmnt = $db->prepare("SELECT * FROM user WHERE id=?");

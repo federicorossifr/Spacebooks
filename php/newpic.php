@@ -9,5 +9,7 @@
 	  	$_SESSION['user']->picture = $path; 
 	  	$_SESSION['user']->update();
   	}
-  	
+	
+	$db->close();
+
   	header("Location: ../home.php");
