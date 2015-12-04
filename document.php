@@ -12,6 +12,7 @@
 		if($purch['document']->id == $docId)
 			$isPurchased = true;
 	}
+
 ?>
 <html lang="en">
 <?php
@@ -141,6 +142,10 @@
 	</main>
 
 	<script type="text/javascript">
+		<?php
+			echo "var tags = " . json_encode($doc->tags) . ";";
+		?>
+		storeTags(tags);
 		var docFragm = new Fragment("documentFragment");
 		docFragm.makeSelectors('a');
 		docFragm.loadState();

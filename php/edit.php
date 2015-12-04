@@ -7,7 +7,7 @@
 		case 'user':
 			$user = User::auth($_SESSION['user']->username,$_POST['oldPassword']);
 			if(!$user) {
-				$_SESSION['eError'] = "Password errata";
+				$_SESSION['eError'] = "La password inserita è errata";
 				break;
 			}
 
@@ -23,7 +23,7 @@
 
 			$user->update();
 			$db->close();
-			header("Location: ../profile.php");
 			break;
 	}
 
+	header("Location: ../profile.php");

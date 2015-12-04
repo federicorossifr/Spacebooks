@@ -6,7 +6,7 @@
 <?php
 	include "./php/partials/header.php";
 	include "./php/partials/body.php";
-
+	print_r($_COOKIE);
 	$userPurchases = $user->getPurchases();
 ?>
 
@@ -66,6 +66,31 @@
 	<script type="text/javascript">
 		var homeFragment = new Fragment("homeFragmentContainer");
 		homeFragment.makeSelectors("a");
+		var tgs = loadTags().split(";");
+
+		function handler(data) {
+			this.lastGet = 0;
+		}
+
+		handler.prototype.onData = function(data) {
+			data = JSON.parse(data);
+
+			if(data.length)
+				this.lastGet = data[data.length -1].id;
+			console.log(data);
+			console.log(this.lastGet)
+		}
+
+
+		function getTaggedDocuments(tag,start,step,callback) {
+			var params = [{'id':'start','value':start},{'id':'by','value':step},{'id':'tag','value':tag}];
+			DataLoad("./php/async/documentsIncrementalLoading.php",params,callback);
+		}
+
+		var dataHandler = new handler("");
+		getTaggedDocuments(1,dataHandler.lastGet,5,dataHandler.onData);
+
+
 
 	</script>
 </html>

@@ -19,3 +19,36 @@ Tag.prototype.emit = function() {
 	var jsonData = JSON.stringify(filtered);
 	return jsonData;
 }
+
+
+function loadTags() {
+	var stored = localStorage.getItem("tags");
+	return stored;
+}
+
+function isSavedTag(tags,tag) {
+	for(var i = 0; i < tags.length; ++i) {
+		if(tags[i] == tag.id) return true;
+	}
+	return false;
+}
+
+function storeTags(tags) {
+	var stored = loadTags();
+	stored = (stored)? stored:"";
+
+	tagsVector = stored.split(";");
+	for(var i = 0; i < tags.length; ++i) {
+		console.log(tags[i].id)
+		if(!isSavedTag(tagsVector,tags[i])) {
+			stored+= tags[i].id;
+
+			if(i != tags.length - 1) stored+=";";
+		}
+	}
+	localStorage.setItem("tags",stored);
+}
+
+function clearTags() {
+	localStorage.setItem("tags","");
+}

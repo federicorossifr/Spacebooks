@@ -33,7 +33,6 @@ AsyncReq.prototype.POST = function(params,type) {
 		if(i != params.length - 1) {
 			data+="&";
 		}
-
 	}
 	this.client.send(data);
 }

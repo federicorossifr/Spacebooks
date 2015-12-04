@@ -1,9 +1,9 @@
 <?php
 	$menuVoices = array();
 	$menuVoices['home'] = "/home.php";
-	$menuVoices['create'] = "/create.php";
+	$menuVoices['crea'] = "/create.php";
 	$menuVoices['admin'] = "/authority.php";
-	$menuVoices['moderate'] = "/authority.php";
+	$menuVoices['modera'] = "/authority.php";
 	$thisUri = $_SERVER['REQUEST_URI'];
 	$explodedUri = explode("/", $thisUri);
 	$index = count($explodedUri) - 1;

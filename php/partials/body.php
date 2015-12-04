@@ -15,7 +15,7 @@
 			<?php
 				foreach ($menuVoices as $name => $address) {
 					if($name == "admin" && $user->role != "admin") continue;
-					if($name == "moderate" && $user->role != "moderator") continue;
+					if($name == "modera" && $user->role != "moderator") continue;
 					$name = ucfirst($name);
 					echo "<li ";
 					if($address == $thisUrl) echo "class='active'";
