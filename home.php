@@ -6,7 +6,6 @@
 <?php
 	include "./php/partials/header.php";
 	include "./php/partials/body.php";
-	print_r($_COOKIE);
 	$userPurchases = $user->getPurchases();
 ?>
 
@@ -30,26 +29,15 @@
 										echo "</a>";
 									echo "</li>";
 								}
-
 							?>
 						</ul>
 					</article>
 
 					<article data-fragment data-name="Consigliati">
 							<header><h3>Consigliati</h3></header>
-							<table class="userTable">
-								<thead>
-									<th>1</th>
-									<th>2</th>
-									<th>3</th>
-									<th>4</th>
-								</thead>
-								<tbody id="body">
-
-								</tbody>
-							</table>
-
-							<a class="prettyButton">Carica altro</a>
+							<ul id="suggestedDocuments" class="documentList">
+							</ul>
+							<a id="loadMore" class="prettyButton">Carica altro</a>
 					</article>
 
 
@@ -62,35 +50,8 @@
 
 
 	</body>
-
+	<script type="text/javascript" src="./js/components/home.js"></script>
 	<script type="text/javascript">
-		var homeFragment = new Fragment("homeFragmentContainer");
-		homeFragment.makeSelectors("a");
-		var tgs = loadTags().split(";");
-
-		function handler(data) {
-			this.lastGet = 0;
-		}
-
-		handler.prototype.onData = function(data) {
-			data = JSON.parse(data);
-
-			if(data.length)
-				this.lastGet = data[data.length -1].id;
-			console.log(data);
-			console.log(this.lastGet)
-		}
-
-
-		function getTaggedDocuments(tag,start,step,callback) {
-			var params = [{'id':'start','value':start},{'id':'by','value':step},{'id':'tag','value':tag}];
-			DataLoad("./php/async/documentsIncrementalLoading.php",params,callback);
-		}
-
-		var dataHandler = new handler("");
-		getTaggedDocuments(1,dataHandler.lastGet,5,dataHandler.onData);
-
-
-
+		homeInit();
 	</script>
 </html>

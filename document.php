@@ -41,7 +41,7 @@
 						if($doc->price <= $user->credits && !$isPurchased)	
 							echo "<a href=\"./php/buy.php?id=$doc->id\" class=\"prettyButton\">Acquista</a>";
 						if($isPurchased)
-							echo "<a href='#' onclick='docFragm.that(2)' class=\"prettyButton\">Apri</a>";
+							echo "<a id='openDoc' href='#' onclick='docFragm.that(2)' class=\"prettyButton\">Apri</a>";
 
 					?>
 
@@ -140,20 +140,10 @@
 			</article>
 		</div>
 	</main>
-
+	<script type="text/javascript" src="./js/components/document.js"></script>
 	<script type="text/javascript">
 		<?php
 			echo "var tags = " . json_encode($doc->tags) . ";";
 		?>
-		storeTags(tags);
-		var docFragm = new Fragment("documentFragment");
-		docFragm.makeSelectors('a');
-		docFragm.loadState();
-		var reviewForm = new FormControl("reviewForm");
-		var initialSelect = reviewForm.form.score.value;
-		var filesTable = document.getElementById("filesTable");
-		var rev = new Reviewer("stars",5,initialSelect,function(selectedValue) {
-			reviewForm.form.score.value = selectedValue + 1;
-		});
-		makeResponsive(filesTable);
+		initDocument();
 	</script>
