@@ -71,7 +71,6 @@ Fragment.prototype.next = function() {
 		fragments[pointer].style.display = "block";
 		if(onFragmentChange) onFragmentChange(pointer);
 
-
 		btns[pointer].className = "controller active";
 	}
 }

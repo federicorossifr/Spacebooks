@@ -12,7 +12,6 @@
 		if($purch['document']->id == $docId)
 			$isPurchased = true;
 	}
-
 ?>
 <html lang="en">
 <?php
@@ -42,33 +41,15 @@
 							echo "<a href=\"./php/buy.php?id=$doc->id\" class=\"prettyButton\">Acquista</a>";
 						if($isPurchased)
 							echo "<a id='openDoc' href='#' onclick='docFragm.that(2)' class=\"prettyButton\">Apri</a>";
-
+						if($doc->price > $user->credits)
+							echo "<a href='#' class=\"prettyButton\">Crediti insufficienti</a>";
 					?>
 
 				</div>
-
 					<?= $doc->description ?>
-
-
-			</article>
-
-			<article data-fragment data-name="Informazioni e autore">
-				<header><h3>Informazioni e autore</h3></header>
-				<div class="left shadow">
-					<?php
-						foreach($doc->tags as $tag) {
-							echo "{$tag['name']}<br>";
-						}
-					?>
-				</div>
-
-				<div class="left shadow">
-					<!-- Tag info -->
-				</div>
-
+					
 
 			</article>
-
 
 			<?php if($isPurchased) { ?>
 			<article data-fragment data-name="Files">

@@ -13,7 +13,6 @@ class Document {
 	private $votings;
 	private $available;
 	private $cover;
-
 	private $tags;
 	private $picturePath;
 	private $files;
@@ -85,7 +84,6 @@ class Document {
 		$stmnt = $db->prepare("DELETE FROM document WHERE id=?");
 		$stmnt->bind_param("i",$this->id);
 		$stmnt->execute();
-
 	}
 
 	function getFiles() {
@@ -95,10 +93,6 @@ class Document {
 		$stmnt->execute();
 		$result = $stmnt->get_result();
 
-		/*$files = array();
-
-		while($row = $result->fetch_assoc())
-			array_push($files, $row);*/
 		return toArray($result);
 	}
 

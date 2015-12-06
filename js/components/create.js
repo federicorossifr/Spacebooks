@@ -40,22 +40,17 @@ function Create() {
 				var pop = new Modal("Attenzione",
 										"La descrizione è obbligatoria e deve essere di almeno 100 caratteri",
 										function() {fragments.that("1");});
-				//pop.show();
 				return;
 			}
 
 			if(!myUp.lastUsed) {
 				var pop = new Modal("Attenzione","Non sono stati usati tutti gli uploader.Elimina l'uploader o utilizzalo.",
 														function() {fragments.that("2")});
-				//pop.show();
 				return;
-
-
 			}
 			this.tags.value = tagHandler.emit();
 			this.submit();
 		}
 	}
-
 }
 
