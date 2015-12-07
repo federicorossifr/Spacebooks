@@ -18,6 +18,8 @@ function bigDocumentPicture(event,obj) {
 
 function editFormCheck() {
 	var editForm = new FormControl("editForm");
+	if(editForm.error) return;
+	if(!editForm) return false;
 	editForm.addConstraint("username",/.?/);
 	editForm.addConstraint("password",/^$|.{6,9}/);
 	editForm.addConstraintExtension("./php/async/exists.php","label","username","0","Already exists");

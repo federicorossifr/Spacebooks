@@ -1,4 +1,5 @@
 <?php
+
 class User {
 	private $id;
 	private $username;
@@ -154,7 +155,31 @@ class User {
 			$row['document'] = Document::read($row['document']);
 			$row['document']->populate();
 		}
-
 		return $vect;
 	}
+
+	function follow($mate,$unfollow = 0) {
+		global $db;
+		$stmnt = null;
+		$res = $unfollow+1;
+		if(!$unfollow)
+			$stmnt = $db->prepare("INSERT INTO followship(follower,followed) VALUES(?,?)");
+		else
+			$stmnt = $db->prepare("DELETE FROM followship WHERE follower = ? AND followed = ?");
+		$stmnt->bind_param("ii",$this->id,$mate);
+		if($stmnt->execute())
+			return $res;
+		else
+			return 0;
+	}
+
+	function getFellows() {
+		global $db;
+		$stmnt = $db->prepare("SELECT * FROM followship INNER JOIN user ON follower = id WHERE followed = ?");
+		$stmnt->bind_param('i',$this->id);
+		$stmnt->execute();
+		return toArray($stmnt->get_result());
+	}
 }
+
+

@@ -10,10 +10,17 @@
 		$id = $_GET['id'];
 		$profile = User::read($id);
 	}
-
-	if($profile)
+	$followers = null;
+	if($profile) {
 		$documents = $profile->getDocuments();
+		$followers = $profile->getFellows();
+	}
 
+	$following = false;
+	foreach($followers as $follower) {
+		if($follower['follower'] == $user->id)
+			$following = true;
+	}
 ?>
 <html lang="en">
 	<?php
@@ -29,9 +36,12 @@
 			<div class="left">
 				<img class="shadow" src="<?= $profile->picture ?>" width="200" alt="no">
 				
-				<?php if(!$self) { ?>	
-					<a class="prettyButton">Follow</a>
+				<?php if(!$self && !$following) { ?>
+					<a id="follow" onclick="ajaxFollow(this)" data-mate="<?= $profile->id ?>" data-follow="0" class="prettyButton">Segui</a>
 				<?php }?>
+				<?php if(!$self && $following) { ?>
+					<a id="follow" onclick="ajaxFollow(this)" data-mate="<?= $profile->id ?>" data-follow="1" class="prettyButton">Smetti di seguire</a>
+				<?php } ?> 
 			</div>
 			
 				<dl>
@@ -129,6 +139,23 @@
 	<script type="text/javascript" src="./js/components/profile.js"></script>
 	<script type="text/javascript">
 		initProfile();
+
+		function handleFollowResult(data,obj) {
+			data = parseInt(data);
+			var newAttr = (data == 2) ? "0":"1"; 
+			var newLabel = (data == 2) ? "Segui":"Smetti di seguire";
+			obj.setAttribute("data-follow",newAttr);
+			obj.firstChild.nodeValue = newLabel;
+		}
+
+		function ajaxFollow(obj) {
+			var id = obj.getAttribute("data-mate");
+			var unfollow = obj.getAttribute("data-follow");
+			var params = [{'id':'mate','value':id},{'id':'unfollow','value':unfollow}];
+			var client = new AsyncReq('./php/async/followship.php',function(data) {handleFollowResult(data,obj);});
+			client.POST(params,"application/x-www-form-urlencoded");
+		}
+
 		<?php
 			if(isset($_SESSION['eError'])) {
 				echo "new Modal('Errore','{$_SESSION['eError']}',null)";

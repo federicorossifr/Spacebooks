@@ -1,5 +1,10 @@
 function FormControl(formId,callback) {
 	this.form = document.getElementById(formId);
+	this.error = false;
+	if(!this.form) {
+		this.error = true;
+		return false;
+	}
 	this.formControls = this.form.querySelectorAll("input, textarea, select");
 	this.controlsCount = 0; //number of formControls that have to be validated
 	this.submitButton = this.form.querySelector("button[type='submit']");
