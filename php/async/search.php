@@ -3,7 +3,7 @@
 	$str = "%" . $_POST['data'] . "%";
 	$queryDoc = "SELECT DISTINCT D.id,D.title FROM document D INNER JOIN tagship T ON T.document = D.id
 													 INNER JOIN tag TT ON TT.id = T.tag
-				 WHERE (D.title LIKE ? OR D.description LIKE ? OR TT.name LIKE ?)";
+				 WHERE (D.title LIKE ? OR D.description LIKE ? OR TT.name LIKE ?) AND D.available = 1";
 	$queryUsr = "SELECT id,username FROM user WHERE name LIKE ? OR surname LIKE ? OR username LIKE ? ";
 
    	$stmntDoc = $db->prepare($queryDoc);

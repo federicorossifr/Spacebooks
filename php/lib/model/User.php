@@ -173,9 +173,13 @@ class User {
 			return 0;
 	}
 
-	function getFellows() {
+	function getFellows($direction = 1) {
 		global $db;
-		$stmnt = $db->prepare("SELECT * FROM followship INNER JOIN user ON follower = id WHERE followed = ?");
+		$stmnt = null;
+		if($direction)
+			$stmnt = $db->prepare("SELECT * FROM followship INNER JOIN user ON follower = id WHERE followed = ?");
+		else
+			$stmnt = $db->prepare("SELECT * FROM followship INNER JOIN user ON followed = id WHERE follower = ?");
 		$stmnt->bind_param('i',$this->id);
 		$stmnt->execute();
 		return toArray($stmnt->get_result());

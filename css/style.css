@@ -1002,8 +1002,19 @@ dd:hover > .prettyButton {
   transition: top 0.1s ease-in-out;
 }
 
+.documentList.people > li div.title {
+  top:80%;
+  background-color:white;
+  color:#3F51B5;
+  font-weight:bolder;
+}
+
 .documentList > li:hover div.title {
   top:80%;
+}
+
+.documentList.people > li:hover div.title {
+  top:100%;
 }
 
 .documentList > li:hover .stars {

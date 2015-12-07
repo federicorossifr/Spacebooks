@@ -51,21 +51,20 @@
 				<li><a class="prettyButton" href="profile.php">Profile</a></li>
 				<li><a class="prettyButton" href="./php/logout.php">Logout</a></li>
 			</ul>
-		</aside>
+	</aside>
 
 
-		<aside id="search">
-				<header>
-					<h2>Ricerca</h2>
-				</header>
+	<aside id="search">
+			<header>
+				<h2>Ricerca</h2>
+			</header>
 
-							<div id="closeSearch" class="closeButton"></div>
+			<div id="closeSearch" class="closeButton"></div>
 
 			<form id="searchForm" method="POST" action="./test.php">
 				<label for="data">Cosa vuoi cercare?</label>
 				<input class="light" id="data" name="data" type="text" autocomplete="off">
-				<ul class="shadow resultList" id="resultList">
-					
+				<ul class="shadow resultList" id="resultList">	
 				</ul>
 			</form>
-		</aside>
+	</aside>

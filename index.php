@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <?php
 	session_start();
 	if(!isset($_COOKIE['firstTime'])) {
@@ -42,7 +42,6 @@
 				</span>
 
 			</form>
-
 		</section>
 
 		<section id="registerSection">

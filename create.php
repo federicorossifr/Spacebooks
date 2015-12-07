@@ -2,7 +2,7 @@
 <?php
 	require "./php/partials/secured.php";
 ?>
-<html lang="en">
+<html lang="it">
 <?php
 	include "./php/partials/header.php";
 	include "./php/partials/body.php";

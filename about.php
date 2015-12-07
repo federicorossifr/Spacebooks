@@ -3,7 +3,7 @@
 	$alonglongtime = 2147483647; //max age 2038
 	setcookie("firstTime","1",$alonglongtime,"/");
 ?>
-<html lang="en">
+<html lang="it">
 	<?php
 		include("./php/partials/header.php");
 	?>
@@ -15,8 +15,6 @@
 
 		<main id="about">
 			<header><h2>Cos&apos;&egrave; Bookd</h2></header>
-
-			<!--<a href="index.php" class="prettyButton">Inizia!</a>-->
 
 			<div id="aboutFragments">
 				<article data-fragment data-name="Condivisione" class="about">
@@ -55,14 +53,14 @@
 					<p>
 						Segui i tuoi creatori preferiti e rimani aggiornato<wbr>
 						su ogni nuovo documento.
-						Scegli i tuoi tag preferiti e guarda i contenuti adatti a te.
+						Grazie ai tag, troverai sempre i documenti<wbr>
+						adatti a te.
 					</p>
 
 				</article>
 			</div>
 		
 		</main>
-
 	</body>
 
 	<script type="text/javascript">

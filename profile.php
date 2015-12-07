@@ -22,7 +22,7 @@
 			$following = true;
 	}
 ?>
-<html lang="en">
+<html lang="it">
 	<?php
 		include "./php/partials/header.php";
 		include "./php/partials/body.php";
@@ -133,7 +133,6 @@
 
 		</article>
 		<?php } ?>
-
 	</main>
 	</body>
 	<script type="text/javascript" src="./js/components/profile.js"></script>

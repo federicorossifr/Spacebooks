@@ -12,8 +12,10 @@
 		if($purch['document']->id == $docId)
 			$isPurchased = true;
 	}
+	if(!$doc->available && $user->role == "user")
+		header("Location: ./home.php");
 ?>
-<html lang="en">
+<html lang="it">
 <?php
 	include "./php/partials/header.php";
 	include "./php/partials/body.php";

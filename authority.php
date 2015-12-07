@@ -2,7 +2,7 @@
 <?php
 	require "./php/partials/secured.php";
 ?>
-<html lang="en">
+<html lang="it">
 <?php
 	include "./php/partials/header.php";
 	include "./php/partials/body.php";
@@ -117,6 +117,6 @@
 			</article>
 		</main>
 	<script type="text/javascript" src="./js/components/authority.js"></script>
-	<script type="text/javascript">main();</script>
+	<script type="text/javascript">main()</script>
 	</body>
 </html>

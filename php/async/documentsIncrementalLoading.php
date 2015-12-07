@@ -9,7 +9,7 @@
 				  FROM document D
 				  INNER JOIN tagship ON D.id = document
 				  INNER JOIN file F ON F.id = cover
-				  WHERE D.id > $lastId AND ( tag = {$tags[0]} ";
+				  WHERE D.id > $lastId AND D.available = 1 AND ( tag = {$tags[0]} ";
 
 		foreach($tags as $tag) {
 			$query.= "OR tag=$tag ";

@@ -36,7 +36,6 @@
 	<script type="text/javascript" src="./js/Tag.js"></script>
 	<script type="text/javascript" src="./js/Modal.js"></script>
 	<!-- End of Javascript Libraries -->
-
 </head>
 
 

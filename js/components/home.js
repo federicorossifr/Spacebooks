@@ -35,14 +35,19 @@ handler.prototype.onData = function(data) {
 
 
 
-handler.prototype.moreData = function(event) {
+handler.prototype.moreData = function(event,boot) {
 	var curr = this;
 	getTaggedDocuments(curr.dataQuery,curr.lastGet,5,function(data) {
 		curr.onData(data);
 		var dataSize = JSON.parse(data).length;
 		if(dataSize < 1) {
-			event.target.style.display = "none";
-			new Modal("Attenzione","Nient'altro da caricare");
+			if(event)
+				event.target.style.display = "none";
+			if(!boot)
+				new Modal("Attenzione","Nient'altro da caricare");
+			else {
+				document.getElementById("loadMore").style.display = "none";
+			}
 		}
 	});
 }
@@ -61,5 +66,5 @@ function homeInit() {
 	var homeFragment = new Fragment("homeFragmentContainer");
 	homeFragment.makeSelectors("a");
 	document.getElementById("loadMore").addEventListener("click",dataHandler.moreData.bind(dataHandler));
-	dataHandler.moreData();
+	dataHandler.moreData(null,1);
 }
