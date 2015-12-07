@@ -59,7 +59,9 @@ function getTaggedDocuments(tags,start,step,callback) {
 
 
 function homeInit() {
-	var loadedTags = loadTags().split(";");
+	var loadedTags = loadTags();
+	if(loadedTags)
+		loadedTags = loadedTags.split(";");
 	var jsonedTags = JSON.stringify(loadedTags);
 	var suggested = document.getElementById("suggestedDocuments");
 	var dataHandler = new handler("",jsonedTags);
