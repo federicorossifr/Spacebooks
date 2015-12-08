@@ -3,6 +3,7 @@ function initProfile() {
 	frgMnts.makeSelectors("a");
 	var documentsTable = document.getElementById("documentsTable");
 	makeResponsive(documentsTable);
+	document.getElementById("searchButton").className+= " active";
 }
 
 function bigDocumentPicture(event,obj) {

@@ -51,6 +51,7 @@ class User {
 		$stmnt->execute();
 		$result = $stmnt->get_result();
 		$user = $result->fetch_object('User');
+		if(!$user) return null;
 		$userHashedPassword = $user->password;
 		$authStrategy = new Crypto($password,$userHashedPassword);
 		if($authStrategy->doMatch())

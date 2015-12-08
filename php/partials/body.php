@@ -23,7 +23,7 @@
 				}
 			?>
 
-			<li class="right" id="searchButton"><a id="toggleSearch" href="#search"><img alt="search" src="./img/search.png" >Cerca</a></li>
+			<li class="right" id="searchButton"><a id="toggleSearch" href="#search"><img alt="search" src="./img/search.png" >Esplora</a></li>
 		</ul>
 	</nav>
 

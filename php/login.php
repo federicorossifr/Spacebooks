@@ -2,21 +2,18 @@
 	session_start();
 	require __DIR__ . "/lib/core.php";
 
-
-	$username = $_POST['username'];
-	$password = $_POST['password'];
+	$username = (isset($_POST['username']))? $_POST['username']: "";
+	$password = (isset($_POST['password']))? $_POST['password']: "";
 	$user = User::auth($username,$password);
 	$db->close();
 
 	if($user) {
 		$_SESSION['user'] = $user;
 		$_SESSION['logged'] = true;
-		header("Location: ../home.php");
-
+		echo 1;
 	}
 	else {
-		$_SESSION['lerror'] = "Login error";
-		header("Location: ../index.php");
+		echo 0;
 	}
 
 ?>

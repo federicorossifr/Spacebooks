@@ -24,6 +24,7 @@
 			$user->update();
 			$db->close();
 			break;
+		default: break;
 	}
 
 	header("Location: ../profile.php");

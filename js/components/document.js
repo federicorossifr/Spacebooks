@@ -6,6 +6,7 @@ function initDocument() {
 	var reviewForm = new FormControl("reviewForm");
 	var initialSelect = reviewForm.form.score.value;
 	var filesTable = document.getElementById("filesTable");
+
 	var rev = new Reviewer("stars",5,initialSelect,function(selectedValue) {
 		reviewForm.form.score.value = selectedValue + 1;
 	});
@@ -17,4 +18,6 @@ function initDocument() {
 	try {
 		makeResponsive(filesTable);
 	} catch(excp) {};
+
+	document.getElementById("searchButton").className+=" active";
 }

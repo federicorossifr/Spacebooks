@@ -28,7 +28,7 @@
 				<input type="text" id="username" name="username" />
 				<label for="password">Password</label><br>
 				<input type="password" id="password" name="password"  />
-				<button type="submit">LOGIN</button>
+				<button id='loginButton' type="submit">LOGIN</button>
 
 				<span class="flash">
 				<i>
@@ -70,16 +70,6 @@
 						<input type="password" id="password2" placeholder="Passwords must match" name="password2" required />
 					</div>
 					<button type="submit">REGISTER</button>
-					<span class="flash">
-						<i>
-						<?php
-							if(isset($_SESSION['rerror'])) {
-								echo $_SESSION['rerror'];
-								unset($_SESSION['rerror']);
-							}
-						?>
-						</i>
-					</span>
 				</form>
 
 			<a class="prettyButton" href="about.php">Cos&apos;&egrave; Bookd?</a>

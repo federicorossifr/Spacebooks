@@ -54,7 +54,7 @@
 						<th>Nome</th>
 						<th>Dimensione</th>
 						<th>Data</th>
-						<th>Download</th>
+						<th>Link</th>
 					</thead>
 
 					<tbody id="filesTable">	
@@ -65,10 +65,10 @@
 								$fileId = $file['id'];
 								$fileDate = $file['created'];
 								echo "<tr>
-										<td>$fileName
-										<td>$fileSize
-										<td>$fileDate
-										<td><a href='./php/download.php?did=$docId&fid=$fileId'>Download</a>
+										<td>$fileName</td>
+										<td>$fileSize</td>
+										<td>$fileDate</td>
+										<td><a class='prettyButton' href='./php/download.php?did=$docId&fid=$fileId'>Scarica</a></td>
 									</tr>";
 							}
 						?>

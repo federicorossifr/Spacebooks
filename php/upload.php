@@ -7,6 +7,7 @@
 	}
 
     $fs = new DbFS('./uploads/documentFiles/');
+	$coverFs = new DbFS('./uploads/documentPictures/');
 
 	$files = $_FILES['file'];
 	$cover = $_FILES['cover'];
@@ -15,7 +16,6 @@
 	$author = $_SESSION['user']->id;
 	$_POST['author'] = $author;
 
-	$coverFs = new DbFS('./uploads/documentPictures/');
 
 	$tags = json_decode($_POST['tags']);
 
