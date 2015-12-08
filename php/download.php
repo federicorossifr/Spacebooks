@@ -3,32 +3,17 @@
 	session_start();
 	$dId = $_GET['did'];
 	$fId = $_GET['fid'];
-	$document = null;
 	$user = null;
 	$filePath = null;
 	if(isset($_SESSION['user']))
 		$user = $_SESSION['user'];
+	if(!$user) die;
+	
+	if(!$user->hasPurchased($dId)) die;
 
-	if(!$user) echo "Not user";
-
-	$purchases = $user->getPurchases();
-	$isPurchased = false;
-	foreach($purchases as $purch) {
-		if($purch['document']->id == $dId) {
-			$isPurchased = true;
-			$document = $purch['document'];
-		}
-	}
-
-
-	if(!$isPurchased) echo "Not purchased";
-
-	$document->populate();
-	foreach($document->files as $file) {
-		if($file['id'] == $fId);
-			$filePath = $file['path'];
-	}
-
-
+	$document = Document::read($dId);
+	if(!$document) die;
+	$filePath = DbFS::getFileLink($fId);
 	if($filePath) serveFile("." . $filePath);
+	else die;
 

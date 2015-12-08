@@ -9,8 +9,12 @@ function initDocument() {
 	var rev = new Reviewer("stars",5,initialSelect,function(selectedValue) {
 		reviewForm.form.score.value = selectedValue + 1;
 	});
+	try {
 	document.getElementById("openDoc").onclick = function() {
 		docFragm.that(2);
-	}
-	makeResponsive(filesTable);
+	}} catch(excp) {};
+
+	try {
+		makeResponsive(filesTable);
+	} catch(excp) {};
 }

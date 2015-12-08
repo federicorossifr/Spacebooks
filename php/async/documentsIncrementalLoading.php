@@ -26,5 +26,6 @@
 	$iBy = $_GET['by'];
 	$tags = $_GET['tag'];
 	$decodedTags = json_decode($tags);
+	if(!$decodedTags) {echo "[]"; return;}
 
 	echo json_encode(loader($lId,$iBy,$decodedTags));

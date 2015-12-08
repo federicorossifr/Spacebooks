@@ -1,6 +1,7 @@
 <?php
 	$db = require __DIR__ . "/db.php";
 	require __DIR__ . "/crypto.php";
+	require_once __DIR__ . "/dbFS.php";
 	function toArray($mysqliResult) {
 		$output = array();
 		while($row = $mysqliResult->fetch_assoc())

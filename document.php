@@ -4,16 +4,9 @@
 	$docId = $_GET['id'];
 	$doc = Document::read($docId);
 	$doc->populate();
-	$reviews = $doc->getRatings();
+	$reviews = $doc->reviews;
 	$userReview = $doc->getUserRate($_SESSION['user']->id);
-	$userPurchases = $user->getPurchases();
-	$isPurchased = false;
-	foreach($userPurchases as $purch) {
-		if($purch['document']->id == $docId)
-			$isPurchased = true;
-	}
-	if(!$doc->available && $user->role == "user")
-		header("Location: ./home.php");
+	$isPurchased = $user->hasPurchased($doc->id);
 ?>
 <html lang="it">
 <?php

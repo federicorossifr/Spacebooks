@@ -1,5 +1,10 @@
 <?php
 
+/*
+The Document Class implements both "model" and "controller" for the entity 'Document' in the web app
+*/
+
+
 class Document {
 	private $db;
 	private $id;
@@ -13,10 +18,12 @@ class Document {
 	private $votings;
 	private $available;
 	private $cover;
+
 	private $tags;
 	private $picturePath;
 	private $files;
 	private $avg;
+	private $reviews;
 
 	function __construct($fields = array()) {
 		if($fields) {
@@ -61,7 +68,7 @@ class Document {
 	}
 
 
-	function create() {
+	public function create() {
 		global $db;
 		$stmnt = $db->prepare("INSERT INTO document(title,author,description,price,cover) VALUES(?,?,?,?,?)");
 		$stmnt->bind_param("sisdi",$this->title,$this->author,$this->description,$this->price,$this->cover);
@@ -70,7 +77,7 @@ class Document {
 		return $db->insert_id; //return new row's id
 	}
 
-	function update() {
+	public function update() {
 		global $db;
 		$stmnt = $db->prepare("UPDATE document SET title=?,created=?,author=?,description=?,price=?,votings=?,score=?,available=?,cover=? WHERE id=?");
 		$stmnt->bind_param("ssisdidiii",$this->title,$this->created,
@@ -79,14 +86,14 @@ class Document {
 		$stmnt->execute();
 	}
 
-	function delete() {
+	public function delete() {
 		global $db;
 		$stmnt = $db->prepare("DELETE FROM document WHERE id=?");
 		$stmnt->bind_param("i",$this->id);
 		$stmnt->execute();
 	}
 
-	function getFiles() {
+	private function getFiles() {
 		global $db;
 		$stmnt = $db->prepare("SELECT F.id,F.name,F.path,F.size,F.created FROM file F INNER JOIN attachments A ON F.Id = A.File INNER JOIN document D ON D.Id = A.Document wHERE D.Id=?");
 		$stmnt->bind_param("i",$this->id);
@@ -96,7 +103,7 @@ class Document {
 		return toArray($result);
 	}
 
-	function getCover() {
+	private function getCover() {
 		global $db;
 		$stmnt = $db->prepare("SELECT path FROM file WHERE id=?");
 		$stmnt->bind_param("i",$this->cover);
@@ -106,7 +113,7 @@ class Document {
 		return $row['path'];
 	}
 
-	function addFile($fileId) {
+	public function addFile($fileId) {
 		global $db;
 		$stmnt = $db->prepare("INSERT INTO attachments(file,document) VALUES(?,?)");
 		$stmnt->bind_param("ii",$fileId,$this->id);
@@ -114,7 +121,7 @@ class Document {
 		return $db->insert_id;
 	}	
 
-	function getRatings() {
+	private function getRatings() {
 		global $db;
 		$stmnt = $db->prepare("SELECT * FROM rating WHERE document=?");
 		$stmnt->bind_param("i",$this->id);
@@ -131,7 +138,7 @@ class Document {
 		return $resultVector;
 	}
 
-	function getUserRate($user) {
+	public function getUserRate($user) {
 		global $db;
 		$existsReview = $db->prepare("SELECT * FROM rating WHERE document=? AND user=?");
 		$existsReview->bind_param("ii",$this->id,$user);
@@ -140,7 +147,7 @@ class Document {
 		return $result->fetch_assoc();
 	}
 
-	function rate($vote,$comment,$user) {
+	public function rate($vote,$comment,$user) {
 		global $db;
 		$stmnt = null;
 		if($this->getUserRate($user)) {
@@ -155,7 +162,7 @@ class Document {
 		return $db->insert_id;
 	}
 
-	function tag($tag) {
+	public function tag($tag) {
 		global $db;
 		$readTag = $db->prepare("SELECT * FROM tag WHERE name = ? ");
 		$readTag->bind_param("s",$tag);
@@ -178,7 +185,7 @@ class Document {
 		$writeTag->execute();
 	}
 
-	function getTags() {
+	private function getTags() {
 		global $db;
 		$query = "SELECT name,id FROM tagship INNER JOIN tag ON tag=id WHERE document = ?";
 		$stmnt = $db->prepare($query);
@@ -188,11 +195,12 @@ class Document {
 		return toArray($result);
 	}
 
-	function populate() {
+	public function populate() {
 		$this->tags = $this->getTags();
 		$this->files = $this->getFiles();
 		$this->picturePath = $this->getCover();
 		$this->avg = ($this->votings > 0) ? $this->score / $this->votings : 0;
+		$this->reviews = $this->getRatings();
 	}
 }
 

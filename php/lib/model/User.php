@@ -1,5 +1,9 @@
 <?php
 
+/* 
+The User Class implements both "model" and "controller" for the entity 'User' in the web app
+*/
+
 class User {
 	private $id;
 	private $username;
@@ -87,7 +91,7 @@ class User {
 	}
 
 
-	function create() {
+	public function create() {
 		global $db;
 		$stmnt = $db->prepare("INSERT INTO user(username,password,email,name,surname,birthdate,country) VALUES(?,?,?,?,?,?,?)");
 		$stmnt->bind_param("sssssss",$this->username,$this->password,$this->email,$this->name,$this->surname,$this->birthdate,$this->country);
@@ -97,7 +101,7 @@ class User {
 		return $this->id;
 	}
 
-	function update() {
+	public function update() {
 		global $db;
 		if($stmnt = $db->prepare("UPDATE user SET username=?,password=?,email=?,name=?,surname=?,birthdate=?,country=?,credits=?,picture=?,role=?
 								   WHERE id=?")) {
@@ -107,14 +111,14 @@ class User {
 		$stmnt->execute();}
 	}
 
-	function delete() {
+	public function delete() {
 		global $db;
 		$stmnt = $db->prepare("DELETE FROM user WHERE id=?");
 		$stmnt->bind_param("i",$this->id);
 		$stmnt->execute();
 	}
 
-	function getDocuments() {
+	public function getDocuments() {
 		global $db;
 		$stmnt = $db->prepare("SELECT * FROM document WHERE author=?");
 		$stmnt->bind_param("i",$this->id);
@@ -128,7 +132,7 @@ class User {
 		return $documents;
 	}
 
-	function purchase($docId) {
+	public function purchase($docId) {
 		global $db;
 		$stmnt = $db->prepare("INSERT INTO purchase(document,purchaser) VALUES(?,?)");
 		$stmnt->bind_param("ii",$docId,$this->id);
@@ -136,14 +140,14 @@ class User {
 		return $db->insert_id;
 	}
 
-	function refresh() {
+	public function refresh() {
 		$usr = User::read($this->id);
 		foreach($usr as $key => $value) {
 			$this->$key = $value;
 		}
 	}
 
-	function getPurchases() {
+	public function getPurchases() {
 		global $db;
 		$stmnt = $db->prepare("SELECT * FROM purchase WHERE purchaser=?");
 		$stmnt->bind_param("i",$this->id);
@@ -158,7 +162,19 @@ class User {
 		return $vect;
 	}
 
-	function follow($mate,$unfollow = 0) {
+	public function hasPurchased($doc) {
+		$purchases = $this->getPurchases();
+		$isPurchased = false;
+		foreach($purchases as $purch) {
+			if($purch['document']->id == $doc) {
+				$isPurchased = true;
+				$document = $purch['document'];
+			}
+		}
+		return $isPurchased;
+	}
+
+	public function follow($mate,$unfollow = 0) {
 		global $db;
 		$stmnt = null;
 		$res = $unfollow+1;
@@ -173,7 +189,7 @@ class User {
 			return 0;
 	}
 
-	function getFellows($direction = 1) {
+	public function getFellows($direction = 1) {
 		global $db;
 		$stmnt = null;
 		if($direction)

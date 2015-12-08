@@ -1,5 +1,4 @@
 <?php
-    require __DIR__ . "/lib/dbFS.php";
     require __DIR__ . "/lib/core.php";
 	session_start();
 

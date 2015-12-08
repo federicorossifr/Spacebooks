@@ -4,7 +4,6 @@ function Tag(tagInput) {
 	with(this) {
 		tagInput.oninput = function(event) {
 			tags = event.target.value.split(";");
-			console.log(tags[tags.length-1]);
 		}
 	}
 }
@@ -39,7 +38,6 @@ function storeTags(tags) {
 
 	tagsVector = stored.split(";");
 	for(var i = 0; i < tags.length; ++i) {
-		console.log(tags[i].id)
 		if(!isSavedTag(tagsVector,tags[i])) {
 			stored+= tags[i].id;
 
