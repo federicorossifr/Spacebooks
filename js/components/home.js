@@ -67,6 +67,7 @@ function homeInit() {
 	var dataHandler = new handler("",jsonedTags);
 	var homeFragment = new Fragment("homeFragmentContainer");
 	homeFragment.makeSelectors("a");
+	homeFragment.loadState();
 	document.getElementById("loadMore").addEventListener("click",dataHandler.moreData.bind(dataHandler));
 	dataHandler.moreData(null,1);
 }

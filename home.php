@@ -14,6 +14,11 @@
 			<div id="homeFragmentContainer">
 					<article data-fragment data-name="Ultimi acquisti">
 						<header><h3>Ultimi acquisti</h3></header>
+						<?php
+							if(!sizeof($userPurchases)) {
+								echo "<p class='emptyResult'>Non hai ancora acquistato nessuno documento,cerca il documento che fa per te e acquistalo</p>";
+							}
+						?>
 						<ul id="purchaseList" class="documentList">
 							<?php 
 								foreach($userPurchases as $purch) {
@@ -40,6 +45,9 @@
 
 					<article data-fragment data-name="Seguiti">
 							<header><h3>Seguiti</h3></header>
+							<?php
+								if(!sizeof($fellows)) echo "<p class='emptyResult'>Non stai seguendo nessun utente,<br> cerca qualcuno da seguire con il pulsante 'Cerca'</p>";
+							?>
 							<ul class="documentList people">
 								<?php
 									foreach($fellows as $fellow) {

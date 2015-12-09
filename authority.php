@@ -12,7 +12,7 @@
 	$documents = Document::fetchAll();
 ?>
 
-		<main id="coso">
+		<main id="authorityFragmentContainer">
 			<?php if($user->role == "admin") { ?>
 			<article data-fragment data-name="Utenti">
 				<form class="combo">

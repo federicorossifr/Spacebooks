@@ -1044,3 +1044,10 @@ td  .prettyButton {
   background-repeat:no-repeat;
   background-position:center;
 }
+
+.emptyResult {
+  font-size:15px;
+  text-align:center;
+  padding:1%;
+  background-color:rgba(0,0,0,0.30);
+}

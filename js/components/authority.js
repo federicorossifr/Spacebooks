@@ -26,9 +26,29 @@ function applyFilter(targetTable,textInputField,selectorField) {
 	filterTable(targetTable,num,text);
 }
 
-function actionPerformed(obj,data) {
+function UserAction(obj) {
 	var rowAffected = obj.parentElement.parentElement;
-	console.log(data);
+	var cells = rowAffected.cells;
+	console.log(obj.value);
+	if(obj.value == "0" || obj.value == "1") {
+		var changeCell = cells[cells.length - 2];
+		var changeOption = obj.querySelector("[value='" + obj.value +"']");
+		changeCell.textContent = (obj.value == "0")? "moderator":"user";
+		changeOption.value = (obj.value == "0")? "1":"0";
+		changeOption.textContent = (obj.value == "1")? "Revoca promozione":"Promuovi a moderatore";
+	} 
+	actionPerformed(rowAffected,obj);
+}
+
+function DocumentAction(obj) {
+	var rowAffected = obj.parentElement.parentElement;
+	var cells = rowAffected.cells;
+	if(obj.value == "0") cells[cells.length -2].textContent = "1";
+	if(obj.value == "1") cells[cells.length -2].textContent = "0";
+	actionPerformed(rowAffected,obj);
+}
+
+function actionPerformed(rowAffected,obj) {
 	if(obj.value == "2")
 		rowAffected.parentElement.removeChild(rowAffected);	
 	Modal("Moderazione","Operazione completata");
@@ -42,8 +62,8 @@ function action(obj) {
 	if(dbModelAction == "-1") return false;
 	var requestClient = null;
 	switch(dbModel) {
-		case "document": requestClient = new AsyncReq('./php/authority/documentModeration.php',function(data) {actionPerformed(obj,data);}); break;
-		case "user" : requestClient = new AsyncReq('./php/authority/userModeration.php',function(data) {actionPerformed(obj,data);}); break;
+		case "document": requestClient = new AsyncReq('./php/authority/documentModeration.php',function() {DocumentAction(obj);}); break;
+		case "user" : requestClient = new AsyncReq('./php/authority/userModeration.php',function(data) {UserAction(obj);}); break;
 	}
 
 	var params = [{'id':'id','value':dbModelId},{'id':'action','value':dbModelAction}];
@@ -54,8 +74,9 @@ function action(obj) {
 
 
 function main() {
-	var coso = new Fragment("coso");
-	coso.makeSelectors("a");
+	var authorityFragmentContainer = new Fragment("authorityFragmentContainer");
+	authorityFragmentContainer.makeSelectors("authorityFragmentContainer");
+	authorityFragmentContainer.loadState();
 	initData("userTable","userFilter","userSelector");
 	initData("documentTable","documentFilter","documentSelector");
 }
