@@ -20,7 +20,7 @@
 
 		<section id="loginSection">
 			<header>
-				<h2>Login</h2>
+				<h2>Accedi...</h2>
 			</header>
 
 			<form id="loginForm" method="POST" action="php/login.php">
@@ -28,7 +28,7 @@
 				<input type="text" id="username" name="username" />
 				<label for="password">Password</label><br>
 				<input type="password" id="password" name="password"  />
-				<button id='loginButton' type="submit">LOGIN</button>
+				<button id='loginButton' type="submit">ACCEDI</button>
 
 				<span class="flash">
 				<i>
@@ -46,30 +46,30 @@
 
 		<section id="registerSection">
 			<header>
-				<h2>Register</h2>
+				<h2>...o registrati</h2>
 			</header>
 				<form id="registerForm" method="POST" action="php/register.php">
 					<div id="cA">
-						<label id="nameW" for="name">Name</label><br>
-						<input type="text" id="name"  name="name" placeholder="Example: Federico" required />
-						<label id="surnameW" for="surname">Surname</label><br>
+						<label id="nameW" for="name">Nome</label><br>
+						<input type="text" id="name"  name="name" placeholder="Example: Mario" required />
+						<label id="surnameW" for="surname">Cognome</label><br>
 						<input type="text" id="surname" name="surname" placeholder="Example: Rossi" required />
-						<label id="countryW" for="country">Country</label><br>
-						<input type="text" id="country" name="country" placeholder="Example: Italia" required>
-						<label for="birthdate">Birthdate</label><br>
+						<label id="countryW" for="country">Nazione</label><br>
+						<input type="text" id="country" name="country" placeholder="Example: Inghilterra" required>
+						<label for="birthdate">Data di nascita</label><br>
 						<input type="text" pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" placeholder="Example: 15/09/1995" id="birthdate" name="birthdate" required>
 					</div>
 					<div id="cB">
 						<label for="usernameR">Username</label>
-						<input placeholder="At least 5 keys" type="text" name="username" id="usernameR" required />
+						<input placeholder="Almeno 5 caratteri-numeri" type="text" name="username" id="usernameR" required />
 						<label for="email">Email</label><br>
 						<input type="email" placeholder="Ex: email@mail.com" id="email" name="email" required>
 						<label for="password1">Password</label>
-						<input type="password" placeholder="Between 6 and 8 keys" id="password1" name="password1" required />
-						<label for="password2">Again</label>
-						<input type="password" id="password2" placeholder="Passwords must match" name="password2" required />
+						<input type="password" placeholder="6-8 caratteri-numeri" id="password1" name="password1" required />
+						<label for="password2">Ripeti</label>
+						<input type="password" id="password2" placeholder="Le password devono coincidere" name="password2" required />
 					</div>
-					<button type="submit">REGISTER</button>
+					<button type="submit">REGISTRATI</button>
 				</form>
 
 			<a class="prettyButton" href="about.php">Cos&apos;&egrave; Bookd?</a>

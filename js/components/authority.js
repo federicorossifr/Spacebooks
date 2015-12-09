@@ -26,9 +26,9 @@ function applyFilter(targetTable,textInputField,selectorField) {
 	filterTable(targetTable,num,text);
 }
 
-function actionPerformed(obj) {
+function actionPerformed(obj,data) {
 	var rowAffected = obj.parentElement.parentElement;
-
+	console.log(data);
 	if(obj.value == "2")
 		rowAffected.parentElement.removeChild(rowAffected);	
 	Modal("Moderazione","Operazione completata");
@@ -42,8 +42,8 @@ function action(obj) {
 	if(dbModelAction == "-1") return false;
 	var requestClient = null;
 	switch(dbModel) {
-		case "document": requestClient = new AsyncReq('./php/authority/documentModeration.php',function() {actionPerformed(obj);}); break;
-		case "user" : requestClient = new AsyncReq('./php/authority/userModeration.php',function() {actionPerformed(obj);}); break;
+		case "document": requestClient = new AsyncReq('./php/authority/documentModeration.php',function(data) {actionPerformed(obj,data);}); break;
+		case "user" : requestClient = new AsyncReq('./php/authority/userModeration.php',function(data) {actionPerformed(obj,data);}); break;
 	}
 
 	var params = [{'id':'id','value':dbModelId},{'id':'action','value':dbModelAction}];
@@ -54,7 +54,6 @@ function action(obj) {
 
 
 function main() {
-	console.log("Fired");
 	var coso = new Fragment("coso");
 	coso.makeSelectors("a");
 	initData("userTable","userFilter","userSelector");
