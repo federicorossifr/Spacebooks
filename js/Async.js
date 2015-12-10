@@ -11,7 +11,9 @@ function AsyncReq(url,callback) {
 
 
 AsyncReq.prototype.GET = function(params) {
-	var query = this.url + "?";
+	var query = this.url;
+	if(params.length)
+		 query += "?";
 	for(var i = 0; i < params.length; ++i) {
 		query+= params[i].id + "=" + params[i].value;
 

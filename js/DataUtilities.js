@@ -69,3 +69,32 @@ function makeResponsive(tableBody) {
 		}
 	}
 }
+
+
+
+
+
+function handler(data,dataQuery,onDataAction,moreDataAction) {
+	this.lastGet = 0;
+	this.dataQuery = dataQuery;
+	this.onData = onDataAction.bind(this);
+	this.moreDataAction = moreDataAction;
+}
+
+
+handler.prototype.moreData = function(event,boot,loaderCaller) {
+	var curr = this;
+	this.moreDataAction(curr.dataQuery,curr.lastGet,5,function(data) {
+		curr.onData(data);
+		var dataSize = JSON.parse(data).length;
+		if(dataSize < 1) {
+			if(event)
+				event.target.style.display = "none";
+			if(!boot)
+				new Modal("Attenzione","Nient'altro da caricare");
+			else {
+				loaderCaller.style.display = "none";
+			}
+		}
+	});
+}

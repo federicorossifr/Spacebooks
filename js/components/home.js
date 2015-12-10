@@ -1,30 +1,62 @@
+function makeStars(num,max,container) {
+	for(var i = 0; i < max; ++i) {
+		var tmpImg = document.createElement("img");
+		tmpImg.alt = "star" + i;
+		tmpImg.className = "star";
+		if ( i < num) {
+			tmpImg.src = STAR_ON;
+		} else {
+			tmpImg.src = STAR_OFF;
+		}
+		container.appendChild(tmpImg);
+	}
+}
+
 function makeDocumentEntry(documentData) {
 	var tmpLi = document.createElement("li");
 	var tmpA = document.createElement("a");
 	var tmpImg = document.createElement("img");
 	var tmpDiv = document.createElement("div");
+	var tmpStarDiv = document.createElement("div");
 	var tmpP = document.createElement("p");
 
 	tmpLi.className ="shadow";
 	tmpA.href = "./document.php?id=" + documentData.id;
 	tmpImg.src = documentData.path;
 	tmpDiv.className = "title shadow";
+	tmpStarDiv.className = "stars shadow";
 	tmpP.textContent = documentData.title;
+
+
+	var starNumber = Math.floor(documentData.score / documentData.votings);
+	makeStars(starNumber,5,tmpStarDiv);
 
 	tmpDiv.appendChild(tmpP);
 	tmpA.appendChild(tmpImg);
 	tmpA.appendChild(tmpDiv);
+	tmpA.appendChild(tmpStarDiv);
 	tmpLi.appendChild(tmpA);
 	return tmpLi;
 }
 
-
-function handler(data,dataQuery) {
-	this.lastGet = 0;
-	this.dataQuery = dataQuery;
+function getTaggedDocuments(tags,start,step,callback) {
+	var params = [{'id':'start','value':start},
+					{'id':'by','value':step},
+					{'id':'tag','value':tags},
+					{'id':'action','value':'1'}
+				];
+	DataLoad("./php/async/documentsIncrementalLoading.php",params,callback);
 }
 
-handler.prototype.onData = function(data) {
+function getPurchasedDocuments(dataQuery,start,step,callback) {
+	var params = [{'id':'start','value':0},
+					{'id':'by','value':1},
+					{'id':'action','value':'2'}];
+	DataLoad("./php/async/documentsIncrementalLoading.php",params,callback);
+}
+
+function suggestedDocumentsDisplay(data) {
+	console.log(data);
 	data = JSON.parse(data);
 	if(data.length)
 		this.lastGet = data[data.length -1].id;
@@ -33,29 +65,16 @@ handler.prototype.onData = function(data) {
 	}
 }
 
-
-
-handler.prototype.moreData = function(event,boot) {
-	var curr = this;
-	getTaggedDocuments(curr.dataQuery,curr.lastGet,5,function(data) {
-		curr.onData(data);
-		var dataSize = JSON.parse(data).length;
-		if(dataSize < 1) {
-			if(event)
-				event.target.style.display = "none";
-			if(!boot)
-				new Modal("Attenzione","Nient'altro da caricare");
-			else {
-				document.getElementById("loadMore").style.display = "none";
-			}
-		}
-	});
+function purchasedDocumentsDisplay(data) {
+	console.log(data);
+	data = JSON.parse(data);
+	if(data.length)
+		this.lastGet = data[data.length -1].id;
+	for(var i = 0; i < data.length; ++i) {
+		document.getElementById("purchaseList").appendChild(makeDocumentEntry(data[i]));
+	}
 }
 
-function getTaggedDocuments(tags,start,step,callback) {
-	var params = [{'id':'start','value':start},{'id':'by','value':step},{'id':'tag','value':tags}];
-	DataLoad("./php/async/documentsIncrementalLoading.php",params,callback);
-}
 
 
 function homeInit() {
@@ -63,11 +82,23 @@ function homeInit() {
 	if(loadedTags)
 		loadedTags = loadedTags.split(";");
 	var jsonedTags = JSON.stringify(loadedTags);
-	var suggested = document.getElementById("suggestedDocuments");
-	var dataHandler = new handler("",jsonedTags);
 	var homeFragment = new Fragment("homeFragmentContainer");
 	homeFragment.makeSelectors("a");
 	homeFragment.loadState();
+	var suggested = document.getElementById("suggestedDocuments");
+
+	
+	var dataHandler = new handler("",jsonedTags,suggestedDocumentsDisplay,getTaggedDocuments);
+	var dataPurchaseHandler = new handler("","",purchasedDocumentsDisplay,getPurchasedDocuments);
 	document.getElementById("loadMore").addEventListener("click",dataHandler.moreData.bind(dataHandler));
-	dataHandler.moreData(null,1);
+	dataHandler.moreData(null,1,document.getElementById("loadMore"));
+	dataPurchaseHandler.moreData(null,1,document.getElementById("loadMore"));
 }
+
+
+
+	var params = [{'id':'start','value':0},
+					{'id':'by','value':1},
+					{'id':'action','value':'2'}
+				];
+DataLoad("./php/async/documentsIncrementalLoading.php",params,function(data) {console.log(data)})

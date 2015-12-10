@@ -42,6 +42,7 @@ CREATE TABLE `attachments` (
 
 LOCK TABLES `attachments` WRITE;
 /*!40000 ALTER TABLE `attachments` DISABLE KEYS */;
+INSERT INTO `attachments` VALUES (1,2);
 /*!40000 ALTER TABLE `attachments` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -86,7 +87,7 @@ CREATE TABLE `document` (
   KEY `document_ibfk_1` (`cover`),
   CONSTRAINT `DocumentAuthor` FOREIGN KEY (`author`) REFERENCES `user` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `document_ibfk_1` FOREIGN KEY (`cover`) REFERENCES `file` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,6 +96,7 @@ CREATE TABLE `document` (
 
 LOCK TABLES `document` WRITE;
 /*!40000 ALTER TABLE `document` DISABLE KEYS */;
+INSERT INTO `document` VALUES (1,'Reti sequenziali asincrone','2015-12-07 19:56:06','2015-12-09 22:36:26',8,'<DIV id=\'description\' >Documento sulle reti sequenziali asincrone.<DIV ><B >Descrizione e sintesi di reti sequenziali tramite tabelle di flusso e grafi di flusso.</B></DIV><DIV ><B ><U >Sintesi a LATCH S/R Â o ELEMENTI NEUTRI DI RITARDO.</U></B></DIV><DIV ><B ><U ><BR ></BR></U></B></DIV><DIV ><I >Esercizi di descrizione e sintesi in appendice.</I></DIV></DIV>',1,5,7,2,1);
 /*!40000 ALTER TABLE `document` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -133,7 +135,7 @@ CREATE TABLE `file` (
   `updated` datetime DEFAULT NULL,
   `type` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -142,6 +144,7 @@ CREATE TABLE `file` (
 
 LOCK TABLES `file` WRITE;
 /*!40000 ALTER TABLE `file` DISABLE KEYS */;
+INSERT INTO `file` VALUES (1,'immagine220151207075606.png','./uploads/documentPictures/immagine220151207075606.png',5183,'2015-12-07 19:56:06',NULL,'image/png'),(2,'rsa20151207075606.pdf','./uploads/documentFiles/rsa20151207075606.pdf',858201,'2015-12-07 19:56:06',NULL,'application/pdf');
 /*!40000 ALTER TABLE `file` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -155,6 +158,7 @@ DROP TABLE IF EXISTS `followship`;
 CREATE TABLE `followship` (
   `follower` int(11) DEFAULT NULL,
   `followed` int(11) DEFAULT NULL,
+  UNIQUE KEY `follower` (`follower`,`followed`),
   KEY `FollowerId` (`follower`),
   KEY `UserFollowed` (`followed`),
   CONSTRAINT `Friender` FOREIGN KEY (`follower`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -169,6 +173,7 @@ CREATE TABLE `followship` (
 
 LOCK TABLES `followship` WRITE;
 /*!40000 ALTER TABLE `followship` DISABLE KEYS */;
+INSERT INTO `followship` VALUES (8,9),(8,10);
 /*!40000 ALTER TABLE `followship` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -189,7 +194,7 @@ CREATE TABLE `purchase` (
   KEY `DocumentPurchaser` (`purchaser`),
   CONSTRAINT `DocumentBuyer` FOREIGN KEY (`purchaser`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `DocumentPurchased` FOREIGN KEY (`document`) REFERENCES `document` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -198,6 +203,7 @@ CREATE TABLE `purchase` (
 
 LOCK TABLES `purchase` WRITE;
 /*!40000 ALTER TABLE `purchase` DISABLE KEYS */;
+INSERT INTO `purchase` VALUES (1,1,8,'2015-12-08 16:06:42'),(2,1,10,'2015-12-09 22:35:37');
 /*!40000 ALTER TABLE `purchase` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -282,6 +288,7 @@ CREATE TABLE `rating` (
 
 LOCK TABLES `rating` WRITE;
 /*!40000 ALTER TABLE `rating` DISABLE KEYS */;
+INSERT INTO `rating` VALUES (1,8,4,'Carino'),(1,10,3,'Abbastanza utile, forse poteva essere fatto meglio.\r\nSe migliorerÃ  potrÃ² dare piÃ¹ stelle.');
 /*!40000 ALTER TABLE `rating` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -376,7 +383,7 @@ CREATE TABLE `tag` (
 
 LOCK TABLES `tag` WRITE;
 /*!40000 ALTER TABLE `tag` DISABLE KEYS */;
-INSERT INTO `tag` VALUES (1,'RetiSequenziali',2),(2,'RetiLogiche',4),(3,'Ingegneria',4),(4,'RSA',3),(5,'Moore',3),(6,'reti',1),(7,'sequenziali',1),(8,'asincrone',1),(9,'sdlkmsald',1),(10,'jksjfdsk',1),(11,'dfjds',1);
+INSERT INTO `tag` VALUES (1,'RetiSequenziali',2),(2,'RetiLogiche',5),(3,'Ingegneria',4),(4,'RSA',4),(5,'Moore',4),(6,'reti',1),(7,'sequenziali',1),(8,'asincrone',1),(9,'sdlkmsald',1),(10,'jksjfdsk',1),(11,'dfjds',1);
 /*!40000 ALTER TABLE `tag` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -404,6 +411,7 @@ CREATE TABLE `tagship` (
 
 LOCK TABLES `tagship` WRITE;
 /*!40000 ALTER TABLE `tagship` DISABLE KEYS */;
+INSERT INTO `tagship` VALUES (1,2),(1,4),(1,5);
 /*!40000 ALTER TABLE `tagship` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -495,7 +503,7 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -504,9 +512,26 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (8,'Federico','$2y$10$XRUa9J5nNTqQNDLMQbZS/unkIxcfUwwbINbwi20t2gKEhkfON4auy','federico.rossi15s95@gmail.com','Federico','Rossi','1995-09-15','Italia',44,'./uploads/profilePictures/default20151206020005.png','admin'),(9,'Elena','$2y$10$Yj9TXqzDAm2i3PdAsrFviOihLu1wcPXSGP2h8HFrLt.X6j9mjtyRK','elenascarselli@gmail.com','Elena','Scarselli','1995-12-14','Italia',0,'./img/default.png','user');
+INSERT INTO `user` VALUES (8,'Federico','$2y$10$XRUa9J5nNTqQNDLMQbZS/unkIxcfUwwbINbwi20t2gKEhkfON4auy','federico.rossi15s95@gmail.com','Federico','Rossi','1995-09-15','Italia',49,'./uploads/profilePictures/default20151206020005.png','admin'),(9,'Nikolaj','$2y$10$QFJZ7Kl2QpEgoyAMn/ZQVuRsBHsBCqvVgYhWXtwzxyaASrOFT23CG','nikola@tesla.com','Nikola','Tesla','1995-09-15','Inghilterra',10,'./img/default.png','user'),(10,'olandese_volante','$2y$10$7yqRwaiaFovR7sH1SUPlqu7pYpZK9OuRMoaAKqwAApzob1H5OWNty','olandese@vanghog.com','Martino','Volante','1990-12-14','Olanda',5,'./img/default.png','user');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `EliminaFollow` BEFORE DELETE ON `user` FOR EACH ROW begin
+	DELETE FROM followship WHERE follower = OLD.id OR followed = OLD.id;
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -517,4 +542,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-06 14:06:39
+-- Dump completed on 2015-12-10 13:50:27

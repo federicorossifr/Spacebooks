@@ -1,125 +1,59 @@
-function FormControl(formId,callback) {
-	this.form = document.getElementById(formId);
-	this.error = false;
-	if(!this.form) {
-		this.error = true;
-		return false;
+function inputDisplayValidInvalid(input,label) {
+	if(!input.validity.valid) {
+			input.style.backgroundColor ="red";
+			label.className = "error";
+			label.textContent = input.title;
+			if(input.validity.customError)
+				label.textContent = input.customErrorMessage;
+			input.style.color = "white";
+		}
+		else {
+			input.style.backgroundColor = "green";
+			label.className = "success";
+			label.textContent = label.getAttribute("data-original");
+			input.style.color="white";
 	}
-	this.formControls = this.form.querySelectorAll("input, textarea, select");
-	this.controlsCount = 0; //number of formControls that have to be validated
-	this.submitButton = this.form.querySelector("button[type='submit']");
-	this.inputs = [];
-	this.controlsValid = 0; //number of formControls already validated
-	this.form.reset();
-	for(var i = 0; i < this.formControls.length; ++i) {
-		var name = this.formControls[i].getAttribute("name");
-		this.inputs[name] = this.formControls[i];
-	}
-
-	this.callback = callback;
 }
 
-FormControl.prototype.parseControl = function(obj) {
-		var regResult = obj.constraint.test(obj.value);
-
-		if(regResult && !obj.success) {
-			this.controlsValid++;
-			obj.success = 1;
-			if(obj.watcher) {
-				obj.watcher.className = "success";
-			}
+function inputCheck(event,form) {
+	var input = event.target;
+	var label = form.querySelector("[for='" + input.id + "']");
+		
+		if(input.hasAttribute('data-match')) {
+			var toMatchObjectId = input.getAttribute("data-match");
+			var valueToMatch = document.getElementById(toMatchObjectId).value;
+			if(valueToMatch != input.value)
+				input.setCustomValidity("Le password non coincidono");
+			else
+				input.setCustomValidity("");
 		}
 
-		if(!regResult && obj.success) {
-			this.controlsValid--;
-			obj.success = 0;
-
-			if(obj.watcher) {
-					obj.watcher.className = "error";
-			}
-		}
-
-		if(!regResult && this.callback) this.callback(obj.watcher);
-		this.submitButton.disabled = !(this.controlsValid == this.controlsCount);
-}
-
-FormControl.prototype.addConstraint = function(inputName,constraint) {
-		this.submitButton.disabled = 1;
-		if(this.inputs[inputName]) {
-			var inputControl = this.inputs[inputName];
-			inputControl.constraint = constraint;
-			inputControl.watcher = this.form.querySelector("label[for='" + inputControl.id  + "']");
-			inputControl.watcher.className = "error";
-			inputControl.success = 0;
-
-			this.controlsCount++;
-			var curr = this; // aliasing "this" to prevent shadowing in next instruction
-			this.parseControl(inputControl);
-
-			inputControl.addEventListener("input",function() {
-				curr.parseControl(this);
+		if(input.hasAttribute('data-query')) {
+			var queryValue = input.value;
+			var queryString = input.getAttribute("data-query");
+			var queryError = input.getAttribute("data-query-error");
+			console.log(queryString);
+			var queryClient = new AsyncReq(queryString+queryValue,function(data) {
+				if(data == 1) {
+					input.setCustomValidity(queryError);
+					input.customErrorMessage = queryError;
+				}
+				else input.setCustomValidity("");
+				inputDisplay(input,label);
 			});
-
-
+			queryClient.GET([]);
 		}
+
+		inputDisplayValidInvalid(input,label);	
 }
 
-FormControl.prototype.addMutualConstraint =  function(inputA,inputB) {
-		this.submitButton.disabled = 1;
-		if(this.inputs[inputA] && this.inputs[inputB]) {
-			this.controlsCount++;
-			var a = this.inputs[inputA];
-			var b = this.inputs[inputB];
-			a.match = 0;
-			b.match = 0;
-			b.watcher = this.form.querySelector("label[for='" + b.id + "']");
-			b.watcher.className = "error";
-			var curr = this;
-			b.oninput = function() {
-				if(b.value == a.value && !b.match && b.value != "") {
-					curr.controlsValid++;
-					b.match = 1;
-					a.match = 1;
-					b.watcher.className = "success";
-				}
 
-				if(b.value != a.value && b.match) {
-					curr.controlsValid--;
-					b.match = 0;
-					a.match = 0;
-					b.watcher.className = "error";
-
-				}
-				curr.submitButton.disabled = !(curr.controlsValid == curr.controlsCount);
-			}
-			a.oninput = b.oninput;
-		}
-}
-
-FormControl.prototype.addConstraintExtension = function(url,paramName,inputName,trueValue,message) {
-	if(this.inputs[inputName]) {
-		var inputControl = this.inputs[inputName];
-		var curr = this; // aliasing "this" to prevent shadowing in next instruction
-
-		inputControl.oninput = function() {
-			var obj = this;
-			var params = [{"id":paramName,"value": obj.value }];
-
-
-			var asyncCheck = new AsyncReq(url,function(data) {
-				if(data != trueValue && obj.success) {
-					curr.controlsValid--;
-					obj.success = 0;
-
-					if(obj.watcher)
-						obj.watcher.className = "errormsg";
-						obj.watcher.setAttribute("data-message",message);
-				}
-				curr.submitButton.disabled = !(curr.controlsValid == curr.controlsCount);
-			});
-
-			
-			asyncCheck.GET(params);
-		}
+function FormControl(form) {
+	var inputs = form.querySelectorAll("input");
+	for(var i = 0; i < inputs.length; ++i) {
+		var inputLabel = form.querySelector("[for='" + inputs[i].id + "']");
+		inputLabel.setAttribute("data-original",inputLabel.textContent);
+		inputs[i].oninput = function(event) {inputCheck(event,form);}
+		inputs[i].onblur = inputs[i].oninput;
 	}
 }

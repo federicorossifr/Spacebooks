@@ -20,19 +20,7 @@
 							}
 						?>
 						<ul id="purchaseList" class="documentList">
-							<?php 
-								foreach($userPurchases as $purch) {
-									echo "<li class='shadow'>";
-										echo "<a href='./document.php?id={$purch['document']->id}'>";
-											echo "<img alt='cover' src={$purch['document']->picturePath}>";
-											echo "<div class='title shadow'><p>{$purch['document']->title}</p></div>";
-											echo "<div class='stars shadow'>";
-											drawStars(floor($purch['document']->avg),5);
-											echo "</div>";
-										echo "</a>";
-									echo "</li>";
-								}
-							?>
+							
 						</ul>
 					</article>
 

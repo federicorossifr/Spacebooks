@@ -86,7 +86,7 @@
 										<td>$document->title
 										<td>$document->price
 										<td>$document->created
-										<td>$document->score";
+										<td>" . $document->score/$document->votings;
 							}	
 					?>
 				</tbody>
