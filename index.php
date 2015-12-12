@@ -53,11 +53,11 @@
 						<label id="nameW" for="name">Nome</label><br>
 						<input type="text" pattern="[A-Z]{1}[a-z]+" id="name" name="name" placeholder="Example: Mario" title="Inserire un nome valido, prima lettera maiuscola, solo lettere." required />
 						<label id="surnameW" for="surname">Cognome</label><br>
-						<input type="text" id="surname" name="surname" title="Inserire un cognome valido, prima lettera maiuscola, solo lettere." placeholder="Example: Rossi" required />
-						<label id="countryW"  for="country">Nazione</label><br>
-						<input type="text" title="Inserire una nazione corretta: solo lettere" id="country" name="country" placeholder="Example: Inghilterra" required>
+						<input type="text" pattern="[A-Z]{1}[a-z]+" id="surname" name="surname" title="Inserire un cognome valido, prima lettera maiuscola, solo lettere." placeholder="Example: Rossi" required />
+						<label id="countryW" for="country">Nazione</label><br>
+						<input type="text" pattern="[a-zA-Z]+" title="Inserire una nazione corretta: solo lettere" id="country" name="country" placeholder="Example: Inghilterra" required>
 						<label for="birthdate">Data di nascita</label><br>
-						<input type="text" pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" title="Inserire una data nel formato gg/mm/aaaa" placeholder="Example: 15/09/1995" id="birthdate" name="birthdate" required>
+						<input type="text" data-date pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" title="Inserire una data nel formato gg/mm/aaaa" placeholder="Example: 15/09/1995" id="birthdate" name="birthdate" required>
 					</div>
 					<div id="cB">
 						<label for="usernameR">Username</label>

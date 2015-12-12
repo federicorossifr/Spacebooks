@@ -86,8 +86,12 @@ handler.prototype.moreData = function(event,boot,loaderCaller) {
 	var curr = this;
 	this.moreDataAction(curr.dataQuery,curr.lastGet,5,function(data) {
 		curr.onData(data);
-		var dataSize = JSON.parse(data).length;
-		if(dataSize < 1) {
+		var dataSize=0;
+		if(data)
+			dataSize = JSON.parse(data).length;
+		else
+			dataSize = 0;
+		if(!dataSize) {
 			if(event)
 				event.target.style.display = "none";
 			if(!boot)

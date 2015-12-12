@@ -21,6 +21,7 @@ AsyncReq.prototype.GET = function(params) {
 			query+="&";
 		}
 	}
+	if(!query) return false;
 	this.client.open("GET",query,true);
 	this.client.send();
 }

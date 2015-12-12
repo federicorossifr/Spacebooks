@@ -17,7 +17,7 @@
 	<meta name="theme-color" content="#3F51B5">
 
 
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 	<meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
 	<link rel="stylesheet" media="screen and (max-width: 719px)" type="text/css" href="css/responsive.css">

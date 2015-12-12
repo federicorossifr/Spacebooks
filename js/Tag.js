@@ -2,8 +2,10 @@ function Tag(tagInput) {
 	this.tagInput = document.getElementById(tagInput);
 	this.tags = Array();
 	with(this) {
+		var noCollide = tagInput.oninput;
 		tagInput.oninput = function(event) {
-			tags = event.target.value.split(";");
+			noCollide(event);
+			tags = event.target.value.split(", ");
 		}
 	}
 }

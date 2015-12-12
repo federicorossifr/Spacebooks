@@ -1,3 +1,19 @@
+var DAY_MONTH_CONSTRAINT = {
+	"01":"31",
+	"02":"28",
+	"03":"31",
+	"04":"30",
+	"05":"31",
+	"06":"30",
+	"07":"31",
+	"08":"31",
+	"09":"30",
+	"10":"31",
+	"11":"30",
+	"12":"31",
+};
+
+
 function inputDisplayValidInvalid(input,label) {
 	if(!input.validity.valid) {
 			input.style.backgroundColor ="red";
@@ -18,7 +34,6 @@ function inputDisplayValidInvalid(input,label) {
 function inputCheck(event,form) {
 	var input = event.target;
 	var label = form.querySelector("[for='" + input.id + "']");
-		
 		if(input.hasAttribute('data-match')) {
 			var toMatchObjectId = input.getAttribute("data-match");
 			var valueToMatch = document.getElementById(toMatchObjectId).value;
@@ -26,6 +41,29 @@ function inputCheck(event,form) {
 				input.setCustomValidity("Le password non coincidono");
 			else
 				input.setCustomValidity("");
+		}
+
+		if(input.hasAttribute('data-date')) {
+			var ddmmyyyy = input.value.split("/");
+			var constraintFail = true;
+			if(ddmmyyyy.length == 3 && ddmmyyyy[2].length == 4) {
+				var year = parseInt(ddmmyyyy[2]);
+				var day = parseInt(ddmmyyyy[0]);
+				var month = ddmmyyyy[1];
+				var isLeapYear = (year%4 == 0 && year%100 !=0) || (year%400 == 0);
+				if(isLeapYear) DAY_MONTH_CONSTRAINT["02"] = 29;
+				else DAY_MONTH_CONSTRAINT["02"] = 28;
+				if(day <= parseInt(DAY_MONTH_CONSTRAINT[month]))
+					constraintFail = false;
+
+				if(constraintFail) {
+					input.setCustomValidity("La data non esiste");
+					input.customErrorMessage= "La data non esiste";
+				} else {
+					input.setCustomValidity("");
+					input.customErrorMessage= "";
+				}
+			}
 		}
 
 		if(input.hasAttribute('data-query')) {
@@ -39,7 +77,7 @@ function inputCheck(event,form) {
 					input.customErrorMessage = queryError;
 				}
 				else input.setCustomValidity("");
-				inputDisplay(input,label);
+				inputDisplayValidInvalid(input,label);
 			});
 			queryClient.GET([]);
 		}
@@ -52,8 +90,10 @@ function FormControl(form) {
 	var inputs = form.querySelectorAll("input");
 	for(var i = 0; i < inputs.length; ++i) {
 		var inputLabel = form.querySelector("[for='" + inputs[i].id + "']");
+		if(!inputLabel) continue;
 		inputLabel.setAttribute("data-original",inputLabel.textContent);
 		inputs[i].oninput = function(event) {inputCheck(event,form);}
 		inputs[i].onblur = inputs[i].oninput;
+		//inputs[i].onpropertychange = inputs[i].onblur;
 	}
 }

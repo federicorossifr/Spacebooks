@@ -7,11 +7,7 @@ function Create() {
 	this.myUp = new multiUploader();
 	this.myUp.addUploader(this.initialFileUploader,false);
 	
-	this.formH = new FormControl("createForm");
-	this.formH.addConstraint("title",/^([A-Z]{1}[a-z ]{1,45})$/);
-	this.formH.addConstraint("price",/^\d{1,2}$/)
-	this.formH.addConstraint("tags",/^(\w+;)+$/);
-	
+	FormControl(this.createForm);
 	this.fragments = new Fragment("createForm");
 	this.fragments.makeSelectors("a");
 

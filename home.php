@@ -14,11 +14,7 @@
 			<div id="homeFragmentContainer">
 					<article data-fragment data-name="Ultimi acquisti">
 						<header><h3>Ultimi acquisti</h3></header>
-						<?php
-							if(!sizeof($userPurchases)) {
-								echo "<p class='emptyResult'>Non hai ancora acquistato nessuno documento,cerca il documento che fa per te e acquistalo</p>";
-							}
-						?>
+								<p id="emptyResult" class='emptyResult'>Non hai ancora acquistato nessuno documento,cerca il documento che fa per te e acquistalo</p>
 						<ul id="purchaseList" class="documentList">
 							
 						</ul>

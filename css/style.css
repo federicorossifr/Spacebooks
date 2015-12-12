@@ -2,8 +2,8 @@ html,body {  /* Full width, height body and html */
   margin:0;
   width:100%;
   height:100%;
-  font-size:13px;
-  background-color:#7986CB;
+  font-size:14px;
+  background-image: url("../img/texture.jpeg");
   font-family: 'Open Sans', sans-serif;
   overflow-x:hidden;
 }
@@ -15,7 +15,7 @@ h1,h2,h3,h4,h5,h6 {
 
 body > header {
   display:block;
-  background-color: #3F51B5;
+  background-color:rgba(63, 81, 181, 1);
   color:white;
   height:65px;
   line-height:65px;
@@ -56,10 +56,10 @@ nav > ul > li {
 }
 
 nav > ul > li > a {
-  color:rgba(0,0,0,0.50);
+  color:white;
   display: block;
   text-decoration: none;
-  padding:0.5em 0.5em;
+  padding:1em 1.5em;
   line-height: 2em;
   transition: color 0.2s ease-in-out;
   border-bottom:1px solid transparent;
@@ -68,7 +68,7 @@ nav > ul > li > a {
 
 nav > ul > li.active > a, nav > ul > li > a:hover {
   color:white;
-  border-bottom:1px solid white;
+  background-color:#7986CB;
 }
 
 nav > ul > li > a > img {
@@ -154,9 +154,10 @@ aside > header {
 
 /* Stile per la sezione "main" della pagina ****/
 main {
-  background-color:#7986CB;
+  background-size: 300 300;
+  background-repeat: repeat;
   width:100%;
-  height:calc( 100% - 3em - 66px );
+  height:calc( 100% - 4em - 66px );
   padding:1%;
   box-sizing:border-box;
   overflow-y:auto;
@@ -179,7 +180,7 @@ main > header > h2 {
 }
 
 main article {
-  background-color:#3F51B5;
+  background-color:rgba(63, 81, 181, 0.6);
   box-sizing:border-box;
   padding:1em;
   margin:1em;
@@ -373,6 +374,11 @@ form label {
   color:white;
   display:inline-block;
   margin-bottom:5px;
+  font-size:15px;
+}
+
+form label.dark {
+  color:black;
 }
 
 form textarea,div[contenteditable] {
@@ -469,6 +475,9 @@ form textarea:focus, div[contenteditable]:focus {
 
 
 .prettyButton {
+  max-width:300px;
+  margin-left:auto;
+  margin-right:auto;
   display:block;
   color:#3F51B5;
   background-color:white;
@@ -587,6 +596,7 @@ div.fileInput.fileUploader {
   float:left;
   padding:1%;
   margin-left:1px;
+  margin-bottom:10px;
   height:100px;
   width:100px;
 }
@@ -653,6 +663,8 @@ div.fileInput.pictureInput {
   display:block;
   width:100%;
   cursor:pointer;
+  color:rgba(63, 81, 181, 0.6);  
+
 }
 
 .controllerBar > .controller.active {
@@ -665,6 +677,7 @@ div.fileInput.pictureInput {
   margin:0;
   width:100%;
   float:none;
+  
 }
 
 .fragmentContainer > article[data-fragment] > header {
@@ -719,6 +732,7 @@ table.userTable th {
   width:100%;
   margin-left:auto;
   margin-right:auto;
+  float:none;
 }
 
 .view > img {
@@ -800,6 +814,14 @@ table.userTable th {
 .comboButton {
   display:flex;
   margin-bottom:5px;
+  max-width:720px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.comboButton .prettyButton {
+  padding:1%;
+  max-width:none;
 }
 
 .stars {
@@ -1048,4 +1070,9 @@ td  .prettyButton {
   text-align:center;
   padding:1%;
   background-color:rgba(0,0,0,0.30);
+}
+
+#uploadWrapper {
+  display:block;
+  height:120px;
 }

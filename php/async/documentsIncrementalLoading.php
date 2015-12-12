@@ -9,7 +9,7 @@
 
 		$tags = $_GET['tag'];
 		$decodedTags = json_decode($tags);
-		if(!$decodedTags) {echo "[]"; return;}
+		if(!$decodedTags) { return false;}
 
 
 		$query = "SELECT DISTINCT D.id,D.title,F.path,D.score,D.votings,D.price
