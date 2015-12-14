@@ -14,15 +14,15 @@ multiUploader.prototype.addUploader = function(caller,isRemovable) {
 		var newUploader = document.createElement("div");
 		newUploader.className = "fileInput fileUploader";
 		var label = document.createElement("span");
-		var mask = document.createElement("span");
-		mask.className = "mask";
+		//var mask = document.createElement("span");
+		//mask.className = "mask";
 		label.textContent = "Click per selezionare un file";
 		var fileInput = document.createElement("input");
 		fileInput.type ="file";
 		fileInput.name ="file[]";
 		newUploader.appendChild(fileInput);
 		newUploader.appendChild(label);
-		newUploader.appendChild(mask);
+		//newUploader.appendChild(mask);
 		newUploader.used = false;
 		caller.parentElement.insertBefore(newUploader,caller);
 		lastAdded = newUploader;

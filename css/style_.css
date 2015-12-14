@@ -1,59 +1,129 @@
 @font-face {
-    font-family: myFirstFont;
+    font-family: LoraItalic;
     src: url("./fonts/Lora-Italic.ttf");
-} 	
+}
+
+@font-face {
+  font-family: Lora;
+  src: url("./fonts/Lora-Regular.ttf");
+}
+
+@font-face {
+    font-family: LoraBoldItalic;
+    src: url("./fonts/Lora-Bolditalic.ttf");
+}
+
+@font-face {
+    font-family: LoraBold;
+    src: url("./fonts/Lora-Bold.ttf");
+}
+
+@font-face {
+  font-family: Vollkorn;
+  src: url("./fonts/Vollkorn-Regular.ttf");
+
+}
+
+@font-face {
+  font-family: VollkornBoldItalic;
+  src: url("./fonts/Vollkorn-BoldItalic.ttf");
+}
+
+@font-face {
+  font-family: VollkornItalic;
+  src: url("./fonts/Vollkorn-Italic.ttf");
+}
+
+* {
+  font-family:'Vollkorn' , serif;
+  color:black;
+  font-size:15px;
+  letter-spacing:2px;
+}
+
+h2 {
+  font-size:20px;
+}
+
+h1,h2,h3 {
+  text-transform: uppercase;
+}
 
 html,body {  /* Full width, height body and html */
   margin:0;
   width:100%;
-  height:100%;
-  font-size:14px;
-  background-image: url("../img/texture.jpeg");
-  font-family: 'myFirstFont', serif;
-  overflow-x:hidden;
+  height: 100%;
 }
 
-
-h1,h2,h3,h4,h5,h6 {
-  font-weight:lighter;
-}
 
 body > header {
   display:block;
-  background-color:rgba(63, 81, 181, 1);
-  color:white;
   height:65px;
   line-height:65px;
+  background-image: url("../img/galaxy.jpg");
+  background-size:100% auto;
  }
 
 body > header > h1 {
+  color:white;
   margin:0;
   width:50%;
   display: block;
   margin-left:auto;
   margin-right:auto;
   text-align:center;
-  font-family: "Pacifico","sans-serif";
-  font-size: 30px;
-  text-shadow: 0 2px 3px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.24);
+  font-size: 35px;
 }
 
+footer {
+  background-image: url("../img/galaxy.jpg");
+  background-size:100% auto;
+  clear:both;
+}
+
+footer p {
+  padding:1%;
+  margin:0;
+  text-align:center;
+  color:white;
+  font-family:VollkornItalic
+}
+
+footer p span {
+  color:white;
+  text-transform: uppercase;
+  font-family: VollkornBold;
+}
+
+footer p a {
+  color:white;
+}
+
+footer p a:hover {
+  color:tomato;
+}
 
 
 /* Stile CSS per la barra di navigazione */
 
 nav {
-  background-color: #3F51B5;
   overflow-y:auto;
   width:100%;
   position:relative; /* Per ombra */
-  box-shadow: 0 2px 3px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.24);
+  margin-top:20px;
 }
 
 nav > ul {
   padding:0;
   margin:0;
   list-style:none;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  margin-left:auto;
+  margin-right:auto;
+  width:80%;
+  border-top:1px solid tomato;
+
 }
 
 nav > ul > li {
@@ -61,77 +131,50 @@ nav > ul > li {
 }
 
 nav > ul > li > a {
-  color:white;
   display: block;
   text-decoration: none;
-  padding:1em 1.5em;
+  padding:1em;
   line-height: 2em;
-  transition: color 0.2s ease-in-out;
   border-bottom:1px solid transparent;
-
 }
 
+
+
 nav > ul > li.active > a, nav > ul > li > a:hover {
-  color:white;
-  background-color:#7986CB;
+  color:tomato;
 }
 
 nav > ul > li > a > img {
+  display:none;
   float:left;
-  background-color:transparent;
   height:2em;
-  border-radius: 100%;
-  border: 1px solid transparent;
-  box-sizing:border-box;
+  margin-right:10px;
 }
 
 
-/*----------------*/
-
-
-/*****************************Stile CSS per l'aside *****************************/
-
 aside {
-  background-color:#C5CAE9;
+  background-color:white;
   height: 100%;
   width:300px;
   padding:2%;
-  position:absolute;
+  position:fixed;
   top:0;
   bottom:0;
   box-sizing:border-box;
   text-align: center;
-  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
 
 
 /***** Stile CSS per l'aside a comparsa del profilo ******/
 
 aside#profile {
-  left:-300px;
   transition: left 0.5s ease-in-out;
   z-index:10;
 }
 
 aside#search {
-  left:-300px;
   transition: left 0.25s ease-in-out;
-
   z-index:10;
-}
-
-
-
-#bigPicture {
-  border-radius:100%;
-  border: 2px solid #3F51B5;
-  box-sizing:border-box;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  transition:all 0.3s;
-}
-
-#bigPicture:hover {
-  transform:rotate(360deg);
 }
 
 #sideButtons {
@@ -141,92 +184,54 @@ aside#search {
   width:100%;
 }
 
-
 #sideButtons  .prettyButton {
   width:100%;
   box-sizing:border-box;
 }
 
+
 /*********************************************************/
 
-aside > header {
-  color:#3F51B5;
-}
 
-
-/**********************************************************************************/
-
-
-/* Stile per la sezione "main" della pagina ****/
 main {
-  background-size: 300 300;
-  background-repeat: repeat;
   width:100%;
-  height:calc( 100% - 4em - 66px );
   padding:1%;
   box-sizing:border-box;
+  border-top:2px solid tomato;
+  border-bottom:2px solid tomato;
   overflow-y:auto;
+  min-height: 100%;
 }
 
-
 main > header {
-  background-color:white;
-  width:30%;
+  width:100%;
   margin-left:auto;
   margin-right:auto;
   text-align:center;
-  padding:0.5em;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  padding:1em;
+  box-sizing:border-box;
 }
 
 main > header > h2 {
   margin:0;
-  color:#3F51B5;
+  color:black;
 }
 
 main article {
-  background-color:rgba(63, 81, 181, 0.6);
   box-sizing:border-box;
   padding:1em;
   margin:1em;
-  color:white;
-  overflow-y:auto;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
-
-main  article > header {
-  text-align:center;
-  background-color:white;
-  color:#3F51B5;
-  padding:3px;
-  margin-bottom:1em;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-}
-
-main  article > header > h3 {
-  margin:0;
-}
-
 
 /***********************************/
 
 .left {
-  display:block;
-  box-sizing:border-box;
   float:left;
   margin-left:10px;
 }
 
-
 .right {
   float:right;
-  box-sizing:border-box;
-}
-
-article.wide {
-  clear:both;
-  box-sizing:border-box;
-
 }
 
 form article div[contenteditable] {
@@ -246,53 +251,44 @@ dl {
   color:black;
   display:block;
   width:calc(100% - 220px);
-  color:#3F51B5;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 dt {
   display:block;
-  text-align:center;
   padding:1%;
   background-color:white;
-  font-size:15px;
   font-weight:bolder;
   position:relative;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  color:tomato;
 }
 
 dd {
   margin:0;
   padding:1%;
-  box-sizing:border-box;
-  text-align:center;
-  background-color:#7986CB;
-  width:100%;
-  color:white;
+  color:black;
 }
 
 
 /**** Stili per la pagina di login/registrazione ****/
 
 #loginSection {
-  height:90%;
   width:30%;
   float:left;
   text-align:center;
+  clear:left;
 }
 
 
 #registerSection {
-  height:90%;
   width:70%;
   float:right;
   text-align:center;
+  clear:right;
 }
 
 section > header > h2 {
-  font-family: "Pacifico";
+  color:black;
   font-size:20px;
-  text-shadow: 0 2px 3px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.24);
 }
 
 #loginForm, #registerForm {
@@ -323,68 +319,53 @@ td > select {
 }
 
 form input {
-  background-color:#3F51B5;
-  border: 1px solid transparent;
-  color:white;
+  border: 1px solid rgba(0,0,0,0.50);
+  font-family: "LoraItalic";
+  color:black;
   padding:2%;
   padding-top:5px;
   padding-bottom:5px;
   font-size:14px;
   height:40px;
   text-align:center;
-  font-family: 'Open Sans', sans-serif;
-  display:inline-block;
   margin-bottom:20px;
   box-sizing:border-box;
   width:100%;
   text-align:left;
   text-align:center;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  transition: background-color 0.2s ease-in-out;
 }
 
 form input:focus{
    outline:none;
-   background-color:white;
-   color:#3F51B5;
+   border:2px solid rgba(0,0,0,0.50);
 }
 
 form button {
-  display:block;
-  border: 1px solid transparent;
   background-color:white;
-  color:#3F51B5;
+  color:tomato;
+  display:block;
+  border: 1px solid tomato;
   padding-top:15px;
   padding-bottom:15px;
   width:100%;
-  font-size:13px;
   clear:both;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  cursor:pointer;
-  
+  cursor:pointer;  
 }
 
 form button:hover {
-  background-color:#3F51B5;
+  background-color:tomato;
   color:white;
-}
-
-form button:disabled {
-  background-color:rgba(0,0,0,0.20);
-  color:white;
-  cursor:not-allowed;
 }
 
 form label {
-  color:white;
+  color:black;
+  padding:1%;
+  font-family:"LoraBold";
   display:inline-block;
   margin-bottom:5px;
-  font-size:15px;
+  font-size:13px;
 }
 
-form label.dark {
-  color:black;
-}
 
 form textarea,div[contenteditable] {
   background-color:#3F51B5;
@@ -396,7 +377,6 @@ form textarea,div[contenteditable] {
   font-size:14px;
   height:40px;
   text-align:center;
-  font-family: 'Open Sans', sans-serif;
   display:inline-block;
   margin-bottom:20px;
   box-sizing:border-box;
@@ -405,17 +385,6 @@ form textarea,div[contenteditable] {
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   transition: background-color 0.2s ease-in-out;
 }
-
-form input.light {
-  background-color:white;
-  color:black;
-}
-
-form textarea.light {
-  background-color:white;
-  color:black;
-}
-
 
 
 form textarea:focus, div[contenteditable]:focus {
@@ -446,37 +415,6 @@ form textarea:focus, div[contenteditable]:focus {
   float:right;
 }
 
-#index > header {
-    position:relative; /*Per l'ombra*/
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-}
-
-/***********************************************************/
-
-/**** Stili per la pagina di presentazione del servizio ****/
-
-
-
-#about > header {
-  background-color:white;
-  position:relative;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-}
-
-#about > .prettyButton {
-  width:50%;
-  margin-left:auto;
-  margin-right:auto;  
-}
-
-#about > article {
-  margin-left:auto;
-  margin-right:auto;
-  width:70%;
-  text-align:center;
-}
-
-/*********************/
 
 
 .prettyButton {
@@ -484,20 +422,23 @@ form textarea:focus, div[contenteditable]:focus {
   margin-left:auto;
   margin-right:auto;
   display:block;
-  color:#3F51B5;
   background-color:white;
+  border:1px solid tomato;
+  color:tomato;
   padding:1em;
   margin-top:1em;
   text-align:center;
   text-decoration:none;
   font-weight:bolder;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
+  transition: border 0.2s ease-in-out;
+  cursor:pointer;
 }
 
 .prettyButton:hover {
-  background-color:#3F51B5;
+  background-color:tomato;
   color:white;
+  border:1px solid white;
 }
 
 .flash {
@@ -585,15 +526,15 @@ label.errormsg::after {
 }
 
 
-#navToggle {
-  display: none;
-}
 
 div.fileInput {
   position: relative;
   background-color: white;
-  color:#3F51B5;
+  border:1px solid rgba(0,0,0,0.5);
   text-align:center;
+  background-image: url("../img/file-esplora.png");
+  background-repeat:no-repeat;
+  background-position:center center;
 }
 
 div.fileInput.fileUploader {
@@ -601,18 +542,20 @@ div.fileInput.fileUploader {
   padding:1%;
   margin-left:1px;
   margin-bottom:10px;
-  height:100px;
-  width:100px;
+  height:200px;
+  width:200px;
 }
 
 div.fileInput.fileUploader > span {
   position:absolute;
   display:block;
   width:100%;
-  font-weight:bolder;
+  height:100%;
+  background-color: rgba(0,0,0,0.5);
+  
   left:0;
+  top:0;
   font-size:13px;
-  top:calc(50% - 1em);
 }
 
 div.fileInput.pictureInput {
@@ -646,7 +589,6 @@ div.fileInput.pictureInput {
 
 *.fragmentContainer {
  width:100%;
-
 }
 
 .fragmentContainer > .controllerBar {
@@ -658,30 +600,32 @@ div.fileInput.pictureInput {
   margin-top:10px;
 }
 
-.controllerBar {
-   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-
-}
 
 .controllerBar > .controller {
   display:block;
   width:100%;
   cursor:pointer;
-  color:rgba(63, 81, 181, 0.6);  
+  color:tomato;
+  border:1px solid tomato;
+  border-right: 0px;
+}
 
+.controllerBar > .controller:last-child {
+  border-right: 1px solid tomato;
 }
 
 .controllerBar > .controller.active {
-  background-color: #3F51B5;
+  background-color: tomato;
   color:white;
-  font-weight:bolder;
 }
 
 .fragmentContainer > *[data-fragment] {
   margin:0;
   width:100%;
-  float:none;
-  
+  border-bottom:1px solid tomato;
+  border-right:1px solid tomato;
+  border-left:1px solid tomato;
+  overflow-y:auto;
 }
 
 .fragmentContainer > article[data-fragment] > header {
@@ -689,31 +633,23 @@ div.fileInput.pictureInput {
 }
 
 
-*.shadow {
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-}
-
-
 table.userTable {
   border-collapse:collapse;
   width:100%;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-
+  border:1px solid rgba(0,0,0,0.5);
 }
 
-table.userTable > tbody tr:nth-child(odd) {
-  background-color:#7986CB;
-}
 
 table.userTable td, table.userTable th {
   text-align:center;
   padding:1%;
+ 
 }
 
 table.userTable th {
+   border:1px solid rgba(0,0,0,0.5);
   background-color:white;
   color:black;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   position:relative;
 }
 
@@ -722,13 +658,13 @@ table.userTable th {
   margin:0;
   margin-left:10px;
   background-color:white;
+  border:1px solid rgba(0,0,0,0.50);
   color:black;
   padding:1%;
   width:calc(100% - 220px);
   float:left;
   word-break:break-all;
   box-sizing:border-box;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 
@@ -736,6 +672,7 @@ table.userTable th {
   width:100%;
   margin-left:auto;
   margin-right:auto;
+  border:1px solid rgba(0,0,0,0.50);
   float:none;
 }
 
@@ -745,7 +682,6 @@ table.userTable th {
   width:30px;
   margin-left:auto;
   margin-right:auto;
-  transition: transform 0.3s ease-in-out;
 }
 
 
@@ -804,8 +740,7 @@ table.userTable th {
 }
 
 .popper {
-  background-color:#3F51B5;
-  color:white;
+  background-color:tomato;
   padding:1%;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   text-align:center;
@@ -813,6 +748,11 @@ table.userTable th {
 
 .popper > h3 {
   margin:0;
+  color:white
+}
+
+.popper > p {
+  color:white;
 }
 
 .comboButton {
@@ -975,6 +915,7 @@ dd:hover > .prettyButton {
   display:inline-block;
   margin-left:10px;
   overflow-y:hidden;
+  border:1px solid tomato;
 }
 
 .documentList {
@@ -985,17 +926,6 @@ dd:hover > .prettyButton {
   color:white;
 }
 
-
-/*.documentList a:before {
-  position:absolute;
-  z-index:1;
-  content:"Nuovo";
-  color:whitesmoke;
-  background-color:red;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  border-bottom-right-radius: 5px;
-  padding:5%;
-}*/
 
 .documentList a:hover:before {
   opacity:0.2;
@@ -1013,25 +943,27 @@ dd:hover > .prettyButton {
 
 .documentList > li  div.title {
   position:absolute;
-  background-color:#3F51B5;
+  background-color:tomato;
   left:0;
   width:100%;
   text-align:center;
-  height:20%;
+  height:30%;
   line-height:100%;
   top:100%;
   transition: top 0.1s ease-in-out;
 }
 
+.documentList > li div.title p {
+  color:white;
+}
+
 .documentList.people > li div.title {
   top:80%;
-  background-color:white;
-  color:#3F51B5;
-  font-weight:bolder;
+  background-color:tomato;
 }
 
 .documentList > li:hover div.title {
-  top:80%;
+  top:70%;
 }
 
 .documentList.people > li:hover div.title {
@@ -1054,7 +986,7 @@ dd:hover > .prettyButton {
   width:100%;
   height:20%;
   top:-20%;
-  background-color:white;
+  background-color:tomato;
   transition:top 0.1s ease-in-out;
 }
 
@@ -1078,5 +1010,5 @@ td  .prettyButton {
 
 #uploadWrapper {
   display:block;
-  height:120px;
+  height:220px;
 }

@@ -16,18 +16,16 @@ var DAY_MONTH_CONSTRAINT = {
 
 function inputDisplayValidInvalid(input,label) {
 	if(!input.validity.valid) {
-			input.style.backgroundColor ="red";
+			input.className = "error"
 			label.className = "error";
 			label.textContent = input.title;
 			if(input.validity.customError)
 				label.textContent = input.customErrorMessage;
-			input.style.color = "white";
 		}
 		else {
-			input.style.backgroundColor = "green";
 			label.className = "success";
+			input.className = "success"			
 			label.textContent = label.getAttribute("data-original");
-			input.style.color="white";
 	}
 }
 

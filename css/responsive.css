@@ -1,3 +1,5 @@
+@media screen and (max-width: 719px) {
+
 html,body {
   margin:0;
   width:100%;
@@ -992,4 +994,9 @@ table.userTable td:before {
   background-image: url("../img/ajax-loader.gif");
   background-repeat:no-repeat;
   background-position:center;
+}
+
+
+
+
 }

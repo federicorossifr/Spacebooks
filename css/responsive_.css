@@ -1,0 +1,116 @@
+@media screen and (max-width: 719px) {
+
+
+  nav > ul > li {
+    display:block;
+    width:100%;
+    text-align:left;
+  }
+
+  dl {
+    margin:0;
+    margin-top:10px;
+    width:100%;
+  }
+
+  dt {
+    padding:3%;
+  }
+
+  dd {
+    padding:3%;
+  }
+  
+  #search,#profile {
+    left:-100%;
+    width:100%;
+    max-width:300px;
+  }
+
+
+  /**** Stili per la pagina di login/registrazione ****/
+  #loginSection {
+    width:100%;
+    padding-top:1%;
+  }
+
+  #registerSection {
+    width:100%;
+  }
+
+  #loginForm, #registerForm {
+    width:90%;
+  }
+
+
+  .fragmentContainer > .controllerBar {
+    flex-flow:column;
+  }
+
+
+  table.userTable td {
+    display:block;
+    padding:2%;
+  }
+
+  table.userTable th {
+    display:none;
+  }
+
+  table.userTable td:before {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    background-color:white;
+    color:black;
+    display:block;
+    width:100%;
+    content:attr(data-heading);
+    padding:1%;
+    box-sizing:border-box;
+    text-align:center;
+    margin-bottom:1%;
+  }
+
+
+  #description {
+    width:100%;
+    background-color:white;
+    padding:5%;
+    margin-top:1em;
+  }
+
+  .documentList > li  div.title {
+    top:80%;
+  }
+
+  .documentList .stars {
+    top:0%;
+  }
+
+  .reviewList {
+    list-style:none;
+    padding:0;
+    margin:0; 
+  }
+  
+  #navToggle {
+    border:1px solid tomato;
+  }
+}
+
+@media screen and (min-width: 720px) {
+  #navToggle {
+    display:none;
+  }
+
+  
+  aside#profile {
+    left:-300px;
+  }
+
+  aside#search {
+    left:-300px;
+  }
+
+
+
+}

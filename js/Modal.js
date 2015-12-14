@@ -1,18 +1,19 @@
 function center(obj) {
+	obj.style.position = "fixed";
 	var renderedHeight = obj.offsetHeight;
 	var renderedWidth = obj.offsetWidth;
 	var windowWidth = parseInt(window.innerWidth);
 	var windowHeight = parseInt(window.innerHeight);
-	obj.style.top = (windowHeight/2) - (renderedHeight) / 2  + document.body.scrollTop +  'px';
+	obj.style.top = (windowHeight/2) - (renderedHeight) / 2 + 'px';
 	obj.style.left = (windowWidth - renderedWidth) / 2 + 'px';
 }
 
 function Modal(title,text,onok,canIgnore) {
 	var darken = document.createElement("div");
-	darken.style.position = "absolute";
+	darken.style.position = "fixed";
 	darken.style.left = "0";
 	darken.style.top = "0";
-	darken.style.height = "calc(100% + " + document.body.scrollTop + "px)"; 
+	darken.style.height = "100%"; 
 	darken.style.width = "100%";
 	darken.style.backgroundColor = "black";
 	darken.style.opacity = "0.66";
@@ -21,6 +22,7 @@ function Modal(title,text,onok,canIgnore) {
 	var modalPophover = new Pophover(darken,title,text,onok);
 	modalPophover.show();
 	center(modalPophover.pop);
+
 
 	darken.onclick = function() {
 		if(!canIgnore) return false;

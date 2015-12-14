@@ -119,4 +119,8 @@
 	<script type="text/javascript" src="./js/components/authority.js"></script>
 	<script type="text/javascript">main()</script>
 	</body>
+
+
+		<?php include("./php/partials/footer.php");?>
+
 </html>

@@ -20,8 +20,8 @@
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 	<meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
-	<link rel="stylesheet" media="screen and (max-width: 719px)" type="text/css" href="css/responsive.css">
-	<link rel="stylesheet" media="screen and (min-width: 720px)" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/style_.css">
+	<link rel="stylesheet" type="text/css" href="css/responsive_.css">
 
 	<!-- Javascript Libraries -->
 	<script type="text/javascript" src="./js/Async.js"></script>

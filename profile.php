@@ -162,5 +162,9 @@
 			}
 		?>
 	</script>
+
+	<?php include("./php/partials/footer.php");?>
+
+
 </html>
 

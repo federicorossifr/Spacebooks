@@ -84,7 +84,7 @@ function Body() {
 	with(this) {
 		window.onresize = function() {
 			windowWidth = window.innerWidth;
-			profileSide.style.display = "none";
+		/*	profileSide.style.display = "none";
 			if(windowWidth >= 720) {
 				nav.style.display = "block";
 				profileSide.style.top = "0";
@@ -100,11 +100,11 @@ function Body() {
 
 				profileSide.style.display = "block";
 				
-		}
+		}*/
 
 		if(windowWidth < 720)
 			nav.style.display = "none";
-	}
+	}}
 }
 
 
@@ -130,13 +130,11 @@ Body.prototype.menu = function() {
 Body.prototype.searchT = function() {
 	with(this) {
 		if(searchState) {
-			document.documentElement.style.overflowY = "auto"; // enable page scroll when panel is not triggered
 			searchSide.style.left = "-100%";
 
 		} else {
-			document.documentElement.style.overflowY = "hidden"; // disable page scroll when panel is triggered
 			if(windowWidth < 720) searchSide.style.left = "0";
-			else searchSide.style.left = "calc(100% - 300px)";
+			else searchSide.style.left = 0;
 			document.getElementById("searchForm").data.focus();
 		}
 
@@ -147,13 +145,9 @@ Body.prototype.searchT = function() {
 Body.prototype.profile = function() {
 	with(this) {
 		if(profileState) {
-			document.documentElement.style.overflowY = "auto"; // enable page scroll when panel is not triggered
-			if(windowWidth < 720) profileSide.style.top = "-150%";
-			else profileSide.style.left = "-100%";
+			profileSide.style.left = "-100%";
 		} else {
-			document.documentElement.style.overflowY = "hidden"; // disable page scroll when panel is triggered
-			if(windowWidth < 720) profileSide.style.top = "0";
-				else profileSide.style.left = "0";
+			profileSide.style.left = "0";
 		}
 		profileState = !profileState;
 	}

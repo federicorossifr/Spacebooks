@@ -10,7 +10,7 @@
 		</ul>
 
 		<ul id="nav">
-			<li <?php if($thisUrl == "/profile.php") echo "class='active' " ?> id="picture"><a id="toggleProfile"  href="#"><img src="<?= $user->picture ?>" alt="Profile"><?= " " . $user->username ?></a></li>
+			<li <?php if($thisUrl == "/profile.php") echo "class='active' " ?> id="picture"><a id="toggleProfile"  href="#"><img src="<?= $user->picture ?>" alt="Profile">Benvenuto, <?= " " . $user->username ?></a></li>
 
 			<?php
 				foreach ($menuVoices as $name => $address) {

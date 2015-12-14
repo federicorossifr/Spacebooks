@@ -58,4 +58,7 @@
 	<script type="text/javascript">
 		homeInit();
 	</script>
+
+
+	<?php include("./php/partials/footer.php");?>
 </html>
