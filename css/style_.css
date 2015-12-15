@@ -74,8 +74,7 @@ body > header > h1 {
 }
 
 footer {
-  background-image: url("../img/galaxy.jpg");
-  background-size:100% auto;
+  background: tomato;
   clear:both;
 }
 
@@ -121,7 +120,6 @@ nav > ul {
   margin-right:auto;
   width:80%;
   border-top:1px solid tomato;
-
 }
 
 nav > ul > li {
@@ -195,8 +193,6 @@ main {
   width:100%;
   padding:1%;
   box-sizing:border-box;
-  border-top:2px solid tomato;
-  border-bottom:2px solid tomato;
   overflow-y:auto;
   min-height: 100%;
 }
@@ -588,6 +584,9 @@ div.fileInput.pictureInput {
 
 *.fragmentContainer {
  width:100%;
+ max-width: 1024px;
+ margin-left: auto;
+ margin-right: auto;
 }
 
 .fragmentContainer > .controllerBar {

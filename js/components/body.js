@@ -103,10 +103,13 @@ Body.prototype.changePic = function() {
 
 Body.prototype.menu = function() {
 	with(this) {
+		nav.style.transition = "max-height 0.3s ease-in-out";
 		if(menuState) 
-			nav.style.display = "none";
-		else
+			nav.style.maxHeight = "0";
+		else {
+			nav.style.maxHeight = "500px";
 			nav.style.display = "block";
+		}
 		menuState = !menuState;
 	}
 }

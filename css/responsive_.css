@@ -13,7 +13,12 @@
     margin-bottom:20px;
   }
   
+  nav ul {
+    overflow-y:hidden;
+  }
+
   nav > ul > li {
+    float:none;
     display:block;
     width:100%;
     text-align:left;
@@ -108,10 +113,7 @@
     margin:0; 
   }
   
-  #navToggle {
-    border:1px solid tomato;
-  }
-  
+
   .controllerBar > .controller {
    border-bottom:0px;
    border-right:1px solid tomato;
