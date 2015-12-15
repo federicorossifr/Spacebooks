@@ -110,6 +110,8 @@ class Document {
 		$stmnt->execute();
 		$result = $stmnt->get_result();
 		$row = $result->fetch_assoc();
+		if(!$result->num_rows)
+			$row['path'] = './img/file-esplora.png';
 		return $row['path'];
 	}
 

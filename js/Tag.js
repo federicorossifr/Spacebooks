@@ -43,7 +43,7 @@ function storeTags(tags) {
 		if(!isSavedTag(tagsVector,tags[i])) {
 			stored+= tags[i].id;
 
-			if(i != tags.length - 1) stored+=";";
+			stored+=";";
 		}
 	}
 	localStorage.setItem("tags",stored);

@@ -15,7 +15,7 @@
 
 	<body onload="Index()" id="index">
 		<header>
-			<h1>Bookd</h1>
+			<h1>Spacebooks</h1>
 		</header>
 
 		<main>
@@ -68,12 +68,12 @@
 						<label  for="password1">Password</label>
 						<input type="password" pattern=".{7,20}" title="Inserisci una password corretta: almeno 7 caratteri e/o numeri (max 20)"  id="password1" name="password1" required />
 						<label for="password2">Ripeti</label>
-						<input data-match="password1" type="password" id="password2" title="Le due password devono coincidere" name="password2" required />
+						<input data-match="password1" data-match-error="Le password non coincidono" type="password" id="password2" title="Le due password devono coincidere" name="password2" required />
 					</div>
 					<button type="submit">REGISTRATI</button>
 				</form>
 
-			<a class="prettyButton" href="about.php">Cos&apos;&egrave; Bookd?</a>
+			<a class="prettyButton" href="about.php">Cos&apos;&egrave; Spacebooks?</a>
 		</section>
 		</main>
 		<script type="text/javascript" src="js/components/index.js"></script>

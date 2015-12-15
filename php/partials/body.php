@@ -1,7 +1,7 @@
 <script type="text/javascript" src="js/components/body.js"></script>
 <body onload="bodyMain()">
 	<header>
-		<h1>Bookd</h1>
+		<h1>Spacebooks</h1>
 	</header>
 
 	<nav>

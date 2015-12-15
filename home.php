@@ -14,17 +14,21 @@
 			<div id="homeFragmentContainer">
 					<article data-fragment data-name="Ultimi acquisti">
 						<header><h3>Ultimi acquisti</h3></header>
-								<p id="emptyResult" class='emptyResult'>Non hai ancora acquistato nessuno documento,cerca il documento che fa per te e acquistalo</p>
+								<p data-role="empty" class='emptyResult'>Non hai ancora acquistato nessuno documento,cerca il documento che fa per te e acquistalo</p>
 						<ul id="purchaseList" class="documentList">
 							
 						</ul>
+							<a id="loadMorePurch" data-role="loadMore" class="prettyButton">Carica altro</a>
+
 					</article>
 
 					<article data-fragment data-name="Consigliati">
 							<header><h3>Consigliati</h3></header>
+							<p data-role="empty" class='emptyResult'>Non hai ancora nessun documento consigliato, comprarirà qualcosa man mano che visiti il sito</p>
+
 							<ul id="suggestedDocuments" class="documentList">
 							</ul>
-							<a id="loadMore" class="prettyButton">Carica altro</a>
+							<a id="loadMore" data-role="loadMore" class="prettyButton">Carica altro</a>
 					</article>
 
 					<article data-fragment data-name="Seguiti">

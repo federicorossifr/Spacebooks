@@ -116,14 +116,14 @@
 			<div class="right shadow">
 				<h3>Modifica dati accesso</h3>
 				<form method="POST" action="./php/edit.php" id="editForm">
-						<label for="oldPassword">Vecchia password</label>
+						<label required for="oldPassword">Vecchia password</label>
 						<input class="light" type="password" id="oldPassword" name="oldPassword" required>
-						<label for="username">Nuovo nome utente</label>
-						<input class="light" type="text" id="username" name="username">
+						<label for="username">Nuovo nome utente (lascia vuoto per non cambiare)</label>
+						<input data-query="./php/async/exists.php?label=" data-query-error="Username già esistente" pattern=".{6,9}"  title="Inserisci tra i 6 e i 10 caratteri e/o numeri" class="light" type="text" id="username" name="username">
 						<label for="password">Nuova password (lascia vuoto per non cambiare)</label>
-						<input pattern=".{6,10}" class="light" type="password" id="password" name="password">
+						<input pattern=".{7,20}" title="Inserisci una password corretta: almeno 7 caratteri e/o numeri (max 20)" class="light" type="password" id="password" name="password">
 						<label for="password2">Ripeti password</label>
-						<input class="light" type="password" id="password2" name="password2">
+						<input data-match="password1" data-match-error="Le password non coincidono" class="light" type="password" id="password2" name="password2">
 						<input type="hidden" value="user" name="model">
 						<button type="submit" class="prettyButton">Fatto</button><br>
 				</form>

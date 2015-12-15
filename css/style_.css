@@ -301,6 +301,10 @@ form.combo {
   display:flex;
 }
 
+form.combo > * {
+  flex:1;
+}
+
 
 form select,select {
   height:40px;
@@ -308,10 +312,15 @@ form select,select {
   padding-right:2%;
   padding-top:5px;
   padding-bottom:5px;
-  background-color:#3F51B5;
+  background-color:tomato;
   color:white;
   border:1px transparent;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+form select:focus, select:focus {
+  background-color:white;
+  color:black;
 }
 
 td > select {
@@ -368,8 +377,7 @@ form label {
 
 
 form textarea,div[contenteditable] {
-  background-color:#3F51B5;
-  border: 1px solid transparent;
+  border: 1px solid rgba(0,0,0,0.5);
   color:white;
   padding:2%;
   padding-top:5px;
@@ -475,34 +483,27 @@ form textarea:focus, div[contenteditable]:focus {
   left:-100%;               
 }
 
-label.success::after {
-  background-color:green;
-  margin-left:10px;
-  padding:1px;
+label.success {
+  border:1px solid green;
   padding:1px 5px 1px 5px;
-  content:"OK" ;
-  color:white;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-
+  color:green;
 }
+
+label.success:after {
+  letter-spacing: 0;
+  font-size:10px;
+  content:" OK";
+}
+
 
 label.error {
-  background-color:red;
   padding:1px 5px 1px 5px;
-  color:white;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  color:red;
+  border:1px solid red;
 }
 
-label.errormsg::after {
-  background-color:yellow;
-    padding:1px 5px 1px 5px;
-
-  padding:1px;
-  margin-left:10px;
-  content: attr(data-message);
-  color:black;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-
+input.error {
+  border:2px solid red;
 }
 
 
@@ -602,8 +603,6 @@ div.fileInput.pictureInput {
 
 
 .controllerBar > .controller {
-  display:block;
-  width:100%;
   cursor:pointer;
   color:tomato;
   border:1px solid tomato;
@@ -678,10 +677,11 @@ table.userTable th {
 
 .view > img {
   display:block;
-  height:30px;
-  width:30px;
+  height:100px;
+  width:100px;
   margin-left:auto;
   margin-right:auto;
+  border:1px solid tomato;
 }
 
 
@@ -856,13 +856,12 @@ dd:hover > .prettyButton {
 }
 
 .reviewList li {
-  background-color:white;
+  background-color:tomato;
   display:block;
   width:90%;
   padding:1%;
   margin-bottom:5px;
   margin-left:auto;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   margin-right:auto;
 }
 
@@ -871,7 +870,7 @@ dd:hover > .prettyButton {
   float:right;
   margin:0;
   padding:0;
-  border-bottom:1px solid rgba(0,0,0,0.50);
+  border-bottom:1px solid white;
   height:50px;
 }
 
@@ -883,20 +882,20 @@ dd:hover > .prettyButton {
   float:left;
   display:block;
   width:50px;
-  border-bottom:1px solid rgba(0,0,0,0.50);
 }
 
 .reviewList span {
-  color:black;
+  color:white;
   display:block;
   float:left;
+  margin-left:10px;
   line-height:50px;
-  border-bottom:1px solid rgba(0,0,0,0.50);
-  width: calc(100% - 200px);
+  border-bottom:1px solid white;
+  width: calc(100% - 210px);
 }
 
 .reviewList p {
-  color:black;
+  color:white;
   clear:left;
   margin-left:50px;
   padding:20px;
@@ -1010,5 +1009,6 @@ td  .prettyButton {
 
 #uploadWrapper {
   display:block;
-  height:220px;
+  overflow-y:auto;
+  overflow-x:hidden;
 }

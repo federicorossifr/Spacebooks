@@ -10,18 +10,18 @@
 
 	<body id="index">
 		<header>
-			<h1>Bookd</h1>
+			<h1>Spacebooks</h1>
 		</header>
 
 		<main id="about">
-			<header><h2>Cos&apos;&egrave; Bookd</h2></header>
+			<header><h2>Cos&apos;&egrave; Spacebooks</h2></header>
 
 			<div id="aboutFragments">
 				<article data-fragment data-name="Condivisione" class="about">
 					<header><h3>Condivisione</h3></header>
 					<div class="darken"></div>
 					<p>
-						Registrati a Bookd e inizia a condividere la tua conoscenza<wbr>
+						Registrati a Spacebooks e inizia a condividere la tua conoscenza<wbr>
 						Puoi condividere appunti, testi, racconti e perfino interi libri di tua crezione!<br>
 						Consulta i migliori documenti di qualsiasi argomento,<wbr>
 						sfrutta i crediti guadagnati per acquistare documenti<wbr>

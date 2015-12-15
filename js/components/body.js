@@ -74,36 +74,20 @@ function Body() {
 	this.windowWidth = window.innerWidth;
 
 	var curr = this; // Aliasing dell'oggetto this per le istruzioni successive.
-	this.closeProfile.onclick = function() {curr.profile();}
-	this.profileToggle.onclick = function() {curr.profile();}
-	this.navToggle.onclick = function() {curr.menu();}
-	this.changePicButton.onclick = function() {curr.changePic();}
-	this.searchToggle.onclick = function() {curr.searchT()}
-	this.closeSearch.onclick = function() {curr.searchT()}
+	this.closeProfile.onclick = this.profile.bind(this);
+	this.profileToggle.onclick = this.profile.bind(this);
+	this.navToggle.onclick = this.menu.bind(this);
+	this.changePicButton.onclick = this.changePic.bind(this);
+	this.searchToggle.onclick = this.searchT.bind(this);
+	this.closeSearch.onclick = this.searchT.bind(this);
 
 	with(this) {
 		window.onresize = function() {
 			windowWidth = window.innerWidth;
-		/*	profileSide.style.display = "none";
-			if(windowWidth >= 720) {
-				nav.style.display = "block";
-				profileSide.style.top = "0";
-				profileSide.style.left = "-300px";
-				profileState = false;
-			}
-			else {
-				nav.style.display = "none";
-				profileSide.style.left = "0";
-				profileSide.style.top = "-150%";
-				profileState = false;
-			}
-
-				profileSide.style.display = "block";
-				
-		}*/
-
 		if(windowWidth < 720)
 			nav.style.display = "none";
+		else
+			nav.style.display = "block";
 	}}
 }
 

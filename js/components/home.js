@@ -39,7 +39,11 @@ function makeDocumentEntry(documentData) {
 	return tmpLi;
 }
 
-function getTaggedDocuments(tags,start,step,callback) {
+function getTaggedDocuments(start,step,callback) {
+	var loadedTags = loadTags();
+	if(loadedTags)
+		loadedTags = loadedTags.split(";");
+	var tags = JSON.stringify(loadedTags);
 	var params = [{'id':'start','value':start},
 					{'id':'by','value':step},
 					{'id':'tag','value':tags},
@@ -48,55 +52,42 @@ function getTaggedDocuments(tags,start,step,callback) {
 	DataLoad("./php/async/documentsIncrementalLoading.php",params,callback);
 }
 
-function getPurchasedDocuments(dataQuery,start,step,callback) {
-	var params = [{'id':'start','value':0},
-					{'id':'by','value':1},
+function getPurchasedDocuments(start,step,callback) {
+	var params = [{'id':'start','value':start},
+					{'id':'by','value':step},
 					{'id':'action','value':'2'}];
 	DataLoad("./php/async/documentsIncrementalLoading.php",params,callback);
 }
 
-function suggestedDocumentsDisplay(data) {
-	data = JSON.parse(data);
-	if(data.length) {
+function DocumentsDisplay(data,boot,container) {
+	var containerObj = document.getElementById(container);
+	if(data && data.length) {
 		this.lastGet = data[data.length -1].id;
+    	containerObj.parentElement.querySelector("[data-role=\"empty\"]").style.display= "none";
+
 		for(var i = 0; i < data.length; ++i) {
-			document.getElementById("suggestedDocuments").appendChild(makeDocumentEntry(data[i]));
+			containerObj.appendChild(makeDocumentEntry(data[i]));
 		}
 	} else {
-	}
-}
-
-function purchasedDocumentsDisplay(data) {
-	data = JSON.parse(data);
-	if(data.length) {
-		this.lastGet = data[data.length -1].id;
-		document.getElementById("emptyResult").style.display = "none";
-		for(var i = 0; i < data.length; ++i) {
-			document.getElementById("purchaseList").appendChild(makeDocumentEntry(data[i]));
+		if(!boot)
+			new Modal("Attenzione","Nessun documento da caricare");
+		if(boot) {
+			containerObj.parentElement.querySelector("[data-role='empty']").style.display="block"
 		}
-	} else {
-		document.getElementById("emptyResult").style.display = "block";
-
+		containerObj.parentElement.querySelector("[data-role='loadMore']").style.display="none";
 	}
 }
-
-
 
 function homeInit() {
-	var loadedTags = loadTags();
-	if(loadedTags)
-		loadedTags = loadedTags.split(";");
-	var jsonedTags = JSON.stringify(loadedTags);
 	var homeFragment = new Fragment("homeFragmentContainer");
 	homeFragment.makeSelectors("a");
 	homeFragment.loadState();
 	var suggested = document.getElementById("suggestedDocuments");
-
 	
-	var dataHandler = new handler("",jsonedTags,suggestedDocumentsDisplay,getTaggedDocuments);
-	var dataPurchaseHandler = new handler("","",purchasedDocumentsDisplay,getPurchasedDocuments);
+	var dataHandler = new handler(function(data,boot) {DocumentsDisplay(data,boot,"suggestedDocuments");},getTaggedDocuments);
+	var dataPurchaseHandler = new handler(function(data,boot) {DocumentsDisplay(data,boot,"purchaseList");},getPurchasedDocuments);
 	document.getElementById("loadMore").addEventListener("click",dataHandler.moreData.bind(dataHandler));
-
-	dataPurchaseHandler.moreData(null,1,document.getElementById("loadMore"));
-	dataHandler.moreData(null,1,document.getElementById("loadMore"));
+	document.getElementById("loadMorePurch").addEventListener("click",dataPurchaseHandler.moreData.bind(dataPurchaseHandler));
+	dataPurchaseHandler.moreData(null,1);
+	dataHandler.moreData(null,1);
 }

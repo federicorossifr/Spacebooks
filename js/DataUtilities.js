@@ -74,31 +74,23 @@ function makeResponsive(tableBody) {
 
 
 
-function handler(data,dataQuery,onDataAction,moreDataAction) {
+function handler(onDataAction,moreDataAction) {
 	this.lastGet = 0;
-	this.dataQuery = dataQuery;
 	this.onData = onDataAction.bind(this);
 	this.moreDataAction = moreDataAction;
 }
 
 
-handler.prototype.moreData = function(event,boot,loaderCaller) {
+handler.prototype.moreData = function(event,firstCall) {
 	var curr = this;
-	this.moreDataAction(curr.dataQuery,curr.lastGet,5,function(data) {
-		curr.onData(data);
-		var dataSize=0;
-		if(data)
-			dataSize = JSON.parse(data).length;
-		else
-			dataSize = 0;
-		if(!dataSize) {
-			if(event)
-				event.target.style.display = "none";
-			if(!boot)
-				new Modal("Attenzione","Nient'altro da caricare");
-			else {
-				loaderCaller.style.display = "none";
-			}
+	this.moreDataAction(curr.lastGet,5,function(data) {
+		data = JSON.parse(data);
+		var responseData = data.data;
+		var dataLenght = data.size;
+		var error = data.error;
+		if(!error && dataLenght > 0) {
+			curr.lastGet = responseData[data.size -1].id;
 		}
+		curr.onData(responseData,firstCall);
 	});
 }

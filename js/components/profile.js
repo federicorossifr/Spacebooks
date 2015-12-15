@@ -18,20 +18,9 @@ function bigDocumentPicture(event,obj) {
 }
 
 function editFormCheck() {
-	var editForm = new FormControl("editForm");
-	if(editForm.error) return;
-	if(!editForm) return false;
-	editForm.addConstraint("username",/.?/);
-	editForm.addConstraint("password",/^$|.{6,9}/);
-	editForm.addConstraintExtension("./php/async/exists.php","label","username","0","Already exists");
-
-	editForm.form.onsubmit = function(event) {
-		if(this.password.value != this.password2.value) {
-			new Modal("Attenzione","Le password devono coincidere",function() {editForm.form.password2.focus()},false);
-			event.preventDefault();
-		}
-	}
-
+	var editForm = document.getElementById("editForm");
+	FormControl(editForm);
+	
 }
 
 editFormCheck();

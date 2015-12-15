@@ -29,7 +29,7 @@ function Create() {
 			parse(editor,editorOut);
 			var strOut = editorOut.join("");
 			this.description.value = strOut;
-			var editorRawText = editor.textContent.replace(/\s+/g, '');
+			var editorRawText = editor.textContent.replace(/\s{2,}/g, '');
 			console.log(strOut);
 
 			if(editorRawText == "" || editorRawText.length < 100) {

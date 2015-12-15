@@ -1,6 +1,18 @@
 @media screen and (max-width: 719px) {
 
-
+  * {
+    flex-flow:column;
+  }
+  
+  form.combo * {
+    margin-bottom:0;
+    width:100%;
+  }
+  
+  form.combo {
+    margin-bottom:20px;
+  }
+  
   nav > ul > li {
     display:block;
     width:100%;
@@ -58,9 +70,8 @@
   }
 
   table.userTable td:before {
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    background-color:white;
-    color:black;
+    background-color:tomato;
+    color:white;
     display:block;
     width:100%;
     content:attr(data-heading);
@@ -68,6 +79,11 @@
     box-sizing:border-box;
     text-align:center;
     margin-bottom:1%;
+  }
+  
+  table.userTable tr {
+   display:block;
+   border-bottom:2px dashed tomato;
   }
 
 
@@ -95,6 +111,37 @@
   #navToggle {
     border:1px solid tomato;
   }
+  
+  .controllerBar > .controller {
+   border-bottom:0px;
+   border-right:1px solid tomato;
+  }
+
+  .controllerBar > .controller:last-child {
+   border-right:1px solid tomato;
+   border-bottom: 1px solid tomato;
+  }
+  
+  div.fileInput.fileUploader {
+    width:100%;
+    box-sizing:border-box;
+  }
+  
+  div.fileInput.pictureInput {
+    float:none;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  
+  div.left,div.right {
+    float:none;
+    min-width:100%;
+  }
+  
+  dl.left {
+    float:none;
+    min-width:100%;
+  }
 }
 
 @media screen and (min-width: 720px) {
@@ -111,6 +158,9 @@
     left:-300px;
   }
 
+  .controllerBar > .controller {
+   width:100%
+  }
 
 
 }

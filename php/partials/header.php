@@ -12,13 +12,11 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Bookd</title>
+	<title>Spacebooks</title>
 
 	<meta name="theme-color" content="#3F51B5">
 
 
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 	<meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
 	<link rel="stylesheet" type="text/css" href="css/style_.css">
 	<link rel="stylesheet" type="text/css" href="css/responsive_.css">
