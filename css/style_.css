@@ -67,10 +67,8 @@ body > header {
 body > header > h1 {
   color:white;
   margin:0;
-  width:50%;
+  width:100%;
   display: block;
-  margin-left:auto;
-  margin-right:auto;
   text-align:center;
   font-size: 35px;
 }
@@ -954,6 +952,7 @@ dd:hover > .prettyButton {
 
 .documentList > li div.title p {
   color:white;
+  overflow:hidden;
 }
 
 .documentList.people > li div.title {

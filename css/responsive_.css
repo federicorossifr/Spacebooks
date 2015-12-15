@@ -142,6 +142,10 @@
     float:none;
     min-width:100%;
   }
+  
+  #registerSection .prettyButton, .prettyButton {
+      width:100%;
+  }
 }
 
 @media screen and (min-width: 720px) {
