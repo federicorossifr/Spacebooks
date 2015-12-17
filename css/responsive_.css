@@ -23,6 +23,10 @@
     width:100%;
     text-align:left;
   }
+  
+  nav > ul > li.right {
+    float:none;
+  }
 
   dl {
     margin:0;
@@ -94,6 +98,9 @@
 
   #description {
     width:100%;
+    max-width:100%;
+    float:none;
+    margin:0;
     background-color:white;
     padding:5%;
     margin-top:1em;
@@ -143,6 +150,23 @@
   dl.left {
     float:none;
     min-width:100%;
+  }
+  
+  .left,.right {
+    float:none;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  
+  .stars {
+    margin-left:auto;
+    margin-right:auto;
+  }
+  
+  img#docCover {
+    margin-left:auto;
+    margin-right:auto;
+    display:block;
   }
   
   #registerSection .prettyButton, .prettyButton {

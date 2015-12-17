@@ -5,7 +5,7 @@ function parse(parent,vector) {
 		var startTag = "<" + parent.tagName + " ";
 
 		for(var i = 0; i < parent.attributes.length; ++i) {
-			if(parent.attributes[i].nodeName == "contenteditable") continue;
+			if(parent.attributes[i].nodeName == "contenteditable" || parent.attributes[i].nodeName == "id") continue;
 			startTag+= parent.attributes[i].nodeName + "='" + parent.attributes[i].nodeValue + "' ";
 		}
 
@@ -33,4 +33,15 @@ function parse(parent,vector) {
 		vector.push(endTag);
 	}
 
+}
+
+function emitter(editor) {
+	var editorOut = new Array();
+	parse(editor,editorOut);
+	var strOut = editorOut.join("");
+	var editorRawText = editor.textContent.replace(/\s{2,}/g, '');
+	var result = new Array();
+	result['rawData'] = editorRawText;
+	result['outData'] = strOut;
+	return result;
 }

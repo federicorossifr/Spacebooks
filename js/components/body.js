@@ -35,6 +35,7 @@ function displaySuggestion(data,resultList) {
 	for(var i = 0; i < decodedDocData.length; ++i) {
 		console.log(i + ": " + decodedDocData[i].title);
 		var tmp = document.createElement("li");
+		tmp.className = "documentResult";
 		var tmpA = document.createElement("a");
 		tmpA.textContent=decodedDocData[i].title;
 		tmpA.href ="./document.php?id=" + decodedDocData[i].id;
@@ -49,6 +50,7 @@ function displaySuggestion(data,resultList) {
 		tmpA.textContent = decodedUsrData[i].username;
 		tmpA.href =  "./profile.php?id=" + decodedUsrData[i].id;
 		tmp.appendChild(tmpA);
+		tmpA.style.backgroundImage = "url('."+decodedUsrData[i].picture+"')";
 		resultList.appendChild(tmp);
 	}
 }
@@ -70,10 +72,11 @@ function Body() {
 	this.closeSearch = document.getElementById("closeSearch");
 	this.profileState = false;
 	this.searchState = false;
-	this.menuState = false;
+	this.menuState = true;
 	this.windowWidth = window.innerWidth;
+	this.logo = document.getElementById("logo");
+	this.logo.style.display = "none";
 
-	var curr = this; // Aliasing dell'oggetto this per le istruzioni successive.
 	this.closeProfile.onclick = this.profile.bind(this);
 	this.profileToggle.onclick = this.profile.bind(this);
 	this.navToggle.onclick = this.menu.bind(this);
@@ -84,11 +87,16 @@ function Body() {
 	with(this) {
 		window.onresize = function() {
 			windowWidth = window.innerWidth;
-		if(windowWidth < 720)
+		if(windowWidth < 720) {
 			nav.style.display = "none";
+			nav.style.maxHeight = "0";
+			this.menuState = false;
+		}
 		else
 			nav.style.display = "block";
 	}}
+
+	this.menu();
 }
 
 
@@ -103,6 +111,7 @@ Body.prototype.changePic = function() {
 
 Body.prototype.menu = function() {
 	with(this) {
+		console.log(menuState);
 		nav.style.transition = "max-height 0.3s ease-in-out";
 		if(menuState) 
 			nav.style.maxHeight = "0";
@@ -147,3 +156,19 @@ function bodyMain() {
 }
 
 
+
+window.onscroll = function() {
+	var scrolled = parseInt(document.body.scrollTop);
+	var threshold = 85;
+	var nav = document.getElementsByTagName("nav")[0];
+	console.log(nav.className);
+	if(scrolled >= threshold) {
+		nav.className = "fixed";
+		document.body.style.marginTop = threshold + "px";
+		document.getElementById("logo").style.display = "block";
+	} else {
+		nav.className = "static";
+		document.body.style.marginTop = 0;
+		document.getElementById("logo").style.display = "none";
+	}
+}

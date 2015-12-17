@@ -13,7 +13,7 @@
 
 		<form  id="createForm" method="POST" action="php/upload.php" enctype="multipart/form-data">
 
-			<article data-fragment data-name="Clicca per aggiungere file al tuo documento" class="right">
+			<article data-fragment data-name="Aggiungeri un file al tuo documento">
 				<header><h3>Clicca per aggiungere file al tuo documento</h3></header>
 				<p>
 					Fai click col tasto sinistro su "Aggiungi File" ( oppure toccalo sullo schermo) per aggiungere un nuovo file al tuo documento.
@@ -27,9 +27,9 @@
 				<a onclick="instance.fragments.next()" class="prettyButton">Procedi</a>
 			</article>
 
-			<article data-fragment data-name="Clicca per inserire una descrizione" class="right">
+			<article data-fragment data-name="Inserirsci una descrizione" >
 				<header><h3>Clicca per inserire una descrizione</h3></header>
-				<label for="description">Inserisci una descrizione di almeno 100 caratteri che illustri il contenuto del tuo documento.</label><br>
+				<label>Inserisci una descrizione di almeno 100 caratteri che illustri il contenuto del tuo documento.</label><br>
 				<strong><label id="count">0</label></strong> caratteri inseriti. 
 				<div class="comboButton">
 					<button class="prettyButton" onclick="command(event)" id="bold">Grassetto</button>
@@ -41,7 +41,7 @@
 			</article>
 
 
-			<article data-fragment data-name="Titolo, prezzo e tags" class="left">
+			<article data-fragment data-name="Inserisci titolo, prezzo e tags" >
 				<header><h3>Inserisci le informazioni principali</h3></header>
 
 					<div class="left">
@@ -69,34 +69,24 @@
 
 		</form>
 
-	</main>
 
+	</main>
+		<?php include("./php/partials/footer.php");?>
+</body>
 
 <script type="text/javascript" src="./js/components/create.js"></script>
 <script type="text/javascript">var instance = new Create();
 
-	var bold = document.getElementById("bold");
 	function command(event) {
 		event.preventDefault();
 		var command = event.target.id;
 		document.execCommand(command);
 	}
 
-	document.getElementById("description").oninput = function() {
-		var counter = document.getElementById("count");
-		var value = this.textContent;
-		console.log(value);
-		var valueLength = value.length;
-		console.log(valueLength);
-		var valueGoal = 100;
-		console.log(valueGoal);
-		if(valueGoal - valueLength >= 0) {
-			counter.className = "error";
-		} else {
-			counter.className = "success";
-		}
+	
 
-		counter.textContent = valueLength;
-	}
+	countLeft(document.getElementById("description"),100,document.getElementById("count"));
+
+	
 
 </script>

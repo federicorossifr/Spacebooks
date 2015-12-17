@@ -23,8 +23,19 @@
 
 			$user->update();
 			$db->close();
+			header("Location: ../profile.php");
+			break;
+
+		case 'document':
+			$docId = $_POST['docId'];
+			$document = Document::read($docId);
+			$newDescription = $_POST['description'];
+			$newTitle = $_POST['title'];
+			$document->title = $newTitle;
+			$document->description = $newDescription;
+			$document->update();
+			$db->close();
+			header("Location: ../document.php?id=$docId");
 			break;
 		default: break;
 	}
-
-	header("Location: ../profile.php");

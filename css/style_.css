@@ -110,6 +110,21 @@ nav {
   margin-top:20px;
 }
 
+nav.fixed {
+  position:fixed;
+  top:0;
+  left:0;
+  margin-top:0;
+  width:100%;
+  background-color:white;
+  box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.50);
+  z-index:1;
+}
+
+nav.fixed ul {
+  border:none;
+}
+
 nav > ul {
   padding:0;
   margin:0;
@@ -121,6 +136,7 @@ nav > ul {
   width:80%;
   border-top:1px solid tomato;
 }
+
 
 nav > ul > li {
   float:left;
@@ -135,6 +151,13 @@ nav > ul > li > a {
 }
 
 
+li#logo {
+  background-image: url("../img/galaxy.jpg");
+}
+
+li#logo a {
+  color:white;
+}
 
 nav > ul > li.active > a, nav > ul > li > a:hover {
   color:tomato;
@@ -220,11 +243,13 @@ main article {
 /***********************************/
 
 .left {
+  max-width:50%;
   float:left;
   margin-left:10px;
 }
 
 .right {
+  max-width:50%;
   float:right;
 }
 
@@ -455,20 +480,21 @@ form textarea:focus, div[contenteditable]:focus {
 
 #pictureContainer > span.change {
   position:absolute;
-  background-color:#333;
   color:white;
   display:block;
-  top:calc(50% - 10px) ;
+  top:0;
   left:calc(50% - 50px);
   width:100px;
-  line-height:20px;
+  height:100px;
+  line-height:100px;
   opacity:0;
-  border-radius:5px 5px;
   cursor: pointer;
+  transition: background-color 0.2s ease-out;
 }
 
 #pictureContainer:hover > span.change {
-  opacity:0.8;
+  background-color: rgba(0,0,0,0.50);
+  opacity:1;
 }
 
 #pictureContainer > #upPicture {
@@ -649,7 +675,7 @@ table.userTable th {
   position:relative;
 }
 
-#description {
+#description,.descriptionContainer > div {
   display:block;
   margin:0;
   margin-left:10px;
@@ -658,10 +684,20 @@ table.userTable th {
   color:black;
   padding:1%;
   width:calc(100% - 220px);
+  max-width: calc(100% - 300px);
   float:left;
   word-break:break-all;
   box-sizing:border-box;
 }
+
+.descriptionContainer.wide > div {
+  width:100%;
+  max-width:100%;
+  margin:0;
+  min-height:300px;
+  float:none;
+}
+
 
 
 #description[contenteditable] {
@@ -701,6 +737,7 @@ table.userTable th {
 
 .about .prettyButton {
   position:absolute;
+  max-width:1024px;
   width:10%;
   left:45%;
   font-size:15px;
@@ -719,21 +756,14 @@ table.userTable th {
   opacity:0.6;
 }
 
-.about[data-name="Condivisione"] {
-  background-image: url("../img/walls/condivisione.jpg");
+
+.about[data-name] {
+  background-image: url("../img/galaxy_foot.jpg");
   background-size:cover;
-  background-repeat:no-repeat;
 }
 
-.about[data-name="Social"] {
-  background-image: url("../img/walls/social.jpg");
-  background-size:cover;
-
-}
-
-.about[data-name="Guadagno"] {
-  background-image: url("../img/walls/guadagno.jpg");
-  background-size:cover;
+.about[data-name] p {
+  color:white;
 }
 
 .popper {
@@ -750,6 +780,11 @@ table.userTable th {
 
 .popper > p {
   color:white;
+}
+
+.popper > .prettyButton {
+  width:100%;
+  box-sizing:border-box;
 }
 
 .comboButton {
@@ -797,17 +832,19 @@ dd:hover > .prettyButton {
 }
 
 
-.resultList li {
-  background-color:#3F51B5;
+.resultList li { 
  line-height:40px;
- color:white;
+ border:1px solid tomato;
+ margin-bottom:5px;
 }
 
 
 .resultList li a {
-  color:white;
+  background-size:45px 45px;
+  background-repeat:no-repeat;
+  background-position:left;
+  display:block;
   text-decoration:none;
-  
 }
 
 #private > div {

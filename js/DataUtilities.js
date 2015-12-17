@@ -94,3 +94,29 @@ handler.prototype.moreData = function(event,firstCall) {
 		curr.onData(responseData,firstCall);
 	});
 }
+
+
+function command(event) {
+	event.preventDefault();
+	var command = event.target.id;
+	document.execCommand(command);
+}
+
+function countLeft(input,goal,output) {
+		output.textContent = input.textContent.length;
+		input.oninput = function() {
+			var counter = output;
+			var value = this.textContent;
+			console.log(value);
+			var valueLength = value.length;
+			console.log(valueLength);
+			var valueGoal = goal
+			console.log(valueGoal);
+			if(valueGoal - valueLength >= 0) {
+				counter.className = "error";
+			} else {
+				counter.className = "success";
+			}
+			counter.textContent = valueLength;
+		}
+	}

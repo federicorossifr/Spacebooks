@@ -22,11 +22,9 @@
 				<header><h2>Utenti</h2></header>
 				<table class="userTable">
 					<thead>
-						<th>Nome</th>
-						<th>Cognome</th>
+						<th>Id</th>
 						<th>Username</th>
 						<th>Email</th>
-						<th>Password</th>
 						<th>Data di nascita</th>
 						<th>Nazionalità</th>
 						<th>Ruolo</th>
@@ -37,11 +35,9 @@
 							foreach ($users as $tmp) {
 								echo "
 									<tr>
-										<td>$tmp->name</td>
-										<td>$tmp->surname</td>
+										<td>$tmp->id</td>
 										<td>$tmp->username</td>
 										<td>$tmp->email</td>
-										<td>*******</td>
 										<td>$tmp->birthdate</td>
 										<td>$tmp->country</td>
 										<td>$tmp->role</td>
@@ -77,28 +73,25 @@
 				<table class="userTable">
 					<thead>
 						<th>Titolo</th>
+						<th>Link</th>
 						<th>Creazione</th>
 						<th>Ultima Modifica</th>
 						<th>Autore</th>
-						<th>Prezzo</th>
-						<th>Punteggio</th>
-						<th>Votazioni</th>
 						<th>Disponibile</th>
 						<th>Azione</th>
 					</thead>
 					<tbody id="documentTable">
 						<?php
 							foreach ($documents as $tmp) {
+								if(!$tmp->author) $tmp->author = 0;
 								echo "
 									<tr>
 										<td>$tmp->title</td>
+										<td><a class='prettyButton' href='./document.php?id=$tmp->id'>Vai</a></td>
 										<td>$tmp->created</td>
 										<td>$tmp->updated</td>
 										<td>$tmp->author</td>
-										<td>$tmp->price</td>
-										<td>$tmp->score</td>
-										<td>$tmp->votings</td>
-										<td>$tmp->available</td>
+											<td>$tmp->available</td>
 										<td>
 											<select onchange='action(this)' data-id='$tmp->id' data-model='document'>
 												<option value='-1'>Scegli azione</option>
@@ -118,9 +111,9 @@
 		</main>
 	<script type="text/javascript" src="./js/components/authority.js"></script>
 	<script type="text/javascript">main()</script>
+	<?php include("./php/partials/footer.php");?>
 	</body>
 
 
-		<?php include("./php/partials/footer.php");?>
 
 </html>

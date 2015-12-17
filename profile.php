@@ -14,6 +14,9 @@
 	if($profile) {
 		$documents = $profile->getDocuments();
 		$followers = $profile->getFellows();
+	} else {
+		header("Location: ./home.php");
+		die;
 	}
 
 	$following = false;
@@ -64,7 +67,7 @@
 
 		</article>
 
-		<article data-fragment data-name="Documenti" class="right">
+		<article data-fragment data-name="Documenti">
 			<header><h3>Documenti di <?= $profile->username  ?></h3></header>
 			
 			<table class="userTable">
@@ -86,7 +89,9 @@
 										<td>$document->title
 										<td>$document->price
 										<td>$document->created
-										<td>" . $document->score/$document->votings;
+										<td>";
+									if($document->votings > 0) echo $document->score/$document->votings;
+									else echo 0;
 							}	
 					?>
 				</tbody>

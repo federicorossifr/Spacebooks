@@ -21,15 +21,16 @@
 				<header><h3>Info documento</h3></header>
 
 				<div class="left">
-					<div class="stars shadow">
+					<div class="stars">
 						<?php
 							drawStars(floor($doc->avg),5);
 						?><br>
 						<strong><?php echo $doc->avg . " ($doc->votings)" ?></strong>
 					</div>
 					<hr>
-					<img class="shadow" src=" <?= $doc->picturePath ?> " width="200" alt="no">
-					<span class="prettyButton"><?= $doc->price ?>BC</span>
+					<img id="docCover" src=" <?= $doc->picturePath ?> " width="200" alt="no">
+					<a href="<?= ($doc->extendedAuthor)? "./profile.php?id=" . $doc->extendedAuthor->id: "#" ?>" class="prettyButton">Autore: <?= ($doc->extendedAuthor)? $doc->extendedAuthor->username: "Anonimo" ?></a>
+					<span class="prettyButton">Prezzo: <?= $doc->price ?> crediti</span>
 
 					<?php
 						if($doc->price <= $user->credits && !$isPurchased)	
@@ -41,7 +42,7 @@
 					?>
 
 				</div>
-					<?= $doc->description ?>
+					<div class="descriptionContainer"><?= $doc->description ?></div>
 					
 
 			</article>
@@ -98,6 +99,11 @@
 					<ul class="reviewList">
 						<?php
 							foreach($reviews as $rev) {
+								if(!$rev['user']) {
+									$rev['user'] = new stdClass(); //generic class for generic anonymous user
+									$rev['user']->picture = "./img/default.png";
+									$rev['user']->username = "Anonimo";
+								}
 								echo "<li>";
 								echo "<img src='" . $rev['user']->picture . "'/>";
 								echo "<div>";
@@ -114,6 +120,28 @@
 				</div>
 
 			</article>
+
+			<?php if($user->id == $doc->author) { ?>
+			<article data-fragment data-name="Modifica">
+				<header><h2>Modifica</h2></header>
+				<form action="./php/edit.php" method="POST" id="editForm">
+					<label>Titolo</label><br>
+					<input type="text" value="<?= $doc->title ?>" name="title">
+					<input type="hidden" name="description">
+					<input type="hidden" name="model" value="document">
+					<input type="hidden" name="docId" value="<?= $doc->id ?>">
+					<label>Inserisci una descrizione di almeno 100 caratteri che illustri il contenuto del tuo documento.</label><br>
+					<strong><label id="count">0</label></strong> caratteri inseriti. 					<div class="comboButton">
+					<button class="prettyButton" onclick="command(event)" id="bold">Grassetto</button>
+					<button class="prettyButton" onclick="command(event)" id="underline">Sottolineato</button>
+					<button class="prettyButton" onclick="command(event)" id="italic">Corsivo</button>
+					</div>
+					<div class="descriptionContainer wide" id="editDescription"><?= $doc->description ?></div><br>
+					<button type="submit">Modifica</button>
+				</form>
+
+			</article>
+			<?php } ?>
 		</div>
 	</main>
 	<script type="text/javascript" src="./js/components/document.js"></script>
@@ -121,5 +149,28 @@
 		<?php
 			echo "var tags = " . json_encode($doc->tags) . ";";
 		?>
+
+
+		function initEditCenter() {
+			var editCenter = document.getElementById("editDescription");
+			if(!editCenter) return;
+			var editForm = document.getElementById("editForm");
+			var editor = editCenter.getElementsByTagName("div")[0];
+			editor.contentEditable = true;
+			countLeft(editor,100,document.getElementById("count"));
+
+			editForm.onsubmit = function(event) {
+				event.preventDefault();
+				var parseResult = emitter(editor);
+				if(parseResult['rawData'].length < 100) {editor.focus(); return;}
+				this.description.value = parseResult['outData'];
+				this.submit();
+			}
+		}
+
+
+
+		initEditCenter();
 		initDocument();
 	</script>
+	<?php include("./php/partials/footer.php");?>

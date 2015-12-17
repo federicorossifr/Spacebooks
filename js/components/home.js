@@ -23,6 +23,7 @@ function makeDocumentEntry(documentData) {
 	tmpLi.className ="shadow";
 	tmpA.href = "./document.php?id=" + documentData.id;
 	tmpImg.src = documentData.path;
+	tmpImg.alt = documentData.title + "Cover";
 	tmpDiv.className = "title shadow";
 	tmpStarDiv.className = "stars shadow";
 	tmpP.textContent = documentData.title;

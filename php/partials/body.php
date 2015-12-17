@@ -10,8 +10,8 @@
 		</ul>
 
 		<ul id="nav">
-			<li <?php if($thisUrl == "/profile.php") echo "class='active' " ?> id="picture"><a id="toggleProfile"  href="#"><img src="<?= $user->picture ?>" alt="Profile">Benvenuto, <?= " " . $user->username ?></a></li>
-
+			<li id="logo"><a href="./home.php">SPACEBOOKS</a></li>
+			<li <?php if($thisUrl == "/profile.php") echo "class='active' " ?> id="picture"><a id="toggleProfile" href="#profile"><img src="<?= $user->picture ?>" alt="Profile">Benvenuto, <?= " " . $user->username ?></a></li>
 			<?php
 				foreach ($menuVoices as $name => $address) {
 					if($name == "admin" && $user->role != "admin") continue;

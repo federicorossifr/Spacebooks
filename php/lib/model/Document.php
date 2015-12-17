@@ -24,6 +24,7 @@ class Document {
 	private $files;
 	private $avg;
 	private $reviews;
+	private $extendedAuthor;
 
 	function __construct($fields = array()) {
 		if($fields) {
@@ -203,6 +204,7 @@ class Document {
 		$this->picturePath = $this->getCover();
 		$this->avg = ($this->votings > 0) ? $this->score / $this->votings : 0;
 		$this->reviews = $this->getRatings();
+		$this->extendedAuthor = User::read($this->author);
 	}
 }
 

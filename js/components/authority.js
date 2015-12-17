@@ -75,7 +75,7 @@ function action(obj) {
 
 function main() {
 	var authorityFragmentContainer = new Fragment("authorityFragmentContainer");
-	authorityFragmentContainer.makeSelectors("authorityFragmentContainer");
+	authorityFragmentContainer.makeSelectors("a");
 	authorityFragmentContainer.loadState();
 	initData("userTable","userFilter","userSelector");
 	initData("documentTable","documentFilter","documentSelector");

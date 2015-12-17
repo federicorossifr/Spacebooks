@@ -5,7 +5,7 @@
 	</p>
 
 	<p>
-		Cos'è Bookd? <a href="./about.php">Scoprilo qua!</a>
+		Cos'è Spacebooks? <a href="./about.php">Scoprilo qua!</a>
 
 	</p>
 </footer>

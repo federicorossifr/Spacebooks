@@ -26,6 +26,8 @@ function Create() {
 		this.createForm.onsubmit = function(e) {
 			editorOut = new Array();
 			e.preventDefault();
+			editor.id = "";
+			editor.className = "description";
 			parse(editor,editorOut);
 			var strOut = editorOut.join("");
 			this.description.value = strOut;
