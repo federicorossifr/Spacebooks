@@ -4,6 +4,8 @@
     flex-flow:column;
   }
   
+  
+
   form.combo * {
     margin-bottom:0;
     width:100%;
@@ -26,6 +28,14 @@
   
   nav > ul > li.right {
     float:none;
+  }
+
+  nav.fixed #logo {
+    display:block;
+  }
+
+  nav.static #logo {
+    display:none;
   }
 
   dl {
@@ -96,7 +106,7 @@
   }
 
 
-  #description {
+  #description,.descriptionContainer > div {
     width:100%;
     max-width:100%;
     float:none;
@@ -171,6 +181,16 @@
   
   #registerSection .prettyButton, .prettyButton {
       width:100%;
+  }
+
+  .comboButton > .prettyButton {
+    padding:10px;
+    margin:0;
+    border-bottom:0;
+  }
+
+  .comboButton > .prettyButton:last-child {
+    border-bottom:1px solid tomato;
   }
 }
 

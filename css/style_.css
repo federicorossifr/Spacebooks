@@ -462,6 +462,7 @@ form textarea:focus, div[contenteditable]:focus {
   transition: background-color 0.2s ease-in-out;
   transition: border 0.2s ease-in-out;
   cursor:pointer;
+  box-sizing:border-box;
 }
 
 .prettyButton:hover {
@@ -1048,4 +1049,16 @@ td  .prettyButton {
   display:block;
   overflow-y:auto;
   overflow-x:hidden;
+}
+
+#bold {
+  font-weight:bolder;
+}
+
+#underline {
+  text-decoration:underline;
+}
+
+#italic {
+  font-family:"VollkornItalic";
 }
