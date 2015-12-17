@@ -108,6 +108,7 @@ nav {
   width:100%;
   position:relative; /* Per ombra */
   margin-top:20px;
+  transition:box-shadow 0.2s ease-in-out;
 }
 
 nav.fixed {
@@ -153,6 +154,8 @@ nav > ul > li > a {
 
 li#logo {
   background-image: url("../img/galaxy.jpg");
+  max-width:0;
+  transition:max-width 0.2s ease-in-out;
 }
 
 li#logo a {
@@ -203,10 +206,11 @@ aside#search {
   width:100%;
 }
 
-#sideButtons  .prettyButton {
+#sideButtons .prettyButton {
   width:100%;
   box-sizing:border-box;
 }
+
 
 
 /*********************************************************/
@@ -276,7 +280,6 @@ dt {
   display:block;
   padding:1%;
   background-color:white;
-  font-weight:bolder;
   position:relative;
   color:tomato;
 }
@@ -456,7 +459,6 @@ form textarea:focus, div[contenteditable]:focus {
   margin-top:1em;
   text-align:center;
   text-decoration:none;
-  font-weight:bolder;
   transition: background-color 0.2s ease-in-out;
   transition: border 0.2s ease-in-out;
   cursor:pointer;

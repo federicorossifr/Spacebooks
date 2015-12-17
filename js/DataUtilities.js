@@ -91,6 +91,7 @@ handler.prototype.moreData = function(event,firstCall) {
 		if(!error && dataLenght > 0) {
 			curr.lastGet = responseData[data.size -1].id;
 		}
+		responseData.noMore = data.noMore;
 		curr.onData(responseData,firstCall);
 	});
 }
@@ -119,4 +120,4 @@ function countLeft(input,goal,output) {
 			}
 			counter.textContent = valueLength;
 		}
-	}
+}

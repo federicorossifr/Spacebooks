@@ -48,8 +48,8 @@
 			</header>
 
 			<ul id="sideButtons">
-				<li><a class="prettyButton" href="profile.php">Profile</a></li>
-				<li><a class="prettyButton" href="./php/logout.php">Logout</a></li>
+				<li><a class="prettyButton" href="profile.php">Il tuo profilo</a></li>
+				<li><a class="prettyButton" href="./php/logout.php">Esci</a></li>
 			</ul>
 	</aside>
 

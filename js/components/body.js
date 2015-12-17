@@ -33,7 +33,6 @@ function displaySuggestion(data,resultList) {
 	var decodedUsrData = JSON.parse(usrData);
 	var decodedDocData = JSON.parse(docData);
 	for(var i = 0; i < decodedDocData.length; ++i) {
-		console.log(i + ": " + decodedDocData[i].title);
 		var tmp = document.createElement("li");
 		tmp.className = "documentResult";
 		var tmpA = document.createElement("a");
@@ -44,7 +43,6 @@ function displaySuggestion(data,resultList) {
 	}
 
 	for(var i = 0; i < decodedUsrData.length; ++i) {
-		console.log(i + ": " + decodedUsrData[i].username);
 		var tmp = document.createElement("li");
 		var tmpA = document.createElement("a");
 		tmpA.textContent = decodedUsrData[i].username;
@@ -75,7 +73,7 @@ function Body() {
 	this.menuState = true;
 	this.windowWidth = window.innerWidth;
 	this.logo = document.getElementById("logo");
-	this.logo.style.display = "none";
+	//this.logo.style.display = "none";
 
 	this.closeProfile.onclick = this.profile.bind(this);
 	this.profileToggle.onclick = this.profile.bind(this);
@@ -111,7 +109,6 @@ Body.prototype.changePic = function() {
 
 Body.prototype.menu = function() {
 	with(this) {
-		console.log(menuState);
 		nav.style.transition = "max-height 0.3s ease-in-out";
 		if(menuState) 
 			nav.style.maxHeight = "0";
@@ -161,14 +158,13 @@ window.onscroll = function() {
 	var scrolled = parseInt(document.body.scrollTop);
 	var threshold = 85;
 	var nav = document.getElementsByTagName("nav")[0];
-	console.log(nav.className);
 	if(scrolled >= threshold) {
 		nav.className = "fixed";
 		document.body.style.marginTop = threshold + "px";
-		document.getElementById("logo").style.display = "block";
+		document.getElementById("logo").style.maxWidth ="200px";
 	} else {
 		nav.className = "static";
 		document.body.style.marginTop = 0;
-		document.getElementById("logo").style.display = "none";
+		document.getElementById("logo").style.maxWidth = "0";
 	}
 }

@@ -4,11 +4,13 @@
 	$dataConnection = require "../lib/db.php";
 
 
-	function manifactureResponse($responseArray,$error) {
+	function manifactureResponse($responseArray,$error,$stepBy) {
 		$ajaxResponse = array();
 		$ajaxResponse["data"] = $responseArray;
 		$ajaxResponse["size"] = sizeof($responseArray);
 		$ajaxResponse["error"] = $error;
+		$ajaxResponse["noMore"] = false;
+		if(sizeof($responseArray) < $stepBy) $ajaxResponse["noMore"] = true;
 		return $ajaxResponse;
 	}
 
@@ -38,7 +40,7 @@
 		$result = $dataConnection->query($query);
 		$result = toArray($result);
 		$error = $dataConnection->error == 1;
-		$response = manifactureResponse($result,$error);
+		$response = manifactureResponse($result,$error,$stepBy);
 		return $response;
 	}
 
@@ -55,7 +57,7 @@
 		$result = $dataConnection->query($query);
 		$result = toArray($result);
 		$error = $dataConnection->error == 1;
-		$response = manifactureResponse($result,$error);
+		$response = manifactureResponse($result,$error,$stepBy);
 		return $response;
 	}
 

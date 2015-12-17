@@ -69,14 +69,17 @@ function DocumentsDisplay(data,boot,container) {
 		for(var i = 0; i < data.length; ++i) {
 			containerObj.appendChild(makeDocumentEntry(data[i]));
 		}
-	} else {
+	} 
+	if(!data || data.noMore)	{
 		if(!boot)
-			new Modal("Attenzione","Nessun documento da caricare");
+			//new Modal("Attenzione","Nessun documento da caricare");
 		if(boot) {
 			containerObj.parentElement.querySelector("[data-role='empty']").style.display="block"
 		}
 		containerObj.parentElement.querySelector("[data-role='loadMore']").style.display="none";
 	}
+
+
 }
 
 function homeInit() {
