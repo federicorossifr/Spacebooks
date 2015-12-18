@@ -21,6 +21,9 @@ function Create() {
 	this.editor = document.getElementById("description");
 	this.editorOut = new Array();
 
+	countLeft(document.getElementById("description"),100,document.getElementById("count"));
+
+
 
 	with(this) {
 		this.createForm.onsubmit = function(e) {

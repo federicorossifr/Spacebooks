@@ -23,4 +23,21 @@ function editFormCheck() {
 	
 }
 
+
+function handleFollowResult(data,obj) {
+	data = parseInt(data);
+	var newAttr = (data == 2) ? "0":"1"; 
+	var newLabel = (data == 2) ? "Segui":"Smetti di seguire";
+	obj.setAttribute("data-follow",newAttr);
+	obj.firstChild.nodeValue = newLabel;
+}
+
+function ajaxFollow(obj) {
+	var id = obj.getAttribute("data-mate");
+	var unfollow = obj.getAttribute("data-follow");
+	var params = [{'id':'mate','value':id},{'id':'unfollow','value':unfollow}];
+	var client = new AsyncReq('./php/async/followship.php',function(data) {handleFollowResult(data,obj);});
+	client.POST(params,"application/x-www-form-urlencoded");
+}
+
 editFormCheck();

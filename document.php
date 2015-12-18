@@ -131,7 +131,7 @@
 					<input type="hidden" name="model" value="document">
 					<input type="hidden" name="docId" value="<?= $doc->id ?>">
 					<label>Inserisci una descrizione di almeno 100 caratteri che illustri il contenuto del tuo documento.</label><br>
-					<strong><label id="count">0</label></strong> caratteri inseriti. 					<div class="comboButton">
+					<strong id="count">0</strong> caratteri inseriti. 					<div class="comboButton">
 					<button class="prettyButton" onclick="command(event)" id="bold">Grassetto</button>
 					<button class="prettyButton" onclick="command(event)" id="underline">Sottolineato</button>
 					<button class="prettyButton" onclick="command(event)" id="italic">Corsivo</button>
@@ -149,28 +149,6 @@
 		<?php
 			echo "var tags = " . json_encode($doc->tags) . ";";
 		?>
-
-
-		function initEditCenter() {
-			var editCenter = document.getElementById("editDescription");
-			if(!editCenter) return;
-			var editForm = document.getElementById("editForm");
-			var editor = editCenter.getElementsByTagName("div")[0];
-			editor.contentEditable = true;
-			countLeft(editor,100,document.getElementById("count"));
-
-			editForm.onsubmit = function(event) {
-				event.preventDefault();
-				var parseResult = emitter(editor);
-				if(parseResult['rawData'].length < 100) {editor.focus(); return;}
-				this.description.value = parseResult['outData'];
-				this.submit();
-			}
-		}
-
-
-
-		initEditCenter();
 		initDocument();
 	</script>
 	<?php include("./php/partials/footer.php");?>

@@ -1,24 +1,4 @@
 @font-face {
-    font-family: LoraItalic;
-    src: url("./fonts/Lora-Italic.ttf");
-}
-
-@font-face {
-  font-family: Lora;
-  src: url("./fonts/Lora-Regular.ttf");
-}
-
-@font-face {
-    font-family: LoraBoldItalic;
-    src: url("./fonts/Lora-Bolditalic.ttf");
-}
-
-@font-face {
-    font-family: LoraBold;
-    src: url("./fonts/Lora-Bold.ttf");
-}
-
-@font-face {
   font-family: Vollkorn;
   src: url("./fonts/Vollkorn-Regular.ttf");
 
@@ -351,7 +331,6 @@ td > select {
 
 form input {
   border: 1px solid rgba(0,0,0,0.50);
-  font-family: "LoraItalic";
   color:black;
   padding:2%;
   padding-top:5px;
@@ -391,10 +370,8 @@ form button:hover {
 form label {
   color:black;
   padding:1%;
-  font-family:"LoraBold";
-  display:inline-block;
+  display:inline-blocK;
   margin-bottom:5px;
-  font-size:13px;
 }
 
 
@@ -448,7 +425,7 @@ form textarea:focus, div[contenteditable]:focus {
 
 
 .prettyButton {
-  max-width:300px;
+  max-width:500px;
   margin-left:auto;
   margin-right:auto;
   display:block;
@@ -462,7 +439,6 @@ form textarea:focus, div[contenteditable]:focus {
   transition: background-color 0.2s ease-in-out;
   transition: border 0.2s ease-in-out;
   cursor:pointer;
-  box-sizing:border-box;
 }
 
 .prettyButton:hover {

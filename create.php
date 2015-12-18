@@ -30,7 +30,7 @@
 			<article data-fragment data-name="Inserirsci una descrizione" >
 				<header><h3>Clicca per inserire una descrizione</h3></header>
 				<label>Inserisci una descrizione di almeno 100 caratteri che illustri il contenuto del tuo documento.</label><br>
-				<strong><label id="count">0</label></strong> caratteri inseriti. 
+				<strong id="count">0</strong> caratteri inseriti. 
 				<div class="comboButton">
 					<button class="prettyButton" onclick="command(event)" id="bold">Grassetto</button>
 					<button class="prettyButton" onclick="command(event)" id="underline">Sottolineato</button>
@@ -76,17 +76,4 @@
 
 <script type="text/javascript" src="./js/components/create.js"></script>
 <script type="text/javascript">var instance = new Create();
-
-	function command(event) {
-		event.preventDefault();
-		var command = event.target.id;
-		document.execCommand(command);
-	}
-
-	
-
-	countLeft(document.getElementById("description"),100,document.getElementById("count"));
-
-	
-
 </script>

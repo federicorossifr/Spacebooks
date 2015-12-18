@@ -1,10 +1,26 @@
-@media screen and (max-width: 719px) {
+@media screen and (max-width: 1023px) {
 
   * {
     flex-flow:column;
   }
   
-  
+  #cA,#cB,input,form button {
+    float:none;
+    width:100%;
+    display:block;
+    max-width:500px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+  }
+
+  form label {
+     text-align:center;
+     width:100%;
+     margin-left:auto;
+     margin-right:auto;
+     box-sizing:border-box;
+  }
 
   form.combo * {
     margin-bottom:0;
@@ -152,21 +168,19 @@
     margin-right:auto;
   }
   
-  div.left,div.right {
-    float:none;
-    min-width:100%;
-  }
   
   dl.left {
     float:none;
-    min-width:100%;
   }
   
-  .left,.right {
+  div.left,div.right {
     float:none;
+    width:100%;
+    min-width:500px;
     margin-left:auto;
     margin-right:auto;
   }
+
   
   .stars {
     margin-left:auto;
@@ -181,6 +195,7 @@
   
   #registerSection .prettyButton, .prettyButton {
       width:100%;
+      box-sizing:border-box;
   }
 
   .comboButton > .prettyButton {
@@ -194,11 +209,14 @@
   }
 }
 
-@media screen and (min-width: 720px) {
+@media screen and (min-width: 1024px) {
   #navToggle {
     display:none;
   }
 
+  nav.fixed > ul {
+    width:100%;
+  }
   
   aside#profile {
     left:-300px;

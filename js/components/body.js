@@ -59,21 +59,26 @@ function displaySuggestion(data,resultList) {
 function Body() {
 	this.profileSide = document.getElementById("profile"); // Barra laterale "aside" a comparsa
 	this.searchSide = document.getElementById("search");
-	this.nav = document.getElementById("nav"); // Elemento "nav" per la navigazione
-	this.closeProfile = document.getElementById("close"); // Pulsante di chiusura della barra "aside"
+
+	this.navList = document.getElementById("nav"); // Elemento "nav" per la navigazione
 	this.navToggle = document.getElementById("navToggle"); // Pulsante di toggle per il nav responsive
+	
+	this.closeProfile = document.getElementById("close"); // Pulsante di chiusura della barra "aside"
 	this.profileToggle = document.getElementById("toggleProfile"); // Pulsante di apertura della barra "aside"
+
 	this.changePicButton = document.getElementById("changePicButton"); // Pulsante per il cambio dell'immagine di profilo
 	this.profilePictureForm = document.getElementById("upPicture"); // Form contente l'input file della nuova immagine di profilo
 	this.profilePictureFileInput = document.getElementById("fileInput"); // File input dell form.
+	
 	this.searchToggle = document.getElementById("toggleSearch");
 	this.closeSearch = document.getElementById("closeSearch");
+	
 	this.profileState = false;
 	this.searchState = false;
 	this.menuState = true;
+	
 	this.windowWidth = window.innerWidth;
 	this.logo = document.getElementById("logo");
-	//this.logo.style.display = "none";
 
 	this.closeProfile.onclick = this.profile.bind(this);
 	this.profileToggle.onclick = this.profile.bind(this);
@@ -85,13 +90,13 @@ function Body() {
 	with(this) {
 		window.onresize = function() {
 			windowWidth = window.innerWidth;
-		if(windowWidth < 720) {
-			nav.style.display = "none";
-			nav.style.maxHeight = "0";
+		if(windowWidth < 1024) {
+			navList.style.display = "none";
+			navList.style.maxHeight = "0";
 			this.menuState = false;
 		}
 		else
-			nav.style.display = "block";
+			navList.style.display = "block";
 	}}
 
 	this.menu();
@@ -109,12 +114,12 @@ Body.prototype.changePic = function() {
 
 Body.prototype.menu = function() {
 	with(this) {
-		nav.style.transition = "max-height 0.3s ease-in-out";
+		navList.style.transition = "max-height 0.3s ease-in-out";
 		if(menuState) 
-			nav.style.maxHeight = "0";
+			navList.style.maxHeight = "0";
 		else {
-			nav.style.maxHeight = "500px";
-			nav.style.display = "block";
+			navList.style.maxHeight = "500px";
+			navList.style.display = "block";
 		}
 		menuState = !menuState;
 	}
@@ -126,11 +131,9 @@ Body.prototype.searchT = function() {
 			searchSide.style.left = "-100%";
 
 		} else {
-			if(windowWidth < 720) searchSide.style.left = "0";
-			else searchSide.style.left = 0;
+			searchSide.style.left = "0";
 			document.getElementById("searchForm").data.focus();
 		}
-
 		searchState = !searchState;
 	}
 }
@@ -150,21 +153,24 @@ Body.prototype.profile = function() {
 function bodyMain() {
 	new Body();
 	Search();
-}
+	var navContainer = document.getElementsByTagName("nav")[0];
+	navContainer.className = "static";
 
-
-
-window.onscroll = function() {
-	var scrolled = parseInt(document.body.scrollTop);
-	var threshold = 85;
-	var nav = document.getElementsByTagName("nav")[0];
-	if(scrolled >= threshold) {
-		nav.className = "fixed";
-		document.body.style.marginTop = threshold + "px";
-		document.getElementById("logo").style.maxWidth ="200px";
-	} else {
-		nav.className = "static";
-		document.body.style.marginTop = 0;
-		document.getElementById("logo").style.maxWidth = "0";
+	window.onscroll = function() {  // evento di scroll per mantenere una barra di navigazione nel top dell'applicazione
+		var scrolled = parseInt(document.body.scrollTop);
+		var threshold = 85;
+		if(scrolled >= threshold) {
+			navContainer.className = "fixed";
+			document.body.style.marginTop = threshold + "px";
+			document.getElementById("logo").style.maxWidth ="200px";
+		} else {
+			navContainer.className = "static";
+			document.body.style.marginTop = 0;
+			document.getElementById("logo").style.maxWidth = "0";
+		}
 	}
 }
+
+
+
+

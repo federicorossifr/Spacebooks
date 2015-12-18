@@ -1,3 +1,20 @@
+function initEditCenter() {
+	var editCenter = document.getElementById("editDescription");
+	if(!editCenter) return;
+	var editForm = document.getElementById("editForm");
+	var editor = editCenter.getElementsByTagName("div")[0];
+	editor.contentEditable = true;
+	countLeft(editor,100,document.getElementById("count"));
+
+	editForm.onsubmit = function(event) {
+		event.preventDefault();
+		var parseResult = emitter(editor);
+		if(parseResult['rawData'].length < 100) {editor.focus(); return;}
+		this.description.value = parseResult['outData'];
+		this.submit();
+	}
+}
+
 function initDocument() {
 	storeTags(tags);
 	var docFragm = new Fragment("documentFragment");
@@ -20,4 +37,5 @@ function initDocument() {
 	} catch(excp) {};
 
 	document.getElementById("searchButton").className+=" active";
+	initEditCenter();
 }
