@@ -7,8 +7,10 @@ function Index() {
 function handleLoginResult(data) {
 	if(data == 0) {
 		new Modal("Attenzione","Le credenziali fornite non sono corrette");
-	} else {
+	} else if(data == 1) {
 		location.href = "./home.php";
+	} else {
+		new Modal("Attenzione",data);
 	}
 
 	document.forms[0].loginButton.className = "";

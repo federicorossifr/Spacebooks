@@ -1,11 +1,5 @@
 <?php
-    require __DIR__ . "/lib/core.php";
-	session_start();
-
-  	if(!$_SESSION['logged']) {
-		header("Location: /");
-	}
-
+	require __DIR__ . "/partials/secured.php";
     $fs = new DbFS('./uploads/documentFiles/');
 	$coverFs = new DbFS('./uploads/documentPictures/');
 

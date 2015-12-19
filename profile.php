@@ -6,18 +6,20 @@
 	if(!isset($_GET['id']) || $_GET['id'] == $user->id) {
 		$profile = $user;
 		$self = true;
-	} else {
+	} 
+	else {
 		$id = $_GET['id'];
-		$profile = User::read($id);
+		try {
+			$profile = User::read($id);
+		} catch(Exception $e) {
+			echo $e->getMessage();
+			die;
+		}
 	}
+
 	$followers = null;
-	if($profile) {
-		$documents = $profile->getDocuments();
-		$followers = $profile->getFellows();
-	} else {
-		header("Location: ./home.php");
-		die;
-	}
+	$documents = $profile->getDocuments();
+	$followers = $profile->getFellows();
 
 	$following = false;
 	foreach($followers as $follower) {

@@ -1,7 +1,6 @@
 <?php
-    require __DIR__ . "/lib/core.php";
-    session_start();
-    $user = $_SESSION['user'];
+    require __DIR__ . "/partials/secured.php";
+    
     if($user && $docId = $_GET['id']) {
     	$result = $user->purchase($docId);
     	if($result) {

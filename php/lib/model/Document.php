@@ -26,6 +26,7 @@ class Document {
 	private $reviews;
 	private $extendedAuthor;
 
+
 	function __construct($fields = array()) {
 		if($fields) {
 			$this->title = $fields['title'];
@@ -35,6 +36,21 @@ class Document {
 			$this->cover = isset($fields['cover']) ? $fields['cover'] : null;
 		}
 	}
+
+	function __call($method,$arguments) {
+		global $db;
+		if($db->error) {
+			throw new Exception("Errore database");
+		}
+	}
+
+	public static function __callStatic($method,$arguments) {
+		global $db;
+		if($db->error) {
+			throw new Exception("Errore database");
+		}
+	}
+
 
 	public function __get($property) {
 		return $this->$property;
@@ -47,9 +63,13 @@ class Document {
 	public static function read($id) {
 		global $db;
 		$stmnt = $db->prepare("SELECT * FROM document WHERE id=?");
+		checkQuery($stmnt);
 		$stmnt->bind_param('i',$id);
 		$stmnt->execute();
 		$result = $stmnt->get_result();
+		if($result->num_rows == 0) {
+			throw new Exception("No document found");
+		}
 		$document = $result->fetch_object('Document');
 		return $document;
 	}
@@ -57,6 +77,7 @@ class Document {
 	public static function fetchAll() {
 		global $db;
 		$stmnt = $db->prepare("SELECT * FROM document");
+		checkQuery($stmnt);
 		$stmnt->execute();
 		$result = $stmnt->get_result();
 		$documents = array();
@@ -72,6 +93,7 @@ class Document {
 	public function create() {
 		global $db;
 		$stmnt = $db->prepare("INSERT INTO document(title,author,description,price,cover) VALUES(?,?,?,?,?)");
+		checkQuery($stmnt);
 		$stmnt->bind_param("sisdi",$this->title,$this->author,$this->description,$this->price,$this->cover);
 		$stmnt->execute();
 		$this->id = $db->insert_id;
@@ -81,6 +103,7 @@ class Document {
 	public function update() {
 		global $db;
 		$stmnt = $db->prepare("UPDATE document SET title=?,created=?,author=?,description=?,price=?,votings=?,score=?,available=?,cover=? WHERE id=?");
+		checkQuery($stmnt);
 		$stmnt->bind_param("ssisdidiii",$this->title,$this->created,
 										$this->author,$this->description,$this->price,
 										$this->votings,$this->score,$this->available,$this->cover,$this->id);
@@ -90,6 +113,7 @@ class Document {
 	public function delete() {
 		global $db;
 		$stmnt = $db->prepare("DELETE FROM document WHERE id=?");
+		checkQuery($stmnt);
 		$stmnt->bind_param("i",$this->id);
 		$stmnt->execute();
 	}
@@ -97,6 +121,7 @@ class Document {
 	private function getFiles() {
 		global $db;
 		$stmnt = $db->prepare("SELECT F.id,F.name,F.path,F.size,F.created FROM file F INNER JOIN attachments A ON F.Id = A.File INNER JOIN document D ON D.Id = A.Document wHERE D.Id=?");
+		checkQuery($stmnt);
 		$stmnt->bind_param("i",$this->id);
 		$stmnt->execute();
 		$result = $stmnt->get_result();
@@ -107,6 +132,7 @@ class Document {
 	private function getCover() {
 		global $db;
 		$stmnt = $db->prepare("SELECT path FROM file WHERE id=?");
+		checkQuery($stmnt);
 		$stmnt->bind_param("i",$this->cover);
 		$stmnt->execute();
 		$result = $stmnt->get_result();
@@ -119,6 +145,7 @@ class Document {
 	public function addFile($fileId) {
 		global $db;
 		$stmnt = $db->prepare("INSERT INTO attachments(file,document) VALUES(?,?)");
+		checkQuery($stmnt);
 		$stmnt->bind_param("ii",$fileId,$this->id);
 		$stmnt->execute();
 		return $db->insert_id;
@@ -127,6 +154,7 @@ class Document {
 	private function getRatings() {
 		global $db;
 		$stmnt = $db->prepare("SELECT * FROM rating WHERE document=?");
+		checkQuery($stmnt);
 		$stmnt->bind_param("i",$this->id);
 
 		$stmnt->execute();
@@ -144,6 +172,7 @@ class Document {
 	public function getUserRate($user) {
 		global $db;
 		$existsReview = $db->prepare("SELECT * FROM rating WHERE document=? AND user=?");
+		checkQuery($existsReview);
 		$existsReview->bind_param("ii",$this->id,$user);
 		$existsReview->execute();
 		$result = $existsReview->get_result();
@@ -155,9 +184,11 @@ class Document {
 		$stmnt = null;
 		if($this->getUserRate($user)) {
 			$stmnt = $db->prepare("UPDATE rating SET opinion =?, score = ? WHERE document=? AND user=?");
+			checkQuery($stmnt);
 			$stmnt->bind_param("siii",$comment,$vote,$this->id,$user);
 		} else {
 			$stmnt = $db->prepare("INSERT INTO rating(document,user,score,opinion) VALUES(?,?,?,?)");
+			checkQuery($stmnt);
 			$stmnt->bind_param("iiis",$this->id,$user,$vote,$comment);
 		}
 		
@@ -168,22 +199,24 @@ class Document {
 	public function tag($tag) {
 		global $db;
 		$readTag = $db->prepare("SELECT * FROM tag WHERE name = ? ");
+		checkQuery($readTag);
 		$readTag->bind_param("s",$tag);
 		$readTag->execute();
 		$result = $readTag->get_result();
 		$tagId = null;
 		if( $result->num_rows ) {
 			$existingTag = $result->fetch_assoc();
-			print_r($existingTag);
 			$tagId = $existingTag['id'];
 		} else {
 			$newTag = $db->prepare("INSERT INTO tag(name) VALUES(?)");
+			checkQuery($newTag);
 			$newTag->bind_param("s",$tag);
 			$newTag->execute();
 			$tagId = $db->insert_id;
 		}
 
 		$writeTag = $db->prepare("INSERT INTO tagship(document,tag) VALUES(?,?)");
+		checkQuery($writeTag);
 		$writeTag->bind_param("ii",$this->id,$tagId);
 		$writeTag->execute();
 	}
@@ -192,6 +225,7 @@ class Document {
 		global $db;
 		$query = "SELECT name,id FROM tagship INNER JOIN tag ON tag=id WHERE document = ?";
 		$stmnt = $db->prepare($query);
+		checkQuery($stmnt);
 		$stmnt->bind_param("i",$this->id);
 		$stmnt->execute();
 		$result = $stmnt->get_result();

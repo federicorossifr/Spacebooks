@@ -2,6 +2,7 @@
 	$db = require __DIR__ . "/db.php";
 	require __DIR__ . "/crypto.php";
 	require_once __DIR__ . "/dbFS.php";
+
 	function toArray($mysqliResult) {
 		$output = array();
 		while($row = $mysqliResult->fetch_assoc())
@@ -24,6 +25,20 @@
 		header('Content-Disposition: attachment; filename="bookdFile.pdf"');
 		readfile($filePath);
 	}
+
+	function exceptionHandler($exception) {
+		echo $exception->getMessage();
+		die;
+	}
+
+	set_exception_handler('exceptionHandler');
+
+	function checkQuery($statement) {
+		if(!$statement) {
+			throw new Exception("Preparazione query fallita");
+		}
+	}
+
 
 
 	require __DIR__ . "/model/User.php";

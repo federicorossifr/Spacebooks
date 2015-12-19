@@ -1,8 +1,8 @@
 <?php
-	require __DIR__ . "/lib/core.php";
-	session_start();
-  	$pic = $_FILES['pic'];
-  	if(!$pic["error"]) {
+	require __DIR__ . "/partials/secured.php";
+
+  	$pic = (isset($_FILES['pic']))? $_FILES['pic']:null;
+  	if($pic && !$pic["error"]) {
 	  	$fs = new DbFS('./uploads/profilePictures/');
 	  	$path =  $fs->saveFile($pic);
 	  	$_SESSION['user']->picture = $path; 

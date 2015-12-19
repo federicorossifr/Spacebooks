@@ -1,13 +1,9 @@
 <?php
-	require __DIR__ . "/lib/core.php";
-	session_start();
-	$dId = $_GET['did'];
-	$fId = $_GET['fid'];
-	$user = null;
+	require __DIR__ . "/partials/secured.php";
+	
+	$dId = (isset($_GET['did']))? $_GET['did']:null;
+	$fId = (isset($_GET['fid']))? $_GET['fid']:null;
 	$filePath = null;
-	if(isset($_SESSION['user']))
-		$user = $_SESSION['user'];
-	if(!$user) die;
 	
 	if(!$user->hasPurchased($dId)) die;
 

@@ -33,12 +33,30 @@ class User {
 		$this->refresh();
 	}
 
+	function __call($method,$arguments) {
+		global $db;
+		if($db->error) {
+			throw new Exception("Errore database");
+		}
+	}
+
+	public static function __callStatic($method,$arguments) {
+		global $db;
+		if($db->error) {
+			throw new Exception("Errore database");
+		}
+	}
+
 	public static function read($id) {
 		global $db;
 		$stmnt = $db->prepare("SELECT * FROM user WHERE id=?");
+		checkQuery($stmnt);
 		$stmnt->bind_param("i",$id);
 		$stmnt->execute();
 		$result = $stmnt->get_result();
+		if($result->num_rows == 0) {
+			throw new Exception("No user found");
+		}
 		$user = $result->fetch_object('User');
 
 		return $user;
@@ -47,6 +65,7 @@ class User {
 	public static function auth($username,$password) {
 		global $db;
 		$stmnt = $db->prepare("SELECT * FROM user WHERE username=?");
+		checkQuery($stmnt);	
 		$stmnt->bind_param("s",$username);
 		$stmnt->execute();
 		$result = $stmnt->get_result();
@@ -63,6 +82,7 @@ class User {
 	public static function fetchAll() {
 		global $db;
 		$stmnt = $db->prepare("SELECT * FROM user");
+		checkQuery($stmnt);
 		$stmnt->execute();
 		$result = $stmnt->get_result();
 		$users = array();
@@ -77,6 +97,7 @@ class User {
 	public static function exists($userChoice) {
 		global $db;
 		$stmnt = $db->prepare("SELECT * FROM user WHERE email = ? OR username = ?");
+		checkQuery($stmnt);	
 		$stmnt->bind_param("ss",$userChoice,$userChoice);
 		$stmnt->execute();
 		$num = $stmnt->get_result()->num_rows;
@@ -95,6 +116,7 @@ class User {
 	public function create() {
 		global $db;
 		$stmnt = $db->prepare("INSERT INTO user(username,password,email,name,surname,birthdate,country) VALUES(?,?,?,?,?,?,?)");
+		checkQuery($stmnt);
 		$stmnt->bind_param("sssssss",$this->username,$this->password,$this->email,$this->name,$this->surname,$this->birthdate,$this->country);
 		$stmnt->execute();
 
@@ -104,17 +126,19 @@ class User {
 
 	public function update() {
 		global $db;
-		if($stmnt = $db->prepare("UPDATE user SET username=?,password=?,email=?,name=?,surname=?,birthdate=?,country=?,credits=?,picture=?,role=?
-								   WHERE id=?")) {
+		$stmnt = $db->prepare("UPDATE user SET username=?,password=?,email=?,name=?,surname=?,birthdate=?,country=?,credits=?,picture=?,role=?
+								   WHERE id=?");
+		checkQuery($stmnt);
 		$stmnt->bind_param("ssssssssssi",$this->username,$this->password,$this->email,$this->name,
 									   $this->surname,$this->birthdate,$this->country,
 									   $this->credits,$this->picture,$this->role,$this->id);
-		$stmnt->execute();}
+		$stmnt->execute();
 	}
 
 	public function delete() {
 		global $db;
 		$stmnt = $db->prepare("DELETE FROM user WHERE id=?");
+		checkQuery($stmnt);
 		$stmnt->bind_param("i",$this->id);
 		$stmnt->execute();
 	}
@@ -122,6 +146,7 @@ class User {
 	public function getDocuments() {
 		global $db;
 		$stmnt = $db->prepare("SELECT * FROM document WHERE author=?");
+		checkQuery($stmnt);		
 		$stmnt->bind_param("i",$this->id);
 		$stmnt->execute();
 		$result = $stmnt->get_result();
@@ -136,6 +161,7 @@ class User {
 	public function purchase($docId) {
 		global $db;
 		$stmnt = $db->prepare("INSERT INTO purchase(document,purchaser) VALUES(?,?)");
+		checkQuery($stmnt);		
 		$stmnt->bind_param("ii",$docId,$this->id);
 		$stmnt->execute();
 		return $db->insert_id;
@@ -151,6 +177,7 @@ class User {
 	public function getPurchases() {
 		global $db;
 		$stmnt = $db->prepare("SELECT * FROM purchase WHERE purchaser=?");
+		checkQuery($stmnt);
 		$stmnt->bind_param("i",$this->id);
 		$stmnt->execute();
 		$result = $stmnt->get_result();
@@ -197,6 +224,7 @@ class User {
 			$stmnt = $db->prepare("SELECT * FROM followship INNER JOIN user ON follower = id WHERE followed = ?");
 		else
 			$stmnt = $db->prepare("SELECT * FROM followship INNER JOIN user ON followed = id WHERE follower = ?");
+		checkQuery($stmnt);
 		$stmnt->bind_param('i',$this->id);
 		$stmnt->execute();
 		return toArray($stmnt->get_result());

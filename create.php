@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<?php
-	require "./php/partials/secured.php";
-?>
 <html lang="it">
 <?php
 	include "./php/partials/header.php";
+	include "./php/partials/secured.php";
 	include "./php/partials/body.php";
 ?>
 

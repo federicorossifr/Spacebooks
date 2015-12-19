@@ -1,7 +1,6 @@
 <?php
-	require __DIR__ . "/lib/core.php";
-	session_start();
-	$model = $_POST['model'];
+	require __DIR__ . "/partials/secured.php";
+	$model = (isset($_POST['model']))?$_POST['model']:null;
 
 	switch ($model) {
 		case 'user':

@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 <?php
-	require "./php/partials/secured.php";
+	include "./php/partials/secured.php";
 	$docId = $_GET['id'];
-	$doc = Document::read($docId);
-	$doc->populate();
-	$reviews = $doc->reviews;
-	$userReview = $doc->getUserRate($_SESSION['user']->id);
-	$isPurchased = $user->hasPurchased($doc->id);
+	$doc = null;
+	$reviews = null;
+	$userReview = null;
+	$isPurchased = null;
+	try{
+		$doc = Document::read($docId);
+		$doc->populate();
+		$reviews = $doc->reviews;
+		$userReview = $doc->getUserRate($_SESSION['user']->id);
+		$isPurchased = $user->hasPurchased($doc->id);
+	} catch(Exception $e) {
+		echo $e->getMessage();
+		die;
+	}
+	if(!$doc->available && $doc->author != $user->id) {
+		throw new Exception("Not valid document");
+	}
+	
 ?>
 <html lang="it">
 <?php
 	include "./php/partials/header.php";
+
 	include "./php/partials/body.php";
 ?>
 
