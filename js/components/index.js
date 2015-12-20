@@ -13,7 +13,7 @@ function handleLoginResult(data) {
 		new Modal("Attenzione",data);
 	}
 
-	document.forms[0].loginButton.className = "";
+	document.forms[0].loginButton.className = "prettyButton";
 	document.forms[0].loginButton.textContent = "LOGIN";
 }
 
@@ -21,7 +21,7 @@ document.forms[0].onsubmit = function(event) {
 	document.activeElement.blur(); // disable multiple "enter" press
 	event.preventDefault();
 
-	this.loginButton.className = "loading";
+	this.loginButton.className = "prettyButton loading";
 	this.loginButton.textContent = "";
 
 	var username = this.username.value;
