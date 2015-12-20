@@ -176,10 +176,11 @@
   div.left,div.right {
     float:none;
     width:100%;
-    min-width:500px;
+    min-width:100%;
+    max-width:500px;
     margin-left:auto;
     margin-right:auto;
-  }
+   }
 
   
   .stars {
@@ -206,6 +207,11 @@
 
   .comboButton > .prettyButton:last-child {
     border-bottom:1px solid tomato;
+  }
+
+  footer {
+    margin-top:100px;
+    padding:30px;
   }
 }
 

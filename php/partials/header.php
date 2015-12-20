@@ -14,9 +14,6 @@
 	<meta charset="utf-8">
 	<title>Spacebooks</title>
 
-	<meta name="theme-color" content="#3F51B5">
-
-
 	<meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
 	<link rel="stylesheet" type="text/css" href="css/style_.css">
 	<link rel="stylesheet" type="text/css" href="css/responsive_.css">
@@ -29,7 +26,7 @@
 	<script type="text/javascript" src="./js/Parser.js"></script>
 	<script type="text/javascript" src="./js/MultiUploader.js"></script>
 	<script type="text/javascript" src="./js/Reviewer.js"></script>
-	<script type="text/javascript" src="./js/DataUtilities.js"></script>
+	<script type="text/javascript" src="./js/Utilities.js"></script>
 	<script type="text/javascript" src="./js/Pophover.js"></script>
 	<script type="text/javascript" src="./js/Tag.js"></script>
 	<script type="text/javascript" src="./js/Modal.js"></script>

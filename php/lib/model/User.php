@@ -55,7 +55,7 @@ class User {
 		$stmnt->execute();
 		$result = $stmnt->get_result();
 		if($result->num_rows == 0) {
-			throw new Exception("No user found");
+			throw new Exception("Nessun utente trovato");
 		}
 		$user = $result->fetch_object('User');
 

@@ -1,6 +1,8 @@
-<!DOCTYPE html>
 <?php
 	include "./php/partials/secured.php";
+?>
+<!DOCTYPE html>
+<?php
 	$docId = $_GET['id'];
 	$doc = null;
 	$reviews = null;
@@ -13,11 +15,11 @@
 		$userReview = $doc->getUserRate($_SESSION['user']->id);
 		$isPurchased = $user->hasPurchased($doc->id);
 	} catch(Exception $e) {
-		echo $e->getMessage();
+		renderErrorPage($e->getMessage());
 		die;
 	}
-	if(!$doc->available && $doc->author != $user->id) {
-		throw new Exception("Not valid document");
+	if(!$doc->available && ($doc->author != $user->id || $user->role == "user")) {
+		throw new Exception("Il documento non è ancora disponibile");
 	}
 	
 ?>
@@ -166,3 +168,4 @@
 		initDocument();
 	</script>
 	<?php include("./php/partials/footer.php");?>
+	</body>

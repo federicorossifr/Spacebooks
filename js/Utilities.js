@@ -70,10 +70,6 @@ function makeResponsive(tableBody) {
 	}
 }
 
-
-
-
-
 function handler(onDataAction,moreDataAction) {
 	this.lastGet = 0;
 	this.onData = onDataAction.bind(this);

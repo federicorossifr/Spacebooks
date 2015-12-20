@@ -1,5 +1,4 @@
 function AsyncReq(url,callback) {
-
 	this.url = url;
 	this.client = new XMLHttpRequest();
 	this.client.onreadystatechange = function() {
@@ -16,7 +15,6 @@ AsyncReq.prototype.GET = function(params) {
 		 query += "?";
 	for(var i = 0; i < params.length; ++i) {
 		query+= params[i].id + "=" + params[i].value;
-
 		if(i != params.length - 1) {
 			query+="&";
 		}

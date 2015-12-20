@@ -23,8 +23,6 @@ function Create() {
 
 	countLeft(document.getElementById("description"),100,document.getElementById("count"));
 
-
-
 	with(this) {
 		this.createForm.onsubmit = function(e) {
 			editorOut = new Array();
@@ -38,17 +36,23 @@ function Create() {
 			console.log(strOut);
 
 			if(editorRawText == "" || editorRawText.length < 100) {
-				var pop = new Modal("Attenzione",
-										"La descrizione è obbligatoria e deve essere di almeno 100 caratteri",
-										function() {fragments.that("1");});
+				var pop = new Modal(
+					"Attenzione",
+					"La descrizione è obbligatoria e deve essere di almeno 100 caratteri",
+					function() {fragments.that("1");}
+				);
 				return;
 			}
 
 			if(!myUp.lastUsed) {
-				var pop = new Modal("Attenzione","Non sono stati usati tutti gli uploader.Elimina l'uploader o utilizzalo.",
-														function() {fragments.that("2")});
+				var pop = new Modal(
+					"Attenzione",
+					"Non sono stati usati tutti gli uploader.Elimina l'uploader o utilizzalo.",
+					function() {fragments.that("2")}
+				);
 				return;
 			}
+
 			this.tags.value = tagHandler.emit();
 			this.submit();
 		}

@@ -27,7 +27,13 @@
 	}
 
 	function exceptionHandler($exception) {
-		echo $exception->getMessage();
+		renderErrorPage($exception->getMessage());
+	}
+
+	function renderErrorPage($message) {
+		session_start();
+		$_SESSION['exception'] = $message;
+		header("Location: ./error.php");
 		die;
 	}
 

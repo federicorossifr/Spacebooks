@@ -68,7 +68,7 @@ class Document {
 		$stmnt->execute();
 		$result = $stmnt->get_result();
 		if($result->num_rows == 0) {
-			throw new Exception("No document found");
+			throw new Exception("Ops, non ci sono documenti da mostrare");
 		}
 		$document = $result->fetch_object('Document');
 		return $document;

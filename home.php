@@ -1,7 +1,7 @@
-<!DOCTYPE html>
 <?php
 	require "./php/partials/secured.php";
 ?>
+<!DOCTYPE html>
 <html lang="it">
 <?php
 	include "./php/partials/header.php";

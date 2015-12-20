@@ -1,7 +1,9 @@
+<?php
+	include "./php/partials/secured.php";
+?>
 <!DOCTYPE html>
 <html lang="it">
 <?php
-	include "./php/partials/secured.php";
 	include "./php/partials/header.php";
 	include "./php/partials/body.php";
 

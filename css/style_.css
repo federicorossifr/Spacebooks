@@ -224,6 +224,15 @@ main article {
   margin:1em;
 }
 
+article.exception {
+  text-align:center;
+}
+
+article.exception p {
+  padding-bottom:30px;
+}
+
+
 /***********************************/
 
 .left {
@@ -337,11 +346,9 @@ form input {
   padding-bottom:5px;
   font-size:14px;
   height:40px;
-  text-align:center;
   margin-bottom:20px;
   box-sizing:border-box;
   width:100%;
-  text-align:left;
   text-align:center;
 }
 
@@ -351,15 +358,9 @@ form input:focus{
 }
 
 form button {
-  background-color:white;
-  color:tomato;
-  display:block;
-  border: 1px solid tomato;
-  padding-top:15px;
-  padding-bottom:15px;
-  width:100%;
-  clear:both;
+  min-width:100%;
   cursor:pointer;  
+  
 }
 
 form button:hover {

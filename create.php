@@ -1,8 +1,10 @@
+<?php
+	include "./php/partials/secured.php";
+?>
 <!DOCTYPE html>
 <html lang="it">
 <?php
 	include "./php/partials/header.php";
-	include "./php/partials/secured.php";
 	include "./php/partials/body.php";
 ?>
 
@@ -60,7 +62,7 @@
 						<label for="tags">Tags (esempio tag1, tag2, tag3, tag4)</label><br>
 						<input required pattern="([a-zA-Z0-9]+)||(([a-zA-Z0-9]+, )+[a-zA-Z0-9]+)" title="Inserisci tag validi, esempio: tag1, tag2, tag3, tag4" class="light" type="text" name="tags" id="tags">
 						<input type="hidden" name="description">
-						<button id="submitForm" type="submit">Hai finito. Crea il documento!</button>
+						<button class="prettyButton" id="submitForm" type="submit">Hai finito. Crea il documento!</button>
 					</div>
 			</article>
 

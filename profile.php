@@ -1,6 +1,8 @@
+<?php
+	include "./php/partials/secured.php";
+?>
 <!DOCTYPE html>
 <?php
-	require "./php/partials/secured.php";
 	$profile = null;
 	$self = false;
 	if(!isset($_GET['id']) || $_GET['id'] == $user->id) {
@@ -12,7 +14,7 @@
 		try {
 			$profile = User::read($id);
 		} catch(Exception $e) {
-			echo $e->getMessage();
+			renderErrorPage($e->getMessage());
 			die;
 		}
 	}
