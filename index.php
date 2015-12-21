@@ -15,13 +15,13 @@
 
 	<body onload="Index()" id="index">
 		<header>
-			<h1>Spacebooks</h1>
+			<h1><a href="./">Spacebooks</a></h1>
 		</header>
 
 		<main>
 		<section id="loginSection">
 			<header>
-				<h2>Accedi...</h2>
+				<h2>Accedi</h2>
 			</header>
 
 			<form id="loginForm" method="POST" action="php/login.php">
@@ -47,16 +47,23 @@
 
 		<section id="registerSection">
 			<header>
-				<h2>...o registrati</h2>
+				<h2>registrati</h2>
+				<h6> (ricorda che successivamente potrai cambiare solo username e password)</h6>
+				<br>
 			</header>
 				<form id="registerForm" method="POST" action="php/register.php">
 					<div id="cA">
 						<label id="nameW" for="name">Nome</label><br>
-						<input type="text" pattern="[A-Z]{1}[a-z]+" id="name" name="name"  title="Inserire un nome valido, prima lettera maiuscola, solo lettere." required />
+						<input type="text"  id="name" name="name"  title="Inserire un nome valido, prima lettera maiuscola, solo lettere." required />
 						<label id="surnameW" for="surname">Cognome</label><br>
-						<input type="text" pattern="[A-Z]{1}[a-z]+" id="surname" name="surname" title="Inserire un cognome valido, prima lettera maiuscola, solo lettere."  required />
+						<input type="text"  id="surname" name="surname" title="Inserire un cognome valido, prima lettera maiuscola, solo lettere."  required />
 						<label id="countryW" for="country">Nazione</label><br>
-						<input type="text" pattern="[a-zA-Z]+" title="Inserire una nazione corretta: solo lettere" id="country" name="country" required>
+						<select id="country" name="country" required>
+							<option value="">Scegli una nazione</option>
+							<option value="Italia">Italia</option>
+							<option value="Inghilterra">Inghilterra</option>
+							<option value="Islanda">Islanda</option>
+						</select>
 						<label for="birthdate">Data di nascita</label><br>
 						<input type="text" data-date pattern="^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$" title="Inserire una data nel formato gg/mm/aaaa"  id="birthdate" name="birthdate" required>
 					</div>

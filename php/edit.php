@@ -7,6 +7,7 @@
 			$user = User::auth($_SESSION['user']->username,$_POST['oldPassword']);
 			if(!$user) {
 				$_SESSION['eError'] = "La password inserita è errata";
+				header("Location: ../profile.php");
 				break;
 			}
 

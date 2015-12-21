@@ -92,7 +92,7 @@ function inputCheck(event,form) {
 
 
 function FormControl(form) {
-	var inputs = form.querySelectorAll("input");
+	var inputs = form.querySelectorAll("input, select");
 	for(var i = 0; i < inputs.length; ++i) {
 		var inputLabel = form.querySelector("[for='" + inputs[i].id + "']");
 		if(!inputLabel) continue;

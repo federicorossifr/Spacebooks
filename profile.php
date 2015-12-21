@@ -132,7 +132,7 @@
 						<label for="password">Nuova password (lascia vuoto per non cambiare)</label>
 						<input pattern=".{7,20}" title="Inserisci una password corretta: almeno 7 caratteri e/o numeri (max 20)" class="light" type="password" id="password" name="password">
 						<label for="password2">Ripeti password</label>
-						<input data-match="password1" data-match-error="Le password non coincidono" class="light" type="password" id="password2" name="password2">
+						<input data-match="password" data-match-error="Le password non coincidono" class="light" type="password" id="password2" name="password2">
 						<input type="hidden" value="user" name="model">
 						<input type="submit" class="prettyButton" value="Fatto"><br>
 				</form>

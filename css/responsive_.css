@@ -98,6 +98,7 @@
   table.userTable td {
     display:block;
     padding:2%;
+    border:0;
   }
 
   table.userTable th {
@@ -105,8 +106,7 @@
   }
 
   table.userTable td:before {
-    background-color:tomato;
-    color:white;
+    color:black;
     display:block;
     width:100%;
     content:attr(data-heading);
@@ -114,11 +114,18 @@
     box-sizing:border-box;
     text-align:center;
     margin-bottom:1%;
+    border:0;
+    border-bottom:1px solid rgba(0,0,0,0.40);
+    font-size:20px;
+  }
+
+  table.userTable tr:first-child, table.userTable tr:last-child  {
+    border-bottom:0;
   }
   
   table.userTable tr {
    display:block;
-   border-bottom:2px dashed tomato;
+   border-bottom:2px dashed rgba(0,0,0,0.50);
   }
 
 
