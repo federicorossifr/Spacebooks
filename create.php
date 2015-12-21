@@ -32,9 +32,9 @@
 				<label>Inserisci una descrizione di almeno 100 caratteri che illustri il contenuto del tuo documento.</label><br>
 				<strong id="count">0</strong> caratteri inseriti. 
 				<div class="comboButton">
-					<button class="prettyButton" onclick="command(event)" id="bold">Grassetto</button>
-					<button class="prettyButton" onclick="command(event)" id="underline">Sottolineato</button>
-					<button class="prettyButton" onclick="command(event)" id="italic">Corsivo</button>
+					<a class="prettyButton" onclick="command(event)" id="bold">Grassetto</a>
+					<a class="prettyButton" onclick="command(event)" id="underline">Sottolineato</a>
+					<a class="prettyButton" onclick="command(event)" id="italic">Corsivo</a>
 				</div>
 				<div contenteditable="true" id="description"></div><br>
 				<a onclick="instance.fragments.next()" class="prettyButton">Procedi</a>
@@ -62,7 +62,7 @@
 						<label for="tags">Tags (esempio tag1, tag2, tag3, tag4)</label><br>
 						<input required pattern="([a-zA-Z0-9]+)||(([a-zA-Z0-9]+, )+[a-zA-Z0-9]+)" title="Inserisci tag validi, esempio: tag1, tag2, tag3, tag4" class="light" type="text" name="tags" id="tags">
 						<input type="hidden" name="description">
-						<button class="prettyButton" id="submitForm" type="submit">Hai finito. Crea il documento!</button>
+						<input class="prettyButton" id="submitForm" type="submit" value="Hai finito. Crea il documento!">
 					</div>
 			</article>
 

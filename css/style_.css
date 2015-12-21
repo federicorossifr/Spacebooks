@@ -44,12 +44,13 @@ body > header {
   background-size:100% auto;
  }
 
-body > header > h1 {
+body > header > h1 a {
   color:white;
   margin:0;
   width:100%;
   display: block;
   text-align:center;
+  text-decoration:none;
   font-size: 35px;
 }
 
@@ -338,7 +339,7 @@ td > select {
   padding:0;
 }
 
-form input {
+form input:not([type="submit"]) {
   border: 1px solid rgba(0,0,0,0.50);
   color:black;
   padding:2%;
@@ -351,6 +352,14 @@ form input {
   width:100%;
   text-align:center;
 }
+
+form input[type="submit"] {
+  display:block;
+  clear:both;
+  width:100%;
+}
+
+
 
 form input:focus{
    outline:none;
@@ -777,8 +786,23 @@ table.userTable th {
 
 .comboButton .prettyButton {
   padding:1%;
-  max-width:none;
+  width:100%;
+  border-right:0;
 }
+
+.comboButton .prettyButton:last-child {
+  border-right:1px solid tomato;
+}
+
+.comboButton > .prettyButton:hover {
+     border:1px solid tomato;
+     border-right:0;
+}
+
+.comboButton > .prettyButton:last-child:hover {
+     border:1px solid tomato;
+}
+
 
 .stars {
   width:200px;

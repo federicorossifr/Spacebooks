@@ -4,11 +4,11 @@
     flex-flow:column;
   }
   
-  #cA,#cB,input,form button {
+  #cA,#cB,form,input {
     float:none;
     width:100%;
-    display:block;
     max-width:500px;
+    display:block;
     margin-left:auto;
     margin-right:auto;
     text-align:center;
@@ -198,12 +198,15 @@
       width:100%;
       box-sizing:border-box;
   }
+  
 
   .comboButton > .prettyButton {
     padding:10px;
-    margin:0;
+    width:100%;
+    margin:0 auto;
     border-bottom:0;
   }
+  
 
   .comboButton > .prettyButton:last-child {
     border-bottom:1px solid tomato;

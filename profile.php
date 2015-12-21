@@ -134,7 +134,7 @@
 						<label for="password2">Ripeti password</label>
 						<input data-match="password1" data-match-error="Le password non coincidono" class="light" type="password" id="password2" name="password2">
 						<input type="hidden" value="user" name="model">
-						<button type="submit" class="prettyButton">Fatto</button><br>
+						<input type="submit" class="prettyButton" value="Fatto"><br>
 				</form>
 			</div>
 

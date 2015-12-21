@@ -10,7 +10,7 @@
 
 	<body id="index">
 		<header>
-			<h1>Spacebooks</h1>
+			<h1><a href="./">Spacebooks</a></h1>
 		</header>
 
 		<main id="about">

@@ -29,7 +29,7 @@
 				<input type="text" id="username" name="username" />
 				<label for="password">Password</label><br>
 				<input type="password" id="password" name="password"  />
-				<button class="prettyButton" id='loginButton' type="submit">ACCEDI</button>
+				<input class="prettyButton" id='loginButton' type="submit" value="ACCEDI">
 
 				<span class="flash">
 				<i>
@@ -70,7 +70,7 @@
 						<label for="password2">Ripeti</label>
 						<input data-match="password1" data-match-error="Le password non coincidono" type="password" id="password2" title="Le due password devono coincidere" name="password2" required />
 					</div>
-					<button class="prettyButton" type="submit">REGISTRATI</button>
+					<input class="prettyButton" type="submit" value="REGISTRATI">
 				</form>
 
 			<a class="prettyButton" href="about.php">Cos&apos;&egrave; Spacebooks?</a>
