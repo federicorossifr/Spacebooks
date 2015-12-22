@@ -10,7 +10,7 @@ function handleLoginResult(data) {
 	} else if(data == 1) {
 		location.href = "./home.php";
 	} else {
-		new Modal("Attenzione",data);
+		new Modal("Attenzione","Errore interno del server, riprovare più tardi");
 	}
 
 	document.forms[0].loginButton.className = "prettyButton";

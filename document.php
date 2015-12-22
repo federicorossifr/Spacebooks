@@ -94,7 +94,7 @@
 			</article>
 			<?php } ?>
 
-
+			<?php if($user->id != $doc->author) { ?>
 			<article id="reviews" data-fragment data-name="Recensioni">
 				<div class="left shadow">
 					<h3>Dai una recensione</h3>
@@ -136,6 +136,7 @@
 				</div>
 
 			</article>
+			<?php } ?>
 
 			<?php if($user->id == $doc->author) { ?>
 			<article data-fragment data-name="Modifica">
@@ -148,12 +149,12 @@
 					<input type="hidden" name="docId" value="<?= $doc->id ?>">
 					<label>Inserisci una descrizione di almeno 100 caratteri che illustri il contenuto del tuo documento.</label><br>
 					<strong id="count">0</strong> caratteri inseriti. 					<div class="comboButton">
-					<button class="prettyButton" onclick="command(event)" id="bold">Grassetto</button>
-					<button class="prettyButton" onclick="command(event)" id="underline">Sottolineato</button>
-					<button class="prettyButton" onclick="command(event)" id="italic">Corsivo</button>
+					<a class="prettyButton" href="#" onclick="command(event)" id="bold">Grassetto</a>
+					<a class="prettyButton" href="#" onclick="command(event)" id="underline">Sottolineato</a>
+					<a class="prettyButton" href="#" onclick="command(event)" id="italic">Corsivo</a>
 					</div>
 					<div class="descriptionContainer wide" id="editDescription"><?= $doc->description ?></div><br>
-					<button type="submit">Modifica</button>
+					<ipnut class="prettyButton" type="submit">Modifica</input>
 				</form>
 
 			</article>

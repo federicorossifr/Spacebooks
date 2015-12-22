@@ -11,7 +11,7 @@
 			$database = new mysqli($source['host'],$source['user'],$source['password'],$source['database']);
 		} catch (Exception $e) {
 			$database = false;
-			echo "Servizio database non disponibile al momento";
+				renderErrorPage("Il servizio database non è al momento disponibile");
 			die;
 		}
 	return $database;

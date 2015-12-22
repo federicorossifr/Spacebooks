@@ -1,7 +1,7 @@
 <footer>
 	<p>
-		Developed by <span>Federico Rossi</span><br>
-		2015/2016
+		<span>Federico Rossi</span><br>
+		Progettazione Web A.A. 2015/2016
 	</p>
 
 	<p>

@@ -226,6 +226,23 @@
 }
 
 @media screen and (min-width: 1024px) {
+  
+  .comboButton .prettyButton {
+    padding:1%;
+    width:100%;
+    border-right:0;
+  }
+
+  .comboButton .prettyButton:last-child {
+    border-right:1px solid tomato;
+  }
+
+  .comboButton > .prettyButton:hover {
+     border:1px solid tomato;
+     border-right:0;
+  }
+  
+  
   #navToggle {
     display:none;
   }

@@ -4,6 +4,9 @@ function AsyncReq(url,callback) {
 	this.client.onreadystatechange = function() {
 		if(this.readyState == 4 && this.status == 200) {
 			callback(this.responseText);
+		} else {
+			if(this.status == 404)
+				callback(false);
 		}
 	}
 }

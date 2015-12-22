@@ -36,7 +36,7 @@
 					<a class="prettyButton" onclick="command(event)" id="underline">Sottolineato</a>
 					<a class="prettyButton" onclick="command(event)" id="italic">Corsivo</a>
 				</div>
-				<div contenteditable="true" id="description"></div><br>
+				<div class="description" contenteditable="true" id="description"></div><br>
 				<a onclick="instance.fragments.next()" class="prettyButton">Procedi</a>
 			</article>
 

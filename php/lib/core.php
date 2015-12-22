@@ -1,4 +1,5 @@
 <?php
+
 	$db = require __DIR__ . "/db.php";
 	require __DIR__ . "/crypto.php";
 	require_once __DIR__ . "/dbFS.php";
@@ -31,10 +32,8 @@
 	}
 
 	function renderErrorPage($message) {
-		session_start();
 		$_SESSION['exception'] = $message;
-		header("Location: ./error.php");
-		die;
+		header("Location: /error.php");
 	}
 
 	set_exception_handler('exceptionHandler');
