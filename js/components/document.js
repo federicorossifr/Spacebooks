@@ -21,12 +21,15 @@ function initDocument() {
 	docFragm.makeSelectors('a');
 	docFragm.loadState();
 	var reviewForm = document.getElementById("reviewForm");
-	var initialSelect = parseInt(reviewForm.score.value) || 1;
-	var filesTable = document.getElementById("filesTable");
 
-	var rev = new Reviewer("stars",5,initialSelect,function(selectedValue) {
-		reviewForm.score.value = selectedValue + 1;
-	});
+	if(reviewForm) {
+		var initialSelect = parseInt(reviewForm.score.value) || 1;
+		var filesTable = document.getElementById("filesTable");
+		var rev = new Reviewer("stars",5,initialSelect,function(selectedValue) {
+			reviewForm.score.value = selectedValue + 1;
+		});
+	}
+
 	try {
 	document.getElementById("openDoc").onclick = function() {
 		docFragm.that(1);

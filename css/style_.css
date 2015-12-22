@@ -39,6 +39,17 @@ html,body {  /* Full width, height body and html */
   height:100%;
 }
 
+body {
+  transition:opacity 0.5s ease-in-out;
+  opacity:0;
+}
+
+html {
+  background-image: url("../img/preloadPage.gif");
+  background-repeat:no-repeat;
+  background-position:center;
+}
+
 
 body > header {
   display:block;
@@ -1007,9 +1018,11 @@ td  .prettyButton {
 }
 
 .loading {
-  background-image: url("../img/ajax-loader.gif");
+  background-image: url("../img/preloadPage.gif");
   background-repeat:no-repeat;
-  background-position:center;
+  background-position: center;
+  background-size:20px 20px;
+  text-indent:1000px;
 }
 
 .emptyResult {

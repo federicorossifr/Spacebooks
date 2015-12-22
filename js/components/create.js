@@ -33,7 +33,6 @@ function Create() {
 			var strOut = editorOut.join("");
 			this.description.value = strOut;
 			var editorRawText = editor.textContent.replace(/\s{2,}/g, '');
-			console.log(strOut);
 
 			if(editorRawText == "" || editorRawText.length < 100) {
 				var pop = new Modal(

@@ -112,6 +112,11 @@ class Document {
 
 	public function delete() {
 		global $db;
+		$documentFiles = $this->getFiles();
+
+		foreach($documentFiles as $file) {
+			DbFS::deleteFile($file['path']);
+		}
 		$stmnt = $db->prepare("DELETE FROM document WHERE id=?");
 		checkQuery($stmnt);
 		$stmnt->bind_param("i",$this->id);

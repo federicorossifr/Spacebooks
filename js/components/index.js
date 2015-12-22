@@ -1,4 +1,6 @@
-function Index() {
+function Index(body) {
+	body.style.opacity = 1;
+	document.documentElement.style.backgroundImage = "none";
 	var registerForm = document.forms[1];
 	FormControl(registerForm);
 }

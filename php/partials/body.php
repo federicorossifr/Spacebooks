@@ -1,5 +1,5 @@
 <script type="text/javascript" src="js/components/body.js"></script>
-<body onload="bodyMain()">
+<body onload="bodyMain(superBody);" id="superBody">
 	<header>
 		<h1><a href="./">Spacebooks</a></h1>
 	</header>

@@ -28,7 +28,6 @@ PicUploader.prototype.readPic = function(file) {
 }
 
 PicUploader.prototype.loaded = function(event) {
-	console.log(event);
 	this.iPreview.src = event.target.result;
 	this.iPreview.style.display = "block";
 	this.iProgress.style.display = "none";

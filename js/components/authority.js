@@ -29,7 +29,6 @@ function applyFilter(targetTable,textInputField,selectorField) {
 function UserAction(obj) {
 	var rowAffected = obj.parentElement.parentElement;
 	var cells = rowAffected.cells;
-	console.log(obj.value);
 	if(obj.value == "0" || obj.value == "1") {
 		var changeCell = cells[cells.length - 2];
 		var changeOption = obj.querySelector("[value='" + obj.value +"']");

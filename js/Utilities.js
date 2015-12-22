@@ -104,11 +104,8 @@ function countLeft(input,goal,output) {
 		input.oninput = function() {
 			var counter = output;
 			var value = this.textContent;
-			console.log(value);
 			var valueLength = value.length;
-			console.log(valueLength);
 			var valueGoal = goal
-			console.log(valueGoal);
 			if(valueGoal - valueLength >= 0) {
 				counter.className = "error";
 			} else {
@@ -117,3 +114,7 @@ function countLeft(input,goal,output) {
 			counter.textContent = valueLength;
 		}
 }
+
+
+
+

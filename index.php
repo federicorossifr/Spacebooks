@@ -13,7 +13,7 @@
 ?>
 
 
-	<body onload="Index()" id="index">
+	<body onload="Index(index);" id="index">
 		<header>
 			<h1><a href="./">Spacebooks</a></h1>
 		</header>

@@ -56,7 +56,9 @@ function displaySuggestion(data,resultList) {
 
 
 
-function Body() {
+function Body(bodyElement) {
+	document.body.style.opacity = "1";
+	document.documentElement.style.backgroundImage = "none";
 	this.profileSide = document.getElementById("profile"); // Barra laterale "aside" a comparsa
 	this.searchSide = document.getElementById("search");
 

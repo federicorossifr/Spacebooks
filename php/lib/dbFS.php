@@ -10,6 +10,12 @@
 
 		}
 
+		public static function deleteFile($path) {
+			$absolutePath = realpath(BASE_DIR . $path);
+			if(file_exists($absolutePath))
+				echo unlink($absolutePath);
+		}
+
 		function saveFile($file,$sDb = 0) {
 			global $db;
 			$extension = pathinfo($file['name'],PATHINFO_EXTENSION);

@@ -1,5 +1,5 @@
 <?php
-
+	define("BASE_DIR", __DIR__ . "../../../");
 	$db = require __DIR__ . "/db.php";
 	require __DIR__ . "/crypto.php";
 	require_once __DIR__ . "/dbFS.php";
@@ -36,7 +36,7 @@
 		header("Location: /error.php");
 	}
 
-	set_exception_handler('exceptionHandler');
+	//set_exception_handler('exceptionHandler');
 
 	function checkQuery($statement) {
 		if(!$statement) {
