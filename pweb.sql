@@ -86,7 +86,7 @@ CREATE TABLE `document` (
   KEY `document_ibfk_1` (`cover`),
   CONSTRAINT `DocumentAuthor` FOREIGN KEY (`author`) REFERENCES `user` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `document_ibfk_1` FOREIGN KEY (`cover`) REFERENCES `file` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -108,8 +108,7 @@ UNLOCK TABLES;
 DELIMITER ;;
 /*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `EliminaCopertinaFiles` BEFORE DELETE ON `document` FOR EACH ROW BEGIN
 	DELETE FROM file WHERE id = OLD.cover OR id IN ( SELECT file FROM attachments WHERE document = OLD.id);
-             
-
+    UPDATE tag SET count = count -1 WHERE id IN ( SELECT tag FROM tagship WHERE document = OLD.id);
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -133,7 +132,7 @@ CREATE TABLE `file` (
   `updated` datetime DEFAULT NULL,
   `type` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -190,7 +189,7 @@ CREATE TABLE `purchase` (
   KEY `DocumentPurchaser` (`purchaser`),
   CONSTRAINT `DocumentBuyer` FOREIGN KEY (`purchaser`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `DocumentPurchased` FOREIGN KEY (`document`) REFERENCES `document` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -368,7 +367,7 @@ CREATE TABLE `tag` (
   `name` varchar(45) NOT NULL,
   `count` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -377,7 +376,6 @@ CREATE TABLE `tag` (
 
 LOCK TABLES `tag` WRITE;
 /*!40000 ALTER TABLE `tag` DISABLE KEYS */;
-INSERT INTO `tag` VALUES (1,'RetiSequenziali',2),(2,'RetiLogiche',5),(3,'Ingegneria',6),(4,'RSA',7),(5,'Moore',7),(6,'reti',2),(7,'sequenziali',1),(8,'asincrone',1),(9,'sdlkmsald',1),(10,'jksjfdsk',1),(11,'dfjds',1),(12,'chimicaorganica',1),(13,'tag1',8),(14,'tag2',6),(15,'tag3',6),(16,'tag4',5),(17,'belle',1),(18,'Logicissime',1);
 /*!40000 ALTER TABLE `tag` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -496,7 +494,7 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -505,7 +503,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (8,'Federico','$2y$10$XRUa9J5nNTqQNDLMQbZS/unkIxcfUwwbINbwi20t2gKEhkfON4auy','federico.rossi15s95@gmail.com','Federico','Rossi','1995-09-15','Italia',27,'./uploads/profilePictures/texture20151212044828.jpeg','admin');
+INSERT INTO `user` VALUES (8,'Federico','$2y$10$XRUa9J5nNTqQNDLMQbZS/unkIxcfUwwbINbwi20t2gKEhkfON4auy','federico.rossi15s95@gmail.com','Federico','Rossi','1995-09-15','Italia',27,'./uploads/profilePictures/12356787_10153210866706471_1155759432190083684_o20151219122241.png','admin');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -536,4 +534,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-17 20:26:40
+-- Dump completed on 2015-12-23 18:50:30
