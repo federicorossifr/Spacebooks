@@ -32,20 +32,40 @@ function inputDisplayValidInvalid(input,label) {
 	}
 }
 
-function inputCheck(event,form) {
-	var input = event.target;
-	var label = form.querySelector("[for='" + input.id + "']");
-		if(input.hasAttribute('data-match')) {
-			var toMatchObjectId = input.getAttribute("data-match");
-			var errorMessage = input.getAttribute("data-match-error");
-			var valueToMatch = document.getElementById(toMatchObjectId).value;
-			if(valueToMatch != input.value) {
+function tryMatch(input,objectToMatch,label) {
+	console.log("CALLED");
+	var errorMessage = input.getAttribute("data-match-error");
+	if(objectToMatch.value != input.value) {
 				input.setCustomValidity(errorMessage);
 				input.customErrorMessage = errorMessage;
 			}
-			else {
+	else {
 				input.setCustomValidity("");
 				input.customErrorMessage = errorMessage;
+	}
+
+	inputDisplayValidInvalid(input,label);
+
+}
+
+function inputCheck(event,form) {
+	var input = event.target;
+	var label = form.querySelector("[for='" + input.id + "']");
+
+		if(input.hasAttribute('data-match')) {
+			var toMatchObjectId = input.getAttribute("data-match");
+			var toMatchObject = document.getElementById(toMatchObjectId);
+			var valueToMatch = toMatchObject.value;
+			tryMatch(input,toMatchObject,label);
+
+			if(!toMatchObject.encore) {
+				var noConflict = toMatchObject.oninput;
+				toMatchObject.oninput = function(event) {
+					noConflict(event,form);	
+					tryMatch(input,event.target,label);
+				}
+
+				toMatchObject.encore = 1;		
 			}
 		}
 
