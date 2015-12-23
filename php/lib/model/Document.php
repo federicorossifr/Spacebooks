@@ -107,7 +107,7 @@ class Document {
 		$stmnt->bind_param("ssisdidiii",$this->title,$this->created,
 										$this->author,$this->description,$this->price,
 										$this->votings,$this->score,$this->available,$this->cover,$this->id);
-		$stmnt->execute();
+		return $stmnt->execute();
 	}
 
 	public function delete() {
@@ -120,7 +120,7 @@ class Document {
 		$stmnt = $db->prepare("DELETE FROM document WHERE id=?");
 		checkQuery($stmnt);
 		$stmnt->bind_param("i",$this->id);
-		$stmnt->execute();
+		return $stmnt->execute();
 	}
 
 	private function getFiles() {

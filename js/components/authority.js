@@ -26,7 +26,11 @@ function applyFilter(targetTable,textInputField,selectorField) {
 	filterTable(targetTable,num,text);
 }
 
-function UserAction(obj) {
+function UserAction(obj,data) {
+	if(!parseInt(data)) {
+		actionPerformed(null,null,1);
+		return;
+	}
 	var rowAffected = obj.parentElement.parentElement;
 	var cells = rowAffected.cells;
 	if(obj.value == "0" || obj.value == "1") {
@@ -39,7 +43,11 @@ function UserAction(obj) {
 	actionPerformed(rowAffected,obj);
 }
 
-function DocumentAction(obj) {
+function DocumentAction(obj,data) {
+	if(!parseInt(data)) {
+		actionPerformed(null,null,1);
+		return;
+	}
 	var rowAffected = obj.parentElement.parentElement;
 	var cells = rowAffected.cells;
 	if(obj.value == "0") cells[cells.length -2].textContent = "1";
@@ -47,7 +55,11 @@ function DocumentAction(obj) {
 	actionPerformed(rowAffected,obj);
 }
 
-function actionPerformed(rowAffected,obj) {
+function actionPerformed(rowAffected,obj,error) {
+	if(error) {
+		Modal("Attenzione","Ci sono stati errori nel processare la tua richiesta");
+		return;
+	}
 	if(obj.value == "2")
 		rowAffected.parentElement.removeChild(rowAffected);	
 	Modal("Moderazione","Operazione completata");
@@ -61,8 +73,8 @@ function action(obj) {
 	if(dbModelAction == "-1") return false;
 	var requestClient = null;
 	switch(dbModel) {
-		case "document": requestClient = new AsyncReq('./php/authority/documentModeration.php',function() {DocumentAction(obj);}); break;
-		case "user" : requestClient = new AsyncReq('./php/authority/userModeration.php',function(data) {UserAction(obj);}); break;
+		case "document": requestClient = new AsyncReq('./php/authority/documentModeration.php',function(data) {DocumentAction(obj,data);}); break;
+		case "user" : requestClient = new AsyncReq('./php/authority/userModeration.php',function(data) {UserAction(obj,data);}); break;
 	}
 
 	var params = [{'id':'id','value':dbModelId},{'id':'action','value':dbModelAction}];

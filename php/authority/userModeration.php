@@ -13,13 +13,13 @@
 
 		case '1':
 			$usr->role = "user";
-			var_dump($usr->update());
+			echo $usr->update();
 			break;
 		case '3':
 
 			break;
 		case '2':
-			$usr->delete();
+			echo $usr->delete();
 			break;
 
 		default:

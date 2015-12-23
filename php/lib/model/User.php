@@ -132,7 +132,7 @@ class User {
 		$stmnt->bind_param("ssssssssssi",$this->username,$this->password,$this->email,$this->name,
 									   $this->surname,$this->birthdate,$this->country,
 									   $this->credits,$this->picture,$this->role,$this->id);
-		$stmnt->execute();
+		return $stmnt->execute();
 	}
 
 	public function delete() {
@@ -140,7 +140,7 @@ class User {
 		$stmnt = $db->prepare("DELETE FROM user WHERE id=?");
 		checkQuery($stmnt);
 		$stmnt->bind_param("i",$this->id);
-		$stmnt->execute();
+		return $stmnt->execute();
 	}
 
 	public function getDocuments() {
