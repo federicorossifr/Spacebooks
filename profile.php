@@ -65,7 +65,7 @@
 					<dd><?= $profile->country ?></dd>
 
 					<dt>Email</dt>
-					<dd><?= $profile->email ?></dd>
+					<dd><img src="./php/generateMail.php?email=<?= $profile->email ?>"><dd>
 
 				</dl>
 

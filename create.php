@@ -32,9 +32,9 @@
 				<label>Inserisci una descrizione di almeno 100 caratteri che illustri il contenuto del tuo documento.</label><br>
 				<strong id="count">0</strong> caratteri inseriti. 
 				<div class="comboButton">
-					<a class="prettyButton" onclick="command(event)" id="bold">Grassetto</a>
-					<a class="prettyButton" onclick="command(event)" id="underline">Sottolineato</a>
-					<a class="prettyButton" onclick="command(event)" id="italic">Corsivo</a>
+					<a class="prettyButton" href="#" onclick="command(event)" id="bold">Grassetto</a>
+					<a class="prettyButton" href="#" onclick="command(event)" id="underline">Sottolineato</a>
+					<a class="prettyButton" href="#" onclick="command(event)" id="italic">Corsivo</a>
 				</div>
 				<div class="description" contenteditable="true" id="description"></div><br>
 				<a onclick="instance.fragments.next()" class="prettyButton">Procedi</a>
