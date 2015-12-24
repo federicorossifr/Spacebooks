@@ -154,7 +154,7 @@
 					<a class="prettyButton" href="#" onclick="command(event)" id="italic">Corsivo</a>
 					</div>
 					<div class="descriptionContainer wide" id="editDescription"><?= $doc->description ?></div><br>
-					<ipnut class="prettyButton" type="submit">Modifica</input>
+					<input class="prettyButton" type="submit">Modifica</input>
 				</form>
 
 			</article>

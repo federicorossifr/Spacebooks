@@ -17,7 +17,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
 	<link rel="stylesheet" type="text/css" href="css/style_.css">
 	<link rel="stylesheet" type="text/css" href="css/responsive_.css">
-
+ 	<link rel="shortcut icon" type="image/png" href="./img/favicon.ico"/>
+ 	
 	<!-- Javascript Libraries -->
 	<script type="text/javascript" src="./js/Async.js"></script>
 	<script type="text/javascript" src="./js/FormControl.js"></script>
