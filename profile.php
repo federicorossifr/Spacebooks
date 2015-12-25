@@ -41,7 +41,7 @@
 		<article data-fragment data-name="Profilo Pubblico">
 			<header><h3>Profile info</h3></header>
 			<div class="left">
-				<img class="shadow" src="<?= $profile->picture ?>" width="200" alt="no">
+				<img class="profilePicture" src="<?= $profile->picture ?>"  alt="no">
 				
 				<?php if(!$self && !$following) { ?>
 					<a id="follow" onclick="ajaxFollow(this)" data-mate="<?= $profile->id ?>" data-follow="0" class="prettyButton">Segui</a>
@@ -50,7 +50,6 @@
 					<a id="follow" onclick="ajaxFollow(this)" data-mate="<?= $profile->id ?>" data-follow="1" class="prettyButton">Smetti di seguire</a>
 				<?php } ?> 
 			</div>
-			
 				<dl>
 					<dt>Name</dt>
 					<dd><?= $profile->name ?></dd>
@@ -65,10 +64,8 @@
 					<dd><?= $profile->country ?></dd>
 
 					<dt>Email</dt>
-					<dd><img src="./php/generateMail.php?email=<?= $profile->email ?>"><dd>
-
+					<dd><img src="./php/generateMail.php" alt="Email address"><dd>
 				</dl>
-
 		</article>
 
 		<article data-fragment data-name="Documenti">
@@ -125,7 +122,7 @@
 			<div class="right shadow">
 				<h3>Modifica dati accesso</h3>
 				<form method="POST" action="./php/edit.php" id="editForm">
-						<label required for="oldPassword">Vecchia password</label>
+						<label  for="oldPassword">Vecchia password</label>
 						<input class="light" type="password" id="oldPassword" name="oldPassword" required>
 						<label for="username">Nuovo nome utente (lascia vuoto per non cambiare)</label>
 						<input data-query="./php/async/exists.php?label=" data-query-error="Username già esistente" pattern=".{6,9}"  title="Inserisci tra i 6 e i 10 caratteri e/o numeri" class="light" type="text" id="username" name="username">
