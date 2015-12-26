@@ -1,5 +1,5 @@
 <?php
-	include "./php/partials/secured.php";
+	include "./php/partials/superSecured.php";
 ?>
 <!DOCTYPE html>
 <html lang="it">
@@ -7,7 +7,6 @@
 	include "./php/partials/header.php";
 	include "./php/partials/body.php";
 
-	if($user->role == "user") header("Location: ./home.php");
 	$users = User::fetchAll();
 	$documents = Document::fetchAll();
 ?>

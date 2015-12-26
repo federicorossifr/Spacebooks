@@ -1,5 +1,6 @@
 <?php
-	require "../lib/core.php";
+	//require "../lib/core.php";
+	require "../partials/superSecured.php";
 	$docId = $_POST['id'];
 	$action = $_POST['action'];
 
