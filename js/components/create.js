@@ -29,8 +29,7 @@ function Create() {
 			e.preventDefault();
 			editor.id = "";
 			editor.className = "description";
-			parse(editor,editorOut);
-			var strOut = editorOut.join("");
+			var strOut = emitter(editor);
 			this.description.value = strOut;
 			var editorRawText = editor.textContent.replace(/\s{2,}/g, '');
 
