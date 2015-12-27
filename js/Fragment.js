@@ -70,7 +70,6 @@ Fragment.prototype.next = function() {
 		pointer = (pointer+1) % queueSize;
 		fragments[pointer].style.display = "block";
 		if(onFragmentChange) onFragmentChange(pointer);
-
 		btns[pointer].className = "controller active";
 	}
 }
@@ -100,7 +99,6 @@ Fragment.prototype.that = function(index) {
 		pointer = (index < queueSize) ? index : 0;
 		fragments[pointer].style.display = "block";
 		if(onFragmentChange) onFragmentChange(index);
-
 		btns[pointer].className = "controller active";
 
 	}

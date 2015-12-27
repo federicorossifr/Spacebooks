@@ -57,3 +57,6 @@ function Create() {
 	}
 }
 
+window.onbeforeunload = function(event) {
+	return "Stai creando un documento, vuoi abbandonare?"
+};

@@ -77,7 +77,6 @@
 	<script type="text/javascript">
 	var frgm = new Fragment("aboutFragments");
 	frgm.makeSelectors('a');
-	window.setInterval(function() {frgm.next();},15000);
 	document.body.style.opacity = 1;
 	document.documentElement.style.backgroundImage = "none";
 	</script>
