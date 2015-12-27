@@ -53,12 +53,19 @@ function displaySuggestion(data,resultList) {
 	}
 }
 
-
+function slideToggle() { // this is binded
+	if(this.style.left == "-100%" || !this.style.left) {
+		this.style.left = 0;
+	} else {
+		this.style.left = "-100%";
+	}
+}
 
 
 function Body(bodyElement) {
 	document.body.style.opacity = "1";
 	document.documentElement.style.backgroundImage = "none";
+
 	this.profileSide = document.getElementById("profile"); // Barra laterale "aside" a comparsa
 	this.searchSide = document.getElementById("search");
 
@@ -82,12 +89,12 @@ function Body(bodyElement) {
 	this.windowWidth = window.innerWidth;
 	this.logo = document.getElementById("logo");
 
-	this.closeProfile.onclick = this.profile.bind(this);
-	this.profileToggle.onclick = this.profile.bind(this);
-	this.navToggle.onclick = this.menu.bind(this);
+	this.closeProfile.onclick = slideToggle.bind(this.profileSide);
+	this.profileToggle.onclick = slideToggle.bind(this.profileSide);
+	this.navToggle.onclick = this.toggleMenu.bind(this);
 	this.changePicButton.onclick = this.changePic.bind(this);
-	this.searchToggle.onclick = this.searchT.bind(this);
-	this.closeSearch.onclick = this.searchT.bind(this);
+	this.searchToggle.onclick = slideToggle.bind(this.searchSide);
+	this.closeSearch.onclick = slideToggle.bind(this.searchSide);
 
 	with(this) {
 		window.onresize = function() {
@@ -101,7 +108,7 @@ function Body(bodyElement) {
 			navList.style.display = "block";
 	}}
 
-	this.menu();
+	this.toggleMenu();
 }
 
 
@@ -114,7 +121,7 @@ Body.prototype.changePic = function() {
 	}
 }
 
-Body.prototype.menu = function() {
+Body.prototype.toggleMenu = function() {
 	with(this) {
 		navList.style.transition = "max-height 0.3s ease-in-out";
 		if(menuState) 
@@ -124,30 +131,6 @@ Body.prototype.menu = function() {
 			navList.style.display = "block";
 		}
 		menuState = !menuState;
-	}
-}
-
-Body.prototype.searchT = function() {
-	with(this) {
-		if(searchState) {
-			searchSide.style.left = "-100%";
-
-		} else {
-			searchSide.style.left = "0";
-			document.getElementById("searchForm").data.focus();
-		}
-		searchState = !searchState;
-	}
-}
-
-Body.prototype.profile = function() {
-	with(this) {
-		if(profileState) {
-			profileSide.style.left = "-100%";
-		} else {
-			profileSide.style.left = "0";
-		}
-		profileState = !profileState;
 	}
 }
 

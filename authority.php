@@ -37,7 +37,7 @@
 										<td>$tmp->id</td>
 										<td>$tmp->username</td>
 										<td>$tmp->email</td>
-										<td>$tmp->birthdate</td>
+										<td><time datetime='$tmp->birthdate'>$tmp->birthdate</time></td>
 										<td>$tmp->country</td>
 										<td>$tmp->role</td>
 										<td>
@@ -87,8 +87,8 @@
 									<tr>
 										<td>$tmp->title</td>
 										<td><a class='prettyButton' href='./document.php?id=$tmp->id'>Vai</a></td>
-										<td>$tmp->created</td>
-										<td>$tmp->updated</td>
+										<td><time datetime='$tmp->created'>$tmp->created</time></td>
+										<td><time datetime='$tmp->updated'>$tmp->updated</time></td>
 										<td>$tmp->author</td>
 											<td>$tmp->available</td>
 										<td>

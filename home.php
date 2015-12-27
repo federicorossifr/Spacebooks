@@ -19,7 +19,6 @@
 							
 						</ul>
 							<a id="loadMorePurch" data-role="loadMore" class="prettyButton">Carica altro</a>
-
 					</article>
 
 					<article data-fragment data-name="Consigliati">
@@ -47,13 +46,7 @@
 										echo "</li>";									
 									}
 								?>
-
-
-
 							</ul>
-
-
-
 					</article>
 			</div>
 		</main>

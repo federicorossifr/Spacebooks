@@ -29,6 +29,10 @@
 		case 'document':
 			$docId = $_POST['docId'];
 			$document = Document::read($docId);
+			if($_SESSION['user']->id != $document->author) {
+				header("Location: ../home.php");
+				break;
+			}
 			$newDescription = $_POST['description'];
 			$newTitle = $_POST['title'];
 			$document->title = $newTitle;

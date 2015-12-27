@@ -63,7 +63,7 @@
 					<div class="darken"></div>
 
 					<p>
-						Una volta condiviso, un documento non potrà essere modificato ulteriormente.<br>
+						Una volta condiviso, i file di un documento non potranno essere modificati ulteriormente.<br>
 						Così non potrai perdere i documenti che hai acquistato ed aver speso crediti<br>
 						inutilmente.
 					</p>

@@ -6,7 +6,7 @@ multiUploader.prototype.addUploader = function(caller,isRemovable) {
 	with(this) {
 		if(!lastUsed) {
 			var pop = new Pophover(caller,"Attenzione","L'ultimo uploader non è stato utilizzato");
-			pop.show(1000);
+			pop.showTime(1000);
 			return;
 		}
 		

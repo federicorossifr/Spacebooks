@@ -156,7 +156,6 @@
 					<div class="descriptionContainer wide" id="editDescription"><?= $doc->description ?></div><br>
 					<input class="prettyButton" type="submit">Modifica</input>
 				</form>
-
 			</article>
 			<?php } ?>
 		</div>

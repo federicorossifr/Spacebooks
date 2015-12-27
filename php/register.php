@@ -1,31 +1,27 @@
 <?php
 	require __DIR__ . "/lib/core.php";
 	session_start();
-	$fieldExists = null;
 
+	$password = $_POST["password1"];
+	unset($_POST["password1"]);
+	unset($_POST["password2"]);
 
-	if($_POST["password1"] == $_POST["password2"]) {
-		$password = $_POST["password" ];
-		unset($_POST["password1"]);
-		unset($_POST["password2"]);
-		$regStrategy = new Crypto($password,"");
-		$password = $regStrategy->doCrypt();
-		$_POST['password'] = $password;
+	$regStrategy = new Crypto($password,""); // BCRYPT DELLA PASSWORD CON SALT CASUALE.
+	$password = $regStrategy->doCrypt();
 
-		$_POST["birthdate"] = str_replace('/','-',$_POST['birthdate']);
-		$_POST["birthdate"] = date("Y-m-d", strtotime($_POST['birthdate']));
-		$newUser = new User($_POST);
-		$newUserId = $newUser->create();
-		$user = User::read($newUserId);
-		$_SESSION['user'] = $user;
-		$_SESSION['logged'] = true;
-		$db->close();
-		header("Location: ../profile.php");
-		die;
-	} else {
-		$_SESSION['rerror'] = "Passwords does not match";
-		header("Location: ../index.php");
-	}
+	$_POST['password'] = $password;
+
+	$_POST["birthdate"] = str_replace('/','-',$_POST['birthdate']);  // FORMATTAZINOE DELLA DATA IN YYYY/MM/DD PER MYSQL
+	$_POST["birthdate"] = date("Y-m-d", strtotime($_POST['birthdate']));
+
+	$newUser = new User($_POST); // CREAZIONE DELL'OGGETTO UTENTE A PARTIRE DALL'ARRAY POST
+	$newUserId = $newUser->create(); // SALVATAGGIO IN DATABASE DELL'OGGETTO APPENA CREATO.
+
+	$user = User::read($newUserId); // RECUPERO L'UTENTE APPENA CREATO ED ESEGUO IL LOGIN
+	$_SESSION['user'] = $user;
+	$_SESSION['logged'] = true;
+	$db->close();
+	header("Location: ../profile.php"); // RIMANDO L'UTENTE AL SUO PROFILO
 
 
 

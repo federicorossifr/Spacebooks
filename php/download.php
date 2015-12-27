@@ -5,11 +5,11 @@
 	$fId = (isset($_GET['fid']))? $_GET['fid']:null;
 	$filePath = null;
 	
-	if(!$user->hasPurchased($dId)) die;
+	if(!$user->hasPurchased($dId)) throw new Exception("Non hai ancora acquistato questo documento");
 
 	$document = Document::read($dId);
 	if(!$document) die;
 	$filePath = DbFS::getFileLink($fId);
 	if($filePath) serveFile("." . $filePath);
-	else die;
+	else throw new Exception("Il file non esiste o è stato cancellato");
 
