@@ -46,7 +46,7 @@ Reviewer.prototype.highlight = function(star) {
 			stars[i].src = STAR_OFF;
 		}
 	}
-}
+};
 
 Reviewer.prototype.blur = function() {
 	with(this) {
@@ -55,7 +55,7 @@ Reviewer.prototype.blur = function() {
 			else stars[i].src = STAR_OFF;
 		}
 	}
-}
+};
 
 
 Reviewer.prototype.select = function(star) {
@@ -73,4 +73,4 @@ Reviewer.prototype.select = function(star) {
 		if(callback)
 			callback(selectedValue); 
 	}
-}
+};

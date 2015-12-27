@@ -27,7 +27,7 @@ function inputDisplayValidInvalid(input,label) {
 		}
 		else {
 			label.className = "success";
-			input.className = "success"			
+			input.className = "success";
 			label.textContent = label.getAttribute("data-original");
 	}
 }
@@ -63,7 +63,7 @@ function inputCheck(event,form) {
 				toMatchObject.oninput = function(event) {
 					noConflict(event,form);	
 					tryMatch(input,event.target,label);
-				}
+				};
 
 				toMatchObject.encore = 1;		
 			}
@@ -117,7 +117,7 @@ function FormControl(form) {
 		var inputLabel = form.querySelector("[for='" + inputs[i].id + "']");
 		if(!inputLabel) continue;
 		inputLabel.setAttribute("data-original",inputLabel.textContent);
-		inputs[i].oninput = function(event) {inputCheck(event,form);}
+		inputs[i].oninput = function(event) {inputCheck(event,form);};
 		inputs[i].onblur = inputs[i].oninput;
 		//inputs[i].onpropertychange = inputs[i].onblur;
 	}

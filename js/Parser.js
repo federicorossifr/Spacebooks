@@ -24,8 +24,8 @@ function parse(parent,vector) {
 	}
 
 	var chdrn = parent.childNodes;
-	for(var i = 0; i < chdrn.length; ++i) {
-		parse(chdrn[i],vector);
+	for(var j = 0; j < chdrn.length; ++j) {
+		parse(chdrn[j],vector);
 	}
 
 
