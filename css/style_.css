@@ -83,13 +83,13 @@ footer p {
   margin:0;
   text-align:center;
   color:white;
-  font-family:VollkornItalic
+  font-family:VollkornItalic, serif;
 }
 
 footer p span {
   color:white;
   text-transform: uppercase;
-  font-family: VollkornBold;
+  font-family: VollkornBold, serif;
 }
 
 footer p a {
@@ -128,12 +128,10 @@ nav.fixed ul {
 
 nav > ul {
   padding:0;
-  margin:0;
+  margin:0 auto;
   list-style:none;
   text-transform:uppercase;
   letter-spacing:1px;
-  margin-left:auto;
-  margin-right:auto;
   width:80%;
   border-top:1px solid tomato;
 }
@@ -446,8 +444,7 @@ form textarea:focus, div[contenteditable]:focus {
   margin-top:1em;
   text-align:center;
   text-decoration:none;
-  transition: background-color 0.2s ease-in-out;
-  transition: border 0.2s ease-in-out;
+  transition: border,background-color 0.2s ease-in-out;
   cursor:pointer;
 }
 
@@ -1047,5 +1044,5 @@ td  .prettyButton {
 }
 
 #italic {
-  font-family:"VollkornItalic";
+  font-family:"VollkornItalic", serif;
 }
