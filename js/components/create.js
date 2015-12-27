@@ -29,9 +29,9 @@ function Create() {
 			e.preventDefault();
 			editor.id = "";
 			editor.className = "description";
-			var strOut = emitter(editor);
-			this.description.value = strOut;
-			var editorRawText = editor.textContent.replace(/\s{2,}/g, '');
+			var dataEmitted = emitter(editor);
+			this.description.value = dataEmitted['outData'];
+			var editorRawText =	dataEmitted['rawData'];
 
 			if(editorRawText == "" || editorRawText.length < 100) {
 				var pop = new Modal(
