@@ -64,7 +64,7 @@ class User {
 
 	public static function auth($username,$password) {
 		global $db;
-		$stmnt = $db->prepare("SELECT * FROM user WHERE username=?");
+		$stmnt = $db->prepare("SELECT * FROM user WHERE BINARY username=?");
 		checkQuery($stmnt);	
 		$stmnt->bind_param("s",$username);
 		$stmnt->execute();
@@ -96,7 +96,7 @@ class User {
 	
 	public static function exists($userChoice) {
 		global $db;
-		$stmnt = $db->prepare("SELECT * FROM user WHERE email = ? OR username = ?");
+		$stmnt = $db->prepare("SELECT * FROM user WHERE email = ? OR BINARY username = ?");
 		checkQuery($stmnt);	
 		$stmnt->bind_param("ss",$userChoice,$userChoice);
 		$stmnt->execute();

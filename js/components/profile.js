@@ -2,7 +2,8 @@ function initProfile() {
 	var frgMnts = new Fragment("mainFragment");
 	frgMnts.makeSelectors("a");
 	var documentsTable = document.getElementById("documentsTable");
-	makeResponsive(documentsTable);
+	if(documentsTable)
+		makeResponsive(documentsTable);
 	document.getElementById("searchButton").className+= " active";
 }
 

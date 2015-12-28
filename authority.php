@@ -65,6 +65,8 @@
 
 			<article data-fragment data-name="Documenti">
 				<header><h2>Documenti</h2></header>
+
+				<?php if($documents) { ?>
 				<form class="combo">
 					<input class="light" type="search" id="documentFilter">
 					<select class="light" id="documentSelector"></select>
@@ -105,6 +107,11 @@
 					?>	
 					</tbody>
 				</table>
+				<?php 
+					} else {
+						echo "<p class='emptyResult'>Non ci sono ancora documenti da mostrare</p>";
+					}
+				?>
 				
 			</article>
 		</main>

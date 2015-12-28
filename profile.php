@@ -70,7 +70,8 @@
 
 		<article data-fragment data-name="Documenti">
 			<header><h3>Documenti di <?= $profile->username  ?></h3></header>
-			
+		
+			<?php if($documents) {	?>		
 			<table class="userTable">
 				<thead>
 					<th>Copertina( clicca per aprire il documento )</th>
@@ -82,7 +83,6 @@
 
 				<tbody id="documentsTable">
 					<?php
-						if($documents)
 							foreach($documents as $document) {
 								echo "<tr>
 										<td><a href='./document.php?id=$document->id' class='view'>
@@ -98,7 +98,16 @@
 				</tbody>
 
 			</table>
+			<?php 
+				} else {
+					echo "<p class='emptyResult'>L'utente non ha caricato ancora nulla, torna un&apos;altra volta</p>";
+				}
+
+
+
+			?>
 		</article>
+
 
 		<?php if($self) { ?>
 		<article id="private" data-fragment data-name="Profilo Privato">
@@ -125,7 +134,7 @@
 						<label  for="oldPassword">Vecchia password</label>
 						<input class="light" type="password" id="oldPassword" name="oldPassword" required>
 						<label for="username">Nuovo nome utente (lascia vuoto per non cambiare)</label>
-						<input data-query="./php/async/exists.php?label=" data-query-error="Username già esistente" pattern=".{6,9}"  title="Inserisci tra i 6 e i 10 caratteri e/o numeri" class="light" type="text" id="username" name="username">
+						<input data-query="./php/async/exists.php?label=" data-query-error="Username già esistente" pattern="[a-zA-Z0-9_-]{6,10}"  title="Inserisci tra i 6 e i 10 caratteri,numeri o i simboli '-_'" class="light" type="text" id="username" name="username">
 						<label for="password">Nuova password (lascia vuoto per non cambiare)</label>
 						<input pattern=".{7,20}" title="Inserisci una password corretta: almeno 7 caratteri e/o numeri (max 20)" class="light" type="password" id="password" name="password">
 						<label for="password2">Ripeti password</label>

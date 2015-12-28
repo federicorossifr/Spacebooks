@@ -4,7 +4,7 @@
     flex-flow:column;
   }
   
-  #cA,#cB,form,input {
+  #cA,#cB,form, input {
     float:none;
     width:100%;
     max-width:500px;
@@ -22,6 +22,8 @@
      margin-right:auto;
      box-sizing:border-box;
   }
+
+
 
   form.combo * {
     margin-bottom:0;
@@ -204,6 +206,7 @@
   
   #registerSection .prettyButton, .prettyButton {
       width:100%;
+      max-width:500px;
       box-sizing:border-box;
   }
   

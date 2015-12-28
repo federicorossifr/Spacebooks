@@ -1,4 +1,4 @@
-<footer>
+<footer id="siteFooter">
 	<p>
 		<span>Federico Rossi</span><br>
 		Progettazione Web A.A. 2015/2016

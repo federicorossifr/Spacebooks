@@ -44,6 +44,10 @@ function getTaggedDocuments(start,step,callback) {
 	var loadedTags = loadTags();
 	if(loadedTags)
 		loadedTags = loadedTags.split(";");
+	else {
+		DocumentsDisplay(null,0,"suggestedDocuments");
+		return;
+	}
 	var tags = JSON.stringify(loadedTags);
 	var params = [{'id':'start','value':start},
 					{'id':'by','value':step},

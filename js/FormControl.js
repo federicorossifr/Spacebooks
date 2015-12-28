@@ -96,6 +96,7 @@ function inputCheck(event,form) {
 			var queryValue = input.value;
 			var queryString = input.getAttribute("data-query");
 			var queryError = input.getAttribute("data-query-error");
+			console.log(queryValue);
 			var queryClient = new AsyncReq(queryString+queryValue,function(data) {
 				if(data == 1) {
 					input.setCustomValidity(queryError);

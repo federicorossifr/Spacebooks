@@ -22,6 +22,7 @@
 		<section id="loginSection">
 			<header>
 				<h2>Accedi</h2>
+				<h6>( L'&apos;username è case <em>sensitive</em> )</h6>
 			</header>
 
 			<form id="loginForm" method="POST" action="php/login.php">
@@ -54,9 +55,9 @@
 				<form id="registerForm" method="POST" action="php/register.php">
 					<div id="cA">
 						<label id="nameW" for="name">Nome</label><br>
-						<input type="text"  id="name" name="name"  title="Inserire un nome valido, prima lettera maiuscola, solo lettere." required />
-						<label id="surnameW" for="surname">Cognome</label><br>
-						<input type="text"  id="surname" name="surname" title="Inserire un cognome valido, prima lettera maiuscola, solo lettere."  required />
+						<input type="text" pattern="^[a-zA-Z ,.'-]+$" title="Inserisci un nome valido"  id="name" name="name"  required />
+						<label id="surnameW" pattern="^[a-zA-Z ,.'-]+$" title="Inserisci un cognome valido" for="surname">Cognome</label><br>
+						<input type="text"  id="surname" name="surname" required />
 						<label id="countryW" for="country">Nazione</label><br>
 						<select id="country" name="country" required>
 							<option value="">Scegli una nazione</option>
@@ -69,7 +70,7 @@
 					</div>
 					<div id="cB">
 						<label for="usernameR">Username</label>
-						<input data-query="./php/async/exists.php?label=" data-query-error="Username già esistente" pattern=".{6,9}"  title="Inserisci tra i 6 e i 10 caratteri e/o numeri" type="text" name="username" id="usernameR" required />
+						<input data-query="./php/async/exists.php?label=" data-query-error="Username già esistente" pattern="[a-zA-Z0-9_-]{6,10}"  title="Inserisci tra i 6 e i 10 caratteri,numeri o i simboli '-_'" type="text" name="username" id="usernameR" required />
 						<label for="email">Email</label><br>
 						<input pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Inserisci un email corretta: email@provider.ext" type="email"  id="email" name="email" required>
 						<label  for="password1">Password</label>
@@ -79,8 +80,8 @@
 					</div>
 					<input class="prettyButton" type="submit" value="REGISTRATI">
 				</form>
+					<a class="prettyButton" href="#siteFooter">Cos&apos;&egrave; Spacebooks?</a>
 
-			<a class="prettyButton" href="about.php">Cos&apos;&egrave; Spacebooks?</a>
 		</section>
 		</main>
 		<script type="text/javascript" src="js/components/index.js"></script>
