@@ -26,4 +26,9 @@
 	<?php
 		unset($_SESSION['exception']);
 	?>
+
+	<script type="text/javascript">
+		document.body.style.opacity = 1;
+		document.documentElement.style.backgroundImage = "none";
+	</script>
 </body>

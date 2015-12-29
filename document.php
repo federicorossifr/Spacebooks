@@ -18,8 +18,8 @@
 		renderErrorPage($e->getMessage());
 		die;
 	}
-	if(!$doc->available && ($doc->author != $user->id || $user->role == "user")) {
-		throw new Exception("Il documento non è ancora disponibile");
+	if( !$doc->available && $doc->author != $user->id && $user->role == "user") {
+		renderErrorPage("Il documento non è ancora disponibile");
 	}
 	
 ?>
@@ -49,12 +49,14 @@
 					<span class="prettyButton">Prezzo: <?= $doc->price ?> crediti</span>
 
 					<?php
-						if($doc->price <= $user->credits && !$isPurchased)	
+						if($doc->price <= $user->credits && !$isPurchased && $doc->available)	
 							echo "<a href=\"./php/buy.php?id=$doc->id\" class=\"prettyButton\">Acquista</a>";
 						if($isPurchased)
 							echo "<a id='openDoc' href='#' onclick='docFragm.that(2)' class=\"prettyButton\">Apri</a>";
 						if($doc->price > $user->credits)
 							echo "<a href='#' class=\"prettyButton\">Crediti insufficienti</a>";
+						if(!$doc->available)
+							echo "<a href='#' class=\"prettyButton\">Non disponibile</a>"
 					?>
 
 				</div>

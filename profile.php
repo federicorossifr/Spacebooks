@@ -22,7 +22,7 @@
 	$followers = null;
 	$documents = $profile->getDocuments();
 	$followers = $profile->getFellows();
-
+	$_SESSION['visiting'] = $profile->email;
 	$following = false;
 	foreach($followers as $follower) {
 		if($follower['follower'] == $user->id)

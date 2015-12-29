@@ -55,9 +55,9 @@
 				<form id="registerForm" method="POST" action="php/register.php">
 					<div id="cA">
 						<label id="nameW" for="name">Nome</label><br>
-						<input type="text" pattern="^[a-zA-Z ,.'-]+$" title="Inserisci un nome valido"  id="name" name="name"  required />
-						<label id="surnameW" pattern="^[a-zA-Z ,.'-]+$" title="Inserisci un cognome valido" for="surname">Cognome</label><br>
-						<input type="text"  id="surname" name="surname" required />
+						<input type="text" pattern="^[a-zA-Zìàèò ,.'-]+$" title="Inserisci un nome valido"  id="name" name="name"  required />
+						<label id="surnameW"  for="surname">Cognome</label><br>
+						<input type="text" title="Inserisci un cognome valido" pattern="^[a-zA-Zìàèò ,.'-]+$"   id="surname" name="surname" required />
 						<label id="countryW" for="country">Nazione</label><br>
 						<select id="country" name="country" required>
 							<option value="">Scegli una nazione</option>
