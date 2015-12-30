@@ -96,8 +96,9 @@
 			</article>
 			<?php } ?>
 
-			<?php if($user->id != $doc->author) { ?>
 			<article id="reviews" data-fragment data-name="Recensioni">
+			
+			<?php if($user->id != $doc->author) { ?>
 				<div class="left shadow">
 					<h3>Dai una recensione</h3>
 					<div id="stars"></div>
@@ -106,16 +107,22 @@
 						<textarea class="light" id="text" name="text"><?= ($userReview != null)? $userReview['opinion']:'' ?></textarea>
 						<input type="hidden" name="score" value="<?= ($userReview != null)? $userReview['score']:0 ?>">
 						<input type="hidden" name="document" value="<?= $doc->id ?>">
-						<button type="submit" class="prettyButton">Invia</button>
+						<input type="submit" class="prettyButton" value="INVIA" />
 						<br>
 					</form>
 				</div>
+			<?php } ?>
 
 				<div class="shadow left">
 					<h3>Recensioni degli utenti</h3>
 
+					<?php if(!$reviews) {
+						echo "<p class='emptyResult'>Non ci sono ancora recensioni da parte degli utenti</p>";
+					}
+					?>	
 					<ul class="reviewList">
 						<?php
+
 							foreach($reviews as $rev) {
 								if(!$rev['user']) {
 									$rev['user'] = new stdClass(); //generic class for generic anonymous user
@@ -138,7 +145,6 @@
 				</div>
 
 			</article>
-			<?php } ?>
 
 			<?php if($user->id == $doc->author) { ?>
 			<article data-fragment data-name="Modifica">
