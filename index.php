@@ -30,19 +30,7 @@
 				<input type="text" id="username" name="username" />
 				<label for="password">Password</label><br>
 				<input type="password" id="password" name="password"  />
-				<input class="prettyButton" id='loginButton' type="submit" value="ACCEDI">
-
-				<span class="flash">
-				<i>
-				<?php
-					if(isset($_SESSION['lerror'])) {
-						echo $_SESSION['lerror'];
-						unset($_SESSION['lerror']);
-					}
-				?>
-				</i>
-				</span>
-
+				<input class="prettyButton" id='loginButton' type="submit" value="ACCEDI" />
 			</form>
 		</section>
 

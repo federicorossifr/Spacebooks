@@ -1,9 +1,10 @@
-function DataLoad(url,params,callback) {
+function DataLoad(url,params,callback) { // Funzione che semplifica il caricamento dei dati 
+										 // in modo asincrono
 	var client = new AsyncReq(url,callback);
 	client.GET(params);
 }
 
-function generateSelector(tableHead) {
+function generateSelector(tableHead) { // Generatore di selettori per filtri tabella
 	var headItems = tableHead.cells;
 	var select = document.createElement("select");
 	var helpOpt = document.createElement("option");
@@ -21,7 +22,8 @@ function generateSelector(tableHead) {
 	return select;
 }
 
-function matrixToTable(matrix,table) {
+function matrixToTable(matrix,table) { // Funzione per "scrivere" su una tabella i valori di una matrice
+								       // di numero righe e colonne uguale.
 	var rows = table.rows;
 
 	for(var index in matrix) {
@@ -35,7 +37,7 @@ function matrixToTable(matrix,table) {
 	}
 }
 
-function filterTable(table,field,text) {
+function filterTable(table,field,text) { // Funzione per il filtraggio delle righe della tabella
 	var rows = table.rows;
 	var reg = new RegExp(text);
 	var rowMatch = new Array();
@@ -55,17 +57,18 @@ function filterTable(table,field,text) {
 }
 
 
-function makeResponsive(tableBody) {
-	var tableHeadItems = tableBody.parentElement.rows[0].cells;
-	var bodyRows = tableBody.rows;
+function makeResponsive(tableBody) { // Funzione per rendere una tabella maggiormente fruibile 
+									 // con schermi piccoli. 
+	var tableHeadItems = tableBody.parentElement.rows[0].cells; // recupera gli elementi del thead
+	var bodyRows = tableBody.rows; // recupera le righe della tabella
 
-	for(var i = 0; i < tableHeadItems.length; ++i) {
+	for(var i = 0; i < tableHeadItems.length; ++i) { // per ognuna delle intestazioni della tabella
 
-		var label = tableHeadItems[i].firstChild.nodeValue;
+		var label = tableHeadItems[i].firstChild.nodeValue; // recupera il nodo di testo
 
 		for(var j = 0; j < bodyRows.length; ++j) {
 			var row =  bodyRows[j];
-			row.cells[i].setAttribute("data-heading",label);
+			row.cells[i].setAttribute("data-heading",label); // imposta l'attributo delle celle con la corrispettiva intestazione
 		}
 	}
 }

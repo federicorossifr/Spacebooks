@@ -1,4 +1,4 @@
-function Fragment(container,callback) {
+function Fragment(container,callback) {  // Oggetto per la navigazione a TAB nell'applicazione
 	this.container = document.getElementById(container);
 	this.container.className += " fragmentContainer";
 	this.fragments = this.container.querySelectorAll("*[data-fragment]");
@@ -19,8 +19,9 @@ function Fragment(container,callback) {
 }
 
 
-Fragment.prototype.makeSelectors = function(nodeType) {
+Fragment.prototype.makeSelectors = function(nodeType) { // Creazione dei selettori a partire dai frammenti da mostrare
 	with(this) {
+		nodeType = nodeType || "a";
 		for(var index = 0; index < fragments.length && !isNaN(index); ++index) {
 			var frgBtn = document.createElement(nodeType);
 			frgBtn.className = "controller";
@@ -36,9 +37,9 @@ Fragment.prototype.makeSelectors = function(nodeType) {
 	}
 }
 
-Fragment.prototype.makeShifters = function(nodeType,textNext,textPrev) {
+Fragment.prototype.makeShifters = function(nodeType,textNext,textPrev) { // Creazione di semplici pulsanti avanti/indietro
 	with(this) {
-
+		nodeType = nodeType || "a";
 		var nextButton = document.createElement(nodeType);
 		var prevButton = document.createElement(nodeType);
 		var nextLabel = document.createTextNode(textNext);
@@ -109,7 +110,8 @@ Fragment.prototype.loadState = function() {
 	if(last) this.that(last);
 }
 
-Fragment.prototype.onFragmentChange = function(index) {
+Fragment.prototype.onFragmentChange = function(index) {  // "evento" lanciato al cambio di tab.
+														// si utilizza la local storage per salvare la posizione per visite future
 	if(this.callback)
 		this.callback(index);
 	localStorage.setItem(location.href,index);

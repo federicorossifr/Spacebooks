@@ -16,7 +16,7 @@
 			<article data-fragment data-name="Aggiungeri un file al tuo documento">
 				<header><h3>Clicca per aggiungere file al tuo documento</h3></header>
 				<p>
-					Fai click col tasto sinistro su "Aggiungi File" ( oppure toccalo sullo schermo) per aggiungere un nuovo file al tuo documento.
+					Fai click col tasto sinistro su "Aggiungi File" ( oppure toccalo sullo schermo) per aggiungere un caricatore di file.
 					Fai click col tasto destro su un file (o tieni premuto su di esso) per rimuoverlo.
 				</p>
 				<div id="uploadWrapper">

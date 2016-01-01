@@ -49,7 +49,6 @@
 											echo "<option value='1'>Revoca promozione</option>";
 								echo "
 
-												<option value='3'>Sospendi</option>
 												<option value='2'>Rimuovi</option>
 											</select>
 										</td>

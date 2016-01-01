@@ -1,5 +1,5 @@
 function Index(body) {
-	body.style.opacity = 1;
+	document.body.style.opacity = 1;
 	document.documentElement.style.backgroundImage = "none";
 	var registerForm = document.forms[1];
 	FormControl(registerForm);
@@ -16,7 +16,7 @@ function handleLoginResult(data) {
 	}
 
 	document.forms[0].loginButton.className = "prettyButton";
-	document.forms[0].loginButton.textContent = "LOGIN";
+	document.forms[0].loginButton.value = "ACCEDI";
 }
 
 document.forms[0].onsubmit = function(event) {
@@ -24,7 +24,7 @@ document.forms[0].onsubmit = function(event) {
 	event.preventDefault();
 
 	this.loginButton.className = "prettyButton loading";
-	this.loginButton.textContent = "";
+	this.loginButton.value = "";
 
 	var username = this.username.value;
 	var password = this.password.value;

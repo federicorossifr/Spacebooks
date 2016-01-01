@@ -1,4 +1,5 @@
-function parse(parent,vector) {
+function parse(parent,vector) {  //Funzione di utilità per estrarre una stringa di codice HTML dall'albero DOM
+								 // a partire da un elemento padre, con una visita radice->figli
 	if(!parent) return;
 
 	if(parent.tagName) {
@@ -6,7 +7,7 @@ function parse(parent,vector) {
 
 		for(var i = 0; i < parent.attributes.length; ++i) {
 			if(parent.attributes[i].nodeName == "contenteditable" || parent.attributes[i].nodeName == "id") continue;
-			startTag+= parent.attributes[i].nodeName + "='" + parent.attributes[i].nodeValue + "' ";
+			startTag+= parent.attributes[i].nodeName + "='" + parent.attributes[i].value + "' ";
 		}
 
 		startTag+=">";
@@ -35,7 +36,9 @@ function parse(parent,vector) {
 
 }
 
-function emitter(editor) {
+function emitter(editor) {  // Funzione di utilizzo di parser(). Emette un array associativo
+							// con la stringa HTML ricavata in  "outData" e 
+							// il testo contenuto in tutto l'editor
 	var editorOut = new Array();
 	parse(editor,editorOut);
 	var strOut = editorOut.join("");

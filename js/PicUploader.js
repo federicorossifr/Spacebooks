@@ -1,4 +1,3 @@
-
 var DEFAULT_PIC = "./img/file-esplora.png";
 
 function PicUploader(wrapper) {
@@ -8,6 +7,7 @@ function PicUploader(wrapper) {
 	this.iProgress = this.iWrapper.querySelector("progress");
 	this.iPreview = this.iWrapper.querySelector("img");
 	this.iPreview.src = DEFAULT_PIC;
+	this.iPreview.alt = "Picture Preview";
 	this.ifReader = new FileReader();
 
 	with(this) {
