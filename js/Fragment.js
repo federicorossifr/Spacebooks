@@ -14,8 +14,14 @@ function Fragment(container,callback) {  // Oggetto per la navigazione a TAB nel
 			}
 		}
 	}
-
-
+	var curr = this;
+	window.onkeydown = function(event) {
+		var key = event.keyCode;
+		switch(key) {
+			case 39: curr.next(); break;
+			case 37: curr.prev(); break;
+		}
+	}
 }
 
 
@@ -64,30 +70,15 @@ Fragment.prototype.makeShifters = function(nodeType,textNext,textPrev) { // Crea
 
 Fragment.prototype.next = function() {
 	with(this) {
-		var btns = controllerBar.querySelectorAll("*[data-toggle]");
-		btns[pointer].className = "controller";
-
-		fragments[pointer].style.display = "none";
-		pointer = (pointer+1) % queueSize;
-		fragments[pointer].style.display = "block";
-		if(onFragmentChange) onFragmentChange(pointer);
-		btns[pointer].className = "controller active";
+		index = (pointer+1) % queueSize;
+		that(index);
 	}
 }
 
 Fragment.prototype.prev = function() {
 	with(this) {
-		var btns = controllerBar.querySelectorAll("*[data-toggle]");
-		btns[pointer].className = "controller";
-
-		fragments[pointer].style.display = "none";
-		pointer = (pointer == 0) ? queueSize -1 : pointer - 1;
-		fragments[pointer].style.display = "block";
-		if(onFragmentChange) onFragmentChange(pointer);
-
-
-		btns[pointer].className = "controller active";
-
+		index = (pointer == 0) ? queueSize -1 : pointer - 1;
+		that(index);
 	}
 }
 
@@ -112,6 +103,7 @@ Fragment.prototype.loadState = function() {
 
 Fragment.prototype.onFragmentChange = function(index) {  // "evento" lanciato al cambio di tab.
 														// si utilizza la local storage per salvare la posizione per visite future
+
 	if(this.callback)
 		this.callback(index);
 	localStorage.setItem(location.href,index);

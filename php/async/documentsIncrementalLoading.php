@@ -22,7 +22,7 @@
 		$decodedTags = json_decode($tags);
 		if(!$decodedTags) {return manifactureResponse(array(),false);}
 
-
+		$decodedTags[0] = $dataConnection->real_escape_string($decodedTags[0]);
 		$query = "SELECT DISTINCT D.id,D.title,IF(F.path IS NULL,'./img/file-esplora.png',F.path) AS path,D.score,D.votings,D.price
 				  FROM document D
 				  INNER JOIN tagship ON D.id = document
@@ -31,6 +31,7 @@
 
 		foreach($decodedTags as $tag) {
 			if($tag == "") continue;
+			$tag = $dataConnection->real_escape_string($tag);
 			$query.= "OR tag=$tag ";
 		}
 

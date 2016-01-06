@@ -1,7 +1,13 @@
+<?php
+	session_start();
+	if(isset($_SESSION['exception'])) {
+		header("Location: ./error.php");
+		die;
+	}
+?>
 <!DOCTYPE html>
 <html lang="it">
 <?php
-	session_start();
 	if(!isset($_COOKIE['firstTime'])) {
 		header("Location: ./about.php");
 	}

@@ -33,10 +33,11 @@
 
 	function renderErrorPage($message) {
 		$_SESSION['exception'] = $message;
-		header("Location: /error.php");
+		header("Location: ./");
 	}
 
-	//set_exception_handler('exceptionHandler');
+	set_exception_handler('exceptionHandler');
+	set_error_handler('exceptionHandler');
 
 	function checkQuery($statement) {
 		if(!$statement) {

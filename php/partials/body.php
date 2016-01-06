@@ -61,7 +61,7 @@
 
 			<div id="closeSearch" class="closeButton"></div>
 
-			<form id="searchForm" method="POST" action="./test.php">
+			<form id="searchForm" method="POST">
 				<label for="data">Cosa vuoi cercare?</label>
 				<input class="light" id="data" name="data" type="text" autocomplete="off">
 				<ul class="shadow resultList" id="resultList">	

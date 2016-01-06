@@ -7,5 +7,5 @@
 		$user = $_SESSION['user'];
 
 	if(!$_SESSION['logged'] || !$_SESSION['user']) {
-		header("Location: /");
+		header("Location: ./");
 	}

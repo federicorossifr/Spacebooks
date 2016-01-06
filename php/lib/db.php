@@ -10,9 +10,12 @@
 		try {
 			$database = new mysqli($source['host'],$source['user'],$source['password'],$source['database']);
 		} catch (Exception $e) {
-			$database = false;
-				renderErrorPage("Il servizio database non è al momento disponibile");
-			die;
+			   $database = false;
+			   session_start();
+			   unset($_SESSION['logged']);
+			   unset($_SESSION['user']);
+			   renderErrorPage("Il servizio database non è al momento disponibile");
+				die;
 		}
 	return $database;
 ?>

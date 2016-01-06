@@ -33,20 +33,6 @@ class User {
 		$this->refresh();
 	}
 
-	function __call($method,$arguments) {
-		global $db;
-		if($db->error) {
-			throw new Exception("Errore database");
-		}
-	}
-
-	public static function __callStatic($method,$arguments) {
-		global $db;
-		if($db->error) {
-			throw new Exception("Errore database");
-		}
-	}
-
 	public static function read($id) {
 		global $db;
 		$stmnt = $db->prepare("SELECT * FROM user WHERE id=?");

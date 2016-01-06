@@ -99,7 +99,9 @@ handler.prototype.moreData = function(event,firstCall) {
 function command(event) {
 	event.preventDefault();
 	var command = event.target.id;
-	document.execCommand(command);
+	var done = document.execCommand(command);
+	if(done)
+		toggle(event.target);
 }
 
 function countLeft(input,goal,output) {
@@ -118,6 +120,18 @@ function countLeft(input,goal,output) {
 		}
 }
 
+
+
+function toggle(obj) {
+	if(obj.style.backgroundColor == "rgb(255, 99, 71)") { // Tomato
+		obj.style.backgroundColor = "white";
+		obj.style.color = "rgb(255, 99, 71)";
+	}
+	else {
+		obj.style.backgroundColor = "rgb(255, 99, 71)";
+		obj.style.color = "white";
+	}
+}
 
 
 

@@ -24,7 +24,7 @@
 			$path = $this->fsDir  . $filename;
 			if($sDb) {
 				$stmnt = $db->prepare("INSERT INTO file(name,path,size,type) VALUES(?,?,?,?)");
-
+				checkQuery($stmnt);
 				
 
 				$stmnt->bind_param("ssds",$filename,$path,$file['size'],$file['type']);
@@ -40,6 +40,7 @@
 		public static function getFileLink($id) {
 			global $db;
 			$stmnt = $db->prepare("SELECT path FROM file WHERE id =?");
+			checkQuery($stmnt);
 			$stmnt->bind_param("i",$id);
 			$stmnt->execute();
 			$tuple = $stmnt->get_result()->fetch_assoc();

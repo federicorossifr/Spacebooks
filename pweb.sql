@@ -42,6 +42,7 @@ CREATE TABLE `attachments` (
 
 LOCK TABLES `attachments` WRITE;
 /*!40000 ALTER TABLE `attachments` DISABLE KEYS */;
+INSERT INTO `attachments` VALUES (1,2),(2,4),(3,6),(4,8),(5,10);
 /*!40000 ALTER TABLE `attachments` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -86,7 +87,7 @@ CREATE TABLE `document` (
   KEY `document_ibfk_1` (`cover`),
   CONSTRAINT `DocumentAuthor` FOREIGN KEY (`author`) REFERENCES `user` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `document_ibfk_1` FOREIGN KEY (`cover`) REFERENCES `file` (`id`) ON DELETE SET NULL ON UPDATE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,6 +96,7 @@ CREATE TABLE `document` (
 
 LOCK TABLES `document` WRITE;
 /*!40000 ALTER TABLE `document` DISABLE KEYS */;
+INSERT INTO `document` VALUES (1,'Integrazione Numerica','2015-12-29 21:32:42','2015-12-29 22:04:45',8,'<DIV class=\'description\' >Dispensa sull&#039;integrazione numerica del corso di Calcolo Numerico, UniversitÃ  di Pisa,<B > Scuola Di Ingegneria.</B><DIV ><BR ></BR></DIV></DIV>',1,3,0,0,1),(2,'Progetto di database','2015-12-29 21:37:09','2016-01-01 21:50:44',11,'<DIV class=\'description\' >Relazione sulla progettazione di una base di dati per la gestione informatizzata di un ristorante.<DIV >Vengono illustrate le procedure di <U >progettazione</U> concettuale e logica.</DIV></DIV>',3,9,4,1,1),(3,'Reti sequenziali asincrone','2015-12-29 21:55:13','2015-12-29 22:04:53',12,'<DIV class=\'description\' >Reti sequenziali asincrone.<DIV >Grafi e tabelle di flusso, descrizione e sintesi ad <I >elementi neutri di ritardo</I> o <B >Latch SR.</B></DIV><DIV ><B ><BR ></BR></B></DIV><DIV ><B ><BR ></BR></B></DIV><DIV ><B >Gratuito!</B></DIV></DIV>',5,0,0,0,1),(4,'Reti sequenziali sincronizzate','2015-12-29 22:04:21','2015-12-29 22:04:58',13,'<DIV class=\'description\' >Reti sequenziali sincronizzate.<DIV >Descrizione formale di reti sequenziali sincronizzate secondo i modelli di:</DIV><DIV ><B >Moore, Mealey, Mealey Ritardato.</B></DIV><DIV >Sintesti di reti sequenziali complesse.</DIV></DIV>',7,1,0,0,1),(5,'Dispensa Orale Elettrotecnica','2015-12-30 14:59:51','2015-12-30 15:00:15',8,'<DIV class=\'description\' >Dispensa per sostenere l&#039;orale dell&#039;esame di <B >elettrotecnica </B>nel corso di laurea di Ingegneria Informatica.</DIV>',9,10,0,0,1);
 /*!40000 ALTER TABLE `document` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -132,7 +134,7 @@ CREATE TABLE `file` (
   `updated` datetime DEFAULT NULL,
   `type` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -141,6 +143,7 @@ CREATE TABLE `file` (
 
 LOCK TABLES `file` WRITE;
 /*!40000 ALTER TABLE `file` DISABLE KEYS */;
+INSERT INTO `file` VALUES (1,'intnumerica20151229093242.jpg','./uploads/documentPictures/intnumerica20151229093242.jpg',35793,'2015-12-29 21:32:42',NULL,'image/jpeg'),(2,'intnumerica20151229093242.pdf','./uploads/documentFiles/intnumerica20151229093242.pdf',192213,'2015-12-29 21:32:42',NULL,'application/pdf'),(3,'relazioneProgetto20151229093709.jpg','./uploads/documentPictures/relazioneProgetto20151229093709.jpg',7399,'2015-12-29 21:37:09',NULL,'image/jpeg'),(4,'relazioneProgetto20151229093709.pdf','./uploads/documentFiles/relazioneProgetto20151229093709.pdf',540544,'2015-12-29 21:37:09',NULL,'application/pdf'),(5,'rsa20151229095513.gif','./uploads/documentPictures/rsa20151229095513.gif',3721,'2015-12-29 21:55:13',NULL,'image/gif'),(6,'rsa20151229095513.pdf','./uploads/documentFiles/rsa20151229095513.pdf',858201,'2015-12-29 21:55:13',NULL,'application/pdf'),(7,'rss20151229100421.GIF','./uploads/documentPictures/rss20151229100421.GIF',4507,'2015-12-29 22:04:21',NULL,'image/gif'),(8,'rss20151229100421.pdf','./uploads/documentFiles/rss20151229100421.pdf',948149,'2015-12-29 22:04:21',NULL,'application/pdf'),(9,'orale_elettrotecnica20151230025951.jpg','./uploads/documentPictures/orale_elettrotecnica20151230025951.jpg',16206,'2015-12-30 14:59:51',NULL,'image/jpeg'),(10,'orale_elettrotecnica20151230025951.pdf','./uploads/documentFiles/orale_elettrotecnica20151230025951.pdf',1234067,'2015-12-30 14:59:51',NULL,'application/pdf');
 /*!40000 ALTER TABLE `file` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,6 +172,7 @@ CREATE TABLE `followship` (
 
 LOCK TABLES `followship` WRITE;
 /*!40000 ALTER TABLE `followship` DISABLE KEYS */;
+INSERT INTO `followship` VALUES (8,13);
 /*!40000 ALTER TABLE `followship` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -189,7 +193,7 @@ CREATE TABLE `purchase` (
   KEY `DocumentPurchaser` (`purchaser`),
   CONSTRAINT `DocumentBuyer` FOREIGN KEY (`purchaser`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `DocumentPurchased` FOREIGN KEY (`document`) REFERENCES `document` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -198,6 +202,7 @@ CREATE TABLE `purchase` (
 
 LOCK TABLES `purchase` WRITE;
 /*!40000 ALTER TABLE `purchase` DISABLE KEYS */;
+INSERT INTO `purchase` VALUES (1,2,8,'2015-12-29 22:07:25');
 /*!40000 ALTER TABLE `purchase` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -282,6 +287,7 @@ CREATE TABLE `rating` (
 
 LOCK TABLES `rating` WRITE;
 /*!40000 ALTER TABLE `rating` DISABLE KEYS */;
+INSERT INTO `rating` VALUES (2,8,4,'E\' molto bello questo documento qua. Il progetto e\' molto ben svolto.');
 /*!40000 ALTER TABLE `rating` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -367,7 +373,7 @@ CREATE TABLE `tag` (
   `name` varchar(45) NOT NULL,
   `count` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -376,6 +382,7 @@ CREATE TABLE `tag` (
 
 LOCK TABLES `tag` WRITE;
 /*!40000 ALTER TABLE `tag` DISABLE KEYS */;
+INSERT INTO `tag` VALUES (1,'cia',0),(2,'Tag1',0),(3,'tag2',0),(4,'tag3',0),(5,'aga',0),(6,'Ingegneria',5),(7,'Calcolo',1),(8,'Dma',1),(9,'Database',1),(10,'Progettazione',1),(11,'Reti',2),(12,'Logiche',2),(13,'Elettrotecnica',1),(14,'Orale',1);
 /*!40000 ALTER TABLE `tag` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -403,6 +410,7 @@ CREATE TABLE `tagship` (
 
 LOCK TABLES `tagship` WRITE;
 /*!40000 ALTER TABLE `tagship` DISABLE KEYS */;
+INSERT INTO `tagship` VALUES (1,6),(1,7),(1,8),(2,6),(2,9),(2,10),(3,6),(3,11),(3,12),(4,6),(4,11),(4,12),(5,6),(5,13),(5,14);
 /*!40000 ALTER TABLE `tagship` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -494,7 +502,7 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -503,7 +511,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (8,'Federico','$2y$10$XRUa9J5nNTqQNDLMQbZS/unkIxcfUwwbINbwi20t2gKEhkfON4auy','federico.rossi15s95@gmail.com','Federico','Rossi','1995-09-15','Italia',27,'./uploads/profilePictures/12356787_10153210866706471_1155759432190083684_o20151219122241.png','admin');
+INSERT INTO `user` VALUES (8,'Federico','$2y$10$Qi4reAuh4JBZ0NCSWXL7YeqeWOMcgpeYO4i2svBmwFUajbQ/lzRYO','federico.rossi15s95@gmail.com','Federico','Rossi','1995-09-15','Italia',18,'./uploads/profilePictures/12356787_10153210866706471_1155759432190083684_o20151219122241.png','admin'),(11,'Antoine','$2y$10$7zzL4kICtZY8kVLLajSFI.vqm9.tCF8KuY0tNfhx1oG9ka8jR9kBq','antoine@antoine.com','Antonio','Biacnhi','1990-10-12','Italia',19,'./img/default.png','user'),(12,'willy99','$2y$10$8Y96IKRpq6VTD5WUSYd5/.miVlremvaiqCsIVMl22y7dpbV./Vn2W','william.green@gmail.com','William','Green','1999-10-10','Inghilterra',10,'./img/default.png','user'),(13,'ragnar','$2y$10$XbVG.lzrl36FwPgtVn5G9O2naRETLD0B/BiK6NluS8hfMT0XjzNkW','nanna@monsters.com','BryndÃ¬s','HilmarsdottÃ¬r','1980-10-10','Islanda',10,'./img/default.png','user');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -534,4 +542,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-12-23 18:50:30
+-- Dump completed on 2016-01-05 19:44:16

@@ -6,6 +6,7 @@
 	if(!isset($_SESSION['exception'])) {
 		$_SESSION['exception'] = "Nulla da mostrarti qua";
 	}
+
 ?>
 <html lang="it">
 <?php

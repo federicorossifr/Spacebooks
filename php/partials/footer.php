@@ -8,4 +8,9 @@
 		Cos'è Spacebooks? <a href="./about.php">Scoprilo qua!</a>
 
 	</p>
+
+	<p>
+		Contatta l&apos;amministratore dell'applicazione:
+		<img class="adMail" src="./img/adminmail.png" alt="admin mail">
+	</p>
 </footer>

@@ -141,9 +141,29 @@
     padding:5%;
     margin-top:1em;
   }
+  
+  .documentList {
+      flex-direction:row;
+  }
+
 
   .documentList > li  div.title {
-    top:80%;
+    height:80%;
+    top:20%;
+  }
+  
+  .documentList.people > li div.title {
+    top:0%;
+    height:100%;
+  }
+  
+  
+  .documentList > li:hover div.title {
+    top:20%;
+  }
+  
+  .documentList.people > li:hover div.title {
+    top:0%;
   }
 
   .documentList .stars {

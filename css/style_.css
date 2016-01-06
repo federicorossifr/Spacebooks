@@ -94,10 +94,12 @@ footer p span {
 
 footer p a {
   color:white;
+  transition: letter-spacing 0.1s ease-in-out;
 }
 
 footer p a:hover {
-  color:tomato;
+  text-decoration:none;
+  letter-spacing:5px;
 }
 
 
@@ -182,6 +184,7 @@ aside {
   bottom:0;
   box-sizing:border-box;
   text-align: center;
+  box-shadow:1px 1px 1px 1px rgba(0,0,0,0.33)
 }
 
 
@@ -924,6 +927,9 @@ dd:hover > .prettyButton {
   list-style:none;
   margin:0;
   padding:0;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
 }
 
 .documentList > li {
@@ -931,9 +937,10 @@ dd:hover > .prettyButton {
   height:200px;
   width:200px;
   display:inline-block;
-  margin-left:10px;
+  margin-left:5px;
   overflow-y:hidden;
   border:1px solid tomato;
+  margin-bottom:5px;
 }
 
 .documentList {
@@ -961,13 +968,12 @@ dd:hover > .prettyButton {
 
 .documentList > li  div.title {
   position:absolute;
-  background-color:tomato;
+  background-color:rgba(0,0,0,0.66);
   left:0;
   width:100%;
   text-align:center;
-  height:30%;
-  line-height:200%;
-  top:100%;
+  height:100%;
+  top:0%;
   transition: top 0.1s ease-in-out;
 }
 
@@ -976,18 +982,11 @@ dd:hover > .prettyButton {
   overflow:hidden;
 }
 
-.documentList.people > li div.title {
-  top:80%;
-  background-color:tomato;
-}
 
 .documentList > li:hover div.title {
   top:70%;
 }
 
-.documentList.people > li:hover div.title {
-  top:100%;
-}
 
 .documentList > li:hover .stars {
   top:0;
@@ -1005,7 +1004,7 @@ dd:hover > .prettyButton {
   width:100%;
   height:20%;
   top:-20%;
-  background-color:tomato;
+  background-color:rgba(0,0,0,0.66);
   transition:top 0.1s ease-in-out;
 }
 
@@ -1045,4 +1044,10 @@ td  .prettyButton {
 
 #italic {
   font-family:"VollkornItalic", serif;
+}
+
+.adMail {
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
 }

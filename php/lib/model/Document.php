@@ -37,21 +37,6 @@ class Document {
 		}
 	}
 
-	function __call($method,$arguments) {
-		global $db;
-		if($db->error) {
-			throw new Exception("Errore database");
-		}
-	}
-
-	public static function __callStatic($method,$arguments) {
-		global $db;
-		if($db->error) {
-			throw new Exception("Errore database");
-		}
-	}
-
-
 	public function __get($property) {
 		return $this->$property;
 	}
