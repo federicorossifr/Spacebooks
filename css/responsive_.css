@@ -1,0 +1,305 @@
+@media screen and (max-width: 1023px) {
+
+  * {
+    flex-flow:column;
+  }
+  
+  #cA,#cB,form, input {
+    float:none;
+    width:100%;
+    max-width:500px;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+  }
+
+  form label {
+     text-align:center;
+     width:100%;
+     max-width:500px;
+     margin-left:auto;
+     margin-right:auto;
+     box-sizing:border-box;
+  }
+
+
+
+  form.combo * {
+    margin-bottom:0;
+    width:100%;
+  }
+  
+  form.combo {
+    margin-bottom:20px;
+  }
+  
+  nav ul {
+    overflow-y:hidden;
+  }
+
+  nav > ul > li {
+    float:none;
+    display:block;
+    width:100%;
+    text-align:left;
+  }
+  
+  nav > ul > li.right {
+    float:none;
+  }
+
+  nav.fixed #logo {
+    display:block;
+  }
+
+  nav.static #logo {
+    display:none;
+  }
+
+  dl {
+    margin:0;
+    margin-top:10px;
+    width:100%;
+  }
+
+  dt {
+    padding:3%;
+  }
+
+  dd {
+    padding:3%;
+  }
+  
+  #search,#profile {
+    left:-100%;
+    width:100%;
+    max-width:300px;
+  }
+
+
+  /**** Stili per la pagina di login/registrazione ****/
+  #loginSection {
+    width:100%;
+    padding-top:1%;
+  }
+
+  #registerSection {
+    width:100%;
+  }
+
+  #loginForm, #registerForm {
+    width:90%;
+  }
+
+
+  .fragmentContainer > .controllerBar {
+    flex-flow:column;
+  }
+
+
+  table.userTable td {
+    display:block;
+    padding:2%;
+    border:0;
+  }
+
+  table.userTable th {
+    display:none;
+  }
+
+  table.userTable td:before {
+    color:black;
+    display:block;
+    width:100%;
+    content:attr(data-heading);
+    padding:1%;
+    box-sizing:border-box;
+    text-align:center;
+    margin-bottom:1%;
+    border:0;
+    border-bottom:1px solid rgba(0,0,0,0.40);
+    font-size:20px;
+  }
+
+  table.userTable tr:first-child, table.userTable tr:last-child  {
+    border-bottom:0;
+  }
+  
+  table.userTable tr {
+   display:block;
+   border-bottom:2px dashed rgba(0,0,0,0.50);
+  }
+
+
+  #description,.descriptionContainer > div {
+    width:100%;
+    max-width:100%;
+    float:none;
+    margin:0;
+    background-color:white;
+    padding:5%;
+    margin-top:1em;
+  }
+  
+  .documentList {
+      flex-direction:row;
+  }
+
+
+  .documentList > li  div.title {
+    height:80%;
+    top:20%;
+  }
+  
+  .documentList.people > li div.title {
+    top:0%;
+    height:100%;
+  }
+  
+  
+  .documentList > li:hover div.title {
+    top:20%;
+  }
+  
+  .documentList.people > li:hover div.title {
+    top:0%;
+  }
+
+  .documentList .stars {
+    top:0%;
+  }
+
+  .reviewList {
+    list-style:none;
+    padding:0;
+    margin:0; 
+  }
+  
+
+  .controllerBar > .controller {
+   border-bottom:0px;
+   border-right:1px solid tomato;
+  }
+
+  .controllerBar > .controller:last-child {
+   border-right:1px solid tomato;
+   border-bottom: 1px solid tomato;
+  }
+  
+  div.fileInput.fileUploader {
+    width:100%;
+    box-sizing:border-box;
+  }
+  
+  div.fileInput.pictureInput {
+    float:none;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  
+  
+  dl.left {
+    float:none;
+  }
+  
+  div.left,div.right {
+    float:none;
+    width:100%;
+    min-width:100%;
+    max-width:500px;
+    margin-left:auto;
+    margin-right:auto;
+   }
+
+  
+  .stars {
+    margin-left:auto;
+    margin-right:auto;
+  }
+  
+  img#docCover {
+    margin-left:auto;
+    margin-right:auto;
+    display:block;
+  }
+  
+  #registerSection .prettyButton, .prettyButton {
+      width:100%;
+      max-width:500px;
+      box-sizing:border-box;
+  }
+  
+
+  .comboButton > .prettyButton {
+    padding:10px;
+    width:100%;
+    margin:0 auto;
+    border-bottom:0;
+  }
+  
+
+  .comboButton > .prettyButton:last-child {
+    border-bottom:1px solid tomato;
+  }
+
+  footer {
+    margin-top:100px;
+    padding:30px;
+  }
+  
+  img.profilePicture {
+    width:100%;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    max-width:720px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  
+  
+  img.profilePicture {
+    float:none;
+    max-width:400px;
+  }
+  
+  .comboButton .prettyButton {
+    padding:1%;
+    width:100%;
+    border-right:0;
+  }
+
+  .comboButton .prettyButton:last-child {
+    border-right:1px solid tomato;
+  }
+
+  .comboButton > .prettyButton:hover {
+     border:1px solid tomato;
+     border-right:0;
+  }
+  
+  
+  #navToggle {
+    display:none;
+  }
+
+  nav.fixed > ul {
+    width:100%;
+  }
+  
+  aside#profile {
+    left:-300px;
+  }
+
+  aside#search {
+    left:-300px;
+  }
+
+  .controllerBar > .controller {
+   width:100%
+  }
+
+
+}

@@ -1,0 +1,1053 @@
+@font-face {
+  font-family: Vollkorn;
+  src: url("./fonts/Vollkorn-Regular.ttf");
+
+}
+
+@font-face {
+  font-family: VollkornBoldItalic;
+  src: url("./fonts/Vollkorn-BoldItalic.ttf");
+}
+
+@font-face {
+  font-family: VollkornItalic;
+  src: url("./fonts/Vollkorn-Italic.ttf");
+}
+
+* {
+  font-family:'Vollkorn' , serif;
+  color:black;
+  font-size:15px;
+  letter-spacing:2px;
+}
+
+h2 {
+  font-size:20px;
+}
+
+h1,h2,h3 {
+  text-transform: uppercase;
+}
+
+h6 {
+  margin:0;
+}
+
+html,body {  /* Full width, height body and html */
+  margin:0;
+  width:100%;
+  height:100%;
+}
+
+body {
+  transition:opacity 0.5s ease-in-out;
+  opacity:0;
+}
+
+html {
+  background-image: url("../img/preloadpage.gif");
+  background-repeat:no-repeat;
+  background-position:center;
+}
+
+
+body > header {
+  display:block;
+  height:65px;
+  line-height:65px;
+  background-image: url("../img/galaxy.jpg");
+  background-size:100% auto;
+ }
+
+body > header > h1 {
+  margin:0;
+}
+
+body > header > h1 a {
+  color:white;
+  margin:0;
+  width:100%;
+  display: block;
+  text-align:center;
+  text-decoration:none;
+  font-size: 35px;
+}
+
+footer {
+  background: tomato;
+  clear:both;
+}
+
+footer p {
+  padding:1%;
+  margin:0;
+  text-align:center;
+  color:white;
+  font-family:VollkornItalic, serif;
+}
+
+footer p span {
+  color:white;
+  text-transform: uppercase;
+  font-family: VollkornBold, serif;
+}
+
+footer p a {
+  color:white;
+  transition: letter-spacing 0.1s ease-in-out;
+}
+
+footer p a:hover {
+  text-decoration:none;
+  letter-spacing:5px;
+}
+
+
+/* Stile CSS per la barra di navigazione */
+
+nav {
+  overflow-y:auto;
+  width:100%;
+  position:relative; /* Per ombra */
+  margin-top:20px;
+  transition:box-shadow 0.2s ease-in-out;
+}
+
+nav.fixed {
+  position:fixed;
+  top:0;
+  left:0;
+  margin-top:0;
+  width:100%;
+  background-color:white;
+  box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.50);
+  z-index:1;
+}
+
+nav.fixed ul {
+  border:none;
+}
+
+nav > ul {
+  padding:0;
+  margin:0 auto;
+  list-style:none;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  width:80%;
+  border-top:1px solid tomato;
+}
+
+
+nav > ul > li {
+  float:left;
+}
+
+nav > ul > li > a {
+  display: block;
+  text-decoration: none;
+  padding:1em;
+  line-height: 2em;
+  border-bottom:1px solid transparent;
+}
+
+
+li#logo {
+  background-image: url("../img/galaxy.jpg");
+  max-width:0;
+  transition:max-width 0.2s ease-in-out;
+}
+
+li#logo a {
+  color:white;
+}
+
+nav > ul > li.active > a, nav > ul > li > a:hover {
+  color:tomato;
+}
+
+nav > ul > li > a > img {
+  display:none;
+  float:left;
+  height:2em;
+  margin-right:10px;
+}
+
+
+aside {
+  background-color:white;
+  height: 100%;
+  width:300px;
+  padding:2%;
+  position:fixed;
+  top:0;
+  bottom:0;
+  box-sizing:border-box;
+  text-align: center;
+  box-shadow:1px 1px 1px 1px rgba(0,0,0,0.33)
+}
+
+
+/***** Stile CSS per l'aside a comparsa del profilo ******/
+
+aside#profile {
+  transition: left 0.5s ease-in-out;
+  z-index:10;
+}
+
+aside#search {
+  transition: left 0.25s ease-in-out;
+  z-index:10;
+}
+
+#sideButtons {
+  list-style-type:none;
+  padding:0;
+  display:block;
+  width:100%;
+}
+
+#sideButtons .prettyButton {
+  width:100%;
+  box-sizing:border-box;
+}
+
+
+
+/*********************************************************/
+
+
+main {
+  width:100%;
+  padding:1%;
+  box-sizing:border-box;
+  overflow-y:auto;
+  min-height: 100%;
+}
+
+main > header {
+  width:100%;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+  padding:1em;
+  box-sizing:border-box;
+}
+
+main > header > h2 {
+  margin:0;
+  color:black;
+}
+
+main article {
+  box-sizing:border-box;
+  padding:1em;
+  margin:1em;
+}
+
+article.exception {
+  text-align:center;
+}
+
+article.exception p {
+  padding-bottom:30px;
+}
+
+
+/***********************************/
+
+.left {
+  max-width:50%;
+  float:left;
+  margin-left:10px;
+}
+
+.right {
+  max-width:50%;
+  float:right;
+}
+
+
+
+dl {
+  margin:0;
+  margin-left:10px;
+  float:left;
+  color:black;
+  display:block;
+  width:calc(100% - 520px);
+}
+
+dt {
+  display:block;
+  padding:1%;
+  background-color:white;
+  position:relative;
+  color:tomato;
+}
+
+dd {
+  margin:0;
+  padding:1%;
+  color:black;
+}
+
+
+/**** Stili per la pagina di login/registrazione ****/
+
+#loginSection {
+  width:30%;
+  float:left;
+  text-align:center;
+  clear:left;
+}
+
+
+#registerSection {
+  width:70%;
+  float:right;
+  text-align:center;
+  clear:right;
+}
+
+section > header > h2 {
+  color:black;
+  font-size:20px;
+}
+
+#loginForm, #registerForm {
+  width:55%;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+form.combo {
+  display:flex;
+}
+
+form.combo > * {
+  flex:1;
+}
+
+
+select {
+  height:40px;
+  padding-left:2%;
+  padding-right:2%;
+  padding-top:5px;
+  padding-bottom:5px;
+  background-color:white;
+  color:black;
+  border:1px solid black;
+}
+
+form select:focus, select:focus {
+  background-color:white;
+  color:black;
+}
+
+td {
+  border:1px solid rgba(0,0,0,0.20);
+}
+
+tr:nth-child(even) {
+  background-color:rgba(0,0,0,0.20);
+}
+
+td > select {
+  min-width:100%;
+  max-width:100%;
+}
+
+form input:not([type="submit"]), form select {
+  border: 1px solid rgba(0,0,0,0.50);
+  color:black;
+  padding:2%;
+  padding-top:5px;
+  padding-bottom:5px;
+  font-size:14px;
+  height:40px;
+  margin-bottom:20px;
+  box-sizing:border-box;
+  width:100%;
+  text-align:center;
+}
+
+form input[type="submit"] {
+  display:block;
+  clear:both;
+  width:100%;
+}
+
+
+
+form input:focus{
+   outline:none;
+   border:2px solid rgba(0,0,0,0.50);
+}
+
+form button {
+  min-width:100%;
+  cursor:pointer;  
+  
+}
+
+form button:hover {
+  background-color:tomato;
+  color:white;
+}
+
+form label {
+  color:black;
+  padding:1%;
+  display:inline-blocK;
+  margin-bottom:5px;
+}
+
+
+form textarea:focus, div[contenteditable]:focus {
+  color:black;
+  background-color:white;
+}
+
+#loginSection > header, #registerSection > header {
+  text-align:center;
+  color:white;
+}
+
+#registerSection > .prettyButton {
+  width:20%;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+
+
+#cA {
+  width:48%;
+  float:left;
+}
+
+#cB {
+  width:48%;
+  float:right;
+}
+
+
+
+.prettyButton {
+  max-width:500px;
+  margin-left:auto;
+  margin-right:auto;
+  display:block;
+  background-color:white;
+  border:1px solid tomato;
+  color:tomato;
+  padding:1em;
+  margin-top:1em;
+  text-align:center;
+  text-decoration:none;
+  transition: border,background-color 0.2s ease-in-out;
+  cursor:pointer;
+}
+
+.prettyButton:hover {
+  background-color:tomato;
+  color:white;
+  border:1px solid white;
+}
+
+.flash {
+  color:white;
+  display:block;
+  margin-top:5px;
+}
+
+#pictureContainer {
+  position:relative;
+}
+
+#pictureContainer > span.change {
+  position:absolute;
+  color:white;
+  display:block;
+  top:0;
+  left:calc(50% - 50px);
+  width:100px;
+  height:100px;
+  line-height:100px;
+  opacity:0;
+  cursor: pointer;
+  transition: background-color 0.2s ease-out;
+}
+
+#pictureContainer:hover > span.change {
+  background-color: rgba(0,0,0,0.50);
+  opacity:1;
+}
+
+#pictureContainer > #upPicture {
+  position:absolute;
+  top:-100%;
+  left:-100%;               
+}
+
+label.success {
+  border:1px solid green;
+  padding:1px 5px 1px 5px;
+  color:green;
+}
+
+label.success:after {
+  letter-spacing: 0;
+  font-size:10px;
+  content:" OK";
+}
+
+
+label.error {
+  padding:1px 5px 1px 5px;
+  color:red;
+  border:1px solid red;
+}
+
+input.error {
+  border:2px solid red;
+}
+
+
+.closeButton {
+  display:block;
+  position:absolute;
+  top:10px;
+  left:calc(100% - 30px);
+  width:20px;
+  height:20px;
+  background-image: url("../img/close.png");
+  background-size:cover;
+  color:#3F51B5;
+  text-decoration:none;
+  transition: all 0.3s ease-in-out;
+  opacity:0.66;
+}
+
+.closeButton:hover {
+  transform:rotate(360deg);
+}
+
+
+
+div.fileInput {
+  position: relative;
+  background-color: white;
+  border:1px solid rgba(0,0,0,0.5);
+  text-align:center;
+  background-image: url("../img/file-esplora.png");
+  background-repeat:no-repeat;
+  background-position:center center;
+}
+
+div.fileInput.fileUploader {
+  float:left;
+  padding:1%;
+  margin-left:1px;
+  margin-bottom:10px;
+  height:200px;
+  width:200px;
+}
+
+div.fileInput.fileUploader > span {
+  position:absolute;
+  display:block;
+  width:100%;
+  height:100%;
+  background-color: rgba(0,0,0,0.5);
+  
+  left:0;
+  top:0;
+  font-size:13px;
+}
+
+div.fileInput.pictureInput {
+  width:300px;
+  height: 300px;
+}
+
+.fileInput > input[type="file"] {
+  width:0;
+  height:0;
+  visibility:hidden;
+}
+
+.fileInput > progress {
+  position: absolute;
+  height: 20px;
+  width:90%;
+  left:5%;
+  top:calc(50% - 10px);
+  display: none;
+  z-index:0;
+}
+
+.fileInput > img {
+  position: absolute;
+  width:100%;
+  height: 100%;
+  cursor: pointer;
+  z-index:0;
+}
+
+*.fragmentContainer {
+ width:100%;
+ max-width: 1024px;
+ margin-left: auto;
+ margin-right: auto;
+}
+
+.fragmentContainer > .controllerBar {
+  background-color:white;
+  text-align:center;
+  display:flex;
+  line-height:50px;
+  font-size:15px;
+  margin-top:10px;
+}
+
+
+.controllerBar > .controller {
+  cursor:pointer;
+  color:tomato;
+  border:1px solid tomato;
+  border-right: 0px;
+}
+
+.controllerBar > .controller:last-child {
+  border-right: 1px solid tomato;
+}
+
+.controllerBar > .controller.active {
+  background-color: tomato;
+  color:white;
+}
+
+.fragmentContainer > *[data-fragment] {
+  margin:0;
+  width:100%;
+  border-bottom:1px solid tomato;
+  border-right:1px solid tomato;
+  border-left:1px solid tomato;
+  overflow-y:auto;
+}
+
+.fragmentContainer > article[data-fragment] > header {
+  display:none;
+}
+
+
+table.userTable {
+  border-collapse:collapse;
+  width:100%;
+  border:1px solid rgba(0,0,0,0.5);
+}
+
+
+table.userTable td, table.userTable th {
+  text-align:center;
+  padding:1%;
+ 
+}
+
+table.userTable th {
+   border:1px solid rgba(0,0,0,0.5);
+  background-color:white;
+  color:black;
+  position:relative;
+}
+
+.description,.descriptionContainer > div {
+  display:block;
+  margin:0;
+  margin-left:10px;
+  background-color:white;
+  border:1px solid rgba(0,0,0,0.50);
+  color:black;
+  padding:1%;
+  width:calc(100% - 220px);
+  max-width: calc(100% - 300px);
+  float:left;
+  word-break:break-all;
+  box-sizing:border-box;
+  overflow-y:auto;
+}
+
+.descriptionContainer.wide > div {
+  width:100%;
+  max-width:100%;
+  margin:0;
+  min-height:300px;
+  float:none;
+}
+
+.description[contenteditable] {
+  margin: 0 auto;
+  float:none;
+  height:300px;
+}
+
+.view > img {
+  display:block;
+  height:100px;
+  width:100px;
+  margin-left:auto;
+  margin-right:auto;
+  border:1px solid tomato;
+}
+
+
+
+.about {
+  position:relative;
+  text-align:center;
+  font-size:20px;
+  height:400px;
+  padding:0;
+}
+
+.about > p {
+  width:100%;
+  top:100px;
+  position:absolute;
+  z-index:1;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.50), 0 1px 2px rgba(0,0,0,0.50);
+}
+
+.about .prettyButton {
+  position:absolute;
+  max-width:1024px;
+  width:10%;
+  left:45%;
+  font-size:15px;
+  opacity:0.66;
+}
+
+
+.darken {
+  top:0;
+  left:0;
+  position:absolute;
+  width:100%;
+  height:100%;
+  background-color:black;
+  z-index:0;
+  opacity:0.6;
+}
+
+
+.about[data-name] {
+  background-image: url("../img/galaxy_foot.jpg");
+  background-size:cover;
+}
+
+.about[data-name] p {
+  color:white;
+}
+
+.popper {
+  background-color:tomato;
+  padding:1%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  text-align:center;
+}
+
+.popper > h3 {
+  margin:0;
+  color:white
+}
+
+.popper > p {
+  color:white;
+}
+
+.popper > .prettyButton {
+  width:100%;
+  box-sizing:border-box;
+}
+
+.comboButton {
+  display:flex;
+  margin-bottom:5px;
+  max-width:720px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+
+
+.comboButton > .prettyButton:last-child:hover {
+     border:1px solid tomato;
+}
+
+
+.stars {
+  width:200px;
+  text-align:center;
+}
+
+dl.left {
+  width:calc(50% - 2px);
+  margin:0;
+}
+
+dl.right {
+  width:calc(50% - 2px);
+  margin-left:4px;
+}
+
+dd > .prettyButton {
+  display:none;
+}
+
+dd:hover > .prettyButton {
+  display:inline-block;
+}
+
+
+.resultList {
+  padding:0;
+  margin:0;
+  list-style:none;
+  margin-top:-15px;
+}
+
+
+.resultList li { 
+ line-height:40px;
+ border:1px solid tomato;
+ margin-bottom:5px;
+}
+
+
+.resultList li a {
+  background-size:45px 45px;
+  background-repeat:no-repeat;
+  background-position:left;
+  display:block;
+  text-decoration:none;
+}
+
+#private > div {
+  width:calc(50% - 10px);
+  text-align:center;
+  margin:0;
+}
+
+#private > div > form {
+  width:80%;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+#reviews > div {
+  width:48%;
+}
+
+#reviews form {
+  width:90%;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+#reviews textarea {
+  width:100%;
+  height:200px;
+}
+
+#reviews  h3 {
+  text-align:center;
+}
+
+
+#stars {
+  text-align:center;
+}
+
+.reviewList {
+  list-style:none;
+  padding:0;
+  margin:0; 
+}
+
+.reviewList li {
+  background-color:tomato;
+  display:block;
+  width:90%;
+  padding:1%;
+  margin-bottom:5px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.reviewList div {
+  display:inline-block;
+  float:right;
+  margin:0;
+  padding:0;
+  border-bottom:1px solid white;
+  height:50px;
+}
+
+.reviewList div > img {
+  margin-top:10px;
+}
+
+.reviewList li > img {
+  float:left;
+  display:block;
+  width:50px;
+}
+
+.reviewList span {
+  color:white;
+  display:block;
+  float:left;
+  margin-left:10px;
+  line-height:50px;
+  border-bottom:1px solid white;
+  width: calc(100% - 210px);
+}
+
+.reviewList p {
+  color:white;
+  clear:left;
+  margin-left:50px;
+  padding:20px;
+}
+
+.documentList {
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.documentList > li {
+  position:relative;
+  height:200px;
+  width:200px;
+  display:inline-block;
+  margin-left:5px;
+  overflow-y:hidden;
+  border:1px solid tomato;
+  margin-bottom:5px;
+}
+
+.documentList {
+  color:white;
+}
+
+.documentList a {
+  color:white;
+}
+
+
+.documentList a:hover:before {
+  opacity:0.2;
+}
+
+
+
+
+
+.documentList > li  img {
+  position:absolute;
+  width:100%;
+  height:100%;
+}
+
+.documentList > li  div.title {
+  position:absolute;
+  background-color:rgba(0,0,0,0.66);
+  left:0;
+  width:100%;
+  text-align:center;
+  height:100%;
+  top:0%;
+  transition: top 0.1s ease-in-out;
+}
+
+.documentList > li div.title p {
+  color:white;
+  overflow:hidden;
+}
+
+
+.documentList > li:hover div.title {
+  top:70%;
+}
+
+
+.documentList > li:hover .stars {
+  top:0;
+}
+
+.documentList .star {
+  position:relative;
+  width:20px;
+  height:20px;
+  top:calc(50% - 10px);
+}
+
+.documentList .stars {
+  position:absolute;
+  width:100%;
+  height:20%;
+  top:-20%;
+  background-color:rgba(0,0,0,0.66);
+  transition:top 0.1s ease-in-out;
+}
+
+
+td  .prettyButton {
+  margin-top:0;
+}
+
+.loading {
+  background-image: url("../img/preloadpage.gif");
+  background-repeat:no-repeat;
+  background-position: center;
+  background-size:20px 20px;
+  text-indent:1000px;
+}
+
+.emptyResult {
+  font-size:15px;
+  text-align:center;
+  padding:1%;
+  background-color:rgba(0,0,0,0.30);
+}
+
+#uploadWrapper {
+  display:block;
+  overflow-y:auto;
+  overflow-x:hidden;
+}
+
+#bold {
+  font-weight:bolder;
+}
+
+#underline {
+  text-decoration:underline;
+}
+
+#italic {
+  font-family:"VollkornItalic", serif;
+}
+
+.adMail {
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+}
