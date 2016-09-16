@@ -4,7 +4,7 @@
 		$source['host'] = "localhost";
 		$source['user'] = "root";
 		$source['password'] = "";
-		$source['database'] = "pweb";
+		$source['database'] = "spacebooks";
 		$database = null;
 
 		try {

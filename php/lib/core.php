@@ -28,7 +28,7 @@
 	}
 
 	function exceptionHandler($exception) {
-		renderErrorPage($exception->getMessage());
+		return;
 	}
 
 	function renderErrorPage($message) {

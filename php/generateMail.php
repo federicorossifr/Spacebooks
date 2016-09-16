@@ -1,7 +1,7 @@
 <?php //restituisce un'immagine contenente la stringa dell'email. Per evitare lo spam.
-	require __DIR__ . "./partials/secured.php";
+	session_start();
 	header("Content-type: image/png");
-	$email = $_SESSION['visiting'];
+	$email = $_SESSION["visiting"];
 	$mailLength = strlen($email)*8;
 	$im = imagecreate(300, 20);
 	$backgroundColor = imagecolorallocate($im, 255, 255, 255);
